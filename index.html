@@ -957,8 +957,8 @@
                         <span class="stat-label">Uses for Sweet Potatoes</span>
                     </div>
                     <div class="stat-item">
-                        <span class="stat-number">3</span>
-                        <span class="stat-label">Patents Held</span>
+                        <span class="stat-number" id="totalEvents">20</span>
+                        <span class="stat-label">Major Life Events</span>
                     </div>
                 </div>
             </div>
@@ -1153,7 +1153,7 @@
     <!-- External Database -->
     <script src="CarverLife.js"></script>
 
-    <script>
+   <script>
         // DOM elements
         const timelineGrid = document.getElementById('timelineGrid');
         const searchInput = document.getElementById('searchInput');
@@ -1163,11 +1163,11 @@
         const timelineDetail = document.getElementById('timelineDetail');
         const heroStats = document.getElementById('heroStats');
         const inspirationalQuote = document.getElementById('inspirationalQuote');
-
+        
         // State
         let currentFilter = 'all';
         let currentSearchTerm = '';
-
+        
         // Inspirational Carver quotes rotation
         const carverQuotes = [
             "Education is the key to unlock the golden door of freedom.",
@@ -1179,7 +1179,7 @@
             "Where there is no vision, there is no hope.",
             "Start where you are, with what you have. Make something of it and never be satisfied."
         ];
-
+        
         // Initialize the app
         function init() {
             updateHeroStats();
@@ -1188,45 +1188,36 @@
             setupScrollDetection();
             rotateQuotes();
         }
-
+        
         // Rotate inspirational quotes
         function rotateQuotes() {
             let currentQuoteIndex = 0;
             setInterval(() => {
                 currentQuoteIndex = (currentQuoteIndex + 1) % carverQuotes.length;
                 inspirationalQuote.textContent = carverQuotes[currentQuoteIndex];
-            }, 8000); // Change quote every 8 seconds
+            }, 8000);
         }
-
-        // Update hero statistics with real data
+        
+        // Update hero statistics with real data from database
         function updateHeroStats() {
-            // These will be populated from CarverLife.js when it's created
-            const stats = {
-                peanutProducts: '300+',
-                tuskegeeYears: '49',
-                sweetPotatoUses: '700+',
-                patents: '3'
-            };
-            
-            const statsItems = heroStats.querySelectorAll('.stat-item');
-            
-            if (statsItems.length >= 4) {
-                statsItems[0].querySelector('.stat-number').textContent = stats.peanutProducts;
-                statsItems[1].querySelector('.stat-number').textContent = stats.tuskegeeYears;
-                statsItems[2].querySelector('.stat-number').textContent = stats.sweetPotatoUses;
-                statsItems[3].querySelector('.stat-number').textContent = stats.patents;
+            if (window.carverLifeDatabase) {
+                const stats = carverLifeDatabase.getStats();
+                const statsItems = heroStats.querySelectorAll('.stat-item');
+                
+                if (statsItems.length >= 4) {
+                    // Update the fourth stat with total events
+                    statsItems[3].querySelector('.stat-number').textContent = stats.totalEvents;
+                }
             }
         }
-
+        
         // Setup event listeners
         function setupEventListeners() {
-            // Search functionality
             searchInput.addEventListener('input', (e) => {
                 currentSearchTerm = e.target.value.toLowerCase();
                 renderTimeline();
             });
-
-            // Filter buttons
+        
             filterButtons.forEach(btn => {
                 btn.addEventListener('click', (e) => {
                     filterButtons.forEach(b => b.classList.remove('active'));
@@ -1236,7 +1227,7 @@
                 });
             });
         }
-
+        
         // Scroll detection for search bar border
         function setupScrollDetection() {
             const searchNav = document.querySelector('.search-nav');
@@ -1254,81 +1245,33 @@
             
             window.addEventListener('scroll', handleScroll);
         }
-
+        
         // Render timeline based on current filter and search
         function renderTimeline() {
-            // This will be populated from CarverLife.js
             let timelineEvents = [];
-
-            // Placeholder timeline events (will be replaced by CarverLife.js)
-            const placeholderEvents = [
-                {
-                    id: 1,
-                    date: "1864",
-                    age: "Birth",
-                    title: "Born into Slavery",
-                    location: "Diamond, Missouri",
-                    description: "George Washington Carver was born into slavery on a farm owned by Moses Carver. His exact birth date is unknown, but it's estimated to be around 1864.",
-                    category: "childhood",
-                    emoji: "🌱",
-                    importance: "Critical"
-                },
-                {
-                    id: 2,
-                    date: "1890",
-                    age: "26",
-                    title: "First College Acceptance",
-                    location: "Highland, Kansas",
-                    description: "After being rejected from Highland University due to his race, Carver was eventually accepted when he appeared in person, beginning his formal higher education journey.",
-                    category: "education",
-                    emoji: "🎓",
-                    importance: "Major"
-                },
-                {
-                    id: 3,
-                    date: "1896",
-                    age: "32",
-                    title: "Joins Tuskegee Institute",
-                    location: "Tuskegee, Alabama",
-                    description: "Booker T. Washington personally recruited Carver to head the Agriculture Department at Tuskegee Institute, where he would spend the rest of his career.",
-                    category: "tuskegee",
-                    emoji: "🏫",
-                    importance: "Critical"
-                },
-                {
-                    id: 4,
-                    date: "1916",
-                    age: "52",
-                    title: "Royal Society Fellowship",
-                    location: "London, England",
-                    description: "Carver was elected as a fellow of the Royal Society for the Encouragement of Arts, Manufactures and Commerce in London.",
-                    category: "legacy",
-                    emoji: "👑",
-                    importance: "Major"
+        
+            // Get events from database if available
+            if (window.carverLifeDatabase) {
+                timelineEvents = window.carverLifeDatabase.getAll();
+                
+                // Apply category filter
+                if (currentFilter !== 'all') {
+                    timelineEvents = window.carverLifeDatabase.getByCategory(currentFilter);
                 }
-            ];
-
-            timelineEvents = placeholderEvents;
-
-            // Apply category filter
-            if (currentFilter !== 'all') {
-                timelineEvents = timelineEvents.filter(event => event.category === currentFilter);
+        
+                // Apply search filter
+                if (currentSearchTerm) {
+                    timelineEvents = window.carverLifeDatabase.searchEvents(currentSearchTerm);
+                }
+            } else {
+                console.warn('CarverLife database not loaded');
+                return;
             }
-
-            // Apply search filter
-            if (currentSearchTerm) {
-                timelineEvents = timelineEvents.filter(event => 
-                    event.title.toLowerCase().includes(currentSearchTerm) ||
-                    event.description.toLowerCase().includes(currentSearchTerm) ||
-                    event.location.toLowerCase().includes(currentSearchTerm) ||
-                    event.date.toLowerCase().includes(currentSearchTerm)
-                );
-            }
-
+        
             // Show/hide loading and no results
             loadingMessage.classList.add('hidden');
             noResults.classList.toggle('hidden', timelineEvents.length > 0);
-
+        
             // Render cards
             timelineGrid.innerHTML = '';
             timelineEvents.forEach(event => {
@@ -1336,13 +1279,13 @@
                 timelineGrid.appendChild(card);
             });
         }
-
+        
         // Create timeline card
         function createTimelineCard(event) {
             const card = document.createElement('div');
             card.className = 'timeline-card';
             card.onclick = () => showEventDetail(event);
-
+        
             card.innerHTML = `
                 <div class="timeline-image">
                     <div class="placeholder-image">
@@ -1361,19 +1304,14 @@
                     <div class="importance-level">${event.importance} Importance</div>
                 </div>
             `;
-
+        
             return card;
         }
-
+        
         // Show event detail page
         function showEventDetail(event) {
-            // Hide main page
             document.querySelector('main').style.display = 'none';
-
-            // Hide header section
             document.body.classList.add('viewing-event');
-            
-            // Show detail page
             timelineDetail.classList.add('active');
             
             // Populate detail content
@@ -1381,12 +1319,12 @@
             document.getElementById('detailDateLocation').textContent = `${event.date} • ${event.location} • Age: ${event.age}`;
             document.getElementById('detailHighlight').textContent = event.title;
             document.getElementById('detailSignificance').textContent = event.description;
-            document.getElementById('detailDescription').textContent = event.description + " This event marked a significant moment in Carver's journey, contributing to his development as one of America's most important agricultural scientists.";
+            document.getElementById('detailDescription').textContent = event.detailedDescription || event.description;
             
-            // Populate impact (placeholder)
+            // Populate impact
             const impactList = document.getElementById('detailImpact');
             impactList.innerHTML = '';
-            const impacts = [
+            const impacts = event.impact || [
                 "Advanced agricultural science understanding",
                 "Improved farming techniques for Southern farmers",
                 "Promoted sustainable farming practices",
@@ -1398,10 +1336,10 @@
                 impactList.appendChild(li);
             });
             
-            // Populate context (placeholder)
+            // Populate context
             const contextList = document.getElementById('detailContext');
             contextList.innerHTML = '';
-            const contexts = [
+            const contexts = event.context || [
                 "Post-Civil War Reconstruction era",
                 "Jim Crow laws and segregation",
                 "Agricultural depression in the South",
@@ -1417,9 +1355,9 @@
             const portrait = document.getElementById('detailPortrait');
             portrait.src = 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="300" height="300" viewBox="0 0 300 300"><rect width="300" height="300" fill="%23f5f5f5"/><text x="150" y="120" text-anchor="middle" font-size="60">' + event.emoji + '</text><text x="150" y="180" text-anchor="middle" font-size="16" fill="%23666">' + event.date + '</text><text x="150" y="200" text-anchor="middle" font-size="14" fill="%23888">Historical Moment</text></svg>';
             portrait.alt = event.title + ' historical moment';
-
-            // Populate related events (placeholder)
-            const relatedEvents = getRelatedEvents(event);
+        
+            // Populate related events
+            const relatedEvents = window.carverLifeDatabase ? window.carverLifeDatabase.getRelatedEvents(event.id) : [];
             const relatedGrid = document.getElementById('relatedEventsGrid');
             relatedGrid.innerHTML = '';
             
@@ -1428,44 +1366,10 @@
                 relatedGrid.appendChild(tile);
             });
             
-            // Hide section if no related events found
             const relatedSection = document.querySelector('.related-events-section');
             relatedSection.style.display = relatedEvents.length > 0 ? 'block' : 'none';
-
-            // Scroll to top
+        
             window.scrollTo(0, 0);
-        }
-
-        // Find related events
-        function getRelatedEvents(currentEvent, limit = 3) {
-            const allEvents = [
-                {
-                    id: 5,
-                    date: "1894",
-                    title: "Graduates from Iowa State",
-                    location: "Ames, Iowa",
-                    emoji: "🎓",
-                    relation: "Education"
-                },
-                {
-                    id: 6,
-                    date: "1921",
-                    title: "Congressional Testimony",
-                    location: "Washington, D.C.",
-                    emoji: "🏛️",
-                    relation: "Recognition"
-                },
-                {
-                    id: 7,
-                    date: "1943",
-                    title: "Death and Legacy",
-                    location: "Tuskegee, Alabama",
-                    emoji: "🌟",
-                    relation: "Legacy"
-                }
-            ];
-            
-            return allEvents.filter(event => event.id !== currentEvent.id).slice(0, limit);
         }
         
         // Create related event tile
@@ -1474,8 +1378,15 @@
             tile.className = 'related-event-tile';
             tile.onclick = () => showEventDetail(event);
             
+            // Determine relation based on category similarity
+            let relation = 'Related';
+            if (event.category === 'education') relation = 'Education';
+            else if (event.category === 'discoveries') relation = 'Discovery';
+            else if (event.category === 'tuskegee') relation = 'Tuskegee';
+            else if (event.category === 'legacy') relation = 'Legacy';
+            
             tile.innerHTML = `
-                <div class="relation-tag">${event.relation}</div>
+                <div class="relation-tag">${relation}</div>
                 <span class="related-tile-emoji">${event.emoji}</span>
                 <div class="related-tile-date">${event.date}</div>
                 <div class="related-tile-event">${event.title}</div>
@@ -1484,7 +1395,7 @@
             
             return tile;
         }
-
+        
         // Show main page
         function showMainPage() {
             document.querySelector('main').style.display = 'block';
@@ -1492,7 +1403,7 @@
             timelineDetail.classList.remove('active');
             window.scrollTo(0, 0);
         }
-
+        
         // Initialize the app when DOM is loaded
         document.addEventListener('DOMContentLoaded', init);
     </script>
