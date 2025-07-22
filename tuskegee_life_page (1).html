@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Life at Tuskegee Institute - Where George Washington Carver Changed the World</title>
+    <meta name="description" content="Experience daily life at Tuskegee Institute during George Washington Carver's era. Discover what made this revolutionary institution so significant for African American education and progress.">
+    <meta name="keywords" content="Tuskegee Institute, Booker T Washington, George Washington Carver, African American education, historically black colleges, Alabama history">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            line-height: 1.6;
+            color: #1a1a1a;
+            background: #ffffff;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #2F4F4F 0%, #696969 50%, #8B4513 100%);
+            color: #ffffff;
+            padding: 6rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y="30" font-size="20" fill="rgba(255,255,255,0.1)">🏫</text><text y="70" font-size="20" fill="rgba(255,255,255,0.08)">📚</text></svg>') repeat;
+            background-size: 150px 150px;
+            animation: float 25s linear infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateX(0) translateY(0); }
+            100% { transform: translateX(-150px) translateY(-150px); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 6vw, 5rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.2rem, 3vw, 2rem);
+            opacity: 0.95;
+            margin-bottom: 1rem;
+            font-weight: 300;
+        }
+
+        .hero-period {
+            font-size: clamp(1rem, 2vw, 1.5rem);
+            opacity: 0.85;
+            margin-bottom: 3rem;
+            font-style: italic;
+        }
+
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .stat-box {
+            background: rgba(255, 255, 255, 0.15);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            border-radius: 8px;
+        }
+
+        .stat-box:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.25);
+            border-color: rgba(255, 255, 255, 0.5);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #FFD700;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        /* Back Button */
+        .back-link {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: #2F4F4F;
+            color: #fff;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            z-index: 1000;
+            box-shadow: 0 4px 15px rgba(47, 79, 79, 0.3);
+        }
+
+        .back-link:hover {
+            background: #696969;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(47, 79, 79, 0.4);
+        }
+
+        /* Main Content Sections */
+        .section {
+            padding: 5rem 0;
+        }
+
+        .section:nth-child(even) {
+            background: #f8f8f8;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 4vw, 3rem);
+            color: #2F4F4F;
+            margin-bottom: 1rem;
+        }
+
+        .section-description {
+            font-size: 1.2rem;
+            color: #666;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        /* Campus Life Grid */
+        .campus-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .campus-card {
+            background: #fff;
+            border: 3px solid #2F4F4F;
+            border-radius: 12px;
+            padding: 2.5rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .campus-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(47, 79, 79, 0.1), transparent);
+            transform: translateX(-100%);
+            transition: transform 0.6s ease;
+        }
+
+        .campus-card:hover::before {
+            transform: translateX(100%);
+        }
+
+        .campus-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(47, 79, 79, 0.2);
+            border-color: #696969;
+        }
+
+        .campus-emoji {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+
+        .campus-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #2F4F4F;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .campus-description {
+            font-size: 1rem;
+            color: #555;
+            line-height: 1.7;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Timeline Section */
+        .timeline {
+            background: #2F4F4F;
+            color: #fff;
+            padding: 5rem 0;
+        }
+
+        .timeline-content {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .timeline-title {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: #FFD700;
+        }
+
+        .timeline-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 3rem;
+            gap: 2rem;
+        }
+
+        .timeline-year {
+            background: #FFD700;
+            color: #2F4F4F;
+            padding: 1rem 1.5rem;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            min-width: 100px;
+            text-align: center;
+        }
+
+        .timeline-content-item {
+            flex: 1;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 12px;
+            border-left: 4px solid #FFD700;
+        }
+
+        .timeline-event {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-description {
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+
+        /* Daily Life Section */
+        .daily-life-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .daily-card {
+            background: linear-gradient(135deg, #fff 0%, #f8f8f8 100%);
+            border: 2px solid #ddd;
+            border-radius: 12px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .daily-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border-color: #2F4F4F;
+        }
+
+        .daily-time {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #2F4F4F;
+            margin-bottom: 1rem;
+        }
+
+        .daily-activity {
+            font-size: 1rem;
+            color: #555;
+            line-height: 1.6;
+        }
+
+        /* Significance Section */
+        .significance-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .significance-card {
+            background: #fff;
+            border: 3px solid #8B4513;
+            border-radius: 12px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .significance-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(139, 69, 19, 0.2);
+            border-color: #A0522D;
+        }
+
+        .significance-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .significance-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #8B4513;
+            margin-bottom: 1rem;
+        }
+
+        .significance-text {
+            font-size: 0.95rem;
+            color: #555;
+            line-height: 1.6;
+        }
+
+        /* Quote Section */
+        .quote-section {
+            background: linear-gradient(135deg, #696969 0%, #2F4F4F 100%);
+            color: #fff;
+            padding: 4rem 0;
+            text-align: center;
+        }
+
+        .quote-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+        }
+
+        .quote-text {
+            font-size: 1.8rem;
+            font-style: italic;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+            color: #FFD700;
+        }
+
+        .quote-attribution {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #fff;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .campus-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .hero-stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .timeline-item {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .back-link {
+                position: relative;
+                top: auto;
+                left: auto;
+                margin: 2rem auto;
+                display: block;
+                width: fit-content;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-stats {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .campus-card,
+        .daily-card,
+        .significance-card {
+            animation: fadeInUp 0.6s ease-out;
+        }
+    </style>
+</head>
+<body>
+    <a href="index.html" class="back-link">← Back to Timeline</a>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Life at Tuskegee Institute</h1>
+                <p class="hero-subtitle">Where George Washington Carver Changed the World</p>
+                <p class="hero-period">Experience daily life during the revolutionary era (1881-1915)</p>
+                
+                <div class="hero-stats">
+                    <div class="stat-box">
+                        <span class="stat-number">1881</span>
+                        <span class="stat-label">Founded from a Church & Shanty</span>
+                    </div>
+                    <div class="stat-box">
+                        <span class="stat-number">1,500</span>
+                        <span class="stat-label">Students by 1915</span>
+                    </div>
+                    <div class="stat-box">
+                        <span class="stat-number">100</span>
+                        <span class="stat-label">Buildings Built by Students</span>
+                    </div>
+                    <div class="stat-box">
+                        <span class="stat-number">40</span>
+                        <span class="stat-label">Trades & Professions Taught</span>
+                    </div>
+                    <div class="stat-box">
+                        <span class="stat-number">2,300</span>
+                        <span class="stat-label">Acres of Campus by 1900</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Campus Life Section -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Campus Life: Building a Nation Through Education</h2>
+                <p class="section-description">
+                    At Tuskegee Institute, students didn't just attend classes—they built their world from the ground up. Every brick was made by student hands, every building designed by African American architects, every meal grown in student-tended fields. This was education through total immersion in practical skills and moral development.
+                </p>
+            </div>
+
+            <div class="campus-grid">
+                <div class="campus-card">
+                    <span class="campus-emoji">🧱</span>
+                    <h3 class="campus-title">Students Built Everything</h3>
+                    <p class="campus-description">From the iconic Porter Hall to Armstrong Hall dormitories, students made their own bricks and constructed every building on campus. This wasn't just work—it was education in masonry, architecture, and self-reliance that prepared them for life beyond Tuskegee.</p>
+                </div>
+
+                <div class="campus-card">
+                    <span class="campus-emoji">🌾</span>
+                    <h3 class="campus-title">Self-Sufficient Community</h3>
+                    <p class="campus-description">Students grew their own food, raised livestock, and managed a working farm that fed the entire campus. Under Carver's guidance, they learned scientific agriculture, crop rotation, and sustainable farming that revolutionized Southern agriculture.</p>
+                </div>
+
+                <div class="campus-card">
+                    <span class="campus-emoji">⚒️</span>
+                    <h3 class="campus-title">40 Trades & Professions</h3>
+                    <p class="campus-description">From blacksmithing to printing, nursing to teaching, wheelwright to scientific research—students mastered practical skills alongside academic subjects. Every trade prepared them to return home as leaders and entrepreneurs in their communities.</p>
+                </div>
+
+                <div class="campus-card">
+                    <span class="campus-emoji">🎓</span>
+                    <h3 class="campus-title">Academic Excellence</h3>
+                    <p class="campus-description">Despite critics calling it "anti-intellectual," Tuskegee taught advanced mathematics, sciences, literature, and history. Students used geometry to build wheels, chemistry to understand soil, and physics to improve farming—proving that practical and academic learning reinforced each other.</p>
+                </div>
+
+                <div class="campus-card">
+                    <span class="campus-emoji">🏫</span>
+                    <h3 class="campus-title">Teacher Training Mission</h3>
+                    <p class="campus-description">The primary goal wasn't just education—it was creating teachers who would return to rural communities throughout the South, spreading scientific agriculture, literacy, and practical skills to lift entire regions out of poverty.</p>
+                </div>
+
+                <div class="campus-card">
+                    <span class="campus-emoji">💡</span>
+                    <h3 class="campus-title">Innovation Laboratory</h3>
+                    <p class="campus-description">Carver's laboratory became a center of agricultural innovation, where students helped develop hundreds of new products from peanuts, sweet potatoes, and other crops—transforming Southern agriculture and creating new economic opportunities.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Timeline Section -->
+    <section class="timeline">
+        <div class="container">
+            <h2 class="timeline-title">The Growth of an Institution</h2>
+            <div class="timeline-content">
+                <div class="timeline-item">
+                    <div class="timeline-year">1881</div>
+                    <div class="timeline-content-item">
+                        <div class="timeline-event">Humble Beginnings</div>
+                        <div class="timeline-description">30 students meet in Butler Chapel AME Zion Church and a shanty. Booker T. Washington is the only teacher. No buildings, no equipment, just determination.</div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-year">1882</div>
+                    <div class="timeline-content-item">
+                        <div class="timeline-event">First Permanent Building</div>
+                        <div class="timeline-description">Students construct Porter Hall—100 acres of former plantation land become the campus nucleus. Everything designed by African American instructors, built by African American students.</div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-year">1896</div>
+                    <div class="timeline-content-item">
+                        <div class="timeline-event">Carver Arrives</div>
+                        <div class="timeline-description">George Washington Carver joins as head of Agriculture Department, bringing scientific revolution to Southern farming. The Agricultural Experiment Station begins transforming agriculture.</div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-year">1898</div>
+                    <div class="timeline-content-item">
+                        <div class="timeline-event">Presidential Recognition</div>
+                        <div class="timeline-description">President McKinley visits campus, reviewing 5,000 students and calling Washington "a great leader." National recognition solidifies Tuskegee's importance.</div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-year">1915</div>
+                    <div class="timeline-content-item">
+                        <div class="timeline-event">Legacy Established</div>
+                        <div class="timeline-description">At Washington's death: 1,500 students, 200 faculty, 100 buildings, $2 million endowment. From a shanty to the most influential Black educational institution in America.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Daily Life Section -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">A Day in the Life of a Tuskegee Student</h2>
+                <p class="section-description">
+                    Every day at Tuskegee combined rigorous academics with practical work, moral instruction, and community service. Students weren't just learning—they were building the future of their race through disciplined, purposeful living.
+                </p>
+            </div>
+
+            <div class="daily-life-grid">
+                <div class="daily-card">
+                    <div class="daily-time">5:00 AM - Rising Bell</div>
+                    <div class="daily-activity">Students wake in dormitories they built themselves. Morning inspections ensure cleanliness and order—values that would serve them as community leaders.</div>
+                </div>
+
+                <div class="daily-card">
+                    <div class="daily-time">6:00 AM - Chapel</div>
+                    <div class="daily-activity">Mandatory chapel service emphasizing moral development, character building, and spiritual growth. Washington often spoke about service to community and race.</div>
+                </div>
+
+                <div class="daily-card">
+                    <div class="daily-time">7:00 AM - Breakfast</div>
+                    <div class="daily-activity">Meals from campus-grown food. Students who worked in kitchens learned nutrition, food service, and management skills while feeding their classmates.</div>
+                </div>
+
+                <div class="daily-card">
+                    <div class="daily-time">8:00 AM - Academic Classes</div>
+                    <div class="daily-activity">Mathematics, sciences, literature, history. In Carver's botany classes, students learned plant pathology alongside practical farming applications.</div>
+                </div>
+
+                <div class="daily-card">
+                    <div class="daily-time">12:00 PM - Lunch & Rest</div>
+                    <div class="daily-activity">Brief meal and rest period. Many students used this time for study or informal mentoring with upperclassmen.</div>
+                </div>
+
+                <div class="daily-card">
+                    <div class="daily-time">1:00 PM - Industrial Work</div>
+                    <div class="daily-activity">Afternoon devoted to trade training: brick-making, farming, carpentry, blacksmithing, nursing, printing. Students earned money while learning marketable skills.</div>
+                </div>
+
+                <div class="daily-card">
+                    <div class="daily-time">5:00 PM - Supper</div>
+                    <div class="daily-activity">Another meal from student-produced food. Table manners and proper dining etiquette were emphasized as part of character development.</div>
+                </div>
+
+                <div class="daily-card">
+                    <div class="daily-time">7:00 PM - Study Time</div>
+                    <div class="daily-activity">Supervised study in dormitories or library. Academic achievement was expected alongside practical skills—one reinforced the other.</div>
+                </div>
+
+                <div class="daily-card">
+                    <div class="daily-time">9:00 PM - Lights Out</div>
+                    <div class="daily-activity">Strict schedule ensured rest needed for demanding days. Discipline and routine prepared students for leadership responsibilities.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Historical Significance -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Why Tuskegee Was Revolutionary</h2>
+                <p class="section-description">
+                    In the era of Jim Crow segregation and limited opportunities, Tuskegee proved that African Americans could achieve excellence in education, agriculture, and industry. It became a beacon of hope and a model for Black self-determination across the South.
+                </p>
+            </div>
+
+            <div class="significance-grid">
+                <div class="significance-card">
+                    <span class="significance-icon">⚖️</span>
+                    <h3 class="significance-title">Jim Crow Era Breakthrough</h3>
+                    <p class="significance-text">During the height of segregation and disenfranchisement, Tuskegee proved African Americans could build institutions of national importance, challenging racist assumptions about Black capability.</p>
+                </div>
+
+                <div class="significance-card">
+                    <span class="significance-icon">🏗️</span>
+                    <h3 class="significance-title">Self-Reliance Model</h3>
+                    <p class="significance-text">Students literally built their own school, demonstrating the power of self-help and community cooperation that would inspire generations of Black entrepreneurs and leaders.</p>
+                </div>
+
+                <div class="significance-card">
+                    <span class="significance-icon">🌱</span>
+                    <h3 class="significance-title">Agricultural Revolution</h3>
+                    <p class="significance-text">Carver's innovations helped transition the South from cotton dependence to crop diversification, improving soil health and farmer prosperity across the region.</p>
+                </div>
+
+                <div class="significance-card">
+                    <span class="significance-icon">📚</span>
+                    <h3 class="significance-title">Teacher Multiplication</h3>
+                    <p class="significance-text">Graduates founded schools throughout the South, multiplying Tuskegee's impact. Every teacher trained meant dozens of communities gained access to education and agricultural knowledge.</p>
+                </div>
+
+                <div class="significance-card">
+                    <span class="significance-icon">🔬</span>
+                    <h3 class="significance-title">Scientific Innovation</h3>
+                    <p class="significance-text">Home to cutting-edge research that produced hundreds of patents and innovations, proving that Black institutions could contribute to national scientific progress.</p>
+                </div>
+
+                <div class="significance-card">
+                    <span class="significance-icon">🌍</span>
+                    <h3 class="significance-title">International Recognition</h3>
+                    <p class="significance-text">Presidents visited, foreign dignitaries came to learn, and the world took notice. Tuskegee became an international symbol of educational excellence and racial progress.</p>
+                </div>
+
+                <div class="significance-card">
+                    <span class="significance-icon">💼</span>
+                    <h3 class="significance-title">Economic Empowerment</h3>
+                    <p class="significance-text">Graduates became business owners, professionals, and community leaders, creating economic opportunities and building the Black middle class across the South.</p>
+                </div>
+
+                <div class="significance-card">
+                    <span class="significance-icon">🏥</span>
+                    <h3 class="significance-title">Healthcare Pioneers</h3>
+                    <p class="significance-text">John A. Andrew Hospital became the first full-service hospital developed and operated by African Americans, training Black medical professionals when opportunities were severely limited.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quote Section -->
+    <section class="quote-section">
+        <div class="container">
+            <div class="quote-container">
+                <div class="quote-text">
+                    "The individual who can do something that the world wants done will, in the end, make his way regardless of his race."
+                </div>
+                <div class="quote-attribution">
+                    — Booker T. Washington, Founder of Tuskegee Institute
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Add smooth scrolling behavior
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Add stagger animation to cards
+        function animateCards() {
+            const cards = document.querySelectorAll('.campus-card, .daily-card, .significance-card');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry, index) => {
+                    if (entry.isIntersecting) {
+                        setTimeout(() => {
+                            entry.target.style.opacity = '1';
+                            entry.target.style.transform = 'translateY(0)';
+                        }, index * 100);
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            cards.forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(30px)';
+                card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(card);
+            });
+        }
+
+        // Initialize animations when page loads
+        document.addEventListener('DOMContentLoaded', animateCards);
+
+        // Add hover effects for enhanced interactivity
+        document.querySelectorAll('.campus-card, .significance-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-8px) scale(1.02)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+
+        // Add timeline animation on scroll
+        function animateTimeline() {
+            const timelineItems = document.querySelectorAll('.timeline-item');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry, index) => {
+                    if (entry.isIntersecting) {
+                        setTimeout(() => {
+                            entry.target.style.opacity = '1';
+                            entry.target.style.transform = 'translateX(0)';
+                        }, index * 200);
+                    }
+                });
+            }, { threshold: 0.3 });
+
+            timelineItems.forEach((item, index) => {
+                item.style.opacity = '0';
+                item.style.transform = index % 2 === 0 ? 'translateX(-50px)' : 'translateX(50px)';
+                item.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+                observer.observe(item);
+            });
+        }
+
+        // Initialize timeline animation
+        document.addEventListener('DOMContentLoaded', () => {
+            animateCards();
+            animateTimeline();
+        });
+
+        // Add parallax effect to hero background
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const parallax = document.querySelector('.hero::before');
+            if (parallax) {
+                const speed = scrolled * 0.5;
+                parallax.style.transform = `translateY(${speed}px)`;
+            }
+        });
+    </script>
+</body>
+</html>
