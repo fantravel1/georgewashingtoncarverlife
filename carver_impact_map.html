@@ -1,0 +1,1086 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carver's Impact Across the South - Interactive Map</title>
+    <meta name="description" content="Explore how George Washington Carver's agricultural innovations spread across the American South, transforming farming and education.">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            background: #f5f5f5;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, #2F4F4F 0%, #8B4513 100%);
+            color: white;
+            padding: 3rem 0;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            margin-bottom: 1rem;
+        }
+
+        .header p {
+            font-size: clamp(1rem, 2vw, 1.3rem);
+            opacity: 0.9;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        /* Back Button */
+        .back-link {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: #2F4F4F;
+            color: #fff;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            z-index: 1000;
+            box-shadow: 0 4px 15px rgba(47, 79, 79, 0.3);
+        }
+
+        .back-link:hover {
+            background: #696969;
+            transform: translateY(-2px);
+        }
+
+        /* Map Container */
+        .map-section {
+            padding: 3rem 0;
+            background: white;
+        }
+
+        .map-controls {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .control-btn {
+            background: #8B4513;
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .control-btn:hover,
+        .control-btn.active {
+            background: #A0522D;
+            transform: translateY(-2px);
+        }
+
+        .map-container {
+            position: relative;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border: 3px solid #8B4513;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        #map-svg {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Map Points */
+        .map-point {
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .map-point:hover {
+            transform: scale(1.3);
+        }
+
+        .map-point.tuskegee {
+            fill: #FFD700;
+            stroke: #B8860B;
+            stroke-width: 3;
+        }
+
+        .map-point.graduate-school {
+            fill: #32CD32;
+            stroke: #228B22;
+            stroke-width: 2;
+        }
+
+        .map-point.agricultural-center {
+            fill: #FF6347;
+            stroke: #DC143C;
+            stroke-width: 2;
+        }
+
+        .map-point.innovation-site {
+            fill: #4169E1;
+            stroke: #0000CD;
+            stroke-width: 2;
+        }
+
+        /* Tooltip */
+        .tooltip {
+            position: absolute;
+            background: rgba(0, 0, 0, 0.9);
+            color: white;
+            padding: 1rem;
+            border-radius: 8px;
+            pointer-events: none;
+            z-index: 1000;
+            max-width: 300px;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .tooltip.visible {
+            opacity: 1;
+        }
+
+        .tooltip h3 {
+            color: #FFD700;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        /* Legend */
+        .legend {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 1.5rem;
+            border-radius: 8px;
+            border: 2px solid #8B4513;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .legend h3 {
+            margin-bottom: 1rem;
+            color: #8B4513;
+            font-size: 1.1rem;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.5rem;
+            font-size: 0.85rem;
+        }
+
+        .legend-color {
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            margin-right: 0.5rem;
+            border: 2px solid #333;
+        }
+
+        /* Timeline Animation */
+        .timeline-controls {
+            text-align: center;
+            margin: 2rem 0;
+            padding: 2rem;
+            background: #f9f9f9;
+            border-radius: 12px;
+        }
+
+        .timeline-slider {
+            width: 100%;
+            max-width: 600px;
+            margin: 1rem auto;
+        }
+
+        .year-display {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #8B4513;
+            margin-bottom: 1rem;
+        }
+
+        .play-btn {
+            background: #32CD32;
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            margin: 0 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .play-btn:hover {
+            background: #228B22;
+            transform: scale(1.05);
+        }
+
+        /* Impact Stats */
+        .impact-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+            padding: 2rem;
+            background: #f9f9f9;
+            border-radius: 12px;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 1.5rem;
+            background: white;
+            border-radius: 8px;
+            border: 2px solid #8B4513;
+            transition: all 0.3s ease;
+        }
+
+        .stat-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #8B4513;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        /* Ripple Effect Animation */
+        .ripple {
+            position: absolute;
+            border: 2px solid #FFD700;
+            border-radius: 50%;
+            opacity: 0;
+            animation: ripple-effect 3s ease-out infinite;
+        }
+
+        @keyframes ripple-effect {
+            0% {
+                transform: scale(0);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(4);
+                opacity: 0;
+            }
+        }
+
+        /* Stories Panel */
+        .stories-panel {
+            position: fixed;
+            right: -400px;
+            top: 0;
+            width: 400px;
+            height: 100vh;
+            background: white;
+            border-left: 3px solid #8B4513;
+            padding: 2rem;
+            overflow-y: auto;
+            transition: right 0.3s ease;
+            z-index: 999;
+            box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .stories-panel.open {
+            right: 0;
+        }
+
+        .close-panel {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #8B4513;
+        }
+
+        .story-content h2 {
+            color: #8B4513;
+            margin-bottom: 1rem;
+        }
+
+        .story-content p {
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .legend {
+                position: static;
+                margin: 1rem 0;
+            }
+
+            .stories-panel {
+                width: 100vw;
+                right: -100vw;
+            }
+
+            .back-link {
+                position: relative;
+                top: auto;
+                left: auto;
+                margin: 1rem;
+                display: inline-block;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="index.html" class="back-link">← Back to Timeline</a>
+
+    <!-- Header -->
+    <div class="header">
+        <div class="container">
+            <h1>Carver's Impact Across the South</h1>
+            <p>Explore how George Washington Carver's revolutionary agricultural innovations spread from Tuskegee Institute across the American South, transforming farming practices, education, and entire communities from 1896 to the present day.</p>
+        </div>
+    </div>
+
+    <!-- Map Section -->
+    <div class="map-section">
+        <div class="container">
+            <!-- Map Controls -->
+            <div class="map-controls">
+                <button class="control-btn active" onclick="showAll()">All Locations</button>
+                <button class="control-btn" onclick="showCategory('graduate-schools')">Tuskegee Graduate Schools</button>
+                <button class="control-btn" onclick="showCategory('agricultural-centers')">Agricultural Centers</button>
+                <button class="control-btn" onclick="showCategory('innovation-sites')">Innovation Sites</button>
+            </div>
+
+            <!-- Timeline Controls -->
+            <div class="timeline-controls">
+                <div class="year-display" id="currentYear">1896</div>
+                <input type="range" class="timeline-slider" id="yearSlider" min="1896" max="2025" value="1896" step="1">
+                <div>
+                    <button class="play-btn" onclick="playTimeline()">▶ Play Timeline</button>
+                    <button class="play-btn" onclick="resetTimeline()">⏹ Reset</button>
+                </div>
+            </div>
+
+            <!-- Map Container -->
+            <div class="map-container">
+                <svg id="map-svg" viewBox="0 0 1000 600" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Simplified Southeast US Map -->
+                    <rect width="1000" height="600" fill="#e6f3ff"/>
+                    
+                    <!-- States (simplified outlines) -->
+                    <path d="M100 200 L300 180 L350 250 L320 350 L250 380 L150 350 Z" fill="#d4e6f1" stroke="#2c3e50" stroke-width="2"/> <!-- Alabama -->
+                    <path d="M350 250 L500 230 L550 300 L520 400 L450 420 L350 400 Z" fill="#d5f4e6" stroke="#2c3e50" stroke-width="2"/> <!-- Georgia -->
+                    <path d="M550 300 L700 280 L750 350 L720 450 L650 470 L550 450 Z" fill="#fdeaa7" stroke="#2c3e50" stroke-width="2"/> <!-- South Carolina -->
+                    <path d="M700 180 L850 160 L900 230 L870 330 L800 350 L700 330 Z" fill="#fadbd8" stroke="#2c3e50" stroke-width="2"/> <!-- North Carolina -->
+                    <path d="M200 100 L400 80 L450 150 L420 250 L350 270 L200 250 Z" fill="#e8daef" stroke="#2c3e50" stroke-width="2"/> <!-- Tennessee -->
+                    <path d="M50 250 L200 230 L250 300 L220 400 L150 420 L50 400 Z" fill="#d6eaf8" stroke="#2c3e50" stroke-width="2"/> <!-- Mississippi -->
+                    <path d="M500 400 L650 380 L700 450 L670 550 L600 570 L500 550 Z" fill="#f9e79f" stroke="#2c3e50" stroke-width="2"/> <!-- Florida -->
+
+                    <!-- State Labels -->
+                    <text x="225" y="290" text-anchor="middle" font-family="Georgia" font-size="16" font-weight="bold" fill="#2c3e50">AL</text>
+                    <text x="425" y="340" text-anchor="middle" font-family="Georgia" font-size="16" font-weight="bold" fill="#2c3e50">GA</text>
+                    <text x="625" y="390" text-anchor="middle" font-family="Georgia" font-size="16" font-weight="bold" fill="#2c3e50">SC</text>
+                    <text x="775" y="270" text-anchor="middle" font-family="Georgia" font-size="16" font-weight="bold" fill="#2c3e50">NC</text>
+                    <text x="325" y="180" text-anchor="middle" font-family="Georgia" font-size="16" font-weight="bold" fill="#2c3e50">TN</text>
+                    <text x="125" y="340" text-anchor="middle" font-family="Georgia" font-size="16" font-weight="bold" fill="#2c3e50">MS</text>
+                    <text x="575" y="490" text-anchor="middle" font-family="Georgia" font-size="16" font-weight="bold" fill="#2c3e50">FL</text>
+
+                    <!-- Map Points (will be populated by JavaScript) -->
+                    <g id="map-points"></g>
+
+                    <!-- Ripple effects container -->
+                    <g id="ripples"></g>
+                </svg>
+
+                <!-- Legend -->
+                <div class="legend">
+                    <h3>Legend</h3>
+                    <div class="legend-item">
+                        <div class="legend-color" style="background: #FFD700; border-color: #B8860B;"></div>
+                        Tuskegee Institute
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color" style="background: #32CD32; border-color: #228B22;"></div>
+                        Graduate Schools
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color" style="background: #FF6347; border-color: #DC143C;"></div>
+                        Agricultural Centers
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color" style="background: #4169E1; border-color: #0000CD;"></div>
+                        Innovation Sites
+                    </div>
+                </div>
+
+                <!-- Tooltip -->
+                <div class="tooltip" id="tooltip"></div>
+            </div>
+
+            <!-- Impact Statistics -->
+            <div class="impact-stats">
+                <div class="stat-item">
+                    <span class="stat-number" id="schoolsCount">0</span>
+                    <span class="stat-label">Schools Founded by Graduates</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" id="farmersReached">0</span>
+                    <span class="stat-label">Farmers Directly Helped</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" id="acresImproved">0</span>
+                    <span class="stat-label">Acres Using Carver Methods</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" id="communitiesChanged">0</span>
+                    <span class="stat-label">Communities Transformed</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" id="studentsEducated">0</span>
+                    <span class="stat-label">Students Educated</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Stories Panel -->
+    <div class="stories-panel" id="storiesPanel">
+        <button class="close-panel" onclick="closeStoriesPanel()">×</button>
+        <div class="story-content" id="storyContent">
+            <h2>Select a location to learn more</h2>
+            <p>Click on any point on the map to discover the stories of how George Washington Carver's innovations spread across the South.</p>
+        </div>
+    </div>
+
+    <script>
+        // Map data
+        const locations = [
+            // Tuskegee Institute - The Center
+            {
+                id: 'tuskegee',
+                name: 'Tuskegee Institute',
+                state: 'Alabama',
+                x: 275,
+                y: 320,
+                type: 'tuskegee',
+                year: 1896,
+                description: 'Where it all began - Carver\'s agricultural revolution started here',
+                story: `<h2>Tuskegee Institute - The Epicenter</h2>
+                <p>In 1896, George Washington Carver arrived at this small Alabama town to head the Agriculture Department. What happened next changed American agriculture forever.</p>
+                <p><strong>Key Innovations:</strong></p>
+                <ul>
+                <li>Agricultural Experiment Station established</li>
+                <li>300+ peanut products developed</li>
+                <li>118+ sweet potato innovations</li>
+                <li>Crop rotation methods proven</li>
+                <li>Movable School program launched</li>
+                </ul>
+                <p><strong>Students Educated:</strong> Over 5,000 during Carver's tenure</p>
+                <p><strong>Impact:</strong> Graduates spread these innovations across the entire South</p>`
+            },
+
+            // Schools Founded by Tuskegee Graduates
+            {
+                id: 'snow-hill',
+                name: 'Snow Hill Institute',
+                state: 'Alabama',
+                x: 290,
+                y: 340,
+                type: 'graduate-school',
+                year: 1893,
+                description: 'Founded by William J. Edwards, Tuskegee graduate',
+                story: `<h2>Snow Hill Institute</h2>
+                <p>Founded by William J. Edwards, a Tuskegee graduate who applied Carver's agricultural methods to help local farmers.</p>
+                <p><strong>Impact:</strong> Served rural Black students in Alabama, spreading scientific agriculture.</p>`
+            },
+
+            {
+                id: 'piney-woods',
+                name: 'Piney Woods School',
+                state: 'Mississippi',
+                x: 140,
+                y: 360,
+                type: 'graduate-school',
+                year: 1909,
+                description: 'Founded by Laurence C. Jones, influenced by Tuskegee model',
+                story: `<h2>Piney Woods School</h2>
+                <p>Laurence C. Jones founded this school based on the Tuskegee model, emphasizing agricultural education and practical skills.</p>
+                <p><strong>Agricultural Program:</strong> Students learned crop rotation and diversification methods developed by Carver.</p>`
+            },
+
+            {
+                id: 'voorhees',
+                name: 'Voorhees College',
+                state: 'South Carolina',
+                x: 640,
+                y: 380,
+                type: 'graduate-school',
+                year: 1897,
+                description: 'Industrial school following Tuskegee model',
+                story: `<h2>Voorhees College</h2>
+                <p>Originally Voorhees Industrial School, founded following the Tuskegee model of combining academic and industrial education.</p>
+                <p><strong>Agriculture Focus:</strong> Students learned modern farming techniques including Carver's innovations.</p>`
+            },
+
+            // Agricultural Centers
+            {
+                id: 'auburn',
+                name: 'Auburn Agricultural Station',
+                state: 'Alabama',
+                x: 300,
+                y: 300,
+                type: 'agricultural-center',
+                year: 1900,
+                description: 'Collaborated with Carver on crop research',
+                story: `<h2>Auburn Agricultural Station</h2>
+                <p>Collaborated with Carver on agricultural research, helping spread scientific farming methods across Alabama.</p>
+                <p><strong>Research Focus:</strong> Cotton alternatives, soil improvement, and farmer education.</p>`
+            },
+
+            {
+                id: 'experiment',
+                name: 'Georgia Agricultural Station',
+                state: 'Georgia',
+                x: 420,
+                y: 320,
+                type: 'agricultural-center',
+                year: 1905,
+                description: 'Adopted and promoted Carver\'s methods',
+                story: `<h2>Georgia Agricultural Station</h2>
+                <p>State agricultural researchers adopted many of Carver's methods, particularly crop rotation and peanut cultivation.</p>
+                <p><strong>Extension Work:</strong> Helped thousands of Georgia farmers transition from cotton dependency.</p>`
+            },
+
+            {
+                id: 'clemson',
+                name: 'Clemson Agricultural College',
+                state: 'South Carolina',
+                x: 600,
+                y: 350,
+                type: 'agricultural-center',
+                year: 1908,
+                description: 'Promoted peanut cultivation and crop rotation',
+                story: `<h2>Clemson Agricultural College</h2>
+                <p>Extension agents promoted peanut cultivation and crop diversification methods developed by Carver.</p>
+                <p><strong>Farmer Impact:</strong> Helped South Carolina farmers adopt sustainable practices.</p>`
+            },
+
+            // Innovation Sites
+            {
+                id: 'selma',
+                name: 'Selma Demonstration Farm',
+                state: 'Alabama',
+                x: 250,
+                y: 330,
+                type: 'innovation-site',
+                year: 1910,
+                description: 'Carver\'s movable school stopped here regularly',
+                story: `<h2>Selma Demonstration Farm</h2>
+                <p>Regular stop for Carver's "Movable School" - a wagon laboratory that brought agricultural innovation directly to farmers.</p>
+                <p><strong>Demonstrations:</strong> Crop rotation, soil testing, and peanut processing techniques.</p>`
+            },
+
+            {
+                id: 'valdosta',
+                name: 'Valdosta Peanut Mills',
+                state: 'Georgia',
+                x: 460,
+                y: 420,
+                type: 'innovation-site',
+                year: 1915,
+                description: 'Commercial adoption of Carver\'s peanut processing',
+                story: `<h2>Valdosta Peanut Mills</h2>
+                <p>One of the first commercial operations to adopt Carver's peanut processing innovations.</p>
+                <p><strong>Products:</strong> Peanut oil, flour, and livestock feed based on Carver's research.</p>`
+            },
+
+            {
+                id: 'moultrie',
+                name: 'Moultrie Research Station',
+                state: 'Georgia',
+                x: 480,
+                y: 400,
+                type: 'innovation-site',
+                year: 1920,
+                description: 'Continued Carver\'s peanut research',
+                story: `<h2>Moultrie Research Station</h2>
+                <p>Continued and expanded Carver's peanut research, developing new varieties and processing methods.</p>
+                <p><strong>Legacy:</strong> Still operates today as part of University of Georgia research system.</p>`
+            },
+
+            // Additional historical sites
+            {
+                id: 'hampton',
+                name: 'Hampton Institute',
+                state: 'Virginia',
+                x: 820,
+                y: 220,
+                type: 'graduate-school',
+                year: 1896,
+                description: 'Carver\'s alma mater, sent graduates south',
+                story: `<h2>Hampton Institute</h2>
+                <p>Carver's alma mater continued to send graduates south who implemented his agricultural methods.</p>
+                <p><strong>Network Effect:</strong> Hampton graduates formed a network of educators spreading innovation.</p>`
+            },
+
+            {
+                id: 'spelman',
+                name: 'Spelman Seminary',
+                state: 'Georgia',
+                x: 400,
+                y: 340,
+                type: 'graduate-school',
+                year: 1902,
+                description: 'Women educators spread household innovations',
+                story: `<h2>Spelman Seminary</h2>
+                <p>Women educators from Spelman helped spread Carver's household innovations - foods, cosmetics, and health products made from peanuts and sweet potatoes.</p>`
+            }
+        ];
+
+        // Animation state
+        let isPlaying = false;
+        let animationInterval;
+        let currentYear = 1896;
+
+        // Initialize the map
+        function initializeMap() {
+            const mapPoints = document.getElementById('map-points');
+            const tooltip = document.getElementById('tooltip');
+
+            locations.forEach(location => {
+                const point = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+                point.setAttribute('cx', location.x);
+                point.setAttribute('cy', location.y);
+                point.setAttribute('r', location.type === 'tuskegee' ? 12 : 8);
+                point.setAttribute('class', `map-point ${location.type}`);
+                point.setAttribute('data-id', location.id);
+                point.style.opacity = '0';
+
+                // Add hover events
+                point.addEventListener('mouseenter', (e) => {
+                    showTooltip(e, location);
+                });
+
+                point.addEventListener('mouseleave', hideTooltip);
+
+                // Add click events
+                point.addEventListener('click', () => {
+                    showStory(location);
+                    createRippleEffect(location.x, location.y);
+                });
+
+                mapPoints.appendChild(point);
+            });
+
+            // Initialize timeline
+            updateTimeline(1896);
+        }
+
+        // Show tooltip
+        function showTooltip(event, location) {
+            const tooltip = document.getElementById('tooltip');
+            tooltip.innerHTML = `
+                <h3>${location.name}</h3>
+                <p><strong>${location.state}</strong> • ${location.year}</p>
+                <p>${location.description}</p>
+                <p><em>Click to learn more</em></p>
+            `;
+            
+            tooltip.style.left = (event.pageX + 10) + 'px';
+            tooltip.style.top = (event.pageY - 10) + 'px';
+            tooltip.classList.add('visible');
+        }
+
+        // Hide tooltip
+        function hideTooltip() {
+            const tooltip = document.getElementById('tooltip');
+            tooltip.classList.remove('visible');
+        }
+
+        // Show story in side panel
+        function showStory(location) {
+            const panel = document.getElementById('storiesPanel');
+            const content = document.getElementById('storyContent');
+            
+            content.innerHTML = location.story;
+            panel.classList.add('open');
+        }
+
+        // Close stories panel
+        function closeStoriesPanel() {
+            const panel = document.getElementById('storiesPanel');
+            panel.classList.remove('open');
+        }
+
+        // Create ripple effect
+        function createRippleEffect(x, y) {
+            const ripple = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+            ripple.setAttribute('cx', x);
+            ripple.setAttribute('cy', y);
+            ripple.setAttribute('r', 0);
+            ripple.setAttribute('class', 'ripple');
+            
+            document.getElementById('ripples').appendChild(ripple);
+            
+            setTimeout(() => {
+                ripple.remove();
+            }, 3000);
+        }
+
+        // Update timeline
+        function updateTimeline(year) {
+            currentYear = year;
+            document.getElementById('currentYear').textContent = year;
+            document.getElementById('yearSlider').value = year;
+
+            // Show/hide points based on year
+            locations.forEach(location => {
+                const point = document.querySelector(`[data-id="${location.id}"]`);
+                if (point) {
+                    if (location.year <= year) {
+                        point.style.opacity = '1';
+                        point.style.transform = 'scale(1)';
+                    } else {
+                        point.style.opacity = '0';
+                        point.style.transform = 'scale(0)';
+                    }
+                }
+            });
+
+            // Update statistics
+            updateStatistics(year);
+        }
+
+        // Update statistics based on year
+        function updateStatistics(year) {
+            const activeLocations = locations.filter(loc => loc.year <= year);
+            const schools = activeLocations.filter(loc => loc.type === 'graduate-school').length;
+            
+            // Calculate cumulative impact (simplified)
+            const yearsSinceStart = Math.max(0, year - 1896);
+            const farmersReached = Math.min(yearsSinceStart * 150, 15000);
+            const acresImproved = Math.min(yearsSinceStart * 5000, 500000);
+            const communitiesChanged = Math.min(yearsSinceStart * 3, 300);
+            const studentsEducated = Math.min(yearsSinceStart * 100, 50000);
+
+            // Animate number changes
+            animateNumber('schoolsCount', schools);
+            animateNumber('farmersReached', farmersReached);
+            animateNumber('acresImproved', acresImproved);
+            animateNumber('communitiesChanged', communitiesChanged);
+            animateNumber('studentsEducated', studentsEducated);
+        }
+
+        // Animate number counting
+        function animateNumber(elementId, targetValue) {
+            const element = document.getElementById(elementId);
+            const currentValue = parseInt(element.textContent) || 0;
+            const increment = Math.ceil((targetValue - currentValue) / 20);
+            
+            if (currentValue !== targetValue) {
+                const newValue = Math.min(currentValue + increment, targetValue);
+                element.textContent = newValue.toLocaleString();
+                
+                if (newValue < targetValue) {
+                    setTimeout(() => animateNumber(elementId, targetValue), 50);
+                }
+            }
+        }
+
+        // Timeline slider event
+        document.getElementById('yearSlider').addEventListener('input', (e) => {
+            if (!isPlaying) {
+                updateTimeline(parseInt(e.target.value));
+            }
+        });
+
+        // Play timeline animation
+        function playTimeline() {
+            if (isPlaying) return;
+            
+            isPlaying = true;
+            const playBtn = document.querySelector('.play-btn');
+            playBtn.textContent = '⏸ Pause';
+            playBtn.onclick = pauseTimeline;
+            
+            animationInterval = setInterval(() => {
+                currentYear += 2;
+                if (currentYear > 2025) {
+                    currentYear = 2025;
+                    pauseTimeline();
+                }
+                updateTimeline(currentYear);
+            }, 100);
+        }
+
+        // Pause timeline
+        function pauseTimeline() {
+            isPlaying = false;
+            clearInterval(animationInterval);
+            const playBtn = document.querySelector('.play-btn');
+            playBtn.textContent = '▶ Play Timeline';
+            playBtn.onclick = playTimeline;
+        }
+
+        // Reset timeline
+        function resetTimeline() {
+            pauseTimeline();
+            updateTimeline(1896);
+        }
+
+        // Show all locations
+        function showAll() {
+            document.querySelectorAll('.control-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            document.querySelectorAll('.map-point').forEach(point => {
+                point.style.display = 'block';
+            });
+        }
+
+        // Show specific category
+        function showCategory(category) {
+            document.querySelectorAll('.control-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            document.querySelectorAll('.map-point').forEach(point => {
+                if (point.classList.contains(category.slice(0, -1)) || point.classList.contains('tuskegee')) {
+                    point.style.display = 'block';
+                } else {
+                    point.style.display = 'none';
+                }
+            });
+        }
+
+        // Add periodic ripple effects from Tuskegee
+        function createPeriodicRipples() {
+            setInterval(() => {
+                if (currentYear >= 1896) {
+                    createRippleEffect(275, 320); // Tuskegee coordinates
+                }
+            }, 5000);
+        }
+
+        // Advanced features
+        function addAdvancedFeatures() {
+            // Add connection lines between related locations
+            const svg = document.getElementById('map-svg');
+            const connectionsGroup = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+            connectionsGroup.id = 'connections';
+            svg.insertBefore(connectionsGroup, document.getElementById('map-points'));
+
+            // Define connections (from Tuskegee to other locations)
+            const connections = [
+                {from: {x: 275, y: 320}, to: {x: 290, y: 340}, year: 1900}, // Snow Hill
+                {from: {x: 275, y: 320}, to: {x: 140, y: 360}, year: 1910}, // Piney Woods
+                {from: {x: 275, y: 320}, to: {x: 420, y: 320}, year: 1905}, // Georgia Station
+                {from: {x: 275, y: 320}, to: {x: 460, y: 420}, year: 1915}, // Valdosta
+            ];
+
+            connections.forEach((conn, index) => {
+                const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+                line.setAttribute('x1', conn.from.x);
+                line.setAttribute('y1', conn.from.y);
+                line.setAttribute('x2', conn.to.x);
+                line.setAttribute('y2', conn.to.y);
+                line.setAttribute('stroke', '#FFD700');
+                line.setAttribute('stroke-width', '2');
+                line.setAttribute('stroke-dasharray', '5,5');
+                line.setAttribute('opacity', '0');
+                line.setAttribute('data-year', conn.year);
+                
+                connectionsGroup.appendChild(line);
+                
+                // Animate line drawing
+                setTimeout(() => {
+                    if (currentYear >= conn.year) {
+                        line.style.opacity = '0.6';
+                        line.style.strokeDasharray = 'none';
+                        line.style.animation = 'drawLine 2s ease-in-out';
+                    }
+                }, index * 500);
+            });
+        }
+
+        // Enhanced tooltip with more detailed information
+        function enhanceTooltips() {
+            // Add CSS for enhanced tooltips
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes drawLine {
+                    from { stroke-dasharray: 1000; stroke-dashoffset: 1000; }
+                    to { stroke-dasharray: 1000; stroke-dashoffset: 0; }
+                }
+                
+                .enhanced-tooltip {
+                    background: linear-gradient(135deg, rgba(47, 79, 79, 0.95), rgba(139, 69, 19, 0.95));
+                    border: 2px solid #FFD700;
+                    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+                }
+                
+                .pulse {
+                    animation: pulse 2s infinite;
+                }
+                
+                @keyframes pulse {
+                    0% { transform: scale(1); }
+                    50% { transform: scale(1.1); }
+                    100% { transform: scale(1); }
+                }
+            `;
+            document.head.appendChild(style);
+        }
+
+        // Add search functionality
+        function addSearchFeature() {
+            const searchContainer = document.querySelector('.map-controls');
+            const searchInput = document.createElement('input');
+            searchInput.type = 'text';
+            searchInput.placeholder = 'Search locations...';
+            searchInput.style.cssText = `
+                padding: 0.75rem 1rem;
+                border: 2px solid #8B4513;
+                border-radius: 25px;
+                margin-left: 1rem;
+                font-size: 0.9rem;
+            `;
+            
+            searchInput.addEventListener('input', (e) => {
+                const searchTerm = e.target.value.toLowerCase();
+                const matchingLocations = locations.filter(loc => 
+                    loc.name.toLowerCase().includes(searchTerm) ||
+                    loc.state.toLowerCase().includes(searchTerm) ||
+                    loc.description.toLowerCase().includes(searchTerm)
+                );
+                
+                document.querySelectorAll('.map-point').forEach(point => {
+                    const locationId = point.getAttribute('data-id');
+                    const isMatch = matchingLocations.some(loc => loc.id === locationId);
+                    point.style.opacity = isMatch || searchTerm === '' ? '1' : '0.2';
+                    
+                    if (isMatch && searchTerm !== '') {
+                        point.classList.add('pulse');
+                    } else {
+                        point.classList.remove('pulse');
+                    }
+                });
+            });
+            
+            searchContainer.appendChild(searchInput);
+        }
+
+        // Initialize everything when page loads
+        document.addEventListener('DOMContentLoaded', () => {
+            initializeMap();
+            createPeriodicRipples();
+            addAdvancedFeatures();
+            enhanceTooltips();
+            addSearchFeature();
+            
+            // Show welcome message
+            setTimeout(() => {
+                showStory({
+                    story: `<h2>Welcome to Carver's Impact Map</h2>
+                    <p>This interactive map shows how George Washington Carver's agricultural innovations spread across the American South from 1896 to today.</p>
+                    <p><strong>How to explore:</strong></p>
+                    <ul>
+                    <li>Use the timeline slider to see the spread over time</li>
+                    <li>Click the Play button to see an animated timeline</li>
+                    <li>Filter by type using the category buttons</li>
+                    <li>Click any point to learn its story</li>
+                    <li>Search for specific locations</li>
+                    </ul>
+                    <p><strong>Watch the numbers:</strong> The statistics below show the cumulative impact as innovations spread across the region.</p>
+                    <p><em>Click anywhere on the map to start exploring!</em></p>`
+                });
+            }, 1000);
+        });
+
+        // Add keyboard shortcuts
+        document.addEventListener('keydown', (e) => {
+            switch(e.key) {
+                case ' ': // Spacebar to play/pause
+                    e.preventDefault();
+                    isPlaying ? pauseTimeline() : playTimeline();
+                    break;
+                case 'r': // R to reset
+                    resetTimeline();
+                    break;
+                case 'Escape': // Escape to close panel
+                    closeStoriesPanel();
+                    break;
+            }
+        });
+
+        // Add mobile touch gestures
+        let touchStartX = 0;
+        let touchStartY = 0;
+
+        document.addEventListener('touchstart', (e) => {
+            touchStartX = e.touches[0].clientX;
+            touchStartY = e.touches[0].clientY;
+        });
+
+        document.addEventListener('touchend', (e) => {
+            const touchEndX = e.changedTouches[0].clientX;
+            const touchEndY = e.changedTouches[0].clientY;
+            const deltaX = touchEndX - touchStartX;
+            const deltaY = touchEndY - touchStartY;
+
+            // Swipe gestures for timeline control
+            if (Math.abs(deltaX) > Math.abs(deltaY) && Math.abs(deltaX) > 50) {
+                if (deltaX > 0) {
+                    // Swipe right - advance timeline
+                    updateTimeline(Math.min(currentYear + 5, 2025));
+                } else {
+                    // Swipe left - go back in timeline
+                    updateTimeline(Math.max(currentYear - 5, 1896));
+                }
+            }
+        });
+    </script>
+</body>
+</html>
