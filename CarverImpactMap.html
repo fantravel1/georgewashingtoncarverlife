@@ -847,13 +847,13 @@
             playBtn.onclick = pauseTimeline;
             
             animationInterval = setInterval(() => {
-                currentYear += 2;
+                currentYear += 1;
                 if (currentYear > 2025) {
                     currentYear = 2025;
                     pauseTimeline();
                 }
                 updateTimeline(currentYear);
-            }, 100);
+            }, 300);
         }
 
         // Pause timeline
