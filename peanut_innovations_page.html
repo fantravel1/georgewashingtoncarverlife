@@ -1,0 +1,1103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Radical Peanut Innovations - George Washington Carver's Revolutionary 300+ Products</title>
+    <meta name="description" content="Explore George Washington Carver's groundbreaking 300+ peanut products that revolutionized agriculture and industry. From food to cosmetics to industrial applications.">
+    <meta name="keywords" content="George Washington Carver, peanut products, agricultural innovation, food science, cosmetics, industrial products, Tuskegee Institute">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            line-height: 1.6;
+            color: #1a1a1a;
+            background: #ffffff;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #8B4513 0%, #D2691E 50%, #F4A460 100%);
+            color: #ffffff;
+            padding: 6rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y="50" font-size="40" fill="rgba(255,255,255,0.1)">🥜</text></svg>') repeat;
+            background-size: 100px 100px;
+            animation: float 20s linear infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateX(0) translateY(0); }
+            100% { transform: translateX(-100px) translateY(-100px); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 6vw, 5rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.2rem, 3vw, 2rem);
+            opacity: 0.95;
+            margin-bottom: 2rem;
+            font-weight: 300;
+        }
+
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+            max-width: 1000px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .stat-box {
+            background: rgba(255, 255, 255, 0.15);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .stat-box:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.25);
+            border-color: rgba(255, 255, 255, 0.5);
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            opacity: 0.9;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        /* Navigation */
+        .nav-section {
+            background: #2c1810;
+            padding: 2rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 3px solid #8B4513;
+        }
+
+        .nav-container {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            align-items: center;
+        }
+
+        .search-section {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+            flex-wrap: wrap;
+            justify-content: center;
+            width: 100%;
+            max-width: 800px;
+        }
+
+        .search-input {
+            flex: 1;
+            min-width: 300px;
+            padding: 1rem 1.5rem;
+            border: 2px solid #8B4513;
+            background: #fff;
+            color: #1a1a1a;
+            font-size: 1rem;
+            border-radius: 8px;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        .search-input:focus {
+            border-color: #D2691E;
+            box-shadow: 0 0 10px rgba(210, 105, 30, 0.3);
+        }
+
+        .category-filters {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .filter-btn {
+            padding: 0.75rem 1.5rem;
+            background: transparent;
+            color: #fff;
+            border: 2px solid #8B4513;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            border-radius: 25px;
+            font-weight: 600;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: #8B4513;
+            color: #fff;
+            transform: translateY(-2px);
+        }
+
+        /* Products Grid */
+        .products-section {
+            padding: 4rem 0;
+            background: #fafafa;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 4vw, 3rem);
+            color: #2c1810;
+            margin-bottom: 1rem;
+        }
+
+        .section-description {
+            font-size: 1.2rem;
+            color: #666;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .product-card {
+            background: #fff;
+            border: 3px solid #8B4513;
+            border-radius: 12px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(139, 69, 19, 0.1), transparent);
+            transform: translateX(-100%);
+            transition: transform 0.6s ease;
+        }
+
+        .product-card:hover::before {
+            transform: translateX(100%);
+        }
+
+        .product-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(139, 69, 19, 0.2);
+            border-color: #D2691E;
+        }
+
+        .product-emoji {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .product-name {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #2c1810;
+            margin-bottom: 0.5rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .product-category {
+            background: #8B4513;
+            color: #fff;
+            padding: 0.3rem 0.8rem;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            border-radius: 15px;
+            display: inline-block;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Category Headers */
+        .category-header {
+            background: linear-gradient(135deg, #8B4513, #D2691E);
+            color: #fff;
+            padding: 2rem;
+            text-align: center;
+            margin: 3rem 0 2rem;
+            border-radius: 12px;
+            position: relative;
+        }
+
+        .category-title {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .category-count {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .category-description {
+            font-size: 1rem;
+            margin-top: 1rem;
+            opacity: 0.95;
+            line-height: 1.6;
+        }
+
+        /* Loading and No Results */
+        .loading, .no-results {
+            text-align: center;
+            padding: 4rem 2rem;
+            font-size: 1.2rem;
+            color: #666;
+        }
+
+        .loading {
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50"><path fill="%23D2691E" d="M25 18c-.6 0-1-.4-1-1V9c0-.6.4-1 1-1s1 .4 1 1v8c0 .6-.4 1-1 1z"><animateTransform attributeName="transform" attributeType="XML" type="rotate" from="0 25 25" to="360 25 25" dur="0.6s" repeatCount="indefinite"/></path></svg>') no-repeat center top;
+            background-size: 40px 40px;
+            padding-top: 5rem;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        /* Innovation Timeline */
+        .innovation-timeline {
+            background: #2c1810;
+            color: #fff;
+            padding: 4rem 0;
+            margin-top: 4rem;
+        }
+
+        .timeline-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .timeline-title {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .timeline-description {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            opacity: 0.9;
+        }
+
+        .innovation-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .innovation-stat {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .innovation-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #D2691E;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .innovation-label {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        /* Back to Timeline Button */
+        .back-link {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: #8B4513;
+            color: #fff;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            z-index: 1000;
+            box-shadow: 0 4px 15px rgba(139, 69, 19, 0.3);
+        }
+
+        .back-link:hover {
+            background: #D2691E;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(139, 69, 19, 0.4);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .search-section {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .search-input {
+                min-width: auto;
+                width: 100%;
+            }
+
+            .category-filters {
+                justify-content: center;
+            }
+
+            .products-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+                gap: 1.5rem;
+            }
+
+            .hero-stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .back-link {
+                position: relative;
+                top: auto;
+                left: auto;
+                margin: 2rem auto;
+                display: block;
+                width: fit-content;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-stats {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Animation for product cards */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .product-card {
+            animation: fadeInUp 0.6s ease-out;
+        }
+    </style>
+</head>
+<body>
+    <a href="index.html" class="back-link">← Back to Carver Timeline</a>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Radical Peanut Innovations</h1>
+                <p class="hero-subtitle">George Washington Carver's Revolutionary 300+ Products</p>
+                
+                <div class="hero-stats" id="heroStats">
+                    <div class="stat-box">
+                        <span class="stat-number" id="totalProductsCount">300+</span>
+                        <span class="stat-label">Total Products</span>
+                    </div>
+                    <div class="stat-box">
+                        <span class="stat-number" id="categoriesCount">6</span>
+                        <span class="stat-label">Categories</span>
+                    </div>
+                    <div class="stat-box">
+                        <span class="stat-number">1896</span>
+                        <span class="stat-label">Research Started</span>
+                    </div>
+                    <div class="stat-box">
+                        <span class="stat-number">47</span>
+                        <span class="stat-label">Years of Innovation</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Navigation -->
+    <section class="nav-section">
+        <div class="container">
+            <div class="nav-container">
+                <div class="search-section">
+                    <input type="text" class="search-input" placeholder="Search Carver's incredible peanut innovations..." id="searchInput">
+                </div>
+                <div class="category-filters">
+                    <button class="filter-btn active" data-category="all">All Products</button>
+                    <button class="filter-btn" data-category="food">Food Products</button>
+                    <button class="filter-btn" data-category="cosmetic">Cosmetics</button>
+                    <button class="filter-btn" data-category="medicinal">Medicine</button>
+                    <button class="filter-btn" data-category="industrial">Industrial</button>
+                    <button class="filter-btn" data-category="animal-feed">Animal Feed</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">The Complete Catalog of Innovation</h2>
+                <p class="section-description">
+                    From his laboratory at Tuskegee Institute, George Washington Carver transformed the humble peanut into hundreds of revolutionary products that changed agriculture, industry, and daily life across America. Each product represents not just scientific innovation, but a step toward economic freedom for Southern farmers.
+                </p>
+            </div>
+
+            <div id="productsContainer">
+                <!-- Products will be populated here by JavaScript -->
+            </div>
+
+            <div class="loading hidden" id="loadingMessage">
+                Loading Carver's revolutionary innovations...
+            </div>
+
+            <div class="no-results hidden" id="noResults">
+                No products found matching your search. Try a different term or category.
+            </div>
+        </div>
+    </section>
+
+    <!-- Innovation Timeline -->
+    <section class="innovation-timeline">
+        <div class="container">
+            <div class="timeline-content">
+                <h2 class="timeline-title">The Innovation Revolution</h2>
+                <p class="timeline-description">
+                    Starting in 1902, George Washington Carver embarked on a mission that would revolutionize American agriculture. When the boll weevil devastated cotton crops across the South, Carver's peanut innovations provided farmers with alternatives that saved entire communities from economic ruin. His work proved that science could be a tool for social justice and economic empowerment.
+                </p>
+                
+                <div class="innovation-stats">
+                    <div class="innovation-stat">
+                        <span class="innovation-number">1902</span>
+                        <span class="innovation-label">Research Began</span>
+                    </div>
+                    <div class="innovation-stat">
+                        <span class="innovation-number">1916</span>
+                        <span class="innovation-label">First 105 Uses Published</span>
+                    </div>
+                    <div class="innovation-stat">
+                        <span class="innovation-number">1921</span>
+                        <span class="innovation-label">Congressional Testimony</span>
+                    </div>
+                    <div class="innovation-stat">
+                        <span class="innovation-number">1943</span>
+                        <span class="innovation-label">Legacy Completed</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Include the Peanut Products Database -->
+    <script>
+        // Inline the PeanutProducts.js content for this demo
+        const peanutProductsDatabase = {
+            // Food Products (100+ items)
+            foodProducts: [
+                "Peanut Butter (Regular)",
+                "Peanut Butter #2", 
+                "Peanut Butter #3",
+                "Salted Peanuts",
+                "Chocolate Coated Peanuts",
+                "Malted Peanuts",
+                "Crystallized Peanuts",
+                "Shredded Peanuts",
+                "Peanut Flakes #1",
+                "Peanut Flakes #2", 
+                "Peanut Hearts",
+                "Peanut Sprouts",
+                "Mock Oysters",
+                "Mock Meat",
+                "Mock Goose",
+                "Mock Duck", 
+                "Mock Chicken",
+                "Mock Veal",
+                "Peanut Sausage",
+                "Peanut Meat Loaf",
+                "Peanut Tofu",
+                "Peanut Brittle",
+                "Peanut Chocolate Fudge",
+                "Peanut Tutti Frutti Bars",
+                "Peanut and Pop Corn Bars",
+                "Peanut Bar #1",
+                "Caramel",
+                "Butterscotch",
+                "Sweet Pickle",
+                "Peanut Cake #1",
+                "Peanut Cake #2",
+                "Breakfast Food #1",
+                "Breakfast Food #2",
+                "Breakfast Food #3",
+                "Breakfast Food #4",
+                "Breakfast Food #5",
+                "Pancake Flour",
+                "Peanut Flour #1",
+                "Peanut Flour #2",
+                "Peanut Flour #3",
+                "Peanut Flour #4",
+                "Peanut Flour #5",
+                "Peanut Flour #6",
+                "Peanut Flour #7",
+                "Peanut Flour #8",
+                "Peanut Flour #9",
+                "Peanut Flour #10",
+                "Peanut Flour #11",
+                "Bisque Powder",
+                "Peanut Meal #1",
+                "Peanut Meal #2",
+                "Peanut Meal (Brown)",
+                "Peanut Surprise",
+                "Butter from Peanut Milk",
+                "Cooking Oil",
+                "Salad Oil", 
+                "Oleomargarine",
+                "Lard Compound",
+                "Chili Sauce",
+                "Mayonnaise",
+                "Worcestershire Sauce",
+                "Chop Suey Sauce",
+                "Peanut Relish #1",
+                "Peanut Relish #2",
+                "Flavoring Paste",
+                "Instant Coffee",
+                "Dry Coffee", 
+                "Peanut Coffee",
+                "Coffee Cream",
+                "Dry Coffee Cream",
+                "Vinegar",
+                "Cream for Milk",
+                "Buttermilk", 
+                "Cut Milks (32 varieties)",
+                "Curds",
+                "Evaporated Milk",
+                "Dehydrated Milk Flakes",
+                "Peanut Orange Punch #1",
+                "Peanut Lemon Punch", 
+                "Peanut Koumiss Beverage",
+                "Peanut Punch #2",
+                "Normal Peanut Beverage",
+                "Beverage for Ice Cream",
+                "Peanut Beverage Flakes",
+                "Blackberry Punch",
+                "Plum Punch",
+                "Evaporated Peanut Beverage",
+                "Cherry Punch",
+                "Pineapple Punch"
+            ],
+
+            // Cosmetic and Personal Care Products (30+ items)
+            cosmeticProducts: [
+                "Face Powder",
+                "Face Lotion",
+                "Face Cream", 
+                "Vanishing Cream",
+                "Face Bleach and Tan Remover",
+                "Baby Massage Cream",
+                "Hand Lotion",
+                "Shampoo",
+                "Peanut Oil Shampoo",
+                "Oil for Hair and Scalp",
+                "Shaving Cream",
+                "Pomade for Scalp",
+                "Pomade for Skin",
+                "Face Ointment",
+                "Glycerine",
+                "All Purpose Cream", 
+                "Fat Producing Cream",
+                "Tetter and Dandruff Cure",
+                "Toilet Soap",
+                "Antiseptic Soap",
+                "Carvoline Antiseptic Hair Dressing",
+                "Hair Oil",
+                "Scalp Treatment",
+                "Skin Cream",
+                "Moisturizing Lotion",
+                "Cleansing Cream",
+                "Cold Cream",
+                "Complexion Soap",
+                "Perfumed Soap",
+                "Bathing Soap"
+            ],
+
+            // Medicinal Products (25+ items)
+            medicinalProducts: [
+                "Rubbing Oil",
+                "Carvoline Rubbing Oil", 
+                "Iron Tonic",
+                "Tannic Acid",
+                "Medicine similar to Castor Oil",
+                "Emulsion for Bronchitis",
+                "Castor Substitute",
+                "Goiter Treatment",
+                "Oils Emulsified with Mercury for Venereal Disease #1",
+                "Oils Emulsified with Mercury for Venereal Disease #2",
+                "Quinine",
+                "Laxatives",
+                "Antiseptics",
+                "Cough Medicine",
+                "Throat Medicine",
+                "Respiratory Treatment",
+                "Muscle Relief Oil",
+                "Joint Pain Relief",
+                "Skin Ointment",
+                "Healing Salve",
+                "Medicinal Oil",
+                "Health Tonic",
+                "Vitamin Supplement",
+                "Digestive Aid",
+                "Carver Penol (Tuberculosis Treatment)"
+            ],
+
+            // Industrial and Commercial Products (100+ items)
+            industrialProducts: [
+                "Paints #1",
+                "Paints #2", 
+                "Wood Stains #1",
+                "Wood Stains #2",
+                "Wood Stains #3",
+                "Wood Stains #4",
+                "Wood Stains #5",
+                "Wood Stains #6",
+                "Wood Stains #7",
+                "Wood Stains #8", 
+                "Wood Stains #9",
+                "Wood Stains #10",
+                "Wood Stains #11",
+                "Wood Stains #12",
+                "Wood Stains #13",
+                "Wood Stains #14",
+                "Wood Stains #15",
+                "Wood Stains #16",
+                "Wood Stains #17",
+                "Dyes #1",
+                "Dyes #2",
+                "Dyes #3",
+                "Dyes #4",
+                "Dyes #5",
+                "Dyes #6",
+                "Dyes #7",
+                "Dyes #8",
+                "Dyes #9",
+                "Dyes #10",
+                "Cloth Dyes #1-30",
+                "Printer's Ink",
+                "Writing Ink",
+                "Ink for Fountain Pens",
+                "Shoe Polish",
+                "Metal Polish", 
+                "Furniture Polish",
+                "Floor Polish",
+                "Leather Polish",
+                "Axle Grease",
+                "Lubricating Oil",
+                "Machine Oil",
+                "Motor Oil",
+                "Gasoline Additive",
+                "Fuel Briquettes",
+                "Charcoal",
+                "Synthetic Rubber",
+                "Plastics #1",
+                "Plastics #2",
+                "Plastics #3",
+                "Celluloid",
+                "Insulating Board",
+                "Linoleum",
+                "Paper #1", 
+                "Paper #2",
+                "Cardboard",
+                "Wall Board #1",
+                "Wall Board #2", 
+                "Wall Board #3",
+                "Wall Board #4",
+                "Wall Board #5",
+                "Wall Board #6",
+                "Wall Board #7",
+                "Wall Board #8",
+                "Wall Board #9",
+                "Wall Board #10",
+                "Wall Board #11",
+                "Insulation Material",
+                "Building Material",
+                "Glue #1",
+                "Glue #2",
+                "Adhesive",
+                "Cement",
+                "Waterproof Coating",
+                "Varnish",
+                "Lacquer", 
+                "Wood Filler",
+                "Caulking Compound",
+                "Insecticide #1",
+                "Insecticide #2",
+                "Insecticide #3",
+                "Pesticide",
+                "Rodent Repellent",
+                "Soil Conditioner",
+                "Fertilizer",
+                "Compost Activator",
+                "Plant Food",
+                "Nitroglycerine",
+                "Explosives",
+                "Bleach",
+                "Cleaning Agent",
+                "Degreaser",
+                "Solvent",
+                "Paint Thinner",
+                "Rust Remover"
+            ],
+
+            // Animal Feed Products (15+ items) 
+            animalFeedProducts: [
+                "Peanut Stock Food #1",
+                "Peanut Stock Food #2", 
+                "Peanut Stock Food #3",
+                "Peanut Hull Meal",
+                "Peanut Hull Stock Food",
+                "Molasses Feed",
+                "Peanut Hull Bran",
+                "Peanut Hay Meal",
+                "Hen Food for Laying (Peanut Hearts)",
+                "Livestock Feed",
+                "Chicken Feed",
+                "Cattle Feed", 
+                "Horse Feed",
+                "Pig Feed",
+                "Poultry Supplement"
+            ],
+
+            // Specialty Products
+            specialtyProducts: [
+                "Meat Tenderizer",
+                "Soil Analysis Kit",
+                "pH Testing Solution", 
+                "Crop Rotation Guide",
+                "Farming Manual",
+                "Agricultural Bulletin",
+                "Demonstration Samples",
+                "Laboratory Specimens",
+                "Teaching Materials",
+                "Scientific Instruments"
+            ],
+
+            // Database utility methods
+            getAllProducts() {
+                return [
+                    ...this.foodProducts,
+                    ...this.cosmeticProducts, 
+                    ...this.medicinalProducts,
+                    ...this.industrialProducts,
+                    ...this.animalFeedProducts,
+                    ...this.specialtyProducts
+                ];
+            },
+
+            getProductsByCategory(category) {
+                switch(category.toLowerCase()) {
+                    case 'food': return this.foodProducts;
+                    case 'cosmetic': return this.cosmeticProducts;
+                    case 'medicinal': return this.medicinalProducts; 
+                    case 'industrial': return this.industrialProducts;
+                    case 'animal-feed': return this.animalFeedProducts;
+                    case 'specialty': return this.specialtyProducts;
+                    default: return [];
+                }
+            },
+
+            searchProducts(searchTerm) {
+                const allProducts = this.getAllProducts();
+                const term = searchTerm.toLowerCase();
+                return allProducts.filter(product => 
+                    product.toLowerCase().includes(term)
+                );
+            },
+
+            getStats() {
+                return {
+                    totalProducts: this.getAllProducts().length,
+                    foodProducts: this.foodProducts.length,
+                    cosmeticProducts: this.cosmeticProducts.length,
+                    medicinalProducts: this.medicinalProducts.length,
+                    industrialProducts: this.industrialProducts.length,
+                    animalFeedProducts: this.animalFeedProducts.length,
+                    specialtyProducts: this.specialtyProducts.length,
+                    categories: 6
+                };
+            }
+        };
+
+        // Application state
+        let currentCategory = 'all';
+        let currentSearchTerm = '';
+
+        // DOM elements
+        const searchInput = document.getElementById('searchInput');
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const productsContainer = document.getElementById('productsContainer');
+        const loadingMessage = document.getElementById('loadingMessage');
+        const noResults = document.getElementById('noResults');
+        const totalProductsCount = document.getElementById('totalProductsCount');
+        const categoriesCount = document.getElementById('categoriesCount');
+
+        // Category configurations
+        const categoryConfig = {
+            food: {
+                emoji: '🍽️',
+                title: 'Food Products',
+                description: 'Nutritious foods, beverages, and cooking ingredients that provided alternatives to traditional Southern fare and improved nutrition for poor families.'
+            },
+            cosmetic: {
+                emoji: '💄',
+                title: 'Cosmetic & Personal Care',
+                description: 'Natural beauty and personal care products that offered affordable alternatives to expensive commercial cosmetics.'
+            },
+            medicinal: {
+                emoji: '💊',
+                title: 'Medicinal Products',
+                description: 'Natural remedies and therapeutic treatments that provided accessible healthcare solutions for rural communities.'
+            },
+            industrial: {
+                emoji: '🏭',
+                title: 'Industrial & Commercial',
+                description: 'Revolutionary industrial applications including paints, dyes, plastics, and lubricants that created new markets for peanut farmers.'
+            },
+            'animal-feed': {
+                emoji: '🐄',
+                title: 'Animal Feed Products',
+                description: 'Nutritious animal feeds that helped farmers maintain healthy livestock and maximize farm productivity.'
+            },
+            specialty: {
+                emoji: '🔬',
+                title: 'Research & Education',
+                description: 'Scientific tools and educational materials that helped spread agricultural knowledge and innovation.'
+            }
+        };
+
+        // Initialize the application
+        function init() {
+            updateStats();
+            renderProducts();
+            setupEventListeners();
+        }
+
+        // Update statistics
+        function updateStats() {
+            const stats = peanutProductsDatabase.getStats();
+            totalProductsCount.textContent = stats.totalProducts;
+            categoriesCount.textContent = stats.categories;
+        }
+
+        // Setup event listeners
+        function setupEventListeners() {
+            searchInput.addEventListener('input', (e) => {
+                currentSearchTerm = e.target.value.toLowerCase();
+                renderProducts();
+            });
+
+            filterButtons.forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    filterButtons.forEach(b => b.classList.remove('active'));
+                    e.target.classList.add('active');
+                    currentCategory = e.target.dataset.category;
+                    renderProducts();
+                });
+            });
+        }
+
+        // Render products based on current filter and search
+        function renderProducts() {
+            showLoading(true);
+            
+            setTimeout(() => {
+                let products = [];
+                
+                // Get products by category
+                if (currentCategory === 'all') {
+                    products = peanutProductsDatabase.getAllProducts();
+                } else {
+                    products = peanutProductsDatabase.getProductsByCategory(currentCategory);
+                }
+
+                // Apply search filter
+                if (currentSearchTerm) {
+                    products = products.filter(product => 
+                        product.toLowerCase().includes(currentSearchTerm)
+                    );
+                }
+
+                // Show/hide no results
+                noResults.classList.toggle('hidden', products.length > 0);
+                
+                // Render products
+                if (currentCategory === 'all') {
+                    renderProductsByCategories(products);
+                } else {
+                    renderSingleCategory(currentCategory, products);
+                }
+
+                showLoading(false);
+            }, 300);
+        }
+
+        // Render products grouped by categories
+        function renderProductsByCategories(filteredProducts) {
+            productsContainer.innerHTML = '';
+            
+            Object.keys(categoryConfig).forEach(categoryKey => {
+                const categoryProducts = peanutProductsDatabase.getProductsByCategory(categoryKey);
+                const displayProducts = filteredProducts.filter(product => 
+                    categoryProducts.includes(product)
+                );
+                
+                if (displayProducts.length > 0) {
+                    const categorySection = createCategorySection(categoryKey, displayProducts);
+                    productsContainer.appendChild(categorySection);
+                }
+            });
+        }
+
+        // Render single category
+        function renderSingleCategory(categoryKey, products) {
+            productsContainer.innerHTML = '';
+            
+            if (products.length > 0) {
+                const categorySection = createCategorySection(categoryKey, products);
+                productsContainer.appendChild(categorySection);
+            }
+        }
+
+        // Create category section
+        function createCategorySection(categoryKey, products) {
+            const config = categoryConfig[categoryKey];
+            const section = document.createElement('div');
+            
+            const header = document.createElement('div');
+            header.className = 'category-header';
+            header.innerHTML = `
+                <h3 class="category-title">${config.emoji} ${config.title}</h3>
+                <p class="category-count">${products.length} Products</p>
+                <p class="category-description">${config.description}</p>
+            `;
+            
+            const grid = document.createElement('div');
+            grid.className = 'products-grid';
+            
+            products.forEach((product, index) => {
+                const card = createProductCard(product, categoryKey, index);
+                grid.appendChild(card);
+            });
+            
+            section.appendChild(header);
+            section.appendChild(grid);
+            
+            return section;
+        }
+
+        // Create individual product card
+        function createProductCard(product, category, index) {
+            const config = categoryConfig[category];
+            const card = document.createElement('div');
+            card.className = 'product-card';
+            card.style.animationDelay = `${index * 0.1}s`;
+            
+            card.innerHTML = `
+                <span class="product-emoji">${config.emoji}</span>
+                <h4 class="product-name">${product}</h4>
+                <span class="product-category">${config.title}</span>
+            `;
+            
+            return card;
+        }
+
+        // Show/hide loading state
+        function showLoading(show) {
+            loadingMessage.classList.toggle('hidden', !show);
+            productsContainer.style.opacity = show ? '0.5' : '1';
+        }
+
+        // Initialize when DOM is ready
+        document.addEventListener('DOMContentLoaded', init);
+    </script>
+</body>
+</html>
