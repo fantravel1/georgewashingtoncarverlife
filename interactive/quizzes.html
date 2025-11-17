@@ -1,0 +1,1475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Interactive quizzes about George Washington Carver's life, scientific work, and legacy. Test your knowledge with immediate feedback and detailed explanations.">
+    <meta name="keywords" content="George Washington Carver quiz, interactive learning, science quiz, agriculture quiz, Black History quiz, educational games">
+    <meta name="author" content="George Washington Carver Life Educational Team">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <meta property="og:title" content="Interactive Quizzes - George Washington Carver">
+    <meta property="og:description" content="Test your knowledge about George Washington Carver with fun, educational quizzes featuring immediate feedback.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://georgewashingtoncarverlife.com/interactive/quizzes.html">
+    <link rel="canonical" href="https://georgewashingtoncarverlife.com/interactive/quizzes.html">
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+    <link rel="manifest" href="../manifest.json">
+    <title>Interactive Quizzes | Test Your George Washington Carver Knowledge</title>
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "EducationalOccupationalResource",
+        "name": "George Washington Carver Interactive Quizzes",
+        "description": "Educational quiz system testing knowledge about George Washington Carver's life and scientific contributions",
+        "educationalLevel": ["Elementary", "Middle School", "High School"],
+        "educationalUse": ["Assessment", "Self Assessment", "Practice"],
+        "learningResourceType": ["Quiz", "Interactive Assessment"],
+        "teaches": [
+            "George Washington Carver Biography",
+            "Agricultural Science",
+            "American History",
+            "Scientific Method"
+        ],
+        "isAccessibleForFree": true,
+        "inLanguage": "en-US",
+        "interactivityType": "active"
+    }
+    </script>
+
+    <style>
+        .quiz-selection {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: var(--space-4);
+            margin-bottom: var(--space-6);
+        }
+
+        .quiz-card {
+            background: var(--color-bg-primary);
+            border: 2px solid var(--color-border);
+            border-radius: var(--radius-lg);
+            padding: var(--space-5);
+            cursor: pointer;
+            transition: all var(--transition-base);
+            position: relative;
+        }
+
+        .quiz-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--color-secondary);
+        }
+
+        .quiz-card.completed::after {
+            content: "✓";
+            position: absolute;
+            top: var(--space-3);
+            right: var(--space-3);
+            width: 32px;
+            height: 32px;
+            background: #4caf50;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: var(--font-size-lg);
+        }
+
+        .quiz-card h3 {
+            font-size: var(--font-size-xl);
+            color: var(--color-primary);
+            margin-bottom: var(--space-2);
+        }
+
+        .quiz-meta {
+            display: flex;
+            gap: var(--space-3);
+            font-size: var(--font-size-sm);
+            color: var(--color-text-secondary);
+            margin-top: var(--space-3);
+        }
+
+        .quiz-meta span {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-1);
+        }
+
+        .quiz-container {
+            display: none;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .quiz-container.active {
+            display: block;
+        }
+
+        .quiz-header {
+            background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+            color: white;
+            padding: var(--space-6);
+            border-radius: var(--radius-lg);
+            margin-bottom: var(--space-5);
+        }
+
+        .quiz-progress {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: var(--space-4);
+        }
+
+        .progress-bar {
+            flex: 1;
+            height: 8px;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: var(--radius-full);
+            overflow: hidden;
+            margin: 0 var(--space-3);
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: #4caf50;
+            transition: width var(--transition-base);
+        }
+
+        .question-card {
+            background: var(--color-bg-primary);
+            border: 2px solid var(--color-border);
+            border-radius: var(--radius-lg);
+            padding: var(--space-6);
+            margin-bottom: var(--space-4);
+        }
+
+        .question-number {
+            font-size: var(--font-size-sm);
+            font-weight: var(--font-weight-semibold);
+            color: var(--color-secondary);
+            margin-bottom: var(--space-2);
+        }
+
+        .question-text {
+            font-size: var(--font-size-xl);
+            font-weight: var(--font-weight-bold);
+            color: var(--color-text-primary);
+            margin-bottom: var(--space-5);
+            line-height: 1.4;
+        }
+
+        .answers-grid {
+            display: grid;
+            gap: var(--space-3);
+        }
+
+        .answer-option {
+            background: var(--color-bg-secondary);
+            border: 2px solid var(--color-border);
+            border-radius: var(--radius-md);
+            padding: var(--space-4);
+            cursor: pointer;
+            transition: all var(--transition-base);
+            position: relative;
+        }
+
+        .answer-option:hover:not(.disabled) {
+            border-color: var(--color-secondary);
+            background: var(--color-bg-tertiary);
+        }
+
+        .answer-option.selected {
+            border-color: var(--color-primary);
+            background: #e3f2fd;
+        }
+
+        [data-theme="dark"] .answer-option.selected {
+            background: #1a237e;
+        }
+
+        .answer-option.correct {
+            border-color: #4caf50;
+            background: #e8f5e9;
+        }
+
+        [data-theme="dark"] .answer-option.correct {
+            background: #1b5e20;
+        }
+
+        .answer-option.incorrect {
+            border-color: #f44336;
+            background: #ffebee;
+        }
+
+        [data-theme="dark"] .answer-option.incorrect {
+            background: #b71c1c;
+        }
+
+        .answer-option.disabled {
+            cursor: not-allowed;
+            opacity: 0.6;
+        }
+
+        .answer-option::before {
+            content: "";
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 2px solid var(--color-border);
+            border-radius: 50%;
+            margin-right: var(--space-3);
+            vertical-align: middle;
+        }
+
+        .answer-option.selected::before {
+            background: var(--color-primary);
+            border-color: var(--color-primary);
+        }
+
+        .answer-option.correct::before {
+            content: "✓";
+            background: #4caf50;
+            border-color: #4caf50;
+            color: white;
+            font-weight: bold;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+        }
+
+        .answer-option.incorrect::before {
+            content: "✗";
+            background: #f44336;
+            border-color: #f44336;
+            color: white;
+            font-weight: bold;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+        }
+
+        .feedback-box {
+            margin-top: var(--space-4);
+            padding: var(--space-4);
+            border-radius: var(--radius-md);
+            display: none;
+        }
+
+        .feedback-box.show {
+            display: block;
+            animation: slideIn 0.3s ease;
+        }
+
+        .feedback-box.correct {
+            background: #e8f5e9;
+            border-left: 4px solid #4caf50;
+        }
+
+        .feedback-box.incorrect {
+            background: #ffebee;
+            border-left: 4px solid #f44336;
+        }
+
+        [data-theme="dark"] .feedback-box.correct {
+            background: #1b5e20;
+        }
+
+        [data-theme="dark"] .feedback-box.incorrect {
+            background: #b71c1c;
+        }
+
+        .feedback-title {
+            font-weight: var(--font-weight-bold);
+            font-size: var(--font-size-lg);
+            margin-bottom: var(--space-2);
+        }
+
+        .quiz-actions {
+            display: flex;
+            justify-content: space-between;
+            margin-top: var(--space-5);
+        }
+
+        .btn {
+            padding: var(--space-3) var(--space-5);
+            border: none;
+            border-radius: var(--radius-md);
+            font-family: var(--font-family-sans);
+            font-weight: var(--font-weight-semibold);
+            font-size: var(--font-size-base);
+            cursor: pointer;
+            transition: all var(--transition-base);
+        }
+
+        .btn-primary {
+            background: var(--color-secondary);
+            color: white;
+        }
+
+        .btn-primary:hover:not(:disabled) {
+            background: var(--color-primary);
+            transform: scale(1.05);
+        }
+
+        .btn-secondary {
+            background: var(--color-bg-secondary);
+            color: var(--color-text-primary);
+            border: 1px solid var(--color-border);
+        }
+
+        .btn-secondary:hover {
+            background: var(--color-bg-tertiary);
+        }
+
+        .btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .results-screen {
+            display: none;
+            text-align: center;
+        }
+
+        .results-screen.show {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .score-circle {
+            width: 200px;
+            height: 200px;
+            margin: var(--space-6) auto;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .score-number {
+            font-size: 3rem;
+            font-weight: var(--font-weight-bold);
+        }
+
+        .score-label {
+            font-size: var(--font-size-lg);
+            margin-top: var(--space-2);
+        }
+
+        .results-message {
+            font-size: var(--font-size-xl);
+            font-weight: var(--font-weight-bold);
+            color: var(--color-primary);
+            margin: var(--space-4) 0;
+        }
+
+        .results-details {
+            background: var(--color-bg-secondary);
+            border-radius: var(--radius-lg);
+            padding: var(--space-5);
+            margin: var(--space-5) 0;
+            text-align: left;
+        }
+
+        .results-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: var(--space-4);
+            margin-top: var(--space-4);
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: var(--space-3);
+            background: var(--color-bg-primary);
+            border-radius: var(--radius-md);
+        }
+
+        .stat-value {
+            font-size: 2rem;
+            font-weight: var(--font-weight-bold);
+            color: var(--color-secondary);
+        }
+
+        .stat-label {
+            font-size: var(--font-size-sm);
+            color: var(--color-text-secondary);
+            margin-top: var(--space-1);
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @media (max-width: 768px) {
+            .quiz-selection {
+                grid-template-columns: 1fr;
+            }
+
+            .score-circle {
+                width: 150px;
+                height: 150px;
+            }
+
+            .score-number {
+                font-size: 2.5rem;
+            }
+        }
+
+        @media print {
+            .quiz-selection,
+            .quiz-actions,
+            nav {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <button id="darkModeToggle" class="dark-mode-toggle" aria-label="Toggle dark mode">
+        <span class="dark-mode-icon">🌙</span>
+    </button>
+
+    <nav class="main-nav" role="navigation" aria-label="Main navigation">
+        <div class="nav-container">
+            <a href="../index.html" class="nav-logo">GWC Life</a>
+            <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu">
+                <span class="hamburger"></span>
+                <span class="sr-only">Menu</span>
+            </button>
+            <ul id="nav-menu" class="nav-menu">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../learn/scientific-method.html">Learn</a></li>
+                <li><a href="../educators/activities.html">Educators</a></li>
+                <li><a href="experiments.html" class="active">Interactive</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main id="main-content">
+        <header class="page-header">
+            <div class="header-content">
+                <h1>Interactive Knowledge Quizzes</h1>
+                <p class="lead">Test your knowledge about George Washington Carver with instant feedback and detailed explanations</p>
+            </div>
+        </header>
+
+        <section class="content-section">
+            <div class="container">
+                <!-- Quiz Selection Screen -->
+                <div id="quizSelection" class="quiz-selection">
+                    <!-- Biography Quiz -->
+                    <div class="quiz-card" onclick="startQuiz('biography')" data-quiz="biography">
+                        <h3>📖 Life & Biography</h3>
+                        <p>Test your knowledge of George Washington Carver's incredible life journey from enslavement to becoming a renowned scientist.</p>
+                        <div class="quiz-meta">
+                            <span>📝 10 questions</span>
+                            <span>⏱️ ~5 minutes</span>
+                            <span>📊 Easy-Medium</span>
+                        </div>
+                    </div>
+
+                    <!-- Science Quiz -->
+                    <div class="quiz-card" onclick="startQuiz('science')" data-quiz="science">
+                        <h3>🔬 Scientific Contributions</h3>
+                        <p>Explore Carver's groundbreaking research in agriculture, chemistry, and botany that changed American farming.</p>
+                        <div class="quiz-meta">
+                            <span>📝 10 questions</span>
+                            <span>⏱️ ~6 minutes</span>
+                            <span>📊 Medium</span>
+                        </div>
+                    </div>
+
+                    <!-- Agriculture Quiz -->
+                    <div class="quiz-card" onclick="startQuiz('agriculture')" data-quiz="agriculture">
+                        <h3>🌾 Agriculture & Innovation</h3>
+                        <p>Learn about crop rotation, soil conservation, and the agricultural revolution Carver sparked in the South.</p>
+                        <div class="quiz-meta">
+                            <span>📝 8 questions</span>
+                            <span>⏱️ ~5 minutes</span>
+                            <span>📊 Medium</span>
+                        </div>
+                    </div>
+
+                    <!-- Peanut Products Quiz -->
+                    <div class="quiz-card" onclick="startQuiz('peanuts')" data-quiz="peanuts">
+                        <h3>🥜 Peanut Products</h3>
+                        <p>Discover the amazing variety of products Carver created from the humble peanut.</p>
+                        <div class="quiz-meta">
+                            <span>📝 8 questions</span>
+                            <span>⏱️ ~4 minutes</span>
+                            <span>📊 Easy</span>
+                        </div>
+                    </div>
+
+                    <!-- Myths Quiz -->
+                    <div class="quiz-card" onclick="startQuiz('myths')" data-quiz="myths">
+                        <h3>🔍 Myths vs Facts</h3>
+                        <p>Separate fact from fiction about George Washington Carver's life and achievements.</p>
+                        <div class="quiz-meta">
+                            <span>📝 8 questions</span>
+                            <span>⏱️ ~4 minutes</span>
+                            <span>📊 Medium</span>
+                        </div>
+                    </div>
+
+                    <!-- Legacy Quiz -->
+                    <div class="quiz-card" onclick="startQuiz('legacy')" data-quiz="legacy">
+                        <h3>🏆 Legacy & Impact</h3>
+                        <p>Understand how Carver's work continues to influence science, education, and sustainability today.</p>
+                        <div class="quiz-meta">
+                            <span>📝 8 questions</span>
+                            <span>⏱️ ~5 minutes</span>
+                            <span>📊 Medium-Hard</span>
+                        </div>
+                    </div>
+
+                    <!-- Quick Quiz -->
+                    <div class="quiz-card" onclick="startQuiz('quick')" data-quiz="quick">
+                        <h3>⚡ Quick Challenge</h3>
+                        <p>A rapid-fire quiz covering all aspects of Carver's life and work. Perfect for a quick review!</p>
+                        <div class="quiz-meta">
+                            <span>📝 5 questions</span>
+                            <span>⏱️ ~2 minutes</span>
+                            <span>📊 Mixed</span>
+                        </div>
+                    </div>
+
+                    <!-- Expert Quiz -->
+                    <div class="quiz-card" onclick="startQuiz('expert')" data-quiz="expert">
+                        <h3>🎓 Expert Challenge</h3>
+                        <p>Think you know everything about George Washington Carver? Take the ultimate challenge!</p>
+                        <div class="quiz-meta">
+                            <span>📝 12 questions</span>
+                            <span>⏱️ ~8 minutes</span>
+                            <span>📊 Hard</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quiz Container -->
+                <div id="quizContainer" class="quiz-container">
+                    <div class="quiz-header">
+                        <h2 id="quizTitle">Quiz Title</h2>
+                        <div class="quiz-progress">
+                            <span id="progressText">Question 1 of 10</span>
+                            <div class="progress-bar">
+                                <div id="progressFill" class="progress-fill" style="width: 0%"></div>
+                            </div>
+                            <span id="scoreText">Score: 0</span>
+                        </div>
+                    </div>
+
+                    <div class="question-card">
+                        <div class="question-number" id="questionNumber">Question 1 of 10</div>
+                        <div class="question-text" id="questionText">Question will appear here</div>
+                        <div class="answers-grid" id="answersGrid">
+                            <!-- Answers will be inserted here -->
+                        </div>
+                        <div id="feedbackBox" class="feedback-box">
+                            <div class="feedback-title" id="feedbackTitle">Feedback</div>
+                            <div id="feedbackText">Explanation will appear here</div>
+                        </div>
+                    </div>
+
+                    <div class="quiz-actions">
+                        <button class="btn btn-secondary" onclick="exitQuiz()">Exit Quiz</button>
+                        <button class="btn btn-primary" id="nextBtn" onclick="nextQuestion()" disabled>Next Question</button>
+                    </div>
+
+                    <!-- Results Screen -->
+                    <div id="resultsScreen" class="results-screen">
+                        <h2>Quiz Complete!</h2>
+                        <div class="score-circle">
+                            <div class="score-number" id="finalScore">0%</div>
+                            <div class="score-label">Your Score</div>
+                        </div>
+                        <div class="results-message" id="resultsMessage">Great job!</div>
+
+                        <div class="results-details">
+                            <h3>Quiz Statistics</h3>
+                            <div class="results-stats">
+                                <div class="stat-item">
+                                    <div class="stat-value" id="statCorrect">0</div>
+                                    <div class="stat-label">Correct</div>
+                                </div>
+                                <div class="stat-item">
+                                    <div class="stat-value" id="statIncorrect">0</div>
+                                    <div class="stat-label">Incorrect</div>
+                                </div>
+                                <div class="stat-item">
+                                    <div class="stat-value" id="statPercentage">0%</div>
+                                    <div class="stat-label">Accuracy</div>
+                                </div>
+                                <div class="stat-item">
+                                    <div class="stat-value" id="statTime">0:00</div>
+                                    <div class="stat-label">Time</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="quiz-actions">
+                            <button class="btn btn-secondary" onclick="exitQuiz()">Back to Quizzes</button>
+                            <button class="btn btn-primary" onclick="retryQuiz()">Try Again</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Educational Resources</h3>
+                <ul>
+                    <li><a href="../learn/scientific-method.html">Scientific Method</a></li>
+                    <li><a href="../learn/agriculture.html">Agriculture</a></li>
+                    <li><a href="../learn/early-life.html">Biography</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>For Educators</h3>
+                <ul>
+                    <li><a href="../educators/lesson-plans.html">Lesson Plans</a></li>
+                    <li><a href="../educators/activities.html">Classroom Activities</a></li>
+                    <li><a href="../educators/curriculum.html">Curriculum Integration</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Interactive</h3>
+                <ul>
+                    <li><a href="experiments.html">Science Experiments</a></li>
+                    <li><a href="crop-rotation.html">Crop Rotation Game</a></li>
+                    <li><a href="quizzes.html">Knowledge Quizzes</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>About This Site</h3>
+                <p>Educational resource dedicated to George Washington Carver's life, work, and enduring legacy.</p>
+                <p class="footer-meta">Last updated: 2025 | Free educational use</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../shared.js"></script>
+    <script>
+        // Quiz data structure
+        const quizData = {
+            biography: {
+                title: "Life & Biography Quiz",
+                questions: [
+                    {
+                        question: "Approximately when was George Washington Carver born?",
+                        answers: ["1864", "1850", "1875", "1880"],
+                        correct: 0,
+                        explanation: "George Washington Carver was born into slavery around 1864 in Diamond Grove, Missouri. The exact date is unknown because birth records were not kept for enslaved people."
+                    },
+                    {
+                        question: "What traumatic event occurred in Carver's early childhood?",
+                        answers: [
+                            "He was separated from his family",
+                            "He was kidnapped by raiders",
+                            "He lost his parents to illness",
+                            "He was sold to another slaveholder"
+                        ],
+                        correct: 1,
+                        explanation: "As an infant, George and his mother Mary were kidnapped by Confederate raiders. Moses Carver hired someone to find them. Only baby George was recovered; his mother was never found."
+                    },
+                    {
+                        question: "Which college initially accepted Carver but then rejected him when they discovered he was Black?",
+                        answers: ["Iowa State", "Highland University", "Tuskegee Institute", "Simpson College"],
+                        correct: 1,
+                        explanation: "Highland University in Kansas initially accepted Carver by mail but turned him away when he arrived because of his race. This devastating rejection didn't stop his pursuit of education."
+                    },
+                    {
+                        question: "Where did Carver eventually earn his bachelor's and master's degrees?",
+                        answers: ["Harvard University", "Iowa State Agricultural College", "Tuskegee Institute", "Cornell University"],
+                        correct: 1,
+                        explanation: "Carver attended Iowa State Agricultural College (now Iowa State University), earning a bachelor's degree in 1894 and a master's in agriculture in 1896. He was the first Black student at Iowa State."
+                    },
+                    {
+                        question: "Who invited Carver to teach at Tuskegee Institute?",
+                        answers: ["W.E.B. Du Bois", "Frederick Douglass", "Booker T. Washington", "Harriet Tubman"],
+                        correct: 2,
+                        explanation: "Booker T. Washington, founder of Tuskegee Institute in Alabama, invited Carver to head the Agriculture Department in 1896. Carver accepted and stayed for 47 years."
+                    },
+                    {
+                        question: "How many years did Carver work at Tuskegee Institute?",
+                        answers: ["25 years", "35 years", "47 years", "50 years"],
+                        correct: 2,
+                        explanation: "Carver worked at Tuskegee from 1896 until his death in 1943—an incredible 47 years dedicated to teaching, research, and helping farmers."
+                    },
+                    {
+                        question: "What was unusual about Carver's laboratory?",
+                        answers: [
+                            "It was the largest in the South",
+                            "It was made from discarded items and scavenged materials",
+                            "It was underground",
+                            "It was funded by the government"
+                        ],
+                        correct: 1,
+                        explanation: "Carver's laboratory was built from discarded and scavenged materials because Tuskegee had limited funds. He made scientific instruments from bottles, jars, and other found objects, showing incredible resourcefulness."
+                    },
+                    {
+                        question: "Which THREE presidents honored or consulted with George Washington Carver during his lifetime?",
+                        answers: [
+                            "Theodore Roosevelt, Calvin Coolidge, Franklin D. Roosevelt",
+                            "William McKinley, Woodrow Wilson, Herbert Hoover",
+                            "Abraham Lincoln, Andrew Johnson, Ulysses Grant",
+                            "Warren Harding, Harry Truman, Dwight Eisenhower"
+                        ],
+                        correct: 0,
+                        explanation: "Carver was consulted by Presidents Theodore Roosevelt, Calvin Coolidge, and Franklin D. Roosevelt. His expertise and fame crossed political and racial boundaries."
+                    },
+                    {
+                        question: "When did George Washington Carver die?",
+                        answers: ["January 5, 1943", "July 12, 1940", "March 3, 1945", "November 18, 1938"],
+                        correct: 0,
+                        explanation: "Carver died on January 5, 1943, at Tuskegee Institute at the age of 78. He was buried on the Tuskegee campus next to Booker T. Washington."
+                    },
+                    {
+                        question: "What honor did Carver receive after his death?",
+                        answers: [
+                            "A national monument was dedicated to him",
+                            "He was awarded the Nobel Prize posthumously",
+                            "A university was named after him",
+                            "He was depicted on currency"
+                        ],
+                        correct: 0,
+                        explanation: "In 1943, President Franklin D. Roosevelt dedicated the George Washington Carver National Monument in Missouri—the first national monument to honor a Black American and a non-president."
+                    }
+                ]
+            },
+            science: {
+                title: "Scientific Contributions Quiz",
+                questions: [
+                    {
+                        question: "How many uses for peanuts did Carver discover and document?",
+                        answers: ["Over 100", "Over 200", "Over 300", "Over 500"],
+                        correct: 2,
+                        explanation: "Carver developed over 300 uses for peanuts, including dyes, plastics, gasoline, medicines, cosmetics, and food products. This demonstrated the peanut's versatility and commercial potential."
+                    },
+                    {
+                        question: "How many uses did Carver find for sweet potatoes?",
+                        answers: ["50+", "75+", "100+", "150+"],
+                        correct: 2,
+                        explanation: "Carver discovered over 100 uses for sweet potatoes, including flour, vinegar, molasses, rubber, ink, and postage stamp glue. This helped diversify Southern agriculture."
+                    },
+                    {
+                        question: "What is the process called where peanuts add nitrogen to soil?",
+                        answers: ["Photosynthesis", "Nitrogen fixation", "Crop rotation", "Composting"],
+                        correct: 1,
+                        explanation: "Nitrogen fixation is the process where legumes like peanuts host bacteria (Rhizobium) in root nodules that convert atmospheric nitrogen into forms plants can use, naturally enriching soil."
+                    },
+                    {
+                        question: "How many agricultural bulletins did Carver publish to help farmers?",
+                        answers: ["22", "34", "44", "56"],
+                        correct: 2,
+                        explanation: "Carver published 44 practical bulletins on topics like crop selection, soil improvement, and food preparation. These free publications were written in simple language for farmers with limited education."
+                    },
+                    {
+                        question: "What was the Jesup Agricultural Wagon?",
+                        answers: [
+                            "A mobile classroom and demonstration lab",
+                            "A delivery truck for peanut products",
+                            "A traveling library",
+                            "A farm equipment store"
+                        ],
+                        correct: 0,
+                        explanation: "The Jesup Wagon was a horse-drawn classroom/laboratory that brought agricultural education directly to rural farmers. Carver and students traveled throughout Alabama demonstrating improved farming techniques."
+                    },
+                    {
+                        question: "Did George Washington Carver invent peanut butter?",
+                        answers: [
+                            "Yes, in 1895",
+                            "No, but he improved the recipe",
+                            "No, it existed before his work",
+                            "Yes, in 1916"
+                        ],
+                        correct: 2,
+                        explanation: "This is a common myth! Peanut butter existed before Carver. The Aztecs and Incas made peanut paste, and Dr. John Harvey Kellogg patented a process in 1895. Carver promoted peanuts but didn't invent peanut butter."
+                    },
+                    {
+                        question: "What scientific method practice was Carver known for?",
+                        answers: [
+                            "Using expensive imported equipment",
+                            "Careful observation and experimentation",
+                            "Working only with trained assistants",
+                            "Publishing only in elite journals"
+                        ],
+                        correct: 1,
+                        explanation: "Carver was meticulous in observation and experimentation. He believed in studying nature closely and conducting many experiments before drawing conclusions. His methods were rigorous despite limited resources."
+                    },
+                    {
+                        question: "In 1921, Carver testified before Congress about what topic?",
+                        answers: [
+                            "Civil rights legislation",
+                            "Tariffs on imported peanuts",
+                            "Agricultural education funding",
+                            "Environmental protection"
+                        ],
+                        correct: 1,
+                        explanation: "Carver testified before the House Ways and Means Committee about the need for tariffs to protect the American peanut industry. His 10-minute slot extended to nearly 2 hours as congressmen were fascinated by his demonstrations."
+                    },
+                    {
+                        question: "What was one of Carver's contributions to World War I?",
+                        answers: [
+                            "Developing weapons",
+                            "Creating dye substitutes when German imports stopped",
+                            "Designing aircraft",
+                            "Training soldiers"
+                        ],
+                        correct: 1,
+                        explanation: "During WWI, German chemical dyes became unavailable. Carver developed 500 dyes from plants, including 53 from peanuts alone. This helped American textile industry continue production."
+                    },
+                    {
+                        question: "What was Carver's approach to patents?",
+                        answers: [
+                            "He patented everything he invented",
+                            "He patented only his most important work",
+                            "He rarely patented his inventions, believing they should benefit everyone",
+                            "He sold his patents to corporations"
+                        ],
+                        correct: 2,
+                        explanation: "Carver believed his work should freely benefit humanity, especially poor farmers. He held only three patents his entire career. He said his discoveries came from God and should help people, not make him rich."
+                    }
+                ]
+            },
+            agriculture: {
+                title: "Agriculture & Innovation Quiz",
+                questions: [
+                    {
+                        question: "What was the main crop in the South that depleted soil?",
+                        answers: ["Wheat", "Cotton", "Tobacco", "Corn"],
+                        correct: 1,
+                        explanation: "Cotton was 'King' in the South but exhausted soil nutrients, especially nitrogen. Continuous cotton planting led to soil erosion and declining yields, trapping farmers in poverty."
+                    },
+                    {
+                        question: "What practice did Carver advocate to restore soil health?",
+                        answers: ["Adding chemical fertilizers", "Letting land rest for years", "Crop rotation", "Irrigation"],
+                        correct: 2,
+                        explanation: "Carver promoted crop rotation—alternating cotton with nitrogen-fixing legumes (peanuts, cowpeas) and other crops. This naturally restored soil fertility, improved yields, and diversified farm income."
+                    },
+                    {
+                        question: "Why did many farmers initially resist Carver's advice to plant peanuts?",
+                        answers: [
+                            "Peanuts were too expensive to grow",
+                            "There was little market demand for peanuts",
+                            "Peanuts required special equipment",
+                            "Religious objections"
+                        ],
+                        correct: 1,
+                        explanation: "Farmers worried 'what will we do with them?' because the peanut market was small. Carver addressed this by developing hundreds of peanut products to create demand and markets for farmers."
+                    },
+                    {
+                        question: "What insect devastated Southern cotton crops, making Carver's crop diversification advice even more critical?",
+                        answers: ["Locust", "Boll weevil", "Army worm", "Aphid"],
+                        correct: 1,
+                        explanation: "The boll weevil invaded from Mexico around 1892 and devastated cotton crops across the South. This crisis proved Carver's warning about cotton dependence and made crop diversification essential for survival."
+                    },
+                    {
+                        question: "What was one of Carver's recommendations for composting?",
+                        answers: [
+                            "Buy expensive compost from stores",
+                            "Use swamp muck and organic waste",
+                            "Only use animal manure",
+                            "Burn crop residue"
+                        ],
+                        correct: 1,
+                        explanation: "Carver taught poor farmers to make compost from swamp muck, leaves, and organic waste. This free method improved soil without costly fertilizers, demonstrating his practical, accessible approach."
+                    },
+                    {
+                        question: "How did Carver's agricultural education differ from traditional approaches?",
+                        answers: [
+                            "He focused only on large plantation owners",
+                            "He made education accessible to poor and illiterate farmers",
+                            "He charged high fees for consultations",
+                            "He taught only in academic settings"
+                        ],
+                        correct: 1,
+                        explanation: "Carver's bulletins used simple language and pictures, the Jesup Wagon brought education to rural areas, and he personally answered thousands of letters from farmers. Education was accessible to all."
+                    },
+                    {
+                        question: "What was the economic impact of the boll weevil crisis in places that followed Carver's diversification advice?",
+                        answers: [
+                            "They suffered equally to cotton-dependent areas",
+                            "They recovered faster due to alternative crops",
+                            "They abandoned farming entirely",
+                            "No significant difference"
+                        ],
+                        correct: 1,
+                        explanation: "Communities that had diversified with peanuts, sweet potatoes, and other crops recovered faster from boll weevil devastation. Some areas even thrived, proving Carver's methods. Enterprise, Alabama erected a monument to the boll weevil for forcing diversification."
+                    },
+                    {
+                        question: "What percentage of nitrogen-fixing ability do healthy peanut plants provide to soil?",
+                        answers: [
+                            "They remove nitrogen from soil",
+                            "They add 20-40 pounds of nitrogen per acre",
+                            "They add 100+ pounds of nitrogen per acre",
+                            "They have no effect on nitrogen"
+                        ],
+                        correct: 1,
+                        explanation: "Peanuts can fix 20-40 pounds of nitrogen per acre through their symbiotic relationship with Rhizobium bacteria. This natural fertilization reduces the need for expensive chemical nitrogen."
+                    }
+                ]
+            },
+            peanuts: {
+                title: "Peanut Products Quiz",
+                questions: [
+                    {
+                        question: "Which of these did Carver create from peanuts?",
+                        answers: ["Milk substitute", "All of these", "Face cream", "Ink"],
+                        correct: 1,
+                        explanation: "Carver created all of these and hundreds more from peanuts! His work showed how one versatile crop could provide food, medicine, cosmetics, and industrial products."
+                    },
+                    {
+                        question: "What peanut product did Carver develop for medicinal purposes?",
+                        answers: ["Massage oil for polio patients", "Antibiotic", "Vaccine", "Pain reliever pills"],
+                        correct: 0,
+                        explanation: "Carver developed peanut oil as a massage treatment for polio patients. Many people, including doctors, wrote testimonials about improved muscle function, though scientific proof was limited."
+                    },
+                    {
+                        question: "Which category of products did NOT come from Carver's peanut research?",
+                        answers: ["Food items", "Cosmetics", "Plastics", "Electronic components"],
+                        correct: 3,
+                        explanation: "Carver created food, cosmetics, and early plastics from peanuts, but not electronics—that technology didn't exist in his era. His innovations spanned many fields but focused on practical agricultural applications."
+                    },
+                    {
+                        question: "What was one reason Carver developed so many peanut products?",
+                        answers: [
+                            "He personally loved peanuts",
+                            "To create market demand so farmers could sell their crops",
+                            "A company paid him to do research",
+                            "It was required for his job"
+                        ],
+                        correct: 1,
+                        explanation: "Carver developed products to create markets for farmers' peanut crops. If farmers could sell peanuts for diverse uses, they'd plant them, rotate crops, and improve soil health—solving multiple problems."
+                    },
+                    {
+                        question: "True or False: Carver kept his peanut formulas secret",
+                        answers: ["True - he wanted to profit from them", "False - he shared them freely", "True - they were classified government secrets", "False - they were patented"],
+                        correct: 1,
+                        explanation: "False! Carver freely shared his formulas in bulletins, demonstrations, and personal correspondence. He believed knowledge should help people, especially poor farmers, not enrich individuals."
+                    },
+                    {
+                        question: "What demonstration impressed members of Congress during Carver's 1921 testimony?",
+                        answers: [
+                            "A peanut growing rapidly",
+                            "Samples of various peanut products",
+                            "A peanut that could fly",
+                            "Peanut-powered machinery"
+                        ],
+                        correct: 1,
+                        explanation: "Carver brought samples of peanut products—milk, cream, instant coffee, mock oysters, dyes, ink, and more. Congressmen were amazed at the variety, extending his 10-minute slot to nearly 2 hours."
+                    },
+                    {
+                        question: "What food product did Carver suggest as a protein source for poor families?",
+                        answers: ["Peanut butter", "Peanut milk and cheese", "Peanut cookies", "Roasted peanuts"],
+                        correct: 1,
+                        explanation: "Carver promoted peanut milk and peanut cheese as nutritious, affordable protein sources for families who couldn't afford cow's milk or meat. These addressed both nutrition and economic challenges."
+                    },
+                    {
+                        question: "How did Carver view his peanut research in relation to faith?",
+                        answers: [
+                            "As purely scientific work unrelated to faith",
+                            "As discovering God's purposes for plants",
+                            "As a way to become wealthy",
+                            "As entertainment"
+                        ],
+                        correct: 1,
+                        explanation: "Carver saw his research as uncovering God's intended purposes for plants. He famously said he asked God to reveal the peanut's secrets, believing scientific discovery and faith were interconnected."
+                    }
+                ]
+            },
+            myths: {
+                title: "Myths vs Facts Quiz",
+                questions: [
+                    {
+                        question: "MYTH OR FACT: George Washington Carver invented peanut butter.",
+                        answers: ["Myth", "Fact"],
+                        correct: 0,
+                        explanation: "MYTH! Peanut paste existed in Aztec and Incan cultures. Dr. John Harvey Kellogg patented a peanut butter process in 1895, before Carver's peanut research. Carver promoted peanuts but didn't invent peanut butter."
+                    },
+                    {
+                        question: "MYTH OR FACT: George Washington Carver was born into slavery.",
+                        answers: ["Myth", "Fact"],
+                        correct: 1,
+                        explanation: "FACT. Carver was born enslaved around 1864 in Missouri. Though slavery officially ended in 1865, Carver's early years were marked by this traumatic legacy and its lasting effects."
+                    },
+                    {
+                        question: "MYTH OR FACT: Carver refused all monetary offers for his discoveries, dying poor.",
+                        answers: ["Myth", "Fact"],
+                        correct: 0,
+                        explanation: "MYTH. While Carver lived modestly and rarely patented inventions, he received a good salary from Tuskegee, fees for consulting, and donations. He donated his life savings ($60,000—about $1 million today) to establish a research foundation."
+                    },
+                    {
+                        question: "MYTH OR FACT: Carver was the first Black student and first Black faculty member at Iowa State.",
+                        answers: ["Myth", "Fact"],
+                        correct: 1,
+                        explanation: "FACT. Carver broke racial barriers at Iowa State Agricultural College as the first Black student (1891) and later the first Black faculty member. This was extraordinary courage during the Jim Crow era."
+                    },
+                    {
+                        question: "MYTH OR FACT: Thomas Edison offered Carver a job with a salary of over $100,000/year.",
+                        answers: ["Myth", "Fact"],
+                        correct: 1,
+                        explanation: "FACT. In 1916, Edison offered Carver a position with a six-figure salary (equivalent to over $2 million today). Carver declined, choosing to stay at Tuskegee serving Black students and poor farmers."
+                    },
+                    {
+                        question: "MYTH OR FACT: Carver only worked with peanuts.",
+                        answers: ["Myth", "Fact"],
+                        correct: 0,
+                        explanation: "MYTH! Carver researched sweet potatoes (100+ uses), soybeans, pecans, cowpeas, and other crops. He also created plant-based dyes, paints, and cosmetics. Peanuts were just his most famous work."
+                    },
+                    {
+                        question: "MYTH OR FACT: Carver had a college degree when he arrived at Tuskegee.",
+                        answers: ["Myth", "Fact"],
+                        correct: 1,
+                        explanation: "FACT. Carver had both bachelor's and master's degrees in agriculture from Iowa State when Booker T. Washington recruited him in 1896. He was highly qualified, not just a talented amateur."
+                    },
+                    {
+                        question: "MYTH OR FACT: Carver was primarily an artist who did science as a hobby.",
+                        answers: ["Myth", "Fact"],
+                        correct: 0,
+                        explanation: "MYTH. While Carver was a talented artist who created beautiful botanical paintings, he was first and foremost a scientist and educator. Art was his passion, but agricultural science was his profession and life's work."
+                    }
+                ]
+            },
+            legacy: {
+                title: "Legacy & Impact Quiz",
+                questions: [
+                    {
+                        question: "What foundation did Carver establish with his life savings?",
+                        answers: [
+                            "The Carver Scholarship Fund",
+                            "The Carver Museum Foundation",
+                            "The George Washington Carver Foundation for agricultural research",
+                            "The Tuskegee Agricultural Society"
+                        ],
+                        correct: 2,
+                        explanation: "Carver donated $60,000 (his life savings, worth about $1 million today) to create the George Washington Carver Foundation to continue agricultural research after his death."
+                    },
+                    {
+                        question: "Which honor did Carver receive during his lifetime?",
+                        answers: [
+                            "The Nobel Prize",
+                            "The Spingarn Medal from the NAACP",
+                            "The Presidential Medal of Freedom",
+                            "Induction into the National Inventors Hall of Fame"
+                        ],
+                        correct: 1,
+                        explanation: "Carver received the Spingarn Medal in 1923, the NAACP's highest honor for outstanding achievement by an African American. He received many honors but not a Nobel Prize or Presidential Medal of Freedom (established after his death)."
+                    },
+                    {
+                        question: "How does Carver's crop rotation work continue today?",
+                        answers: [
+                            "It's considered outdated",
+                            "It's a core principle of sustainable and organic farming",
+                            "It's only used in museums",
+                            "It was proven ineffective"
+                        ],
+                        correct: 1,
+                        explanation: "Carver's crop rotation principles are fundamental to modern sustainable agriculture, organic farming, and permaculture. His insights about soil health and biodiversity are more relevant than ever."
+                    },
+                    {
+                        question: "What national monument was established in Carver's honor?",
+                        answers: [
+                            "Carver National Agricultural Center",
+                            "George Washington Carver National Monument",
+                            "Tuskegee National Historic Site",
+                            "Peanut Industry Memorial"
+                        ],
+                        correct: 1,
+                        explanation: "The George Washington Carver National Monument in Diamond, Missouri (his birthplace) was established in 1943—the first national monument honoring a Black American and a non-president."
+                    },
+                    {
+                        question: "How did Carver influence environmental science?",
+                        answers: [
+                            "He didn't—that field didn't exist yet",
+                            "He was an early advocate for sustainable agriculture and resource conservation",
+                            "He only focused on profit from farming",
+                            "He promoted chemical-intensive farming"
+                        ],
+                        correct: 1,
+                        explanation: "Carver was ahead of his time in environmental thinking. He advocated for sustainable practices, composting, waste reduction, and working with nature rather than against it—core environmental principles."
+                    },
+                    {
+                        question: "What modern movement aligns with Carver's agricultural philosophy?",
+                        answers: [
+                            "Industrial agriculture",
+                            "Organic and regenerative agriculture",
+                            "Genetic engineering",
+                            "Monoculture farming"
+                        ],
+                        correct: 1,
+                        explanation: "Carver's approach—crop rotation, composting, soil health, biodiversity—aligns perfectly with organic and regenerative agriculture. Modern sustainable farming continues his legacy."
+                    },
+                    {
+                        question: "How is Carver remembered in the scientific community?",
+                        answers: [
+                            "As a folk hero but not a real scientist",
+                            "As a pioneer in agricultural chemistry and crop science",
+                            "Only for his art",
+                            "As someone who worked on peanuts and nothing else"
+                        ],
+                        correct: 1,
+                        explanation: "Carver is recognized as a pioneering agricultural chemist and botanist. His research methods, teaching, and practical applications of science make him a significant figure in American scientific history."
+                    },
+                    {
+                        question: "What lesson from Carver's life remains most relevant today?",
+                        answers: [
+                            "Science should only serve wealthy clients",
+                            "Innovation can come from resourcefulness and observing nature",
+                            "Formal education is unnecessary",
+                            "Stick to one narrow specialty"
+                        ],
+                        correct: 1,
+                        explanation: "Carver's resourcefulness—building a lab from scraps, finding solutions in nature, making science accessible to all—shows that innovation comes from curiosity, observation, and applying knowledge to help others."
+                    }
+                ]
+            },
+            quick: {
+                title: "Quick Challenge",
+                questions: [
+                    {
+                        question: "Where did George Washington Carver work for 47 years?",
+                        answers: ["Iowa State University", "Tuskegee Institute", "Cornell University", "Harvard University"],
+                        correct: 1,
+                        explanation: "Carver worked at Tuskegee Institute in Alabama from 1896 to 1943, dedicating his life to teaching and helping Southern farmers."
+                    },
+                    {
+                        question: "What crop did Carver promote to replace cotton?",
+                        answers: ["Peanuts and sweet potatoes", "Wheat", "Soybeans only", "Tobacco"],
+                        correct: 0,
+                        explanation: "Carver promoted peanuts, sweet potatoes, cowpeas, and other crops to rotate with cotton, improving soil health and diversifying farm income."
+                    },
+                    {
+                        question: "How many products did Carver create from peanuts?",
+                        answers: ["50+", "100+", "200+", "300+"],
+                        correct: 3,
+                        explanation: "Carver developed over 300 products from peanuts, demonstrating their versatility and commercial potential to create market demand."
+                    },
+                    {
+                        question: "Did Carver patent most of his inventions?",
+                        answers: ["Yes, all of them", "No, only 3 patents", "Yes, over 50 patents", "No, patents didn't exist then"],
+                        correct: 1,
+                        explanation: "Carver held only 3 patents his entire career, believing his discoveries should freely benefit humanity rather than enrich him personally."
+                    },
+                    {
+                        question: "What honor was Carver the first Black American to receive?",
+                        answers: [
+                            "Nobel Prize",
+                            "A national monument dedicated in his honor",
+                            "Presidential Medal of Freedom",
+                            "Honorary doctorate"
+                        ],
+                        correct: 1,
+                        explanation: "The George Washington Carver National Monument (1943) was the first national monument to honor a Black American and a non-president."
+                    }
+                ]
+            },
+            expert: {
+                title: "Expert Challenge Quiz",
+                questions: [
+                    {
+                        question: "What was the name of George Washington Carver's mother?",
+                        answers: ["Mary", "Susan", "Elizabeth", "Sarah"],
+                        correct: 0,
+                        explanation: "Carver's mother was Mary, enslaved by Moses and Susan Carver. She was kidnapped by raiders when George was an infant and never recovered."
+                    },
+                    {
+                        question: "What specific mycology (fungus) research did Carver conduct at Iowa State?",
+                        answers: [
+                            "Mushroom cultivation",
+                            "Plant diseases and fungal infections",
+                            "Mold for medicine",
+                            "Yeast fermentation"
+                        ],
+                        correct: 1,
+                        explanation: "Carver's master's thesis focused on plant fungal diseases. His mycological collection and research on plant pathology was recognized nationally and contributed to Iowa State's herbarium."
+                    },
+                    {
+                        question: "Which famous industrialist besides Edison tried to hire Carver?",
+                        answers: ["Henry Ford", "John D. Rockefeller", "Andrew Carnegie", "J.P. Morgan"],
+                        correct: 0,
+                        explanation: "Henry Ford and Carver became close friends. Ford tried to hire Carver for automotive research and later funded the George Washington Carver Museum at Tuskegee."
+                    },
+                    {
+                        question: "What year did Carver testify before Congress?",
+                        answers: ["1916", "1921", "1925", "1930"],
+                        correct: 1,
+                        explanation: "In 1921, Carver testified before the House Ways and Means Committee about peanut tariffs. His presentation was so impressive his 10-minute slot extended to nearly 2 hours."
+                    },
+                    {
+                        question: "What artistic medium was Carver particularly skilled in?",
+                        answers: ["Oil painting", "Sculpture", "Botanical watercolors", "Photography"],
+                        correct: 2,
+                        explanation: "Carver created detailed botanical watercolors and drawings. His art was exhibited and won prizes. He studied art at Simpson College before transferring to Iowa State for agriculture."
+                    },
+                    {
+                        question: "What was Bulletin #31?",
+                        answers: [
+                            "'How to Grow the Peanut and 105 Ways of Preparing it'",
+                            "'Sweet Potato Products'",
+                            "'Saving the Soil'",
+                            "'Crop Rotation Methods'"
+                        ],
+                        correct: 0,
+                        explanation: "Bulletin #31, published in 1916, was titled 'How to Grow the Peanut and 105 Ways of Preparing it for Human Consumption.' It became one of Carver's most famous and requested publications."
+                    },
+                    {
+                        question: "How many total bulletins did the Tuskegee Experiment Station publish under Carver's direction?",
+                        answers: ["22", "44", "56", "70"],
+                        correct: 1,
+                        explanation: "Carver published 44 practical bulletins covering everything from crop selection to cooking recipes. These free publications reached thousands of farmers across the South."
+                    },
+                    {
+                        question: "What disease did Carver develop a peanut oil treatment for?",
+                        answers: ["Tuberculosis", "Polio", "Malaria", "Influenza"],
+                        correct: 1,
+                        explanation: "Carver developed a peanut oil massage treatment for polio patients and received many testimonials about improved muscle function, though rigorous scientific proof was limited."
+                    },
+                    {
+                        question: "What crop did Carver believe could replace rubber during WWI shortages?",
+                        answers: ["Peanuts", "Sweet potatoes", "Milkweed", "Soybeans"],
+                        correct: 2,
+                        explanation: "Carver experimented with milkweed as a rubber substitute during WWI when natural rubber supplies were threatened. He also researched goldenrod for rubber with Henry Ford."
+                    },
+                    {
+                        question: "What honor society inducted Carver as a member—a rare recognition for any scientist, especially a Black scientist in the early 1900s?",
+                        answers: [
+                            "Phi Beta Kappa",
+                            "The Royal Society of London",
+                            "The Royal Society of Arts (London)",
+                            "American Academy of Sciences"
+                        ],
+                        correct: 2,
+                        explanation: "In 1916, Carver was made a fellow of the Royal Society of Arts in London—an extraordinary honor that recognized his international scientific impact."
+                    },
+                    {
+                        question: "What was the cause of George Washington Carver's death?",
+                        answers: [
+                            "Heart disease",
+                            "Complications from a fall down stairs",
+                            "Pneumonia",
+                            "Old age/natural causes"
+                        ],
+                        correct: 1,
+                        explanation: "Carver died January 5, 1943, from complications after falling down stairs at his home on the Tuskegee campus. He was 78 years old and had continued working until shortly before his death."
+                    },
+                    {
+                        question: "What symbolic item did Carver often wear in his lapel?",
+                        answers: ["A peanut pin", "A fresh flower", "An American flag pin", "Nothing special"],
+                        correct: 1,
+                        explanation: "Carver famously wore a fresh flower in his lapel daily, usually picked during his morning nature walks. This reflected his deep love of plants and nature, which inspired all his work."
+                    }
+                ]
+            }
+        };
+
+        // Quiz state
+        let currentQuiz = null;
+        let currentQuestionIndex = 0;
+        let score = 0;
+        let quizStartTime = null;
+        let selectedAnswer = null;
+        let completedQuizzes = JSON.parse(localStorage.getItem('completedQuizzes') || '[]');
+
+        // Mark completed quizzes
+        function updateCompletedQuizzes() {
+            completedQuizzes.forEach(quizId => {
+                const card = document.querySelector(`[data-quiz="${quizId}"]`);
+                if (card) card.classList.add('completed');
+            });
+        }
+
+        // Start quiz
+        function startQuiz(quizId) {
+            currentQuiz = quizData[quizId];
+            currentQuestionIndex = 0;
+            score = 0;
+            selectedAnswer = null;
+            quizStartTime = Date.now();
+
+            document.getElementById('quizSelection').style.display = 'none';
+            document.getElementById('quizContainer').classList.add('active');
+            document.getElementById('quizTitle').textContent = currentQuiz.title;
+            document.getElementById('resultsScreen').classList.remove('show');
+
+            loadQuestion();
+        }
+
+        // Load question
+        function loadQuestion() {
+            const question = currentQuiz.questions[currentQuestionIndex];
+            const totalQuestions = currentQuiz.questions.length;
+
+            document.getElementById('questionNumber').textContent = `Question ${currentQuestionIndex + 1} of ${totalQuestions}`;
+            document.getElementById('progressText').textContent = `Question ${currentQuestionIndex + 1} of ${totalQuestions}`;
+            document.getElementById('scoreText').textContent = `Score: ${score}`;
+            document.getElementById('questionText').textContent = question.question;
+
+            // Update progress bar
+            const progress = ((currentQuestionIndex) / totalQuestions) * 100;
+            document.getElementById('progressFill').style.width = `${progress}%`;
+
+            // Load answers
+            const answersGrid = document.getElementById('answersGrid');
+            answersGrid.innerHTML = '';
+
+            question.answers.forEach((answer, index) => {
+                const div = document.createElement('div');
+                div.className = 'answer-option';
+                div.textContent = answer;
+                div.onclick = () => selectAnswer(index);
+                answersGrid.appendChild(div);
+            });
+
+            // Reset feedback
+            document.getElementById('feedbackBox').classList.remove('show', 'correct', 'incorrect');
+            document.getElementById('nextBtn').disabled = true;
+            selectedAnswer = null;
+        }
+
+        // Select answer
+        function selectAnswer(index) {
+            if (selectedAnswer !== null) return; // Already answered
+
+            selectedAnswer = index;
+            const question = currentQuiz.questions[currentQuestionIndex];
+            const options = document.querySelectorAll('.answer-option');
+
+            // Disable all options
+            options.forEach(opt => opt.classList.add('disabled'));
+
+            // Mark correct answer
+            options[question.correct].classList.add('correct');
+
+            // Mark selected if incorrect
+            if (selectedAnswer !== question.correct) {
+                options[selectedAnswer].classList.add('incorrect');
+            } else {
+                options[selectedAnswer].classList.add('selected');
+                score++;
+                document.getElementById('scoreText').textContent = `Score: ${score}`;
+            }
+
+            // Show feedback
+            const feedbackBox = document.getElementById('feedbackBox');
+            const isCorrect = selectedAnswer === question.correct;
+
+            feedbackBox.className = 'feedback-box show ' + (isCorrect ? 'correct' : 'incorrect');
+            document.getElementById('feedbackTitle').textContent = isCorrect ? '✓ Correct!' : '✗ Incorrect';
+            document.getElementById('feedbackText').textContent = question.explanation;
+
+            // Enable next button
+            document.getElementById('nextBtn').disabled = false;
+        }
+
+        // Next question
+        function nextQuestion() {
+            currentQuestionIndex++;
+
+            if (currentQuestionIndex < currentQuiz.questions.length) {
+                loadQuestion();
+            } else {
+                showResults();
+            }
+        }
+
+        // Show results
+        function showResults() {
+            const totalQuestions = currentQuiz.questions.length;
+            const percentage = Math.round((score / totalQuestions) * 100);
+            const elapsedTime = Math.floor((Date.now() - quizStartTime) / 1000);
+            const minutes = Math.floor(elapsedTime / 60);
+            const seconds = elapsedTime % 60;
+
+            // Hide question card
+            document.querySelector('.question-card').style.display = 'none';
+            document.querySelector('.quiz-actions').style.display = 'none';
+
+            // Show results
+            document.getElementById('resultsScreen').classList.add('show');
+            document.getElementById('finalScore').textContent = `${percentage}%`;
+            document.getElementById('statCorrect').textContent = score;
+            document.getElementById('statIncorrect').textContent = totalQuestions - score;
+            document.getElementById('statPercentage').textContent = `${percentage}%`;
+            document.getElementById('statTime').textContent = `${minutes}:${seconds.toString().padStart(2, '0')}`;
+
+            // Results message
+            let message = '';
+            if (percentage === 100) {
+                message = '🎉 Perfect Score! Outstanding!';
+            } else if (percentage >= 80) {
+                message = '🌟 Excellent Work!';
+            } else if (percentage >= 60) {
+                message = '👍 Good Job!';
+            } else {
+                message = '📚 Keep Learning!';
+            }
+            document.getElementById('resultsMessage').textContent = message;
+
+            // Save completion
+            const quizId = Object.keys(quizData).find(key => quizData[key] === currentQuiz);
+            if (!completedQuizzes.includes(quizId)) {
+                completedQuizzes.push(quizId);
+                localStorage.setItem('completedQuizzes', JSON.stringify(completedQuizzes));
+            }
+
+            // Update progress bar to 100%
+            document.getElementById('progressFill').style.width = '100%';
+        }
+
+        // Retry quiz
+        function retryQuiz() {
+            document.querySelector('.question-card').style.display = 'block';
+            document.querySelector('.quiz-actions').style.display = 'flex';
+            document.getElementById('resultsScreen').classList.remove('show');
+
+            currentQuestionIndex = 0;
+            score = 0;
+            selectedAnswer = null;
+            quizStartTime = Date.now();
+
+            loadQuestion();
+        }
+
+        // Exit quiz
+        function exitQuiz() {
+            document.getElementById('quizSelection').style.display = 'grid';
+            document.getElementById('quizContainer').classList.remove('active');
+            document.querySelector('.question-card').style.display = 'block';
+            document.querySelector('.quiz-actions').style.display = 'flex';
+            updateCompletedQuizzes();
+        }
+
+        // Initialize
+        updateCompletedQuizzes();
+    </script>
+</body>
+</html>

@@ -1,0 +1,1058 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Complete lesson plan library for teaching George Washington Carver across K-12 grade levels. Includes detailed procedures, materials, assessments, and standards alignment.">
+    <meta name="keywords" content="George Washington Carver lesson plans, agriculture education, STEM lessons, Black History Month, science lesson plans, K-12 curriculum">
+    <meta name="author" content="George Washington Carver Life Educational Team">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <meta property="og:title" content="Teacher Lesson Plans - George Washington Carver">
+    <meta property="og:description" content="Ready-to-use lesson plans for K-12 teachers covering science, agriculture, history, and more.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://georgewashingtoncarverlife.com/educators/lesson-plans.html">
+    <link rel="canonical" href="https://georgewashingtoncarverlife.com/educators/lesson-plans.html">
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+    <link rel="manifest" href="../manifest.json">
+    <title>Teacher Lesson Plans | George Washington Carver Educational Resources</title>
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "EducationalOccupationalResource",
+        "name": "George Washington Carver Lesson Plans",
+        "description": "Comprehensive lesson plan library for teaching George Washington Carver across all grade levels",
+        "educationalLevel": ["Elementary", "Middle School", "High School"],
+        "educationalUse": ["Lesson Plan", "Classroom Activity", "Assessment"],
+        "learningResourceType": ["Lesson Plan", "Activity", "Assessment Tool"],
+        "teaches": [
+            "Agricultural Science",
+            "Chemistry",
+            "Biography",
+            "Scientific Method",
+            "Environmental Science",
+            "African American History"
+        ],
+        "audience": {
+            "@type": "EducationalAudience",
+            "educationalRole": "teacher"
+        },
+        "isAccessibleForFree": true,
+        "inLanguage": "en-US"
+    }
+    </script>
+
+    <style>
+        .lesson-filters {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--space-3);
+            margin-bottom: var(--space-6);
+            padding: var(--space-4);
+            background: var(--color-bg-secondary);
+            border-radius: var(--radius-lg);
+        }
+
+        .filter-group {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-2);
+        }
+
+        .filter-group label {
+            font-weight: var(--font-weight-semibold);
+            font-size: var(--font-size-sm);
+            color: var(--color-text-secondary);
+        }
+
+        .filter-group select {
+            padding: var(--space-2) var(--space-3);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-md);
+            background: var(--color-bg-primary);
+            color: var(--color-text-primary);
+            font-family: var(--font-family-sans);
+            font-size: var(--font-size-base);
+            cursor: pointer;
+        }
+
+        .lesson-card {
+            background: var(--color-bg-primary);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-lg);
+            padding: var(--space-5);
+            margin-bottom: var(--space-4);
+            box-shadow: var(--shadow-sm);
+            transition: all var(--transition-base);
+        }
+
+        .lesson-card:hover {
+            box-shadow: var(--shadow-md);
+            transform: translateY(-2px);
+        }
+
+        .lesson-card.hidden {
+            display: none;
+        }
+
+        .lesson-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            gap: var(--space-4);
+            margin-bottom: var(--space-4);
+        }
+
+        .lesson-title {
+            font-size: var(--font-size-xl);
+            font-weight: var(--font-weight-bold);
+            color: var(--color-primary);
+            margin-bottom: var(--space-2);
+        }
+
+        .lesson-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--space-3);
+            font-size: var(--font-size-sm);
+            color: var(--color-text-secondary);
+        }
+
+        .meta-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-1);
+            padding: var(--space-1) var(--space-2);
+            background: var(--color-bg-secondary);
+            border-radius: var(--radius-full);
+            font-weight: var(--font-weight-medium);
+        }
+
+        .meta-tag.grade { background: #e3f2fd; color: #1565c0; }
+        .meta-tag.duration { background: #f3e5f5; color: #6a1b9a; }
+        .meta-tag.subject { background: #e8f5e9; color: #2e7d32; }
+
+        [data-theme="dark"] .meta-tag.grade { background: #1565c0; color: #e3f2fd; }
+        [data-theme="dark"] .meta-tag.duration { background: #6a1b9a; color: #f3e5f5; }
+        [data-theme="dark"] .meta-tag.subject { background: #2e7d32; color: #e8f5e9; }
+
+        .lesson-content {
+            display: none;
+        }
+
+        .lesson-content.expanded {
+            display: block;
+        }
+
+        .expand-btn {
+            padding: var(--space-2) var(--space-4);
+            background: var(--color-secondary);
+            color: white;
+            border: none;
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            font-family: var(--font-family-sans);
+            font-weight: var(--font-weight-semibold);
+            transition: all var(--transition-base);
+        }
+
+        .expand-btn:hover {
+            background: var(--color-primary);
+            transform: scale(1.05);
+        }
+
+        .lesson-section {
+            margin-top: var(--space-4);
+            padding-top: var(--space-4);
+            border-top: 1px solid var(--color-border);
+        }
+
+        .lesson-section h3 {
+            font-size: var(--font-size-lg);
+            font-weight: var(--font-weight-bold);
+            color: var(--color-secondary);
+            margin-bottom: var(--space-3);
+        }
+
+        .materials-list, .standards-list, .procedure-list {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .materials-list li, .standards-list li {
+            padding: var(--space-2) 0;
+            padding-left: var(--space-6);
+            position: relative;
+        }
+
+        .materials-list li::before {
+            content: "✓";
+            position: absolute;
+            left: var(--space-3);
+            color: var(--color-secondary);
+            font-weight: bold;
+        }
+
+        .procedure-list {
+            counter-reset: step-counter;
+        }
+
+        .procedure-list li {
+            counter-increment: step-counter;
+            padding: var(--space-3);
+            margin-bottom: var(--space-3);
+            padding-left: var(--space-8);
+            position: relative;
+            background: var(--color-bg-secondary);
+            border-radius: var(--radius-md);
+        }
+
+        .procedure-list li::before {
+            content: counter(step-counter);
+            position: absolute;
+            left: var(--space-3);
+            top: var(--space-3);
+            width: 28px;
+            height: 28px;
+            background: var(--color-secondary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: var(--font-size-sm);
+        }
+
+        .assessment-box {
+            background: #fff3e0;
+            border-left: 4px solid #f57c00;
+            padding: var(--space-4);
+            border-radius: var(--radius-md);
+            margin-top: var(--space-3);
+        }
+
+        [data-theme="dark"] .assessment-box {
+            background: #4a2800;
+            border-left-color: #ff9800;
+        }
+
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-2);
+            padding: var(--space-2) var(--space-4);
+            background: var(--color-primary);
+            color: white;
+            text-decoration: none;
+            border-radius: var(--radius-md);
+            font-weight: var(--font-weight-semibold);
+            transition: all var(--transition-base);
+            margin-top: var(--space-3);
+        }
+
+        .download-btn:hover {
+            background: var(--color-secondary);
+            transform: translateX(5px);
+        }
+
+        @media print {
+            .lesson-filters,
+            .expand-btn,
+            .download-btn,
+            nav {
+                display: none;
+            }
+
+            .lesson-content {
+                display: block !important;
+            }
+
+            .lesson-card {
+                page-break-inside: avoid;
+                border: 1px solid #000;
+                margin-bottom: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <button id="darkModeToggle" class="dark-mode-toggle" aria-label="Toggle dark mode">
+        <span class="dark-mode-icon">🌙</span>
+    </button>
+
+    <nav class="main-nav" role="navigation" aria-label="Main navigation">
+        <div class="nav-container">
+            <a href="../index.html" class="nav-logo">GWC Life</a>
+            <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu">
+                <span class="hamburger"></span>
+                <span class="sr-only">Menu</span>
+            </button>
+            <ul id="nav-menu" class="nav-menu">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../learn/scientific-method.html">Learn</a></li>
+                <li><a href="activities.html" class="active">Educators</a></li>
+                <li><a href="../interactive/experiments.html">Interactive</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main id="main-content">
+        <header class="page-header">
+            <div class="header-content">
+                <h1>Teacher Lesson Plans</h1>
+                <p class="lead">Ready-to-use lesson plans aligned with educational standards for K-12 classrooms</p>
+            </div>
+        </header>
+
+        <section class="content-section">
+            <div class="container">
+                <div class="lesson-filters">
+                    <div class="filter-group">
+                        <label for="gradeFilter">Grade Level</label>
+                        <select id="gradeFilter">
+                            <option value="all">All Grades</option>
+                            <option value="elementary">Elementary (K-5)</option>
+                            <option value="middle">Middle School (6-8)</option>
+                            <option value="high">High School (9-12)</option>
+                        </select>
+                    </div>
+
+                    <div class="filter-group">
+                        <label for="subjectFilter">Subject</label>
+                        <select id="subjectFilter">
+                            <option value="all">All Subjects</option>
+                            <option value="science">Science</option>
+                            <option value="history">Social Studies</option>
+                            <option value="language">Language Arts</option>
+                            <option value="math">Mathematics</option>
+                            <option value="art">Art</option>
+                        </select>
+                    </div>
+
+                    <div class="filter-group">
+                        <label for="durationFilter">Duration</label>
+                        <select id="durationFilter">
+                            <option value="all">Any Length</option>
+                            <option value="single">Single Period (45-60 min)</option>
+                            <option value="multi">Multi-Period (2-3 days)</option>
+                            <option value="unit">Unit (1-2 weeks)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Lesson Plan 1: Peanut Science -->
+                <article class="lesson-card" data-grade="elementary" data-subject="science" data-duration="single">
+                    <div class="lesson-header">
+                        <div>
+                            <h2 class="lesson-title">The Amazing Peanut: Structure and Function</h2>
+                            <div class="lesson-meta">
+                                <span class="meta-tag grade">Grades 3-5</span>
+                                <span class="meta-tag duration">60 minutes</span>
+                                <span class="meta-tag subject">Science</span>
+                            </div>
+                        </div>
+                        <button class="expand-btn" onclick="toggleLesson(this)">View Details</button>
+                    </div>
+
+                    <p><strong>Overview:</strong> Students explore peanut anatomy and George Washington Carver's discoveries about legume nitrogen fixation through hands-on dissection and observation.</p>
+
+                    <div class="lesson-content">
+                        <div class="lesson-section">
+                            <h3>Learning Objectives</h3>
+                            <ul>
+                                <li>Identify and describe the parts of a peanut plant and seed</li>
+                                <li>Explain how peanuts fix nitrogen in soil</li>
+                                <li>Understand Carver's contribution to agricultural science</li>
+                                <li>Practice scientific observation and documentation skills</li>
+                            </ul>
+                        </div>
+
+                        <div class="lesson-section">
+                            <h3>Materials Needed</h3>
+                            <ul class="materials-list">
+                                <li>Raw peanuts in shells (5-6 per student)</li>
+                                <li>Hand lenses or magnifying glasses</li>
+                                <li>Paper towels</li>
+                                <li>Science journals or observation sheets</li>
+                                <li>Colored pencils</li>
+                                <li>Peanut plant diagram (provided)</li>
+                                <li>Allergy alert list (CRITICAL - check for peanut allergies)</li>
+                            </ul>
+                        </div>
+
+                        <div class="lesson-section">
+                            <h3>Procedure</h3>
+                            <ol class="procedure-list">
+                                <li><strong>Introduction (10 min):</strong> Share brief biography of George Washington Carver. Show images of peanut plants. Discuss why Carver encouraged farmers to plant peanuts. Check allergy list!</li>
+                                <li><strong>Guided Exploration (15 min):</strong> Distribute peanuts. Guide students to observe shell texture, color, ridges. Have students carefully open shell and count seeds inside. Draw observations.</li>
+                                <li><strong>Dissection (20 min):</strong> Remove papery seed coat. Identify embryo, cotyledons (food storage). Use hand lens to observe detail. Label diagram with parts.</li>
+                                <li><strong>Nitrogen Fixation Demo (10 min):</strong> Show root nodule images. Explain symbiotic relationship with Rhizobium bacteria. Connect to Carver's crop rotation recommendations.</li>
+                                <li><strong>Wrap-Up & Assessment (5 min):</strong> Students share one discovery. Quick exit ticket: "Why did Carver think peanuts were important for soil health?"</li>
+                            </ol>
+                        </div>
+
+                        <div class="lesson-section">
+                            <h3>Standards Alignment</h3>
+                            <ul class="standards-list">
+                                <li><strong>NGSS 3-LS1-1:</strong> Develop models to describe that organisms have unique and diverse life cycles</li>
+                                <li><strong>NGSS 5-LS2-1:</strong> Develop a model to describe the movement of matter among plants, animals, decomposers, and the environment</li>
+                                <li><strong>Common Core ELA W.4.7:</strong> Conduct short research projects that build knowledge through investigation</li>
+                            </ul>
+                        </div>
+
+                        <div class="assessment-box">
+                            <h3>Assessment</h3>
+                            <p><strong>Formative:</strong> Observation sheet completion, verbal responses during discussion</p>
+                            <p><strong>Summative:</strong> Exit ticket - Students explain in writing why peanuts improve soil</p>
+                            <p><strong>Extension:</strong> Plant peanut seeds in classroom and observe germination over 2 weeks</p>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Lesson Plan 2: Agricultural Innovation -->
+                <article class="lesson-card" data-grade="middle" data-subject="science" data-duration="multi">
+                    <div class="lesson-header">
+                        <div>
+                            <h2 class="lesson-title">Crop Rotation Revolution: Carver's Scientific Method</h2>
+                            <div class="lesson-meta">
+                                <span class="meta-tag grade">Grades 6-8</span>
+                                <span class="meta-tag duration">3 class periods</span>
+                                <span class="meta-tag subject">Science</span>
+                            </div>
+                        </div>
+                        <button class="expand-btn" onclick="toggleLesson(this)">View Details</button>
+                    </div>
+
+                    <p><strong>Overview:</strong> Students investigate the science behind crop rotation and design their own experimental agricultural system using Carver's scientific method.</p>
+
+                    <div class="lesson-content">
+                        <div class="lesson-section">
+                            <h3>Learning Objectives</h3>
+                            <ul>
+                                <li>Explain the scientific principles behind crop rotation</li>
+                                <li>Apply the scientific method to agricultural problems</li>
+                                <li>Analyze soil nutrient data and make predictions</li>
+                                <li>Evaluate Carver's impact on sustainable agriculture</li>
+                            </ul>
+                        </div>
+
+                        <div class="lesson-section">
+                            <h3>Materials Needed</h3>
+                            <ul class="materials-list">
+                                <li>Soil testing kits (nitrogen, phosphorus, potassium)</li>
+                                <li>Four plant pots per group</li>
+                                <li>Potting soil</li>
+                                <li>Seeds: clover, radishes, beans</li>
+                                <li>Graph paper and rulers</li>
+                                <li>Digital tablets or computers for research</li>
+                                <li>Carver's agricultural bulletins (excerpts)</li>
+                            </ul>
+                        </div>
+
+                        <div class="lesson-section">
+                            <h3>Day 1: Problem & Hypothesis (50 min)</h3>
+                            <ol class="procedure-list">
+                                <li><strong>Hook (10 min):</strong> Present historical scenario - "It's 1896. Cotton has depleted Southern soil. You're a farmer. What do you do?" Students brainstorm solutions.</li>
+                                <li><strong>Historical Context (15 min):</strong> Read excerpts from Carver's Bulletin #31 on crop rotation. Discuss his experimental approach and findings.</li>
+                                <li><strong>Scientific Method Review (10 min):</strong> Review steps: question, hypothesis, experiment, analysis, conclusion. Show how Carver applied this.</li>
+                                <li><strong>Group Work (15 min):</strong> Student groups develop research question about plant effects on soil. Write hypothesis. Design 4-week experiment comparing crops.</li>
+                            </ol>
+                        </div>
+
+                        <div class="lesson-section">
+                            <h3>Day 2: Experimentation (50 min)</h3>
+                            <ol class="procedure-list">
+                                <li><strong>Setup (20 min):</strong> Groups test baseline soil nutrients in all four pots. Record data in lab notebooks. Plant different seeds in three pots, leave one as control.</li>
+                                <li><strong>Data Tables (15 min):</strong> Create observation tables for 4-week period. Include columns for plant height, leaf count, soil moisture, visual observations.</li>
+                                <li><strong>Variables Discussion (15 min):</strong> Identify independent variable (crop type), dependent variables (soil nutrients, plant growth), constants (water, light, temperature).</li>
+                            </ol>
+                        </div>
+
+                        <div class="lesson-section">
+                            <h3>Day 3: Analysis & Application (50 min)</h3>
+                            <ol class="procedure-list">
+                                <li><strong>Data Analysis (20 min):</strong> After 4 weeks, retest soil. Compare to baseline. Graph nutrient changes. Which crops depleted nitrogen? Which added it?</li>
+                                <li><strong>Conclusions (15 min):</strong> Groups present findings. Did results support hypothesis? What would happen if crops were rotated year to year?</li>
+                                <li><strong>Modern Application (15 min):</strong> Research current sustainable farming practices. How is Carver's work still relevant? Discuss organic farming, permaculture, regenerative agriculture.</li>
+                            </ol>
+                        </div>
+
+                        <div class="lesson-section">
+                            <h3>Standards Alignment</h3>
+                            <ul class="standards-list">
+                                <li><strong>NGSS MS-LS2-1:</strong> Analyze and interpret data to provide evidence for effects of resource availability on organisms</li>
+                                <li><strong>NGSS MS-ETS1-4:</strong> Develop a model to generate data for iterative testing and modification</li>
+                                <li><strong>Common Core Math 6.SP.B.5:</strong> Summarize numerical data sets in relation to their context</li>
+                            </ul>
+                        </div>
+
+                        <div class="assessment-box">
+                            <h3>Assessment</h3>
+                            <p><strong>Formative:</strong> Lab notebook entries, group discussion participation, hypothesis quality</p>
+                            <p><strong>Summative:</strong> Written lab report following scientific method format (5 pages max)</p>
+                            <p><strong>Rubric Criteria:</strong> Clear hypothesis (20%), detailed procedure (20%), accurate data (20%), thoughtful analysis (20%), connection to Carver's work (20%)</p>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Lesson Plan 3: Biography & Resilience -->
+                <article class="lesson-card" data-grade="elementary" data-subject="history" data-duration="single">
+                    <div class="lesson-header">
+                        <div>
+                            <h2 class="lesson-title">Overcoming Obstacles: George Washington Carver's Journey</h2>
+                            <div class="lesson-meta">
+                                <span class="meta-tag grade">Grades 2-4</span>
+                                <span class="meta-tag duration">45 minutes</span>
+                                <span class="meta-tag subject">Social Studies</span>
+                            </div>
+                        </div>
+                        <button class="expand-btn" onclick="toggleLesson(this)">View Details</button>
+                    </div>
+
+                    <p><strong>Overview:</strong> Students explore George Washington Carver's life story, focusing on resilience, perseverance, and overcoming challenges to achieve dreams.</p>
+
+                    <div class="lesson-content">
+                        <div class="lesson-section">
+                            <h3>Learning Objectives</h3>
+                            <ul>
+                                <li>Describe key events in George Washington Carver's life</li>
+                                <li>Identify obstacles Carver faced and how he overcame them</li>
+                                <li>Connect Carver's character traits to personal goal-setting</li>
+                                <li>Practice empathy and perspective-taking</li>
+                            </ul>
+                        </div>
+
+                        <div class="lesson-section">
+                            <h3>Materials Needed</h3>
+                            <ul class="materials-list">
+                                <li>Picture book: "A Weed Is a Flower" by Aliki (or similar biography)</li>
+                                <li>Timeline template (printable)</li>
+                                <li>Chart paper and markers</li>
+                                <li>Index cards (5 per student)</li>
+                                <li>Crayons or colored pencils</li>
+                                <li>Map of United States (showing Missouri, Iowa, Kansas, Alabama)</li>
+                            </ul>
+                        </div>
+
+                        <div class="lesson-section">
+                            <h3>Procedure</h3>
+                            <ol class="procedure-list">
+                                <li><strong>Introduction (5 min):</strong> Ask: "Have you ever worked really hard for something? What happened?" Share that today we'll learn about someone who never gave up on his dreams despite many challenges.</li>
+                                <li><strong>Read-Aloud (15 min):</strong> Read biography. Pause at key moments (kidnapping, seeking education, college rejection, Tuskegee) to discuss feelings and choices.</li>
+                                <li><strong>Timeline Activity (15 min):</strong> On chart paper, create class timeline of Carver's life. Students contribute events. Identify obstacles with red stars, achievements with gold stars.</li>
+                                <li><strong>Character Traits (7 min):</strong> Brainstorm words describing Carver (curious, persistent, kind, creative). Students choose their favorite trait and explain why it's important.</li>
+                                <li><strong>Connection (3 min):</strong> Students share one goal they have and one challenge they might face. How can they be like Carver?</li>
+                            </ol>
+                        </div>
+
+                        <div class="lesson-section">
+                            <h3>Standards Alignment</h3>
+                            <ul class="standards-list">
+                                <li><strong>C3 Framework D2.His.2.3-5:</strong> Compare life in specific historical time periods to life today</li>
+                                <li><strong>Common Core ELA RI.3.3:</strong> Describe relationship between historical events, scientific ideas, or steps in procedures</li>
+                                <li><strong>SEL Competency:</strong> Self-management and goal-setting</li>
+                            </ul>
+                        </div>
+
+                        <div class="assessment-box">
+                            <h3>Assessment</h3>
+                            <p><strong>Formative:</strong> Observation during discussion, timeline participation</p>
+                            <p><strong>Summative:</strong> "My Hero" writing - Students draw picture of Carver and write 3-5 sentences about why he's a hero and what they learned from him</p>
+                            <p><strong>Differentiation:</strong> Provide sentence frames for ELL students: "George Washington Carver was _____. He overcame _____ by _____. I can be like him by _____."</p>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Lesson Plan 4: Chemistry & Innovation -->
+                <article class="lesson-card" data-grade="high" data-subject="science" data-duration="multi">
+                    <div class="lesson-header">
+                        <div>
+                            <h2 class="lesson-title">From Peanuts to Products: Chemistry of Innovation</h2>
+                            <div class="lesson-meta">
+                                <span class="meta-tag grade">Grades 9-12</span>
+                                <span class="meta-tag duration">5 class periods</span>
+                                <span class="meta-tag subject">Chemistry</span>
+                            </div>
+                        </div>
+                        <button class="expand-btn" onclick="toggleLesson(this)">View Details</button>
+                    </div>
+
+                    <p><strong>Overview:</strong> Advanced chemistry unit examining George Washington Carver's extraction and synthesis techniques to create 300+ peanut products. Students perform actual extractions.</p>
+
+                    <div class="lesson-content">
+                        <div class="lesson-section">
+                            <h3>Learning Objectives</h3>
+                            <ul>
+                                <li>Explain chemical extraction and distillation processes</li>
+                                <li>Perform oil extraction from plant materials using organic solvents</li>
+                                <li>Analyze protein, lipid, and carbohydrate content of peanuts</li>
+                                <li>Synthesize biodiesel or soap from peanut oil</li>
+                                <li>Evaluate Carver's contributions to industrial chemistry</li>
+                            </ul>
+                        </div>
+
+                        <div class="lesson-section">
+                            <h3>Materials Needed (Per Lab Group)</h3>
+                            <ul class="materials-list">
+                                <li>Raw peanuts (unsalted, 100g)</li>
+                                <li>Mortar and pestle or food processor</li>
+                                <li>Ethanol (95%, 200mL) - SAFETY: Flammable</li>
+                                <li>Separatory funnel</li>
+                                <li>Beakers (250mL, 500mL)</li>
+                                <li>Hot plate with temperature control</li>
+                                <li>Thermometer</li>
+                                <li>Filter paper and funnel</li>
+                                <li>Test tubes and rack</li>
+                                <li>Sudan III stain (lipid test)</li>
+                                <li>Biuret reagent (protein test)</li>
+                                <li>Benedict's solution (reducing sugar test)</li>
+                                <li>Safety goggles, gloves, lab coats</li>
+                                <li>Fume hood access</li>
+                            </ul>
+                        </div>
+
+                        <div class="lesson-section">
+                            <h3>Day 1: Historical Context & Chemical Composition</h3>
+                            <ol class="procedure-list">
+                                <li><strong>Hook (10 min):</strong> Display 20 different items. Reveal all can be made from peanuts. Challenge: "How is this possible?" Introduce Carver's work at Tuskegee.</li>
+                                <li><strong>Primary Source Analysis (20 min):</strong> Read excerpts from Carver's "How to Grow the Peanut and 105 Ways of Preparing it for Human Consumption" (1916). Identify scientific language and methodology.</li>
+                                <li><strong>Macromolecule Review (20 min):</strong> Review proteins, lipids, carbohydrates. Discuss functional groups. Predict what biomolecules peanuts contain and why that matters for product development.</li>
+                            </ol>
+                        </div>
+
+                        <div class="lesson-section">
+                            <h3>Day 2-3: Oil Extraction Lab</h3>
+                            <ol class="procedure-list">
+                                <li><strong>Safety Briefing (10 min):</strong> Review Material Safety Data Sheets for ethanol. Emphasize fume hood use, no open flames, proper PPE. Demonstrate emergency procedures.</li>
+                                <li><strong>Procedure (Day 2 - 30 min):</strong> Grind peanuts to powder. Add 150mL ethanol. Heat gently (50-60°C) in fume hood for 20 minutes, stirring. Cool. Filter through coffee filter. Collect filtrate.</li>
+                                <li><strong>Evaporation (Day 2 - 10 min):</strong> Pour filtrate into evaporating dish. Place in fume hood overnight to allow ethanol to evaporate, leaving peanut oil.</li>
+                                <li><strong>Yield Analysis (Day 3 - 20 min):</strong> Measure mass of extracted oil. Calculate percent yield. Compare to published values (40-50% oil content). Discuss factors affecting yield.</li>
+                                <li><strong>Characterization (Day 3 - 30 min):</strong> Test oil with Sudan III (should stain red). Measure density. Perform saponification test (add NaOH, heat - should form soap).</li>
+                            </ol>
+                        </div>
+
+                        <div class="lesson-section">
+                            <h3>Day 4: Biochemical Analysis</h3>
+                            <ol class="procedure-list">
+                                <li><strong>Sample Preparation (10 min):</strong> Create peanut extract by grinding fresh peanuts with water. Filter to obtain liquid extract.</li>
+                                <li><strong>Protein Test (15 min):</strong> Add Biuret reagent to extract. Positive result = purple color. Peanuts are ~25% protein.</li>
+                                <li><strong>Lipid Test (15 min):</strong> Add Sudan III to oil sample. Positive result = red/orange staining.</li>
+                                <li><strong>Carbohydrate Test (15 min):</strong> Add Benedict's solution to extract. Heat. Positive result = brick red precipitate. Peanuts contain ~15% carbs.</li>
+                                <li><strong>Data Compilation (5 min):</strong> Create table of biochemical composition. Compare to USDA nutritional data.</li>
+                            </ol>
+                        </div>
+
+                        <div class="lesson-section">
+                            <h3>Day 5: Product Synthesis & Presentation</h3>
+                            <ol class="procedure-list">
+                                <li><strong>Product Development (30 min):</strong> Groups choose one Carver product to synthesize (soap, biodiesel, or peanut butter). Follow provided protocols. Document process with photos.</li>
+                                <li><strong>Quality Testing (10 min):</strong> Test product properties. Soap: pH test, lather test. Peanut butter: spreadability, taste test (if safe). Biodiesel: combustion test.</li>
+                                <li><strong>Presentations (60 min, next class):</strong> Each group presents their synthesis process, yields, and reflections on Carver's methodology. Discuss scalability and industrial applications.</li>
+                            </ol>
+                        </div>
+
+                        <div class="lesson-section">
+                            <h3>Standards Alignment</h3>
+                            <ul class="standards-list">
+                                <li><strong>NGSS HS-PS1-3:</strong> Plan and conduct an investigation to gather evidence to compare properties of substances</li>
+                                <li><strong>NGSS HS-PS1-6:</strong> Refine design of a chemical system by specifying a change in conditions</li>
+                                <li><strong>NGSS HS-ETS1-2:</strong> Design a solution to a complex problem by breaking it down into smaller, more manageable problems</li>
+                                <li><strong>AP Chemistry:</strong> Separation and purification techniques, percent yield calculations, organic chemistry functional groups</li>
+                            </ul>
+                        </div>
+
+                        <div class="assessment-box">
+                            <h3>Assessment</h3>
+                            <p><strong>Lab Report (40%):</strong> Formal write-up including introduction, hypothesis, detailed procedure, data tables, calculations, error analysis, conclusion</p>
+                            <p><strong>Practical Skills (30%):</strong> Observation of lab technique, safety compliance, teamwork, equipment use</p>
+                            <p><strong>Presentation (20%):</strong> Clarity, scientific accuracy, connection to Carver's work, visual aids</p>
+                            <p><strong>Reflection Essay (10%):</strong> 2 pages analyzing how Carver's resourcefulness and innovation can inform modern sustainable chemistry and green chemistry principles</p>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Lesson Plan 5: Literacy & Primary Sources -->
+                <article class="lesson-card" data-grade="middle" data-subject="language" data-duration="multi">
+                    <div class="lesson-header">
+                        <div>
+                            <h2 class="lesson-title">Reading Like a Historian: Carver's Agricultural Bulletins</h2>
+                            <div class="lesson-meta">
+                                <span class="meta-tag grade">Grades 6-8</span>
+                                <span class="meta-tag duration">4 class periods</span>
+                                <span class="meta-tag subject">Language Arts</span>
+                            </div>
+                        </div>
+                        <button class="expand-btn" onclick="toggleLesson(this)">View Details</button>
+                    </div>
+
+                    <p><strong>Overview:</strong> Students analyze primary source documents from George Washington Carver, practicing close reading, sourcing, contextualization, and corroboration.</p>
+
+                    <div class="lesson-content">
+                        <div class="lesson-section">
+                            <h3>Learning Objectives</h3>
+                            <ul>
+                                <li>Analyze primary source documents for purpose, audience, and bias</li>
+                                <li>Identify main ideas and supporting details in technical writing</li>
+                                <li>Compare writing styles for different audiences</li>
+                                <li>Synthesize information from multiple sources</li>
+                                <li>Produce informational writing based on research</li>
+                            </ul>
+                        </div>
+
+                        <div class="lesson-section">
+                            <h3>Materials Needed</h3>
+                            <ul class="materials-list">
+                                <li>Primary source packet (4 documents per student)</li>
+                                <li>Document analysis worksheets</li>
+                                <li>Highlighters (3 colors per student)</li>
+                                <li>Chart paper for gallery walk</li>
+                                <li>Digital access for online archives</li>
+                            </ul>
+
+                            <p><strong>Primary Sources (all available online):</strong></p>
+                            <ul class="materials-list">
+                                <li>Bulletin #31: "How to Grow the Peanut" (1916)</li>
+                                <li>Bulletin #43: "Twelve Ways to Meet the New Economic Conditions Here in the South" (1917)</li>
+                                <li>Letter to Booker T. Washington (1896)</li>
+                                <li>Congressional testimony (1921)</li>
+                            </ul>
+                        </div>
+
+                        <div class="lesson-section">
+                            <h3>Procedure</h3>
+                            <ol class="procedure-list">
+                                <li><strong>Day 1 - Introduction to Primary Sources (50 min):</strong> Teach difference between primary/secondary sources. Model document analysis using Bulletin #31 excerpt. Practice SOAPS (Speaker, Occasion, Audience, Purpose, Subject) framework together.</li>
+                                <li><strong>Day 2 - Close Reading (50 min):</strong> Students read Bulletin #43 independently. Highlight: yellow (main ideas), green (evidence/examples), pink (unfamiliar vocabulary). Complete analysis worksheet answering: What problem is Carver addressing? Who is his audience? What solutions does he propose?</li>
+                                <li><strong>Day 3 - Comparison & Context (50 min):</strong> Read Carver's letter to Washington and Congressional testimony. Compare tone, formality, and purpose. Discuss historical context: Why did Carver write so many bulletins? Why was his Congressional testimony significant for Black scientists in 1921?</li>
+                                <li><strong>Day 4 - Synthesis Essay (50 min):</strong> Students write 2-page essay: "How did George Washington Carver use writing to promote agricultural and economic change?" Must cite at least 3 primary sources with proper attribution.</li>
+                            </ol>
+                        </div>
+
+                        <div class="lesson-section">
+                            <h3>Standards Alignment</h3>
+                            <ul class="standards-list">
+                                <li><strong>Common Core ELA RI.7.1:</strong> Cite textual evidence to support analysis</li>
+                                <li><strong>Common Core ELA RI.7.6:</strong> Determine author's point of view and purpose</li>
+                                <li><strong>Common Core ELA W.7.2:</strong> Write informative/explanatory texts</li>
+                                <li><strong>Common Core ELA RH.6-8.9:</strong> Analyze relationship between primary and secondary source on same topic</li>
+                            </ul>
+                        </div>
+
+                        <div class="assessment-box">
+                            <h3>Assessment</h3>
+                            <p><strong>Formative:</strong> Document analysis worksheets, class discussion participation, SOAPS graphic organizers</p>
+                            <p><strong>Summative:</strong> Synthesis essay with rubric evaluating: thesis statement (20%), use of evidence (30%), analysis of author's purpose (25%), organization (15%), conventions (10%)</p>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Lesson Plan 6: Economics & Social Studies -->
+                <article class="lesson-card" data-grade="high" data-subject="history" data-duration="unit">
+                    <div class="lesson-header">
+                        <div>
+                            <h2 class="lesson-title">Economic Impact: Carver & the New South</h2>
+                            <div class="lesson-meta">
+                                <span class="meta-tag grade">Grades 10-12</span>
+                                <span class="meta-tag duration">2 weeks</span>
+                                <span class="meta-tag subject">Social Studies</span>
+                            </div>
+                        </div>
+                        <button class="expand-btn" onclick="toggleLesson(this)">View Details</button>
+                    </div>
+
+                    <p><strong>Overview:</strong> Comprehensive unit examining George Washington Carver's economic impact on the post-Reconstruction South, crop diversification, and Black economic empowerment.</p>
+
+                    <div class="lesson-content">
+                        <div class="lesson-section">
+                            <h3>Unit Essential Questions</h3>
+                            <ul>
+                                <li>How did the cotton economy affect Southern poverty and soil degradation?</li>
+                                <li>What was Carver's economic vision for Black farmers?</li>
+                                <li>How did scientific innovation drive economic change?</li>
+                                <li>What barriers prevented widespread adoption of Carver's methods?</li>
+                            </ul>
+                        </div>
+
+                        <div class="lesson-section">
+                            <h3>Week 1: Historical Context & Economic Analysis</h3>
+                            <p><strong>Day 1-2:</strong> Post-Reconstruction South economy. Sharecropping system. Cotton dependence. Analyze primary sources: sharecropping contracts, farmer debt records, soil depletion reports.</p>
+                            <p><strong>Day 3-4:</strong> Introduction to Carver at Tuskegee Institute. His agricultural bulletins as economic intervention. Close reading: Bulletin #43 economic recommendations. Calculate potential profit differences between cotton monoculture vs. crop rotation.</p>
+                            <p><strong>Day 5:</strong> Guest speaker (virtual or in-person): Agricultural economist or historian specializing in Southern agriculture.</p>
+                        </div>
+
+                        <div class="lesson-section">
+                            <h3>Week 2: Impact & Legacy</h3>
+                            <p><strong>Day 6-7:</strong> Peanut industry growth 1900-1950. Analyze economic data: Alabama peanut production graphs, price trends, farmer income changes. Carver's Congressional testimony impact on tariffs.</p>
+                            <p><strong>Day 8:</strong> Jesup Wagon and agricultural extension work. Discuss technology transfer and educational outreach as economic development strategy.</p>
+                            <p><strong>Day 9-10:</strong> Student research projects: Compare Carver's approach to other economic uplift strategies (Booker T. Washington's industrial education, W.E.B. Du Bois's Talented Tenth, cooperative economics). Final presentations.</p>
+                        </div>
+
+                        <div class="lesson-section">
+                            <h3>Standards Alignment</h3>
+                            <ul class="standards-list">
+                                <li><strong>C3 Framework D2.Eco.1.9-12:</strong> Analyze how incentives influence choices</li>
+                                <li><strong>C3 Framework D2.His.14.9-12:</strong> Analyze multiple and complex causes of events</li>
+                                <li><strong>AP US History:</strong> Period 6 (1865-1898) industrialization and Period 7 (1890-1945) economic changes</li>
+                            </ul>
+                        </div>
+
+                        <div class="assessment-box">
+                            <h3>Assessment</h3>
+                            <p><strong>Research Paper (40%):</strong> 5-7 pages analyzing Carver's economic impact with minimum 8 academic sources</p>
+                            <p><strong>Data Analysis Project (30%):</strong> Create infographic visualizing economic trends using historical data</p>
+                            <p><strong>Presentation (20%):</strong> 8-minute comparison of economic uplift strategies</p>
+                            <p><strong>Participation (10%):</strong> Discussion contributions, peer feedback, collaborative activities</p>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Lesson Plan 7: Art Integration -->
+                <article class="lesson-card" data-grade="elementary" data-subject="art" data-duration="single">
+                    <div class="lesson-header">
+                        <div>
+                            <h2 class="lesson-title">Nature's Paintbrush: Carver's Art & Science</h2>
+                            <div class="lesson-meta">
+                                <span class="meta-tag grade">Grades K-2</span>
+                                <span class="meta-tag duration">45 minutes</span>
+                                <span class="meta-tag subject">Art</span>
+                            </div>
+                        </div>
+                        <button class="expand-btn" onclick="toggleLesson(this)">View Details</button>
+                    </div>
+
+                    <p><strong>Overview:</strong> Students create natural dyes and paints from plants, learning about George Washington Carver's artistic side while exploring color and nature.</p>
+
+                    <div class="lesson-content">
+                        <div class="lesson-section">
+                            <h3>Learning Objectives</h3>
+                            <ul>
+                                <li>Discover that George Washington Carver was both scientist and artist</li>
+                                <li>Create natural colors from plant materials</li>
+                                <li>Practice observational drawing of nature</li>
+                                <li>Explore connection between art and science</li>
+                            </ul>
+                        </div>
+
+                        <div class="lesson-section">
+                            <h3>Materials Needed</h3>
+                            <ul class="materials-list">
+                                <li>Fresh spinach leaves</li>
+                                <li>Beets (chopped)</li>
+                                <li>Turmeric powder</li>
+                                <li>Blueberries</li>
+                                <li>Small bowls for each color</li>
+                                <li>Water</li>
+                                <li>Cotton swabs or small brushes</li>
+                                <li>Watercolor paper or cardstock</li>
+                                <li>Smocks or old shirts</li>
+                                <li>Images of Carver's plant artwork</li>
+                            </ul>
+                        </div>
+
+                        <div class="lesson-section">
+                            <h3>Procedure</h3>
+                            <ol class="procedure-list">
+                                <li><strong>Introduction (5 min):</strong> Show Carver's botanical drawings. "Dr. Carver loved painting plants! He made his own paints from nature. We're going to make paints too!"</li>
+                                <li><strong>Demonstration (10 min):</strong> Teacher creates natural "paints" by mashing spinach with water (green), beet juice (pink/red), turmeric in water (yellow), crushed blueberries (purple). Students observe color changes.</li>
+                                <li><strong>Exploration (5 min):</strong> Each table tests their natural paints on paper. Notice how colors are different from store-bought paint. Some might be lighter or darker.</li>
+                                <li><strong>Nature Drawing (20 min):</strong> Students paint pictures of plants, flowers, or vegetables using natural paints. Encourage observation: "Look closely at how leaves have lines called veins. Dr. Carver noticed tiny details in plants."</li>
+                                <li><strong>Gallery Walk (5 min):</strong> Display artwork. Students share what they painted and which natural paint was their favorite.</li>
+                            </ol>
+                        </div>
+
+                        <div class="lesson-section">
+                            <h3>Standards Alignment</h3>
+                            <ul class="standards-list">
+                                <li><strong>National Core Arts VA:Cr1.2.K:</strong> Use observation and investigation in preparation for making artwork</li>
+                                <li><strong>National Core Arts VA:Cr2.1.1:</strong> Explore uses of materials and tools to create works of art</li>
+                                <li><strong>NGSS K-LS1-1:</strong> Use observations to describe patterns of what plants need to survive</li>
+                            </ul>
+                        </div>
+
+                        <div class="assessment-box">
+                            <h3>Assessment</h3>
+                            <p><strong>Observation:</strong> Student engagement, willingness to experiment, ability to observe nature details</p>
+                            <p><strong>Art Portfolio:</strong> Save artwork with date and brief note about natural materials used</p>
+                            <p><strong>Verbal Share:</strong> Students explain one thing they learned about Carver or natural paints</p>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Lesson Plan 8: Math Integration -->
+                <article class="lesson-card" data-grade="middle" data-subject="math" data-duration="single">
+                    <div class="lesson-header">
+                        <div>
+                            <h2 class="lesson-title">Agricultural Math: Profit, Loss & Crop Planning</h2>
+                            <div class="lesson-meta">
+                                <span class="meta-tag grade">Grades 6-8</span>
+                                <span class="meta-tag duration">60 minutes</span>
+                                <span class="meta-tag subject">Mathematics</span>
+                            </div>
+                        </div>
+                        <button class="expand-btn" onclick="toggleLesson(this)">View Details</button>
+                    </div>
+
+                    <p><strong>Overview:</strong> Students use proportional reasoning, percentages, and multi-step word problems to analyze agricultural economics based on Carver's crop rotation recommendations.</p>
+
+                    <div class="lesson-content">
+                        <div class="lesson-section">
+                            <h3>Learning Objectives</h3>
+                            <ul>
+                                <li>Calculate profit and loss for different crop scenarios</li>
+                                <li>Use percentages to analyze yield changes</li>
+                                <li>Apply ratios and proportions to land allocation</li>
+                                <li>Create and interpret data visualizations</li>
+                                <li>Make evidence-based recommendations using mathematical reasoning</li>
+                            </ul>
+                        </div>
+
+                        <div class="lesson-section">
+                            <h3>Procedure</h3>
+                            <ol class="procedure-list">
+                                <li><strong>Scenario Introduction (10 min):</strong> Present problem: "You own 100 acres in Alabama in 1915. Cotton prices are low. Dr. Carver suggests trying peanuts and sweet potatoes. What should you plant to maximize profit?"</li>
+                                <li><strong>Data Provided:</strong>
+                                    <ul>
+                                        <li>Cotton: $150/acre revenue, $100/acre costs, 30% soil depletion per year</li>
+                                        <li>Peanuts: $200/acre revenue, $80/acre costs, +15% soil improvement</li>
+                                        <li>Sweet Potatoes: $180/acre revenue, $70/acre costs, +10% soil improvement</li>
+                                    </ul>
+                                </li>
+                                <li><strong>Guided Practice (20 min):</strong> Work through Year 1 calculations together. Calculate profit for all cotton (100 acres). Then calculate profit for 50 acres cotton, 25 acres peanuts, 25 acres sweet potatoes. Which is more profitable?</li>
+                                <li><strong>Independent Work (20 min):</strong> Students design 5-year crop rotation plan. Create table showing: acres of each crop per year, revenue, costs, profit. Account for soil health effects on yield. Use spreadsheet or graph paper.</li>
+                                <li><strong>Presentations (10 min):</strong> Groups share their rotation plans and explain mathematical reasoning. Which plan generates most profit over 5 years? How does soil health affect long-term planning?</li>
+                            </ol>
+                        </div>
+
+                        <div class="lesson-section">
+                            <h3>Standards Alignment</h3>
+                            <ul class="standards-list">
+                                <li><strong>Common Core Math 7.RP.A.3:</strong> Use proportional relationships to solve multi-step ratio and percent problems</li>
+                                <li><strong>Common Core Math 7.EE.B.3:</strong> Solve multi-step real-life mathematical problems</li>
+                                <li><strong>Common Core Math 6.SP.B.4:</strong> Display numerical data in plots and analyze patterns</li>
+                            </ul>
+                        </div>
+
+                        <div class="assessment-box">
+                            <h3>Assessment</h3>
+                            <p><strong>Calculation Accuracy (40%):</strong> Correct arithmetic, proper use of percentages and proportions</p>
+                            <p><strong>5-Year Plan (40%):</strong> Complete table, logical crop choices, consideration of soil health</p>
+                            <p><strong>Explanation (20%):</strong> Clear written justification of plan using mathematical evidence</p>
+                        </div>
+                    </div>
+                </article>
+
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Educational Resources</h3>
+                <ul>
+                    <li><a href="../learn/scientific-method.html">Scientific Method</a></li>
+                    <li><a href="../learn/agriculture.html">Agriculture</a></li>
+                    <li><a href="../learn/early-life.html">Biography</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>For Educators</h3>
+                <ul>
+                    <li><a href="lesson-plans.html">Lesson Plans</a></li>
+                    <li><a href="activities.html">Classroom Activities</a></li>
+                    <li><a href="curriculum.html">Curriculum Integration</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Interactive</h3>
+                <ul>
+                    <li><a href="../interactive/experiments.html">Science Experiments</a></li>
+                    <li><a href="../interactive/crop-rotation.html">Crop Rotation Game</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>About This Site</h3>
+                <p>Educational resource dedicated to George Washington Carver's life, work, and enduring legacy.</p>
+                <p class="footer-meta">Last updated: 2025 | Free educational use</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../shared.js"></script>
+    <script>
+        // Filter system
+        function filterLessons() {
+            const gradeFilter = document.getElementById('gradeFilter').value;
+            const subjectFilter = document.getElementById('subjectFilter').value;
+            const durationFilter = document.getElementById('durationFilter').value;
+
+            const lessons = document.querySelectorAll('.lesson-card');
+
+            lessons.forEach(lesson => {
+                const gradeMatch = gradeFilter === 'all' || lesson.dataset.grade === gradeFilter;
+                const subjectMatch = subjectFilter === 'all' || lesson.dataset.subject === subjectFilter;
+                const durationMatch = durationFilter === 'all' || lesson.dataset.duration === durationFilter;
+
+                if (gradeMatch && subjectMatch && durationMatch) {
+                    lesson.classList.remove('hidden');
+                } else {
+                    lesson.classList.add('hidden');
+                }
+            });
+
+            // Show count
+            const visibleCount = document.querySelectorAll('.lesson-card:not(.hidden)').length;
+            console.log(`Showing ${visibleCount} lesson plans`);
+        }
+
+        // Add event listeners
+        document.getElementById('gradeFilter').addEventListener('change', filterLessons);
+        document.getElementById('subjectFilter').addEventListener('change', filterLessons);
+        document.getElementById('durationFilter').addEventListener('change', filterLessons);
+
+        // Toggle lesson details
+        function toggleLesson(button) {
+            const card = button.closest('.lesson-card');
+            const content = card.querySelector('.lesson-content');
+
+            if (content.classList.contains('expanded')) {
+                content.classList.remove('expanded');
+                button.textContent = 'View Details';
+            } else {
+                content.classList.add('expanded');
+                button.textContent = 'Hide Details';
+
+                // Scroll to content smoothly
+                setTimeout(() => {
+                    content.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                }, 100);
+            }
+        }
+
+        // Print functionality
+        function printLesson(lessonId) {
+            const lesson = document.getElementById(lessonId);
+            const content = lesson.querySelector('.lesson-content');
+            content.classList.add('expanded');
+            window.print();
+        }
+
+        // Track which lessons teachers view
+        const viewedLessons = new Set();
+
+        document.querySelectorAll('.expand-btn').forEach((btn, index) => {
+            btn.addEventListener('click', () => {
+                const lessonTitle = btn.closest('.lesson-card').querySelector('.lesson-title').textContent;
+                if (!viewedLessons.has(lessonTitle)) {
+                    viewedLessons.add(lessonTitle);
+                    console.log('Lesson viewed:', lessonTitle);
+                }
+            });
+        });
+    </script>
+</body>
+</html>

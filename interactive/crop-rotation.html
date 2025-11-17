@@ -1,0 +1,1331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carver's Crop Rotation Game - Interactive Farm Simulation</title>
+    <meta name="description" content="Learn George Washington Carver's revolutionary crop rotation methods through an interactive farm simulation game">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        .game-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            color: white;
+            margin-bottom: 30px;
+            animation: fadeIn 1s ease-in;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .subtitle {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+
+        .game-layout {
+            display: grid;
+            grid-template-columns: 250px 1fr 300px;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        @media (max-width: 1200px) {
+            .game-layout {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .panel {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .panel h2 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+            border-bottom: 2px solid #667eea;
+            padding-bottom: 10px;
+        }
+
+        /* Crop Palette */
+        .crop-palette {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .crop-item {
+            padding: 15px;
+            border-radius: 10px;
+            cursor: grab;
+            transition: all 0.3s ease;
+            border: 3px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .crop-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .crop-item:active {
+            cursor: grabbing;
+        }
+
+        .crop-item.cotton {
+            background: linear-gradient(135deg, #f0f0f0 0%, #e0e0e0 100%);
+            border-color: #999;
+        }
+
+        .crop-item.peanuts {
+            background: linear-gradient(135deg, #d4a574 0%, #b8944d 100%);
+            border-color: #8b6914;
+        }
+
+        .crop-item.sweet-potatoes {
+            background: linear-gradient(135deg, #ff9966 0%, #ff6b35 100%);
+            border-color: #cc4400;
+        }
+
+        .crop-item.soybeans {
+            background: linear-gradient(135deg, #90ee90 0%, #66cc66 100%);
+            border-color: #228b22;
+        }
+
+        .crop-item.cowpeas {
+            background: linear-gradient(135deg, #dda15e 0%, #bc6c25 100%);
+            border-color: #8b4513;
+        }
+
+        .crop-name {
+            font-weight: bold;
+            font-size: 1.1em;
+            margin-bottom: 5px;
+        }
+
+        .crop-info {
+            font-size: 0.85em;
+            opacity: 0.8;
+        }
+
+        /* Farm Grid */
+        .farm-section {
+            position: relative;
+        }
+
+        .year-display {
+            text-align: center;
+            font-size: 2em;
+            font-weight: bold;
+            color: #667eea;
+            margin-bottom: 15px;
+            animation: pulse 2s infinite;
+        }
+
+        .farm-grid {
+            display: grid;
+            grid-template-columns: repeat(10, 1fr);
+            gap: 4px;
+            background: #f0f0f0;
+            padding: 10px;
+            border-radius: 10px;
+            aspect-ratio: 1;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .farm-plot {
+            aspect-ratio: 1;
+            border: 2px solid #ccc;
+            border-radius: 5px;
+            background: #8b7355;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7em;
+            font-weight: bold;
+        }
+
+        .farm-plot:hover {
+            transform: scale(1.05);
+            z-index: 10;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+        }
+
+        .farm-plot.soil-excellent {
+            background: #2d5016;
+            border-color: #1a3009;
+        }
+
+        .farm-plot.soil-good {
+            background: #4a7c2d;
+            border-color: #355921;
+        }
+
+        .farm-plot.soil-fair {
+            background: #8b7355;
+            border-color: #6b5635;
+        }
+
+        .farm-plot.soil-poor {
+            background: #b8936f;
+            border-color: #987654;
+        }
+
+        .farm-plot.soil-depleted {
+            background: #d4c4b0;
+            border-color: #b8a490;
+        }
+
+        /* Stats Panel */
+        .stats-grid {
+            display: grid;
+            gap: 15px;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, #f5f7fa 0%, #e3e8ed 100%);
+            padding: 15px;
+            border-radius: 10px;
+            border-left: 4px solid #667eea;
+        }
+
+        .stat-label {
+            font-size: 0.9em;
+            color: #666;
+            margin-bottom: 5px;
+        }
+
+        .stat-value {
+            font-size: 1.8em;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .stat-value.positive {
+            color: #22c55e;
+        }
+
+        .stat-value.negative {
+            color: #ef4444;
+        }
+
+        .controls {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 12px 20px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-secondary {
+            background: #6b7280;
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background: #4b5563;
+        }
+
+        .btn-success {
+            background: #22c55e;
+            color: white;
+            grid-column: 1 / -1;
+        }
+
+        .btn-success:hover {
+            background: #16a34a;
+        }
+
+        .btn-success:disabled {
+            background: #9ca3af;
+            cursor: not-allowed;
+        }
+
+        /* Soil Health Legend */
+        .soil-legend {
+            display: grid;
+            gap: 8px;
+            margin-top: 15px;
+            font-size: 0.85em;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .legend-color {
+            width: 30px;
+            height: 20px;
+            border-radius: 4px;
+            border: 2px solid #333;
+        }
+
+        /* Tutorial Overlay */
+        .tutorial-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.9);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .tutorial-content {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            max-width: 600px;
+            max-height: 80vh;
+            overflow-y: auto;
+            position: relative;
+        }
+
+        .tutorial-content h2 {
+            color: #667eea;
+            margin-bottom: 20px;
+        }
+
+        .tutorial-step {
+            margin-bottom: 20px;
+            padding: 15px;
+            background: #f5f7fa;
+            border-radius: 10px;
+            border-left: 4px solid #667eea;
+        }
+
+        .tutorial-step h3 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .tutorial-buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        /* Modal */
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 999;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            max-width: 500px;
+            text-align: center;
+        }
+
+        .modal-content h2 {
+            color: #667eea;
+            margin-bottom: 20px;
+            font-size: 2em;
+        }
+
+        .score-display {
+            font-size: 3em;
+            font-weight: bold;
+            color: #22c55e;
+            margin: 20px 0;
+        }
+
+        .historical-comparison {
+            background: #f5f7fa;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            text-align: left;
+        }
+
+        /* Tooltip */
+        .tooltip {
+            position: absolute;
+            background: rgba(0,0,0,0.9);
+            color: white;
+            padding: 10px 15px;
+            border-radius: 8px;
+            font-size: 0.9em;
+            pointer-events: none;
+            z-index: 100;
+            max-width: 250px;
+            display: none;
+            animation: fadeIn 0.2s ease;
+        }
+
+        .tooltip.show {
+            display: block;
+        }
+
+        /* Feedback Messages */
+        .feedback {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 15px 25px;
+            border-radius: 10px;
+            font-weight: bold;
+            animation: slideInRight 0.5s ease, fadeOut 0.5s ease 2.5s;
+            z-index: 500;
+        }
+
+        .feedback.success {
+            background: #22c55e;
+            color: white;
+        }
+
+        .feedback.error {
+            background: #ef4444;
+            color: white;
+        }
+
+        .feedback.warning {
+            background: #f59e0b;
+            color: white;
+        }
+
+        .feedback.info {
+            background: #3b82f6;
+            color: white;
+        }
+
+        /* Tips Section */
+        .tips-section {
+            background: #fef3c7;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 15px;
+            border-left: 4px solid #f59e0b;
+        }
+
+        .tips-section h3 {
+            color: #92400e;
+            margin-bottom: 10px;
+            font-size: 1em;
+        }
+
+        .tips-section ul {
+            margin-left: 20px;
+            color: #92400e;
+        }
+
+        .tips-section li {
+            margin-bottom: 5px;
+            font-size: 0.9em;
+        }
+
+        /* High Score */
+        .high-score {
+            background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            margin-top: 15px;
+        }
+
+        .high-score-value {
+            font-size: 2em;
+            font-weight: bold;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideInRight {
+            from {
+                transform: translateX(400px);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeOut {
+            from { opacity: 1; }
+            to { opacity: 0; }
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+
+        @keyframes plantGrow {
+            0% {
+                transform: scale(0);
+                opacity: 0;
+            }
+            50% {
+                transform: scale(1.2);
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        .growing {
+            animation: plantGrow 0.5s ease;
+        }
+
+        /* Mode Selection */
+        .mode-selection {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .mode-card {
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 3px solid transparent;
+        }
+
+        .mode-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        .mode-card.tutorial {
+            background: linear-gradient(135deg, #60a5fa 0%, #3b82f6 100%);
+            color: white;
+        }
+
+        .mode-card.challenge {
+            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+            color: white;
+        }
+
+        .mode-card h3 {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        /* Educational Info Cards */
+        .info-cards {
+            display: grid;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .info-card {
+            background: #e0e7ff;
+            padding: 12px;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+            font-size: 0.85em;
+        }
+
+        .info-card strong {
+            color: #4338ca;
+        }
+
+        /* Progress Bar */
+        .progress-container {
+            margin-top: 15px;
+        }
+
+        .progress-label {
+            font-size: 0.9em;
+            color: #666;
+            margin-bottom: 5px;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 20px;
+            background: #e5e7eb;
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #22c55e 0%, #16a34a 100%);
+            transition: width 0.5s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 0.8em;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="game-container">
+        <header>
+            <h1>Carver's Crop Rotation Challenge</h1>
+            <p class="subtitle">Master sustainable farming through George Washington Carver's revolutionary methods</p>
+        </header>
+
+        <!-- Tutorial/Challenge Mode Selection -->
+        <div id="modeSelection" class="panel">
+            <h2>Choose Your Game Mode</h2>
+            <div class="mode-selection">
+                <div class="mode-card tutorial" onclick="startGame('tutorial')">
+                    <h3>Tutorial Mode</h3>
+                    <p>Learn the basics of crop rotation with guided instructions and helpful tips</p>
+                </div>
+                <div class="mode-card challenge" onclick="startGame('challenge')">
+                    <h3>Challenge Mode</h3>
+                    <p>Test your skills! Maximize profit while maintaining soil health over 10 years</p>
+                </div>
+            </div>
+            <div class="info-cards">
+                <div class="info-card">
+                    <strong>Historical Context:</strong> In the early 1900s, Dr. George Washington Carver revolutionized Southern agriculture by promoting crop rotation to combat soil depletion from continuous cotton farming.
+                </div>
+                <div class="info-card">
+                    <strong>The Problem:</strong> Cotton farming depleted soil nutrients, leaving farmers in poverty. The boll weevil infestation made matters worse.
+                </div>
+                <div class="info-card">
+                    <strong>Carver's Solution:</strong> Rotate crops to restore soil nitrogen, improve yields, and diversify income sources.
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Game Interface -->
+        <div id="gameInterface" class="hidden">
+            <div class="game-layout">
+                <!-- Left Panel: Crop Palette -->
+                <div class="panel">
+                    <h2>Crop Selection</h2>
+                    <div class="crop-palette">
+                        <div class="crop-item cotton" draggable="true" data-crop="cotton">
+                            <div class="crop-name">Cotton</div>
+                            <div class="crop-info">Depletes soil | High profit | Traditional crop</div>
+                        </div>
+                        <div class="crop-item peanuts" draggable="true" data-crop="peanuts">
+                            <div class="crop-name">Peanuts</div>
+                            <div class="crop-info">Fixes nitrogen | Moderate profit | Soil builder</div>
+                        </div>
+                        <div class="crop-item sweet-potatoes" draggable="true" data-crop="sweet-potatoes">
+                            <div class="crop-name">Sweet Potatoes</div>
+                            <div class="crop-info">Neutral soil | Good profit | Versatile crop</div>
+                        </div>
+                        <div class="crop-item soybeans" draggable="true" data-crop="soybeans">
+                            <div class="crop-name">Soybeans</div>
+                            <div class="crop-info">Fixes nitrogen | Moderate profit | Soil improver</div>
+                        </div>
+                        <div class="crop-item cowpeas" draggable="true" data-crop="cowpeas">
+                            <div class="crop-name">Cowpeas</div>
+                            <div class="crop-info">Fixes nitrogen | Low profit | Excellent soil builder</div>
+                        </div>
+                    </div>
+
+                    <div class="soil-legend">
+                        <h3>Soil Health Guide</h3>
+                        <div class="legend-item">
+                            <div class="legend-color" style="background: #2d5016;"></div>
+                            <span>Excellent (100%)</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-color" style="background: #4a7c2d;"></div>
+                            <span>Good (75%)</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-color" style="background: #8b7355;"></div>
+                            <span>Fair (50%)</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-color" style="background: #b8936f;"></div>
+                            <span>Poor (25%)</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-color" style="background: #d4c4b0;"></div>
+                            <span>Depleted (0%)</span>
+                        </div>
+                    </div>
+
+                    <div class="tips-section">
+                        <h3>Carver's Wisdom</h3>
+                        <ul id="currentTips">
+                            <li>Rotate crops to restore soil health</li>
+                            <li>Legumes fix nitrogen in the soil</li>
+                            <li>Plan for long-term sustainability</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Center: Farm Grid -->
+                <div class="panel farm-section">
+                    <div class="year-display">Year <span id="currentYear">1</span> of 10</div>
+                    <div class="farm-grid" id="farmGrid"></div>
+                    <div class="controls">
+                        <button class="btn-secondary" onclick="clearPlots()">Clear All</button>
+                        <button class="btn-secondary" onclick="showHelp()">Help</button>
+                        <button class="btn-success" id="advanceYearBtn" onclick="advanceYear()">Advance to Next Year</button>
+                    </div>
+                    <div class="progress-container">
+                        <div class="progress-label">Game Progress</div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="progressFill" style="width: 10%">10%</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Panel: Statistics -->
+                <div class="panel">
+                    <h2>Farm Statistics</h2>
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-label">Total Money</div>
+                            <div class="stat-value" id="totalMoney">$5,000</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-label">This Year's Profit</div>
+                            <div class="stat-value" id="yearProfit">$0</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-label">Average Soil Health</div>
+                            <div class="stat-value" id="avgSoilHealth">50%</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-label">Plots Planted</div>
+                            <div class="stat-value" id="plotsPlanted">0/100</div>
+                        </div>
+                    </div>
+
+                    <div class="high-score">
+                        <div>High Score</div>
+                        <div class="high-score-value" id="highScore">$0</div>
+                    </div>
+
+                    <div class="info-cards">
+                        <div class="info-card">
+                            <strong>Nitrogen Fixation:</strong> Legumes (peanuts, soybeans, cowpeas) have root nodules containing bacteria that convert atmospheric nitrogen into soil nutrients.
+                        </div>
+                        <div class="info-card">
+                            <strong>Boll Weevil Impact:</strong> In 1915, the boll weevil devastated Southern cotton crops, proving Carver's diversification strategy essential.
+                        </div>
+                        <div class="info-card">
+                            <strong>3-Year Rotation:</strong> Carver recommended: Year 1 - Legumes, Year 2 - Cotton, Year 3 - Sweet Potatoes/Other crops.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tutorial Overlay -->
+    <div id="tutorialOverlay" class="tutorial-overlay hidden">
+        <div class="tutorial-content">
+            <h2>Welcome to Carver's Crop Rotation Challenge!</h2>
+
+            <div class="tutorial-step">
+                <h3>Step 1: Understanding the Game</h3>
+                <p>You're managing a 100-plot farm over 10 years. Your goal is to maximize profit while maintaining healthy soil.</p>
+            </div>
+
+            <div class="tutorial-step">
+                <h3>Step 2: How to Plant Crops</h3>
+                <p>Drag crops from the left panel onto farm plots, or click a plot and then click a crop type.</p>
+            </div>
+
+            <div class="tutorial-step">
+                <h3>Step 3: Soil Health Matters</h3>
+                <p>Watch the plot colors change! Darker green = healthier soil = better yields. Cotton depletes soil, while legumes restore it.</p>
+            </div>
+
+            <div class="tutorial-step">
+                <h3>Step 4: The 3-Year Rotation</h3>
+                <p><strong>Carver's Method:</strong></p>
+                <ul>
+                    <li>Year 1: Plant legumes (peanuts, soybeans, cowpeas) to restore nitrogen</li>
+                    <li>Year 2: Plant cotton to profit from improved soil</li>
+                    <li>Year 3: Plant sweet potatoes or other crops</li>
+                    <li>Repeat the cycle!</li>
+                </ul>
+            </div>
+
+            <div class="tutorial-step">
+                <h3>Step 5: Economic Strategy</h3>
+                <p>Balance short-term profit with long-term sustainability. Depleted soil means lower yields and less profit!</p>
+            </div>
+
+            <div class="tutorial-buttons">
+                <button class="btn-primary" onclick="closeTutorial()">Start Playing!</button>
+                <button class="btn-secondary" onclick="closeTutorial()">Skip Tutorial</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tooltip -->
+    <div id="tooltip" class="tooltip"></div>
+
+    <script>
+        // Game State
+        const gameState = {
+            mode: null,
+            currentYear: 1,
+            totalMoney: 5000,
+            yearProfit: 0,
+            plots: [],
+            history: [],
+            highScore: localStorage.getItem('carverHighScore') || 0,
+            selectedCrop: null
+        };
+
+        // Crop Data
+        const cropData = {
+            cotton: {
+                name: 'Cotton',
+                soilImpact: -20,
+                baseProfit: 80,
+                plantingCost: 15,
+                nitrogenFixer: false,
+                description: 'Traditional cash crop, depletes soil nitrogen',
+                emoji: '🌾'
+            },
+            peanuts: {
+                name: 'Peanuts',
+                soilImpact: 25,
+                baseProfit: 50,
+                plantingCost: 12,
+                nitrogenFixer: true,
+                description: 'Fixes nitrogen, improves soil health',
+                emoji: '🥜'
+            },
+            'sweet-potatoes': {
+                name: 'Sweet Potatoes',
+                soilImpact: -5,
+                baseProfit: 60,
+                plantingCost: 10,
+                nitrogenFixer: false,
+                description: 'Versatile crop with minimal soil impact',
+                emoji: '🍠'
+            },
+            soybeans: {
+                name: 'Soybeans',
+                soilImpact: 20,
+                baseProfit: 55,
+                plantingCost: 13,
+                nitrogenFixer: true,
+                description: 'Nitrogen fixer, good rotation crop',
+                emoji: '🌱'
+            },
+            cowpeas: {
+                name: 'Cowpeas',
+                soilImpact: 30,
+                baseProfit: 40,
+                plantingCost: 8,
+                nitrogenFixer: true,
+                description: 'Excellent soil builder, lower profit',
+                emoji: '🫘'
+            }
+        };
+
+        // Tips by year
+        const tipsByYear = {
+            1: [
+                'Start with legumes to build soil health',
+                'Peanuts and cowpeas are great first crops',
+                'Healthy soil = better future yields'
+            ],
+            2: [
+                'Plant cotton on plots with good soil health',
+                'Continue building soil in depleted areas',
+                'Monitor your soil health colors'
+            ],
+            3: [
+                'Rotate away from cotton on depleted plots',
+                'Sweet potatoes are good transitional crops',
+                'Plan your 3-year rotation cycles'
+            ],
+            4: [
+                'Review which plots need soil restoration',
+                'Balance profit with sustainability',
+                'Avoid planting cotton on the same plot repeatedly'
+            ],
+            5: [
+                'You\'re halfway through! How\'s your strategy?',
+                'Diversify to reduce risk',
+                'Remember the boll weevil threat to cotton'
+            ],
+            default: [
+                'Follow Carver\'s 3-year rotation: Legumes → Cotton → Other',
+                'Never plant cotton two years in a row on same plot',
+                'Nitrogen fixers are your soil\'s best friend'
+            ]
+        };
+
+        // Initialize game
+        function initGame() {
+            createFarmGrid();
+            updateUI();
+            document.getElementById('highScore').textContent = '$' + formatNumber(gameState.highScore);
+        }
+
+        // Create farm grid (10x10)
+        function createFarmGrid() {
+            const grid = document.getElementById('farmGrid');
+            grid.innerHTML = '';
+            gameState.plots = [];
+
+            for (let i = 0; i < 100; i++) {
+                const plot = document.createElement('div');
+                plot.className = 'farm-plot soil-fair';
+                plot.dataset.index = i;
+
+                const plotData = {
+                    index: i,
+                    crop: null,
+                    soilHealth: 50,
+                    history: []
+                };
+
+                gameState.plots.push(plotData);
+
+                // Click to plant
+                plot.addEventListener('click', () => plantCropOnPlot(i));
+
+                // Drag and drop
+                plot.addEventListener('dragover', handleDragOver);
+                plot.addEventListener('drop', (e) => handleDrop(e, i));
+
+                // Hover tooltip
+                plot.addEventListener('mouseenter', (e) => showPlotTooltip(e, i));
+                plot.addEventListener('mouseleave', hideTooltip);
+
+                grid.appendChild(plot);
+            }
+
+            updatePlotVisuals();
+        }
+
+        // Drag and Drop handlers
+        document.addEventListener('DOMContentLoaded', () => {
+            const cropItems = document.querySelectorAll('.crop-item');
+            cropItems.forEach(item => {
+                item.addEventListener('dragstart', handleDragStart);
+                item.addEventListener('click', (e) => {
+                    gameState.selectedCrop = e.currentTarget.dataset.crop;
+                    // Visual feedback
+                    cropItems.forEach(c => c.style.borderColor = 'transparent');
+                    e.currentTarget.style.borderColor = '#667eea';
+                    showFeedback('Click a plot to plant ' + cropData[gameState.selectedCrop].name, 'info');
+                });
+            });
+        });
+
+        function handleDragStart(e) {
+            e.dataTransfer.effectAllowed = 'copy';
+            e.dataTransfer.setData('text/plain', e.target.dataset.crop);
+        }
+
+        function handleDragOver(e) {
+            e.preventDefault();
+            e.dataTransfer.dropEffect = 'copy';
+        }
+
+        function handleDrop(e, plotIndex) {
+            e.preventDefault();
+            const cropType = e.dataTransfer.getData('text/plain');
+            plantCrop(plotIndex, cropType);
+        }
+
+        // Plant crop on plot
+        function plantCropOnPlot(plotIndex) {
+            if (gameState.selectedCrop) {
+                plantCrop(plotIndex, gameState.selectedCrop);
+            }
+        }
+
+        function plantCrop(plotIndex, cropType) {
+            const plot = gameState.plots[plotIndex];
+            const crop = cropData[cropType];
+
+            // Check if can afford
+            if (gameState.totalMoney < crop.plantingCost) {
+                showFeedback('Not enough money to plant ' + crop.name + '!', 'error');
+                return;
+            }
+
+            // Plant the crop
+            plot.crop = cropType;
+            gameState.totalMoney -= crop.plantingCost;
+
+            // Visual feedback
+            const plotElement = document.querySelector(`[data-index="${plotIndex}"]`);
+            plotElement.classList.add('growing');
+            setTimeout(() => plotElement.classList.remove('growing'), 500);
+
+            updatePlotVisuals();
+            updateUI();
+            showFeedback(crop.name + ' planted!', 'success');
+        }
+
+        // Update plot visuals
+        function updatePlotVisuals() {
+            gameState.plots.forEach((plot, index) => {
+                const plotElement = document.querySelector(`[data-index="${index}"]`);
+
+                // Soil health classes
+                plotElement.className = 'farm-plot';
+                if (plot.soilHealth >= 85) plotElement.classList.add('soil-excellent');
+                else if (plot.soilHealth >= 65) plotElement.classList.add('soil-good');
+                else if (plot.soilHealth >= 40) plotElement.classList.add('soil-fair');
+                else if (plot.soilHealth >= 20) plotElement.classList.add('soil-poor');
+                else plotElement.classList.add('soil-depleted');
+
+                // Show crop emoji
+                if (plot.crop) {
+                    plotElement.textContent = cropData[plot.crop].emoji;
+                } else {
+                    plotElement.textContent = '';
+                }
+            });
+        }
+
+        // Advance to next year
+        function advanceYear() {
+            // Check if any plots planted
+            const plantedPlots = gameState.plots.filter(p => p.crop).length;
+            if (plantedPlots === 0) {
+                showFeedback('Plant some crops before advancing the year!', 'warning');
+                return;
+            }
+
+            // Calculate harvest
+            let yearRevenue = 0;
+            let yearExpenses = 0;
+
+            gameState.plots.forEach(plot => {
+                if (plot.crop) {
+                    const crop = cropData[plot.crop];
+
+                    // Calculate yield based on soil health
+                    const yieldMultiplier = plot.soilHealth / 100;
+                    const revenue = crop.baseProfit * yieldMultiplier;
+                    yearRevenue += revenue;
+
+                    // Update soil health
+                    const soilChange = crop.soilImpact;
+                    plot.soilHealth = Math.max(0, Math.min(100, plot.soilHealth + soilChange));
+
+                    // Record history
+                    plot.history.push({
+                        year: gameState.currentYear,
+                        crop: plot.crop,
+                        soilHealth: plot.soilHealth,
+                        revenue: revenue
+                    });
+
+                    // Clear crop for next year
+                    plot.crop = null;
+                }
+            });
+
+            // Calculate profit
+            gameState.yearProfit = Math.round(yearRevenue - yearExpenses);
+            gameState.totalMoney += gameState.yearProfit;
+
+            // Save history
+            gameState.history.push({
+                year: gameState.currentYear,
+                profit: gameState.yearProfit,
+                totalMoney: gameState.totalMoney,
+                avgSoilHealth: calculateAverageSoilHealth()
+            });
+
+            // Advance year
+            gameState.currentYear++;
+
+            // Update visuals
+            updatePlotVisuals();
+            updateUI();
+            updateTips();
+
+            // Show year summary
+            showYearSummary();
+
+            // Check if game over
+            if (gameState.currentYear > 10) {
+                endGame();
+                return;
+            }
+
+            // Check for bankruptcy
+            if (gameState.totalMoney < 0) {
+                showFeedback('You\'re in debt! Plant wisely to recover.', 'warning');
+            }
+        }
+
+        // Show year summary
+        function showYearSummary() {
+            const profit = gameState.yearProfit;
+            const message = profit >= 0
+                ? `Year ${gameState.currentYear - 1} Complete! Profit: $${formatNumber(profit)}`
+                : `Year ${gameState.currentYear - 1} Complete! Loss: $${formatNumber(Math.abs(profit))}`;
+
+            const type = profit >= 0 ? 'success' : 'error';
+            showFeedback(message, type);
+        }
+
+        // Calculate average soil health
+        function calculateAverageSoilHealth() {
+            const total = gameState.plots.reduce((sum, plot) => sum + plot.soilHealth, 0);
+            return Math.round(total / gameState.plots.length);
+        }
+
+        // Update UI
+        function updateUI() {
+            document.getElementById('currentYear').textContent = gameState.currentYear;
+            document.getElementById('totalMoney').textContent = '$' + formatNumber(gameState.totalMoney);
+            document.getElementById('totalMoney').className = 'stat-value ' +
+                (gameState.totalMoney >= 5000 ? 'positive' : gameState.totalMoney < 0 ? 'negative' : '');
+
+            document.getElementById('yearProfit').textContent = '$' + formatNumber(gameState.yearProfit);
+            document.getElementById('yearProfit').className = 'stat-value ' +
+                (gameState.yearProfit > 0 ? 'positive' : gameState.yearProfit < 0 ? 'negative' : '');
+
+            const avgSoil = calculateAverageSoilHealth();
+            document.getElementById('avgSoilHealth').textContent = avgSoil + '%';
+            document.getElementById('avgSoilHealth').className = 'stat-value ' +
+                (avgSoil >= 70 ? 'positive' : avgSoil < 40 ? 'negative' : '');
+
+            const plantedCount = gameState.plots.filter(p => p.crop).length;
+            document.getElementById('plotsPlanted').textContent = plantedCount + '/100';
+
+            // Progress bar
+            const progress = (gameState.currentYear / 10) * 100;
+            document.getElementById('progressFill').style.width = progress + '%';
+            document.getElementById('progressFill').textContent = Math.round(progress) + '%';
+        }
+
+        // Update tips based on year
+        function updateTips() {
+            const tips = tipsByYear[gameState.currentYear] || tipsByYear.default;
+            const tipsContainer = document.getElementById('currentTips');
+            tipsContainer.innerHTML = tips.map(tip => `<li>${tip}</li>`).join('');
+        }
+
+        // Clear all plots
+        function clearPlots() {
+            if (confirm('Clear all planted crops? You will lose the planting costs.')) {
+                gameState.plots.forEach(plot => {
+                    plot.crop = null;
+                });
+                updatePlotVisuals();
+                updateUI();
+                showFeedback('All plots cleared', 'info');
+            }
+        }
+
+        // Show help
+        function showHelp() {
+            document.getElementById('tutorialOverlay').classList.remove('hidden');
+        }
+
+        // Close tutorial
+        function closeTutorial() {
+            document.getElementById('tutorialOverlay').classList.add('hidden');
+        }
+
+        // Start game
+        function startGame(mode) {
+            gameState.mode = mode;
+            document.getElementById('modeSelection').classList.add('hidden');
+            document.getElementById('gameInterface').classList.remove('hidden');
+
+            initGame();
+
+            if (mode === 'tutorial') {
+                setTimeout(() => {
+                    document.getElementById('tutorialOverlay').classList.remove('hidden');
+                }, 500);
+            } else {
+                showFeedback('Challenge Mode: Maximize profit over 10 years!', 'info');
+            }
+        }
+
+        // End game
+        function endGame() {
+            const finalScore = gameState.totalMoney;
+            const avgSoilHealth = calculateAverageSoilHealth();
+
+            // Update high score
+            if (finalScore > gameState.highScore) {
+                gameState.highScore = finalScore;
+                localStorage.setItem('carverHighScore', finalScore);
+            }
+
+            // Create modal
+            const modal = document.createElement('div');
+            modal.className = 'modal';
+            modal.innerHTML = `
+                <div class="modal-content">
+                    <h2>Game Complete!</h2>
+                    <div class="score-display">$${formatNumber(finalScore)}</div>
+                    <p style="font-size: 1.2em; margin: 20px 0;">
+                        ${finalScore >= 10000 ? 'Outstanding!' : finalScore >= 7000 ? 'Great job!' : finalScore >= 5000 ? 'Good effort!' : 'Keep learning!'}
+                    </p>
+
+                    <div class="historical-comparison">
+                        <h3>Your Performance</h3>
+                        <p><strong>Final Money:</strong> $${formatNumber(finalScore)}</p>
+                        <p><strong>Average Soil Health:</strong> ${avgSoilHealth}%</p>
+                        <p><strong>Starting Money:</strong> $5,000</p>
+                        <p><strong>Total Profit:</strong> $${formatNumber(finalScore - 5000)}</p>
+
+                        <h3 style="margin-top: 20px;">Historical Context</h3>
+                        <p style="font-size: 0.9em; line-height: 1.6;">
+                            In the early 1900s, Alabama farmers practicing continuous cotton farming
+                            often faced bankruptcy due to soil depletion. Dr. Carver's crop rotation
+                            methods helped farmers increase yields by 50-100% and diversify income,
+                            saving countless farms from ruin.
+                        </p>
+
+                        ${avgSoilHealth >= 60 ?
+                            '<p style="color: #22c55e; font-weight: bold; margin-top: 10px;">You maintained good soil health like Carver taught!</p>' :
+                            '<p style="color: #ef4444; font-weight: bold; margin-top: 10px;">Carver would encourage more focus on soil restoration.</p>'
+                        }
+                    </div>
+
+                    <div class="tutorial-buttons">
+                        <button class="btn-primary" onclick="location.reload()">Play Again</button>
+                        <button class="btn-secondary" onclick="window.close()">Exit</button>
+                    </div>
+                </div>
+            `;
+            document.body.appendChild(modal);
+        }
+
+        // Tooltip functions
+        function showPlotTooltip(e, plotIndex) {
+            const plot = gameState.plots[plotIndex];
+            const tooltip = document.getElementById('tooltip');
+
+            let content = `
+                <strong>Plot ${plotIndex + 1}</strong><br>
+                Soil Health: ${Math.round(plot.soilHealth)}%<br>
+            `;
+
+            if (plot.crop) {
+                const crop = cropData[plot.crop];
+                content += `Current: ${crop.name} ${crop.emoji}<br>`;
+            }
+
+            if (plot.history.length > 0) {
+                const lastYear = plot.history[plot.history.length - 1];
+                content += `Last Year: ${cropData[lastYear.crop].name}`;
+            }
+
+            tooltip.innerHTML = content;
+            tooltip.style.left = e.pageX + 10 + 'px';
+            tooltip.style.top = e.pageY + 10 + 'px';
+            tooltip.classList.add('show');
+        }
+
+        function hideTooltip() {
+            document.getElementById('tooltip').classList.remove('show');
+        }
+
+        // Show feedback message
+        function showFeedback(message, type) {
+            const existing = document.querySelector('.feedback');
+            if (existing) existing.remove();
+
+            const feedback = document.createElement('div');
+            feedback.className = `feedback ${type}`;
+            feedback.textContent = message;
+            document.body.appendChild(feedback);
+
+            setTimeout(() => feedback.remove(), 3000);
+        }
+
+        // Format number with commas
+        function formatNumber(num) {
+            return Math.round(num).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        }
+
+        // Initialize on load
+        window.addEventListener('DOMContentLoaded', () => {
+            // Game starts with mode selection
+        });
+    </script>
+</body>
+</html>
