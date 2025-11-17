@@ -1,955 +1,95 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Essential Meta Tags -->
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- Primary Meta Tags -->
     <title>George Washington Carver Life - The Complete Story of America's Greatest Agricultural Scientist</title>
+    <meta name="title" content="George Washington Carver Life - America's Greatest Agricultural Scientist">
     <meta name="description" content="Explore the extraordinary life, inventions, and lasting impact of George Washington Carver. From slavery to scientific greatness, discover his revolutionary agricultural innovations and inspiring legacy.">
-    <meta name="keywords" content="George Washington Carver, agricultural scientist, peanut innovations, Tuskegee Institute, crop rotation, botany, African American scientist, agricultural revolution">
+    <meta name="keywords" content="George Washington Carver, agricultural scientist, peanut innovations, Tuskegee Institute, crop rotation, botany, African American scientist, agricultural revolution, biography, history">
     <meta name="author" content="George Washington Carver Life">
-    
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <link rel="canonical" href="https://georgewashingcarverlife.com/">
+
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://georgewashingcarverlife.com/">
+    <meta property="og:site_name" content="George Washington Carver Life">
     <meta property="og:title" content="George Washington Carver Life - America's Greatest Agricultural Scientist">
-    <meta property="og:description" content="Explore the extraordinary life and revolutionary agricultural innovations of George Washington Carver.">
+    <meta property="og:description" content="Explore the extraordinary life and revolutionary agricultural innovations of George Washington Carver. From 300+ peanut products to groundbreaking crop rotation techniques.">
     <meta property="og:image" content="https://georgewashingcarverlife.com/og-image.jpg">
+    <meta property="og:image:alt" content="George Washington Carver - American agricultural scientist and inventor">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:locale" content="en_US">
 
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://georgewashingcarverlife.com/">
-    <meta property="twitter:title" content="George Washington Carver Life - Agricultural Pioneer">
-    <meta property="twitter:description" content="Discover the revolutionary life and lasting impact of George Washington Carver.">
-    <meta property="twitter:image" content="https://georgewashingcarverlife.com/twitter-image.jpg">
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://georgewashingcarverlife.com/">
+    <meta name="twitter:title" content="George Washington Carver Life - Agricultural Pioneer">
+    <meta name="twitter:description" content="Discover the revolutionary life and lasting impact of George Washington Carver. Interactive timeline, 300+ inventions, and historical insights.">
+    <meta name="twitter:image" content="https://georgewashingcarverlife.com/twitter-image.jpg">
+    <meta name="twitter:image:alt" content="George Washington Carver digital exhibition">
+    <meta name="twitter:creator" content="@GWCarverLife">
+    <meta name="twitter:site" content="@GWCarverLife">
 
+    <!-- PWA Meta Tags -->
+    <meta name="theme-color" content="#2C1810">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="GW Carver">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="GW Carver Life">
+    <meta name="msapplication-TileColor" content="#2C1810">
+    <meta name="msapplication-config" content="/browserconfig.xml">
+
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- Favicons -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="shortcut icon" href="/favicon.ico">
+
+    <!-- Apple Touch Icons -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/icon-192x192.png">
+
+    <!-- Preconnect for Performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+
+    <!-- Preload Critical Assets -->
+    <link rel="preload" href="/styles.css" as="style">
+    <link rel="preload" href="/CarverLife.js" as="script">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="/styles.css">
+
+    <!-- Critical CSS for immediate paint -->
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Georgia', serif;
-            line-height: 1.6;
-            color: #1a1a1a;
-            background: #ffffff;
-            overflow-x: hidden;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        /* Header */
-        header {
-            background: #000000;
-            color: #ffffff;
-            padding: 2rem 0;
-            position: relative;
-            overflow: hidden;
-            text-align: center;
-        }
-
-        .header-content {
-            position: relative;
-            z-index: 2;
-        }
-
-        h1 {
-            font-size: clamp(2.5rem, 5vw, 4rem);
-            font-weight: 700;
-            margin-bottom: 1rem;
-            letter-spacing: -0.02em;
-        }
-
-        .subtitle {
-            font-size: clamp(1.1rem, 2.5vw, 1.5rem);
-            opacity: 0.9;
-            margin-bottom: 2rem;
-            font-weight: 300;
-        }
-
-        .hero-stats {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-            justify-items: center;
-            max-width: 1000px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .stat-item {
-            text-align: center;
-            padding: 2rem 1.5rem;
-            border: 2px solid #333;
-            transition: all 0.3s ease;
-            width: 100%;
-            max-width: 250px;
-            min-height: 180px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-decoration: none;
-            color: inherit;
-        }
-        
-        .stat-item:hover {
-            background: #111;
-            border-color: #666;
-        }
-        
-        .stat-item.clickable {
-            cursor: pointer;
-        }
-        
-        .stat-item.clickable:hover {
-            background: #222;
-            border-color: #999;
-            transform: translateY(-3px);
-        }
-
-        .stat-number {
-            font-size: 2.5rem;
-            font-weight: 700;
-            display: block;
-            margin-bottom: 0.5rem;
-        }
-
-        .stat-label {
-            font-size: 0.9rem;
-            opacity: 0.8;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-        }
-
-        /* Navigation */
-        nav {
-            background: #1a1a1a;
-            padding: 1rem 0;
-            border-bottom: 2px solid #333;
-            text-align: center;
-        }
-        
-        .search-nav {
-            background: #1a1a1a;
-            padding: 1rem 0;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            border-bottom: 2px solid transparent;
-            text-align: center;
-            transition: border-color 0.3s ease;
-        }
-        
-        .search-nav.scrolled {
-            border-bottom: 2px solid #333;
-        }
-
-        .nav-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 1.5rem;
-        }
-
-        .search-container {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 1rem;
-            width: 100%;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .search-box {
-            flex: 1;
-            padding: 0.75rem 1rem;
-            border: 2px solid #333;
-            background: #000;
-            color: #fff;
-            font-size: 1rem;
-            border-radius: 0;
-            width: 100%;
-        }
-
-        .search-box:focus {
-            outline: none;
-            border-color: #666;
-        }
-
-        .filters {
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-
-        .filter-btn {
-            padding: 0.5rem 1rem;
-            background: transparent;
-            color: #fff;
-            border: 2px solid #333;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-        }
-
-        .filter-btn:hover,
-        .filter-btn.active {
-            background: #fff;
-            color: #000;
-        }
-
-        /* Main Content */
-        main {
-            padding: 4rem 0;
-            text-align: center;
-        }
-
-        .timeline-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 3rem;
-            margin-top: 3rem;
-            justify-items: center;
-        }
-
-        .timeline-card {
-            background: #fff;
-            border: 3px solid #000;
-            transition: all 0.3s ease;
-            cursor: pointer;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .timeline-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-        }
-
-        .timeline-image {
-            width: 100%;
-            height: 300px;
-            background: #f5f5f5;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .timeline-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            filter: grayscale(100%);
-            transition: filter 0.3s ease;
-        }
-
-        .timeline-card:hover .timeline-image img {
-            filter: grayscale(0%);
-        }
-
-        .placeholder-image {
-            width: 100%;
-            height: 100%;
-            background: #f8f8f8;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 8rem;
-            transition: all 0.3s ease;
-        }
-
-        .timeline-card:hover .placeholder-image {
-            background: #f0f0f0;
-            transform: scale(1.1);
-        }
-
-        .timeline-content {
-            padding: 2rem;
-            text-align: center;
-        }
-
-        .timeline-date {
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-            color: #000;
-        }
-
-        .timeline-age {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
-            margin-bottom: 1rem;
-            font-size: 0.9rem;
-            opacity: 0.7;
-        }
-
-        .event-title {
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: #333;
-            margin-bottom: 0.5rem;
-            text-align: center;
-        }
-
-        .event-location {
-            font-size: 0.9rem;
-            opacity: 0.6;
-            margin-bottom: 1rem;
-            text-align: center;
-        }
-
-        .event-description {
-            font-size: 0.95rem;
-            line-height: 1.6;
-            color: #444;
-            margin-bottom: 1.5rem;
-            text-align: center;
-        }
-
-        .category-tag {
-            display: inline-block;
-            background: #000;
-            color: #fff;
-            padding: 0.25rem 0.75rem;
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            margin-bottom: 1rem;
-        }
-
-        .importance-level {
-            font-size: 0.8rem;
-            opacity: 0.5;
-            text-align: center;
-        }
-
-        /* Individual Timeline Event Page */
-        .timeline-detail {
-            display: none;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 2rem;
-        }
-
-        .timeline-detail.active {
-            display: block;
-        }
-
-        .event-header {
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-
-        .event-portrait {
-            width: 300px;
-            height: 300px;
-            margin: 0 auto 2rem;
-            border: 5px solid #000;
-            overflow: hidden;
-        }
-
-        .event-portrait img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .event-main-title {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .event-date-location {
-            font-size: 1.2rem;
-            opacity: 0.7;
-            margin-bottom: 2rem;
-        }
-
-        .event-highlight {
-            background: #f9f9f9;
-            border: 3px solid #000;
-            padding: 2rem;
-            margin: 2rem 0;
-            text-align: center;
-        }
-
-        .event-highlight-title {
-            font-size: 1.8rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-        }
-
-        .detailed-description {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            margin: 2rem 0;
-        }
-
-        .impact-list {
-            list-style: none;
-            padding: 0;
-        }
-
-        .impact-list li {
-            padding: 0.5rem 0;
-            border-bottom: 1px solid #eee;
-        }
-
-        .impact-list li:before {
-            content: "→";
-            margin-right: 0.5rem;
-            font-weight: bold;
-        }
-
-        /* Related Events Section */
-        .related-events-section {
-            margin-top: 4rem;
-            padding-top: 3rem;
-            border-top: 2px solid #eee;
-        }
-        
-        .related-events-section h3 {
-            font-size: 1.8rem;
-            margin-bottom: 2rem;
-            text-align: center;
-            color: #000;
-        }
-        
-        .related-events-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-        
-        .related-event-tile {
-            background: #f9f9f9;
-            border: 2px solid #ddd;
-            padding: 1.5rem;
-            text-align: center;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            position: relative;
-        }
-        
-        .related-event-tile:hover {
-            transform: translateY(-3px);
-            border-color: #000;
-            box-shadow: 0 6px 20px rgba(0,0,0,0.1);
-        }
-        
-        .related-tile-emoji {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            display: block;
-        }
-        
-        .related-tile-date {
-            font-size: 1.1rem;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-            color: #000;
-        }
-        
-        .related-tile-event {
-            font-size: 0.9rem;
-            color: #666;
-            margin-bottom: 0.5rem;
-        }
-
-        .related-tile-location {
-            font-size: 0.8rem;
-            opacity: 0.7;
-        }
-        
-        .relation-tag {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            background: #000;
-            color: #fff;
-            padding: 0.2rem 0.5rem;
-            font-size: 0.7rem;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-        }
-        
-        /* Hide header when viewing individual event */
-        body.viewing-event header {
-            display: none;
-        }
-
-        /* Back Button */
-        .back-btn {
-            position: fixed;
-            top: 80px;
-            left: 20px;
-            background: #000;
-            color: #fff;
-            border: none;
-            padding: 1rem 1.5rem;
-            cursor: pointer;
-            font-size: 1rem;
-            z-index: 1000;
-            transition: all 0.3s ease;
-        }
-        
-        .back-btn:hover {
-            background: #333;
-            transform: translateY(-2px);
-        }
-
-        /* Carver Quote Section */
-        .carver-quote-section {
-            background: #ffffff;
-            padding: 3rem 0 4rem;
-            text-align: center;
-        }
-        
-        .quote-container {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 3rem 2rem;
-            border: 3px solid #000;
-            background: #f9f9f9;
-        }
-        
-        .quote-text {
-            font-size: 1.5rem;
-            font-style: italic;
-            line-height: 1.6;
-            margin-bottom: 2rem;
-            color: #333;
-        }
-        
-        .quote-attribution {
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: #000;
-        }
-
-        /* Footer */
-        footer {
-            background: linear-gradient(135deg, #000 0%, #1a1a1a 100%);
-            color: #fff;
-            padding: 5rem 0 0;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        footer::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: linear-gradient(90deg, #333, #666, #333);
-        }
-        
-        .footer-main {
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr 1.5fr;
-            gap: 4rem;
-            margin-bottom: 3rem;
-            align-items: start;
-        }
-        
-        .footer-brand {
-            max-width: 400px;
-        }
-        
-        .footer-brand h3 {
-            font-size: 1.8rem;
-            margin-bottom: 1.5rem;
-            color: #fff;
-            font-weight: 700;
-            line-height: 1.2;
-        }
-        
-        .footer-description {
-            font-size: 1rem;
-            line-height: 1.7;
-            color: #ccc;
-            margin-bottom: 2rem;
-        }
-        
-        .social-links {
-            display: flex;
-            gap: 1rem;
-            margin-top: 1rem;
-        }
-        
-        .social-links a {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 45px;
-            height: 45px;
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 8px;
-            color: #fff;
-            text-decoration: none;
-            font-size: 1.2rem;
-            transition: all 0.3s ease;
-        }
-        
-        .social-links a:hover {
-            background: rgba(255, 255, 255, 0.2);
-            border-color: rgba(255, 255, 255, 0.4);
-            transform: translateY(-2px);
-        }
-        
-        .footer-section h4 {
-            font-size: 1.1rem;
-            margin-bottom: 1.5rem;
-            color: #fff;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            position: relative;
-        }
-        
-        .footer-section h4::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 30px;
-            height: 2px;
-            background: #666;
-        }
-        
-        .footer-section ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-        
-        .footer-section li {
-            margin-bottom: 0.8rem;
-        }
-        
-        .footer-section a {
-            color: #ccc;
-            text-decoration: none;
-            font-size: 0.95rem;
-            transition: all 0.3s ease;
-            position: relative;
-            padding-left: 0;
-        }
-        
-        .footer-section a:hover {
-            color: #fff;
-            padding-left: 5px;
-        }
-        
-        .footer-section a::before {
-            content: '';
-            position: absolute;
-            left: -10px;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 0;
-            height: 1px;
-            background: #666;
-            transition: width 0.3s ease;
-        }
-        
-        .footer-section a:hover::before {
-            width: 5px;
-        }
-        
-        .footer-contact {
-            background: rgba(255, 255, 255, 0.05);
-            padding: 2rem;
-            border-radius: 8px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        
-        .contact-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 0.75rem;
-            margin-bottom: 1.2rem;
-            font-size: 0.9rem;
-        }
-        
-        .contact-icon {
-            font-size: 1.1rem;
-            margin-top: 0.1rem;
-            opacity: 0.8;
-        }
-        
-        .contact-info {
-            flex: 1;
-        }
-        
-        .contact-info strong {
-            color: #fff;
-            display: block;
-            margin-bottom: 0.2rem;
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-        
-        .contact-info span {
-            color: #ccc;
-            font-size: 0.9rem;
-        }
-        
-        .newsletter-section {
-            margin-top: 2rem;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        
-        .newsletter-section h5 {
-            font-size: 1rem;
-            margin-bottom: 1rem;
-            color: #fff;
-            font-weight: 600;
-        }
-        
-        .newsletter-signup {
-            display: flex;
-            gap: 0.5rem;
-            margin-top: 1rem;
-        }
-        
-        .newsletter-input {
-            flex: 1;
-            padding: 0.75rem 1rem;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            background: rgba(255, 255, 255, 0.1);
-            color: #fff;
-            font-size: 0.9rem;
-            border-radius: 6px;
-            transition: all 0.3s ease;
-        }
-        
-        .newsletter-input:focus {
-            outline: none;
-            border-color: rgba(255, 255, 255, 0.4);
-            background: rgba(255, 255, 255, 0.15);
-        }
-        
-        .newsletter-input::placeholder {
-            color: rgba(255, 255, 255, 0.6);
-        }
-        
-        .newsletter-btn {
-            padding: 0.75rem 1.5rem;
-            background: rgba(255, 255, 255, 0.2);
-            color: #fff;
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            border-radius: 6px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-size: 0.9rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-        
-        .newsletter-btn:hover {
-            background: rgba(255, 255, 255, 0.3);
-            border-color: rgba(255, 255, 255, 0.5);
-            transform: translateY(-1px);
-        }
-        
-        .footer-bottom {
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 2rem 0;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 1rem;
-            font-size: 0.9rem;
-            color: #999;
-        }
-        
-        .footer-bottom-left {
-            display: flex;
-            align-items: center;
-            gap: 2rem;
-        }
-        
-        .footer-bottom-right {
-            display: flex;
-            gap: 2rem;
-            align-items: center;
-        }
-        
-        .footer-bottom a {
-            color: #ccc;
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-        
-        .footer-bottom a:hover {
-            color: #fff;
-        }
-        
-        .footer-legal {
-            font-size: 0.85rem;
-            color: #666;
-        }
-        
-        /* Responsive */
-        @media (max-width: 768px) {
-            .nav-container {
-                gap: 1rem;
-            }
-            
-            .search-container {
-                max-width: 100%;
-            }
-            
-            .timeline-grid {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-            
-            .timeline-card {
-                margin: 0 auto;
-                max-width: 400px;
-            }
-            
-            .hero-stats {
-                grid-template-columns: repeat(2, 1fr);
-                max-width: 600px;
-            }
-            .back-btn {
-                top: 70px;
-                padding: 0.75rem 1.25rem;
-                font-size: 0.9rem;
-            }
-        }
-
-        /* Mobile responsive for footer */
-        @media (max-width: 1024px) {
-            .footer-main {
-                grid-template-columns: 1fr 1fr;
-                gap: 3rem;
-            }
-        
-            .footer-brand {
-                max-width: none;
-            }
-        
-            .footer-contact {
-                grid-column: 1 / -1;
-            }
-        }
-        
-        @media (max-width: 768px) {
-            footer {
-                padding: 3rem 0 0;
-            }
-        
-            .footer-main {
-                grid-template-columns: 1fr;
-                gap: 2.5rem;
-            }
-        
-            .footer-brand h3 {
-                font-size: 1.5rem;
-            }
-        
-            .footer-contact {
-                padding: 1.5rem;
-            }
-        
-            .contact-item {
-                flex-direction: column;
-                gap: 0.5rem;
-            }
-        
-            .footer-bottom {
-                flex-direction: column;
-                text-align: center;
-                gap: 1.5rem;
-            }
-        
-            .footer-bottom-left,
-            .footer-bottom-right {
-                flex-direction: column;
-                gap: 1rem;
-            }
-        
-            .newsletter-signup {
-                flex-direction: column;
-            }
-        
-            .social-links {
-                justify-content: center;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            .social-links a {
-                width: 40px;
-                height: 40px;
-                font-size: 1rem;
-            }
-        
-            .footer-section h4 {
-                font-size: 1rem;
-            }
-        }
-
-        /* Loading States */
-        .loading {
-            text-align: center;
-            padding: 3rem;
-            font-size: 1.2rem;
-            opacity: 0.6;
-        }
-
-        .no-results {
-            text-align: center;
-            padding: 3rem;
-            font-size: 1.2rem;
-            opacity: 0.6;
-        }
-
-        /* Animations */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .timeline-card {
-            animation: fadeIn 0.6s ease-out;
-        }
-
-        /* Hidden by default */
-        .hidden {
-            display: none;
-        }
+        /* Minimal critical CSS - Full styles loaded from styles.css */
+        .hidden { display: none !important; }
+        .loading { text-align: center; padding: 3rem; }
     </style>
+
 </head>
 <body>
-    <header>
+    <!-- Skip Links for Accessibility -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- Dark Mode Toggle -->
+    <button id="darkModeToggle" class="dark-mode-toggle" aria-label="Toggle dark mode" title="Toggle dark/light mode">
+        <span class="dark-mode-icon">🌙</span>
+    </button>
+
+    <header role="banner">
         <div class="container">
             <div class="header-content">
                 <h1>George Washington Carver's Life</h1>
@@ -980,15 +120,16 @@
             </div>
         </div>
     </header>
-        <div class="search-nav">
+
+    <div class="search-nav" role="search">
         <div class="container">
             <div class="search-container">
                 <input type="text" class="search-box" placeholder="Search timeline events, discoveries, or locations..." id="searchInput">
             </div>
         </div>
     </div>
-    
-    <nav>
+
+    <nav role="navigation" aria-label="Timeline filters">
         <div class="container">
             <div class="filters">
                 <button class="filter-btn active" data-filter="all">All Events</button>
@@ -1001,7 +142,7 @@
         </div>
     </nav>
 
-    <main>
+    <main id="main-content" role="main">
         <div class="container">
             <div id="timelineGrid" class="timeline-grid">
                 <!-- Timeline cards will be populated here -->
@@ -1424,53 +565,280 @@
         document.addEventListener('DOMContentLoaded', init);
     </script>
 
-    <!-- Schema.org structured data for SEO -->
+    <!-- Enhanced Schema.org Structured Data for Advanced SEO/AEO -->
+
+    <!-- Website Schema -->
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
         "@type": "WebSite",
         "name": "George Washington Carver Life",
+        "alternateName": "GW Carver Life",
         "description": "The Complete Digital Exhibition of America's Greatest Agricultural Scientist",
         "url": "https://georgewashingcarverlife.com",
+        "inLanguage": "en-US",
+        "publisher": {
+            "@type": "Organization",
+            "@id": "https://georgewashingcarverlife.com/#organization",
+            "name": "George Washington Carver Life",
+            "url": "https://georgewashingcarverlife.com"
+        },
         "potentialAction": {
             "@type": "SearchAction",
-            "target": "https://georgewashingcarverlife.com/search?q={search_term_string}",
+            "target": {
+                "@type": "EntryPoint",
+                "urlTemplate": "https://georgewashingcarverlife.com/search?q={search_term_string}"
+            },
             "query-input": "required name=search_term_string"
-        },
-        "mainEntity": {
-            "@type": "Person",
-            "name": "George Washington Carver",
-            "birthDate": "1864",
-            "deathDate": "1943-01-05",
-            "nationality": "American",
-            "description": "American agricultural scientist and inventor who promoted alternative crops to cotton and methods to prevent soil depletion",
-            "knowsAbout": [
-                "Agricultural Science",
-                "Botany",
-                "Peanut Research",
-                "Crop Rotation",
-                "Soil Conservation",
-                "Sweet Potato Uses"
-            ],
-            "alumniOf": [
-                {
-                    "@type": "CollegeOrUniversity",
-                    "name": "Iowa State University"
-                }
-            ],
-            "affiliation": [
-                {
-                    "@type": "CollegeOrUniversity",
-                    "name": "Tuskegee Institute"
-                }
-            ],
-            "award": [
-                "Spingarn Medal",
-                "Roosevelt Medal",
-                "Fellow of the Royal Society"
-            ]
         }
     }
+    </script>
+
+    <!-- Person Schema - George Washington Carver -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "@id": "https://georgewashingcarverlife.com/#george-washington-carver",
+        "name": "George Washington Carver",
+        "givenName": "George Washington",
+        "familyName": "Carver",
+        "birthDate": "1864",
+        "birthPlace": {
+            "@type": "Place",
+            "name": "Diamond, Missouri",
+            "address": {
+                "@type": "PostalAddress",
+                "addressRegion": "Missouri",
+                "addressCountry": "US"
+            }
+        },
+        "deathDate": "1943-01-05",
+        "deathPlace": {
+            "@type": "Place",
+            "name": "Tuskegee, Alabama",
+            "address": {
+                "@type": "PostalAddress",
+                "addressRegion": "Alabama",
+                "addressCountry": "US"
+            }
+        },
+        "nationality": {
+            "@type": "Country",
+            "name": "United States"
+        },
+        "description": "American agricultural scientist, botanist, educator, and inventor who promoted alternative crops to cotton and pioneered methods to prevent soil depletion. Developed over 300 products from peanuts and 118 from sweet potatoes.",
+        "jobTitle": [
+            "Agricultural Scientist",
+            "Botanist",
+            "Inventor",
+            "Educator"
+        ],
+        "knowsAbout": [
+            "Agricultural Science",
+            "Botany",
+            "Plant Pathology",
+            "Mycology",
+            "Peanut Research",
+            "Crop Rotation",
+            "Soil Conservation",
+            "Sweet Potato Uses",
+            "Sustainable Agriculture",
+            "Plant-based Products"
+        ],
+        "alumniOf": [
+            {
+                "@type": "CollegeOrUniversity",
+                "name": "Iowa State Agricultural College",
+                "alternateName": "Iowa State University",
+                "location": {
+                    "@type": "Place",
+                    "name": "Ames, Iowa"
+                }
+            },
+            {
+                "@type": "CollegeOrUniversity",
+                "name": "Simpson College",
+                "location": {
+                    "@type": "Place",
+                    "name": "Indianola, Iowa"
+                }
+            }
+        ],
+        "worksFor": {
+            "@type": "CollegeOrUniversity",
+            "name": "Tuskegee Normal and Industrial Institute",
+            "alternateName": "Tuskegee University",
+            "location": {
+                "@type": "Place",
+                "name": "Tuskegee, Alabama"
+            }
+        },
+        "award": [
+            "Spingarn Medal (1923)",
+            "Roosevelt Medal (1939)",
+            "Honorary Doctorate - Simpson College",
+            "Honorary Doctorate - University of Rochester",
+            "Fellow of the Royal Society of Arts"
+        ],
+        "hasOccupation": {
+            "@type": "Occupation",
+            "name": "Agricultural Scientist",
+            "occupationalCategory": "15-1000",
+            "skills": [
+                "Agricultural Research",
+                "Botany",
+                "Chemistry",
+                "Crop Science",
+                "Soil Science"
+            ]
+        },
+        "sameAs": [
+            "https://en.wikipedia.org/wiki/George_Washington_Carver",
+            "https://www.britannica.com/biography/George-Washington-Carver",
+            "https://www.nps.gov/gwca/index.htm"
+        ]
+    }
+    </script>
+
+    <!-- Educational Organization Schema - Tuskegee Institute -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "EducationalOrganization",
+        "name": "Tuskegee Institute",
+        "alternateName": ["Tuskegee Normal and Industrial Institute", "Tuskegee University"],
+        "description": "Historic educational institution where George Washington Carver conducted groundbreaking agricultural research for 47 years",
+        "foundingDate": "1881",
+        "founder": {
+            "@type": "Person",
+            "name": "Booker T. Washington"
+        }
+    }
+    </script>
+
+    <!-- FAQPage Schema for Voice Search / AEO -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "Who was George Washington Carver?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "George Washington Carver (1864-1943) was an American agricultural scientist, botanist, educator, and inventor. Born into slavery, he became one of the most prominent scientists of his time, developing over 300 products from peanuts and 118 from sweet potatoes, and pioneering crop rotation methods that revolutionized Southern agriculture."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What did George Washington Carver invent?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "George Washington Carver developed over 300 products from peanuts including cooking oil, cosmetics, dyes, paints, plastics, gasoline, and nitroglycerin. He also created 118 products from sweet potatoes and developed innovative crop rotation techniques to prevent soil depletion."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Where did George Washington Carver work?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "George Washington Carver worked at Tuskegee Normal and Industrial Institute (now Tuskegee University) in Alabama for 47 years, from 1896 until his death in 1943. He served as the director of the Department of Agriculture and founded the Agricultural Experiment Station."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What was George Washington Carver's contribution to agriculture?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "George Washington Carver revolutionized Southern agriculture through crop rotation techniques that alternated cotton with nitrogen-fixing crops like peanuts and sweet potatoes. This method restored soil nutrients, prevented erosion, and provided economic alternatives for farmers, transforming agricultural practices across the American South."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "When did George Washington Carver live?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "George Washington Carver was born around 1864 in Diamond, Missouri, during slavery, and died on January 5, 1943, in Tuskegee, Alabama, at approximately 78 years old. He spent 47 years at Tuskegee Institute conducting groundbreaking agricultural research."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "How many products did George Washington Carver invent from peanuts?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "George Washington Carver developed over 300 products from peanuts, including food items, cosmetics, dyes, paints, plastics, gasoline, and medicinal products. These innovations helped transform the peanut into a major commercial crop in the Southern United States."
+                }
+            }
+        ]
+    }
+    </script>
+
+    <!-- BreadcrumbList Schema -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://georgewashingcarverlife.com/"
+            },
+            {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Timeline",
+                "item": "https://georgewashingcarverlife.com/#timeline"
+            }
+        ]
+    }
+    </script>
+
+    <!-- Dark Mode Toggle Script -->
+    <script>
+        // Dark mode functionality
+        const darkModeToggle = document.getElementById('darkModeToggle');
+        const darkModeIcon = document.querySelector('.dark-mode-icon');
+        const html = document.documentElement;
+
+        // Check for saved theme preference or default to light mode
+        const currentTheme = localStorage.getItem('theme') ||
+            (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+
+        // Apply saved theme on load
+        if (currentTheme === 'dark') {
+            html.setAttribute('data-theme', 'dark');
+            darkModeIcon.textContent = '☀️';
+        }
+
+        // Toggle dark mode
+        darkModeToggle.addEventListener('click', () => {
+            const currentTheme = html.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+
+            html.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            darkModeIcon.textContent = newTheme === 'dark' ? '☀️' : '🌙';
+        });
+    </script>
+
+    <!-- Service Worker Registration -->
+    <script>
+        // Register service worker for PWA functionality
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js')
+                    .then(registration => {
+                        console.log('ServiceWorker registered:', registration.scope);
+                    })
+                    .catch(error => {
+                        console.log('ServiceWorker registration failed:', error);
+                    });
+            });
+        }
     </script>
 </body>
 </html>

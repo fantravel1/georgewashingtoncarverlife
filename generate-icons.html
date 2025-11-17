@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Icon Generator - George Washington Carver Life</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            background: #f5f5f5;
+        }
+        h1 { color: #2C1810; }
+        .icon-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        .icon-item {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        canvas {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            max-width: 100%;
+        }
+        button {
+            margin-top: 1rem;
+            padding: 0.75rem 1.5rem;
+            background: #2C1810;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        button:hover {
+            background: #8B4513;
+        }
+        .instructions {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+        }
+        .instructions ol {
+            margin-left: 1.5rem;
+        }
+        .instructions li {
+            margin: 0.5rem 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>🥜 PWA Icon Generator</h1>
+
+    <div class="instructions">
+        <h2>Instructions:</h2>
+        <ol>
+            <li>Click "Generate All Icons" button below</li>
+            <li>Right-click each generated icon and "Save Image As..."</li>
+            <li>Save with the exact filename shown (e.g., "icon-72x72.png")</li>
+            <li>Place all icons in the root directory of your website</li>
+            <li>Your PWA will now have proper icons!</li>
+        </ol>
+    </div>
+
+    <button onclick="generateAllIcons()" style="font-size: 1.2rem; padding: 1rem 2rem;">
+        🎨 Generate All Icons
+    </button>
+
+    <div class="icon-grid" id="iconGrid"></div>
+
+    <script>
+        const iconSizes = [
+            { size: 72, name: 'icon-72x72.png' },
+            { size: 96, name: 'icon-96x96.png' },
+            { size: 128, name: 'icon-128x128.png' },
+            { size: 144, name: 'icon-144x144.png' },
+            { size: 152, name: 'icon-152x152.png' },
+            { size: 192, name: 'icon-192x192.png' },
+            { size: 384, name: 'icon-384x384.png' },
+            { size: 512, name: 'icon-512x512.png' },
+            { size: 180, name: 'apple-touch-icon.png' },
+            { size: 32, name: 'favicon-32x32.png' },
+            { size: 16, name: 'favicon-16x16.png' }
+        ];
+
+        function drawPeanutIcon(canvas, size) {
+            const ctx = canvas.getContext('2d');
+            const scale = size / 100;
+
+            // Background circle
+            ctx.fillStyle = '#2C1810';
+            ctx.beginPath();
+            ctx.arc(size/2, size/2, size/2 - 2*scale, 0, Math.PI * 2);
+            ctx.fill();
+
+            // Save context
+            ctx.save();
+            ctx.translate(size/2, size/2);
+            ctx.scale(scale, scale);
+
+            // Left peanut bulb
+            ctx.fillStyle = '#D4A574';
+            ctx.save();
+            ctx.rotate(-15 * Math.PI / 180);
+            ctx.beginPath();
+            ctx.ellipse(-12, 0, 15, 18, 0, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.restore();
+
+            // Right peanut bulb
+            ctx.save();
+            ctx.rotate(15 * Math.PI / 180);
+            ctx.beginPath();
+            ctx.ellipse(12, 0, 15, 18, 0, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.restore();
+
+            // Center connector
+            ctx.beginPath();
+            ctx.roundRect(-8, -6, 16, 12, 4);
+            ctx.fill();
+
+            // Texture lines
+            ctx.strokeStyle = '#C08A54';
+            ctx.lineWidth = 1.5;
+            ctx.lineCap = 'round';
+
+            // Left lines
+            ctx.beginPath();
+            ctx.moveTo(-20, -8);
+            ctx.quadraticCurveTo(-15, -2, -20, 8);
+            ctx.stroke();
+
+            ctx.beginPath();
+            ctx.moveTo(-10, -12);
+            ctx.quadraticCurveTo(-8, -4, -10, 12);
+            ctx.stroke();
+
+            // Right lines
+            ctx.beginPath();
+            ctx.moveTo(10, -12);
+            ctx.quadraticCurveTo(8, -4, 10, 12);
+            ctx.stroke();
+
+            ctx.beginPath();
+            ctx.moveTo(20, -8);
+            ctx.quadraticCurveTo(15, -2, 20, 8);
+            ctx.stroke();
+
+            // Small leaf accent
+            ctx.save();
+            ctx.translate(-20, -18);
+            ctx.rotate(-45 * Math.PI / 180);
+            ctx.fillStyle = '#8B4513';
+            ctx.beginPath();
+            ctx.ellipse(0, 0, 8, 4, 0, 0, Math.PI * 2);
+            ctx.fill();
+
+            ctx.strokeStyle = '#6B3310';
+            ctx.lineWidth = 1;
+            ctx.beginPath();
+            ctx.moveTo(-2, -2);
+            ctx.lineTo(2, 2);
+            ctx.stroke();
+            ctx.restore();
+
+            // Subtle shine
+            ctx.fillStyle = 'rgba(244, 208, 63, 0.2)';
+            ctx.beginPath();
+            ctx.arc(-15, -15, 8, 0, Math.PI * 2);
+            ctx.fill();
+
+            ctx.restore();
+        }
+
+        function generateIcon(size, name) {
+            const canvas = document.createElement('canvas');
+            canvas.width = size;
+            canvas.height = size;
+
+            drawPeanutIcon(canvas, size);
+
+            const container = document.createElement('div');
+            container.className = 'icon-item';
+
+            const title = document.createElement('h3');
+            title.textContent = `${size}x${size}`;
+
+            const filename = document.createElement('p');
+            filename.textContent = name;
+            filename.style.fontSize = '0.9rem';
+            filename.style.color = '#666';
+
+            const downloadBtn = document.createElement('button');
+            downloadBtn.textContent = 'Download';
+            downloadBtn.onclick = () => {
+                const link = document.createElement('a');
+                link.download = name;
+                link.href = canvas.toDataURL('image/png');
+                link.click();
+            };
+
+            container.appendChild(title);
+            container.appendChild(canvas);
+            container.appendChild(filename);
+            container.appendChild(downloadBtn);
+
+            return container;
+        }
+
+        function generateAllIcons() {
+            const grid = document.getElementById('iconGrid');
+            grid.innerHTML = '';
+
+            iconSizes.forEach(({ size, name }) => {
+                const iconEl = generateIcon(size, name);
+                grid.appendChild(iconEl);
+            });
+
+            // Scroll to icons
+            grid.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Auto-generate on load
+        window.addEventListener('load', generateAllIcons);
+    </script>
+</body>
+</html>

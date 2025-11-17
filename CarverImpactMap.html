@@ -2,10 +2,61 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Carver's Impact Across the South - Interactive Map</title>
-    <meta name="description" content="Explore how George Washington Carver's agricultural innovations spread across the American South, transforming farming and education.">
-    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Carver's Impact Across the South - Interactive Map | George Washington Carver</title>
+    <meta name="description" content="Explore how George Washington Carver's agricultural innovations spread across the American South, transforming farming and education from 1896 to today.">
+    <meta name="keywords" content="George Washington Carver, agricultural innovation, American South, Tuskegee Institute, peanut research, crop rotation, agricultural education, African American history">
+    <meta name="author" content="George Washington Carver Legacy Project">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <link rel="canonical" href="https://georgewashingtoncarverlife.com/CarverImpactMap.html">
+
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://georgewashingtoncarverlife.com/CarverImpactMap.html">
+    <meta property="og:title" content="Carver's Impact Across the South - Interactive Map">
+    <meta property="og:description" content="Explore how George Washington Carver's agricultural innovations spread across the American South, transforming farming and education from 1896 to today.">
+    <meta property="og:image" content="https://georgewashingtoncarverlife.com/images/carver-impact-map-og.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="George Washington Carver Legacy">
+    <meta property="og:locale" content="en_US">
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://georgewashingtoncarverlife.com/CarverImpactMap.html">
+    <meta name="twitter:title" content="Carver's Impact Across the South - Interactive Map">
+    <meta name="twitter:description" content="Explore how George Washington Carver's agricultural innovations spread across the American South, transforming farming and education from 1896 to today.">
+    <meta name="twitter:image" content="https://georgewashingtoncarverlife.com/images/carver-impact-map-twitter.jpg">
+    <meta name="twitter:creator" content="@CarverLegacy">
+
+    <!-- PWA Meta Tags -->
+    <meta name="theme-color" content="#2F4F4F" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#1a1a1a" media="(prefers-color-scheme: dark)">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Carver Impact Map">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="Carver Impact Map">
+
+    <!-- Favicon Links -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/images/android-chrome-192x192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="/images/android-chrome-512x512.png">
+    <link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#2F4F4F">
+
+    <!-- Manifest and Styles -->
+    <link rel="manifest" href="/manifest.json">
+    <link rel="stylesheet" href="/styles.css">
+
+    <!-- Preload Critical Assets -->
+    <link rel="preload" as="style" href="/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+
     <style>
         * {
             margin: 0;
@@ -350,6 +401,122 @@
             margin-bottom: 1rem;
         }
 
+        /* Skip Link */
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: #2F4F4F;
+            color: white;
+            padding: 8px;
+            text-decoration: none;
+            z-index: 10000;
+        }
+
+        .skip-link:focus {
+            top: 0;
+        }
+
+        /* Dark Mode Toggle */
+        .dark-mode-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #2F4F4F;
+            color: white;
+            border: none;
+            padding: 0.75rem 1rem;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1.2rem;
+            z-index: 1000;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .dark-mode-toggle:hover {
+            background: #696969;
+            transform: translateY(-2px);
+        }
+
+        /* Dark Mode Styles */
+        body.dark-mode {
+            background: #1a1a1a;
+            color: #e0e0e0;
+        }
+
+        body.dark-mode .header {
+            background: linear-gradient(135deg, #1a1a1a 0%, #4a2511 100%);
+        }
+
+        body.dark-mode .map-section {
+            background: #2a2a2a;
+        }
+
+        body.dark-mode .map-container {
+            background: #2a2a2a;
+            border-color: #A0522D;
+        }
+
+        body.dark-mode #map-svg rect {
+            fill: #1a3a4a !important;
+        }
+
+        body.dark-mode #map-svg path {
+            opacity: 0.8;
+        }
+
+        body.dark-mode .legend {
+            background: rgba(42, 42, 42, 0.95);
+            border-color: #A0522D;
+        }
+
+        body.dark-mode .legend h3 {
+            color: #FFD700;
+        }
+
+        body.dark-mode .legend-item {
+            color: #e0e0e0;
+        }
+
+        body.dark-mode .timeline-controls,
+        body.dark-mode .impact-stats {
+            background: #2a2a2a;
+        }
+
+        body.dark-mode .stat-item {
+            background: #1a1a1a;
+            border-color: #A0522D;
+        }
+
+        body.dark-mode .stories-panel {
+            background: #2a2a2a;
+            border-left-color: #A0522D;
+        }
+
+        body.dark-mode .story-content h2 {
+            color: #FFD700;
+        }
+
+        body.dark-mode .control-btn {
+            background: #4a2511;
+        }
+
+        body.dark-mode .control-btn:hover,
+        body.dark-mode .control-btn.active {
+            background: #A0522D;
+        }
+
+        body.dark-mode .back-link,
+        body.dark-mode .dark-mode-toggle {
+            background: #4a2511;
+        }
+
+        body.dark-mode .back-link:hover,
+        body.dark-mode .dark-mode-toggle:hover {
+            background: #6a3521;
+        }
+
         /* Responsive Design */
         @media (max-width: 768px) {
             .legend {
@@ -369,10 +536,25 @@
                 margin: 1rem;
                 display: inline-block;
             }
+
+            .dark-mode-toggle {
+                top: 80px;
+                right: 10px;
+                padding: 0.5rem 0.75rem;
+                font-size: 1rem;
+            }
         }
     </style>
 </head>
 <body>
+    <!-- Skip Link for Accessibility -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- Dark Mode Toggle -->
+    <button class="dark-mode-toggle" id="darkModeToggle" aria-label="Toggle dark mode">
+        <span class="dark-mode-icon">🌙</span>
+    </button>
+
     <a href="index.html" class="back-link">← Go Back</a>
 
     <!-- Header -->
@@ -384,7 +566,7 @@
     </div>
 
     <!-- Map Section -->
-    <div class="map-section">
+    <div class="map-section" id="main-content">
         <div class="container">
             <!-- Map Controls -->
             <div class="map-controls">
@@ -1081,6 +1263,259 @@
                 }
             }
         });
+    </script>
+
+    <!-- Structured Data: Map Schema -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Map",
+        "name": "George Washington Carver's Impact Across the American South",
+        "description": "Interactive map showing how George Washington Carver's agricultural innovations spread across the American South from 1896 to today",
+        "url": "https://georgewashingtoncarverlife.com/CarverImpactMap.html",
+        "image": "https://georgewashingtoncarverlife.com/images/carver-impact-map.jpg",
+        "author": {
+            "@type": "Organization",
+            "name": "George Washington Carver Legacy Project"
+        },
+        "mapType": "VenueMap",
+        "contentLocation": {
+            "@type": "Place",
+            "name": "American South",
+            "geo": {
+                "@type": "GeoCoordinates",
+                "latitude": 32.3547,
+                "longitude": -86.2677
+            }
+        }
+    }
+    </script>
+
+    <!-- Structured Data: Tuskegee Institute Place -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Place",
+        "name": "Tuskegee Institute",
+        "description": "Where George Washington Carver's agricultural revolution began in 1896",
+        "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": 32.4296,
+            "longitude": -85.7079
+        },
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Tuskegee",
+            "addressRegion": "AL",
+            "addressCountry": "US"
+        },
+        "containedInPlace": {
+            "@type": "Place",
+            "name": "Alabama"
+        },
+        "event": {
+            "@type": "Event",
+            "name": "George Washington Carver's Agricultural Revolution",
+            "startDate": "1896",
+            "location": {
+                "@type": "Place",
+                "name": "Tuskegee Institute"
+            },
+            "performer": {
+                "@type": "Person",
+                "name": "George Washington Carver"
+            }
+        }
+    }
+    </script>
+
+    <!-- Structured Data: Interactive Map Features -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "Carver Impact Map Interactive Tool",
+        "applicationCategory": "EducationalApplication",
+        "operatingSystem": "Any",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        },
+        "description": "Interactive timeline map showing the spread of George Washington Carver's agricultural innovations across the American South",
+        "featureList": [
+            "Timeline slider from 1896 to 2025",
+            "Interactive location markers",
+            "Category filtering",
+            "Animated impact statistics",
+            "Historical stories for each location",
+            "Search functionality",
+            "Dark mode support"
+        ],
+        "screenshot": "https://georgewashingtoncarverlife.com/images/carver-map-screenshot.jpg"
+    }
+    </script>
+
+    <!-- Structured Data: BreadcrumbList -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://georgewashingtoncarverlife.com/"
+            },
+            {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Interactive Map",
+                "item": "https://georgewashingtoncarverlife.com/CarverImpactMap.html"
+            }
+        ]
+    }
+    </script>
+
+    <!-- Structured Data: Educational Content -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "LearningResource",
+        "name": "Carver's Impact Across the South - Interactive Map",
+        "description": "Explore how George Washington Carver's agricultural innovations spread across the American South",
+        "educationalLevel": "High School, College, General Public",
+        "learningResourceType": "Interactive Map",
+        "isAccessibleForFree": true,
+        "inLanguage": "en",
+        "about": [
+            {
+                "@type": "Person",
+                "name": "George Washington Carver",
+                "description": "American agricultural scientist and inventor"
+            },
+            {
+                "@type": "Thing",
+                "name": "Agricultural Innovation",
+                "description": "Revolutionary farming techniques and crop diversification"
+            },
+            {
+                "@type": "Place",
+                "name": "American South",
+                "description": "Geographic region transformed by Carver's innovations"
+            }
+        ],
+        "teaches": [
+            "Agricultural history",
+            "Scientific innovation",
+            "African American contributions to science",
+            "Geographic spread of innovation",
+            "Educational impact"
+        ]
+    }
+    </script>
+
+    <!-- Dark Mode Script -->
+    <script>
+        // Dark Mode Functionality
+        const darkModeToggle = document.getElementById('darkModeToggle');
+        const darkModeIcon = document.querySelector('.dark-mode-icon');
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+
+        // Check for saved dark mode preference or default to system preference
+        function initDarkMode() {
+            const savedMode = localStorage.getItem('darkMode');
+            if (savedMode === 'enabled' || (savedMode === null && prefersDark.matches)) {
+                enableDarkMode();
+            }
+        }
+
+        // Enable dark mode
+        function enableDarkMode() {
+            document.body.classList.add('dark-mode');
+            darkModeIcon.textContent = '☀️';
+            localStorage.setItem('darkMode', 'enabled');
+        }
+
+        // Disable dark mode
+        function disableDarkMode() {
+            document.body.classList.remove('dark-mode');
+            darkModeIcon.textContent = '🌙';
+            localStorage.setItem('darkMode', 'disabled');
+        }
+
+        // Toggle dark mode
+        darkModeToggle.addEventListener('click', () => {
+            if (document.body.classList.contains('dark-mode')) {
+                disableDarkMode();
+            } else {
+                enableDarkMode();
+            }
+        });
+
+        // Listen for system preference changes
+        prefersDark.addEventListener('change', (e) => {
+            if (localStorage.getItem('darkMode') === null) {
+                if (e.matches) {
+                    enableDarkMode();
+                } else {
+                    disableDarkMode();
+                }
+            }
+        });
+
+        // Initialize dark mode on page load
+        initDarkMode();
+    </script>
+
+    <!-- Service Worker Registration -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/service-worker.js')
+                    .then(registration => {
+                        console.log('Service Worker registered successfully:', registration.scope);
+                    })
+                    .catch(error => {
+                        console.log('Service Worker registration failed:', error);
+                    });
+            });
+        }
+    </script>
+
+    <!-- Performance Monitoring -->
+    <script>
+        // Log page load performance
+        window.addEventListener('load', () => {
+            if ('performance' in window) {
+                const perfData = window.performance.timing;
+                const pageLoadTime = perfData.loadEventEnd - perfData.navigationStart;
+                console.log('Page load time:', pageLoadTime + 'ms');
+            }
+        });
+
+        // Intersection Observer for lazy loading enhancements
+        if ('IntersectionObserver' in window) {
+            const observerOptions = {
+                root: null,
+                rootMargin: '50px',
+                threshold: 0.1
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, observerOptions);
+
+            // Observe stat items for animation
+            document.querySelectorAll('.stat-item').forEach(item => {
+                observer.observe(item);
+            });
+        }
     </script>
 </body>
 </html>
