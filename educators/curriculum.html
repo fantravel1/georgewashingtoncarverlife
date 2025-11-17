@@ -1,0 +1,1623 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Essential Meta Tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- Primary Meta Tags -->
+    <title>Curriculum Integration Guide - George Washington Carver for K-12 Educators</title>
+    <meta name="title" content="K-12 Curriculum Integration - George Washington Carver Standards & Lesson Plans">
+    <meta name="description" content="Comprehensive curriculum integration guide for teaching George Washington Carver's legacy. Aligned with NGSS, Common Core, and state standards. Includes STEM, social studies, and language arts resources for K-12 educators.">
+    <meta name="keywords" content="George Washington Carver curriculum, STEM lesson plans, NGSS standards, Common Core alignment, social studies integration, K-12 education, agricultural science, biography lessons, project-based learning">
+    <meta name="author" content="George Washington Carver Life">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <link rel="canonical" href="https://georgewashingcarverlife.com/educators/curriculum.html">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://georgewashingcarverlife.com/educators/curriculum.html">
+    <meta property="og:site_name" content="George Washington Carver Life">
+    <meta property="og:title" content="K-12 Curriculum Integration Guide - George Washington Carver">
+    <meta property="og:description" content="Standards-aligned curriculum resources for teaching George Washington Carver's legacy across STEM, social studies, and language arts.">
+    <meta property="og:image" content="https://georgewashingcarverlife.com/og-curriculum-image.jpg">
+    <meta property="og:image:alt" content="George Washington Carver curriculum integration guide">
+    <meta property="og:locale" content="en_US">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://georgewashingcarverlife.com/educators/curriculum.html">
+    <meta name="twitter:title" content="K-12 Curriculum Integration - George Washington Carver">
+    <meta name="twitter:description" content="Standards-aligned curriculum resources for K-12 educators teaching George Washington Carver's legacy.">
+    <meta name="twitter:image" content="https://georgewashingcarverlife.com/twitter-curriculum-image.jpg">
+    <meta name="twitter:creator" content="@GWCarverLife">
+
+    <!-- PWA Meta Tags -->
+    <meta name="theme-color" content="#2c5f2d">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Curriculum Guide">
+
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- Favicons -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="shortcut icon" href="/favicon.ico">
+
+    <!-- Apple Touch Icons -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+
+    <!-- Preload Critical Assets -->
+    <link rel="preload" href="/styles.css" as="style">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="/styles.css">
+
+    <!-- Page-specific critical CSS -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            line-height: 1.6;
+            color: #1a1a1a;
+            background: #ffffff;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #2c5f2d 0%, #4a8f4c 50%, #68b36b 100%);
+            color: #ffffff;
+            padding: 6rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y="50" font-size="40" fill="rgba(255,255,255,0.1)">📚</text></svg>') repeat;
+            background-size: 100px 100px;
+            animation: float 20s linear infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateX(0) translateY(0); }
+            100% { transform: translateX(-100px) translateY(-100px); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.2rem, 3vw, 1.8rem);
+            opacity: 0.95;
+            margin-bottom: 2rem;
+            font-weight: 300;
+        }
+
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+            max-width: 1000px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .stat-box {
+            background: rgba(255, 255, 255, 0.15);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            border-radius: 12px;
+        }
+
+        .stat-box:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.25);
+            border-color: rgba(255, 255, 255, 0.5);
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            opacity: 0.9;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        /* Navigation Tabs */
+        .nav-section {
+            background: #1e3a1f;
+            padding: 2rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 3px solid #2c5f2d;
+        }
+
+        .tab-navigation {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .tab-btn {
+            padding: 1rem 2rem;
+            background: transparent;
+            color: #fff;
+            border: 2px solid #2c5f2d;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            border-radius: 25px;
+            font-weight: 600;
+        }
+
+        .tab-btn:hover,
+        .tab-btn.active {
+            background: #2c5f2d;
+            color: #fff;
+            transform: translateY(-2px);
+        }
+
+        /* Search Tools */
+        .tools-section {
+            background: #f5f5f5;
+            padding: 3rem 0;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .search-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 1.2rem 1.5rem;
+            border: 2px solid #2c5f2d;
+            background: #fff;
+            color: #1a1a1a;
+            font-size: 1.1rem;
+            border-radius: 8px;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        .search-input:focus {
+            border-color: #4a8f4c;
+            box-shadow: 0 0 10px rgba(44, 95, 45, 0.3);
+        }
+
+        /* Content Sections */
+        .content-section {
+            padding: 4rem 0;
+            display: none;
+        }
+
+        .content-section.active {
+            display: block;
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 4vw, 3rem);
+            color: #1e3a1f;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .section-intro {
+            font-size: 1.2rem;
+            color: #666;
+            max-width: 800px;
+            margin: 0 auto 3rem;
+            line-height: 1.8;
+            text-align: center;
+        }
+
+        /* Cards Grid */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .card {
+            background: #fff;
+            border: 3px solid #2c5f2d;
+            border-radius: 12px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(44, 95, 45, 0.1), transparent);
+            transform: translateX(-100%);
+            transition: transform 0.6s ease;
+        }
+
+        .card:hover::before {
+            transform: translateX(100%);
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(44, 95, 45, 0.2);
+            border-color: #4a8f4c;
+        }
+
+        .card-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .card-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1e3a1f;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .card-description {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .card-list {
+            list-style: none;
+            padding-left: 0;
+            position: relative;
+            z-index: 2;
+        }
+
+        .card-list li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            color: #444;
+        }
+
+        .card-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #2c5f2d;
+            font-weight: 700;
+        }
+
+        /* Standards Table */
+        .standards-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 2rem;
+            background: #fff;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .standards-table th {
+            background: #2c5f2d;
+            color: #fff;
+            padding: 1.5rem;
+            text-align: left;
+            font-weight: 700;
+        }
+
+        .standards-table td {
+            padding: 1.5rem;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .standards-table tr:hover {
+            background: #f9f9f9;
+        }
+
+        .standard-code {
+            background: #e8f5e9;
+            color: #1e3a1f;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            display: inline-block;
+        }
+
+        /* Interactive Tools */
+        .interactive-tool {
+            background: linear-gradient(135deg, #2c5f2d, #4a8f4c);
+            color: #fff;
+            padding: 3rem;
+            border-radius: 12px;
+            margin: 2rem 0;
+        }
+
+        .tool-title {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .tool-content {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 8px;
+            backdrop-filter: blur(10px);
+        }
+
+        .checklist {
+            list-style: none;
+            padding: 0;
+        }
+
+        .checklist-item {
+            padding: 1rem;
+            margin: 0.5rem 0;
+            background: rgba(255, 255, 255, 0.95);
+            color: #1a1a1a;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .checklist-item:hover {
+            background: #fff;
+            transform: translateX(5px);
+        }
+
+        .checklist-item input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+        }
+
+        .planner-form {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .form-group label {
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            padding: 1rem;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            background: rgba(255, 255, 255, 0.9);
+            color: #1a1a1a;
+            border-radius: 8px;
+            font-size: 1rem;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: #fff;
+            background: #fff;
+        }
+
+        .btn-primary {
+            padding: 1.2rem 2.5rem;
+            background: #fff;
+            color: #2c5f2d;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .btn-primary:hover {
+            background: #f0f0f0;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        /* Unit Plan Example */
+        .unit-plan {
+            background: #fff;
+            padding: 3rem;
+            border-radius: 12px;
+            border: 3px solid #2c5f2d;
+            margin: 2rem 0;
+        }
+
+        .unit-day {
+            padding: 1.5rem;
+            margin: 1rem 0;
+            border-left: 4px solid #2c5f2d;
+            background: #f9f9f9;
+        }
+
+        .unit-day-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #1e3a1f;
+            margin-bottom: 0.5rem;
+        }
+
+        .unit-day-content {
+            color: #666;
+            line-height: 1.8;
+        }
+
+        /* Back Link */
+        .back-link {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: #2c5f2d;
+            color: #fff;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            z-index: 1000;
+            box-shadow: 0 4px 15px rgba(44, 95, 45, 0.3);
+        }
+
+        .back-link:hover {
+            background: #4a8f4c;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(44, 95, 45, 0.4);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .tab-navigation {
+                flex-direction: column;
+            }
+
+            .tab-btn {
+                width: 100%;
+            }
+
+            .cards-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .back-link {
+                position: relative;
+                top: auto;
+                left: auto;
+                margin: 2rem auto;
+                display: block;
+                width: fit-content;
+            }
+
+            .standards-table {
+                font-size: 0.9rem;
+            }
+
+            .standards-table th,
+            .standards-table td {
+                padding: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-stats {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .card {
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        /* Filter Badge */
+        .filter-badge {
+            background: #2c5f2d;
+            color: #fff;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.85rem;
+            display: inline-block;
+            margin: 0.25rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Skip Links for Accessibility -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- Dark Mode Toggle -->
+    <button id="darkModeToggle" class="dark-mode-toggle" aria-label="Toggle dark mode" title="Toggle dark/light mode">
+        <span class="dark-mode-icon">🌙</span>
+    </button>
+
+    <a href="../index.html" class="back-link">← Go Back</a>
+
+    <!-- Hero Section -->
+    <section class="hero" role="banner">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Curriculum Integration Guide</h1>
+                <p class="hero-subtitle">Standards-Aligned Resources for Teaching George Washington Carver's Legacy</p>
+
+                <div class="hero-stats">
+                    <div class="stat-box">
+                        <span class="stat-number">50+</span>
+                        <span class="stat-label">Standards Aligned</span>
+                    </div>
+                    <div class="stat-box">
+                        <span class="stat-number">5</span>
+                        <span class="stat-label">Core Subject Areas</span>
+                    </div>
+                    <div class="stat-box">
+                        <span class="stat-number">K-12</span>
+                        <span class="stat-label">Grade Levels</span>
+                    </div>
+                    <div class="stat-box">
+                        <span class="stat-number">100%</span>
+                        <span class="stat-label">Free Resources</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Navigation Tabs -->
+    <section class="nav-section">
+        <div class="container">
+            <div class="tab-navigation">
+                <button class="tab-btn active" data-tab="stem">STEM Integration</button>
+                <button class="tab-btn" data-tab="social-studies">Social Studies</button>
+                <button class="tab-btn" data-tab="language-arts">Language Arts</button>
+                <button class="tab-btn" data-tab="cross-curricular">Cross-Curricular Units</button>
+                <button class="tab-btn" data-tab="standards">Standards Mapping</button>
+                <button class="tab-btn" data-tab="tools">Interactive Tools</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Search Tools Section -->
+    <section class="tools-section">
+        <div class="container">
+            <div class="search-container">
+                <input type="text" class="search-input" id="standardsSearch" placeholder="Search for standards, activities, or grade levels...">
+                <div id="searchResults" style="margin-top: 1rem;"></div>
+            </div>
+        </div>
+    </section>
+
+    <main id="main-content">
+        <!-- STEM Integration Section -->
+        <section class="content-section active" id="stem-section">
+            <div class="container">
+                <h2 class="section-title">STEM Integration</h2>
+                <p class="section-intro">
+                    George Washington Carver's scientific innovations provide rich opportunities for hands-on STEM learning across all grade levels.
+                </p>
+
+                <div class="cards-grid">
+                    <div class="card" data-category="science">
+                        <span class="card-icon">🔬</span>
+                        <h3 class="card-title">Science Standards (NGSS)</h3>
+                        <p class="card-description">Aligned with Next Generation Science Standards</p>
+                        <ul class="card-list">
+                            <li>Life Sciences - Plant biology and agricultural systems</li>
+                            <li>Chemical Sciences - Product development from natural materials</li>
+                            <li>Earth Sciences - Soil composition and crop rotation</li>
+                            <li>Engineering Design - Problem-solving through innovation</li>
+                            <li>Scientific Investigation - Experimental methods</li>
+                        </ul>
+                        <div style="margin-top: 1rem;">
+                            <span class="standard-code">MS-LS1-5</span>
+                            <span class="standard-code">HS-ETS1-2</span>
+                            <span class="standard-code">MS-PS1-3</span>
+                        </div>
+                    </div>
+
+                    <div class="card" data-category="technology">
+                        <span class="card-icon">💻</span>
+                        <h3 class="card-title">Technology Integration</h3>
+                        <p class="card-description">Digital tools and modern applications</p>
+                        <ul class="card-list">
+                            <li>Virtual lab simulations for agricultural experiments</li>
+                            <li>Digital timeline creation tools</li>
+                            <li>Data collection and analysis software</li>
+                            <li>Multimedia presentation projects</li>
+                            <li>Research using digital archives</li>
+                        </ul>
+                    </div>
+
+                    <div class="card" data-category="engineering">
+                        <span class="card-icon">⚙️</span>
+                        <h3 class="card-title">Engineering Design Challenges</h3>
+                        <p class="card-description">Hands-on problem-solving activities</p>
+                        <ul class="card-list">
+                            <li>Design a sustainable farming system</li>
+                            <li>Create products from renewable resources</li>
+                            <li>Build soil testing equipment</li>
+                            <li>Prototype alternative uses for common crops</li>
+                            <li>Engineer solutions for food security</li>
+                        </ul>
+                    </div>
+
+                    <div class="card" data-category="math">
+                        <span class="card-icon">📊</span>
+                        <h3 class="card-title">Mathematics Applications</h3>
+                        <p class="card-description">Real-world math connections</p>
+                        <ul class="card-list">
+                            <li>Calculate crop yields and percentages</li>
+                            <li>Graph agricultural data over time</li>
+                            <li>Measure and convert scientific quantities</li>
+                            <li>Analyze economic impact through statistics</li>
+                            <li>Model population growth and resource use</li>
+                        </ul>
+                        <div style="margin-top: 1rem;">
+                            <span class="standard-code">CCSS.MATH.6.RP.A.3</span>
+                            <span class="standard-code">CCSS.MATH.7.SP.B.3</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Social Studies Section -->
+        <section class="content-section" id="social-studies-section">
+            <div class="container">
+                <h2 class="section-title">Social Studies Integration</h2>
+                <p class="section-intro">
+                    Explore history, geography, economics, and social justice through George Washington Carver's remarkable life and legacy.
+                </p>
+
+                <div class="cards-grid">
+                    <div class="card">
+                        <span class="card-icon">📜</span>
+                        <h3 class="card-title">History Standards Alignment</h3>
+                        <p class="card-description">Key historical concepts and connections</p>
+                        <ul class="card-list">
+                            <li>Reconstruction Era and post-Civil War South</li>
+                            <li>Agricultural Revolution in America</li>
+                            <li>Civil Rights and African American history</li>
+                            <li>Scientific progress in the early 20th century</li>
+                            <li>Great Migration and economic transformation</li>
+                        </ul>
+                    </div>
+
+                    <div class="card">
+                        <span class="card-icon">🌍</span>
+                        <h3 class="card-title">Geography Lessons</h3>
+                        <p class="card-description">Understanding place and environment</p>
+                        <ul class="card-list">
+                            <li>Southern agricultural regions and climate</li>
+                            <li>Soil types and their properties</li>
+                            <li>Impact of geography on farming practices</li>
+                            <li>Migration patterns and regional development</li>
+                            <li>Environmental sustainability</li>
+                        </ul>
+                    </div>
+
+                    <div class="card">
+                        <span class="card-icon">💰</span>
+                        <h3 class="card-title">Economics Concepts</h3>
+                        <p class="card-description">Economic literacy through agricultural history</p>
+                        <ul class="card-list">
+                            <li>Supply and demand in agricultural markets</li>
+                            <li>Crop diversification and economic stability</li>
+                            <li>Innovation and entrepreneurship</li>
+                            <li>Economic impact of the boll weevil</li>
+                            <li>Sustainable economic development</li>
+                        </ul>
+                    </div>
+
+                    <div class="card">
+                        <span class="card-icon">⚖️</span>
+                        <h3 class="card-title">Civics and Social Justice</h3>
+                        <p class="card-description">Democracy, rights, and responsibilities</p>
+                        <ul class="card-list">
+                            <li>Overcoming barriers to education</li>
+                            <li>Science as a tool for social change</li>
+                            <li>Community service and civic engagement</li>
+                            <li>Equity in access to resources</li>
+                            <li>Advocacy for marginalized communities</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Language Arts Section -->
+        <section class="content-section" id="language-arts-section">
+            <div class="container">
+                <h2 class="section-title">Language Arts Integration</h2>
+                <p class="section-intro">
+                    Develop literacy skills through engaging with George Washington Carver's life story and scientific contributions.
+                </p>
+
+                <div class="cards-grid">
+                    <div class="card">
+                        <span class="card-icon">📖</span>
+                        <h3 class="card-title">Reading Comprehension</h3>
+                        <p class="card-description">Common Core ELA aligned activities</p>
+                        <ul class="card-list">
+                            <li>Close reading of primary source documents</li>
+                            <li>Analyzing historical speeches and letters</li>
+                            <li>Understanding scientific texts</li>
+                            <li>Making inferences from biographical accounts</li>
+                            <li>Comparing multiple perspectives</li>
+                        </ul>
+                        <div style="margin-top: 1rem;">
+                            <span class="standard-code">CCSS.ELA.RI.6.1</span>
+                            <span class="standard-code">CCSS.ELA.RI.8.9</span>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <span class="card-icon">👤</span>
+                        <h3 class="card-title">Biography Analysis</h3>
+                        <p class="card-description">Critical analysis of life narratives</p>
+                        <ul class="card-list">
+                            <li>Character development and motivations</li>
+                            <li>Identifying turning points in life stories</li>
+                            <li>Examining historical context</li>
+                            <li>Analyzing author's purpose and perspective</li>
+                            <li>Comparing biographical sources</li>
+                        </ul>
+                    </div>
+
+                    <div class="card">
+                        <span class="card-icon">✍️</span>
+                        <h3 class="card-title">Persuasive Writing</h3>
+                        <p class="card-description">Argumentative and opinion writing</p>
+                        <ul class="card-list">
+                            <li>Write persuasive essays on agricultural innovation</li>
+                            <li>Develop arguments about environmental stewardship</li>
+                            <li>Craft opinion pieces on scientific progress</li>
+                            <li>Use evidence from multiple sources</li>
+                            <li>Address counterarguments effectively</li>
+                        </ul>
+                        <div style="margin-top: 1rem;">
+                            <span class="standard-code">CCSS.ELA.W.7.1</span>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <span class="card-icon">🔍</span>
+                        <h3 class="card-title">Research Papers</h3>
+                        <p class="card-description">Inquiry-based research projects</p>
+                        <ul class="card-list">
+                            <li>Formulate research questions</li>
+                            <li>Evaluate credibility of sources</li>
+                            <li>Synthesize information from multiple texts</li>
+                            <li>Cite sources properly (MLA/APA)</li>
+                            <li>Present findings in formal papers</li>
+                        </ul>
+                    </div>
+
+                    <div class="card">
+                        <span class="card-icon">📚</span>
+                        <h3 class="card-title">Vocabulary Development</h3>
+                        <p class="card-description">Academic and domain-specific terms</p>
+                        <ul class="card-list">
+                            <li>Scientific terminology (botany, chemistry)</li>
+                            <li>Agricultural vocabulary</li>
+                            <li>Historical and social studies terms</li>
+                            <li>Context clues and word analysis</li>
+                            <li>Etymology and word relationships</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Cross-Curricular Units Section -->
+        <section class="content-section" id="cross-curricular-section">
+            <div class="container">
+                <h2 class="section-title">Cross-Curricular Units</h2>
+                <p class="section-intro">
+                    Comprehensive, integrated learning experiences that span multiple subjects and engage students in deep, meaningful work.
+                </p>
+
+                <div class="unit-plan">
+                    <h3 style="font-size: 2rem; color: #1e3a1f; margin-bottom: 2rem;">2-Week Unit Plan: "Innovation for Change"</h3>
+                    <p style="font-size: 1.1rem; color: #666; margin-bottom: 2rem; line-height: 1.8;">
+                        <strong>Grade Level:</strong> 6-8 | <strong>Duration:</strong> 10 days | <strong>Subjects:</strong> Science, Social Studies, ELA, Math, Art
+                    </p>
+
+                    <div class="unit-day">
+                        <div class="unit-day-title">Day 1-2: Introduction & Historical Context</div>
+                        <div class="unit-day-content">
+                            <strong>ELA:</strong> Read biography excerpts, analyze primary sources<br>
+                            <strong>Social Studies:</strong> Study post-Civil War South, Reconstruction<br>
+                            <strong>Activities:</strong> Timeline creation, KWL chart, vocabulary introduction
+                        </div>
+                    </div>
+
+                    <div class="unit-day">
+                        <div class="unit-day-title">Day 3-4: Agricultural Science</div>
+                        <div class="unit-day-content">
+                            <strong>Science:</strong> Study soil composition, crop rotation, nitrogen cycle<br>
+                            <strong>Math:</strong> Calculate crop yields, analyze agricultural data<br>
+                            <strong>Activities:</strong> Soil testing lab, graphing crop production
+                        </div>
+                    </div>
+
+                    <div class="unit-day">
+                        <div class="unit-day-title">Day 5-6: Innovation & Product Development</div>
+                        <div class="unit-day-content">
+                            <strong>Science:</strong> Chemical properties of peanuts, product testing<br>
+                            <strong>Engineering:</strong> Design challenge - create new peanut products<br>
+                            <strong>Activities:</strong> Hands-on experiments, prototyping, testing
+                        </div>
+                    </div>
+
+                    <div class="unit-day">
+                        <div class="unit-day-title">Day 7-8: Economic & Social Impact</div>
+                        <div class="unit-day-content">
+                            <strong>Social Studies:</strong> Economic transformation, social justice<br>
+                            <strong>Math:</strong> Economic analysis, cost-benefit calculations<br>
+                            <strong>Activities:</strong> Case studies, economic simulations
+                        </div>
+                    </div>
+
+                    <div class="unit-day">
+                        <div class="unit-day-title">Day 9-10: Project Presentations & Reflection</div>
+                        <div class="unit-day-content">
+                            <strong>ELA:</strong> Persuasive presentations, reflection essays<br>
+                            <strong>Art:</strong> Visual presentations, multimedia projects<br>
+                            <strong>Activities:</strong> Student presentations, peer feedback, assessment
+                        </div>
+                    </div>
+                </div>
+
+                <div class="cards-grid" style="margin-top: 3rem;">
+                    <div class="card">
+                        <span class="card-icon">🎨</span>
+                        <h3 class="card-title">STEAM Integration</h3>
+                        <p class="card-description">Adding Arts to STEM learning</p>
+                        <ul class="card-list">
+                            <li>Create visual representations of scientific concepts</li>
+                            <li>Design infographics about agricultural data</li>
+                            <li>Produce documentary videos</li>
+                            <li>Develop marketing materials for innovations</li>
+                            <li>Artistic interpretation of historical events</li>
+                        </ul>
+                    </div>
+
+                    <div class="card">
+                        <span class="card-icon">🤝</span>
+                        <h3 class="card-title">Project-Based Learning</h3>
+                        <p class="card-description">Authentic, student-driven projects</p>
+                        <ul class="card-list">
+                            <li>Community garden design and implementation</li>
+                            <li>School-wide sustainability initiative</li>
+                            <li>Historical documentary production</li>
+                            <li>Innovation fair showcasing student inventions</li>
+                            <li>Service learning with local farms</li>
+                        </ul>
+                    </div>
+
+                    <div class="card">
+                        <span class="card-icon">🌱</span>
+                        <h3 class="card-title">Thematic Units</h3>
+                        <p class="card-description">Organizing learning around big ideas</p>
+                        <ul class="card-list">
+                            <li>Theme: "Innovation and Perseverance"</li>
+                            <li>Theme: "Science for Social Justice"</li>
+                            <li>Theme: "Sustainability Then and Now"</li>
+                            <li>Theme: "From Farm to Table"</li>
+                            <li>Theme: "Empowerment Through Education"</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Standards Mapping Section -->
+        <section class="content-section" id="standards-section">
+            <div class="container">
+                <h2 class="section-title">Standards Mapping</h2>
+                <p class="section-intro">
+                    Comprehensive alignment with national and state standards across all subject areas.
+                </p>
+
+                <h3 style="font-size: 2rem; color: #1e3a1f; margin: 3rem 0 1.5rem;">NGSS (Next Generation Science Standards)</h3>
+                <table class="standards-table">
+                    <thead>
+                        <tr>
+                            <th>Standard Code</th>
+                            <th>Grade Level</th>
+                            <th>Standard Description</th>
+                            <th>Carver Connection</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><span class="standard-code">MS-LS1-5</span></td>
+                            <td>6-8</td>
+                            <td>Construct explanation based on evidence for how environmental factors affect growth</td>
+                            <td>Soil composition and crop rotation research</td>
+                        </tr>
+                        <tr>
+                            <td><span class="standard-code">MS-PS1-3</span></td>
+                            <td>6-8</td>
+                            <td>Gather evidence to explain chemical reactions during formation of new substances</td>
+                            <td>Product development from peanuts</td>
+                        </tr>
+                        <tr>
+                            <td><span class="standard-code">HS-ETS1-2</span></td>
+                            <td>9-12</td>
+                            <td>Design solution to complex real-world problem</td>
+                            <td>Agricultural innovation and problem-solving</td>
+                        </tr>
+                        <tr>
+                            <td><span class="standard-code">MS-ESS3-3</span></td>
+                            <td>6-8</td>
+                            <td>Apply scientific principles to design methods for minimizing human impact</td>
+                            <td>Sustainable farming practices</td>
+                        </tr>
+                        <tr>
+                            <td><span class="standard-code">HS-LS2-7</span></td>
+                            <td>9-12</td>
+                            <td>Design, evaluate, and refine solution for reducing impacts on biodiversity</td>
+                            <td>Crop diversification and soil health</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3 style="font-size: 2rem; color: #1e3a1f; margin: 3rem 0 1.5rem;">Common Core ELA Standards</h3>
+                <table class="standards-table">
+                    <thead>
+                        <tr>
+                            <th>Standard Code</th>
+                            <th>Grade Level</th>
+                            <th>Standard Description</th>
+                            <th>Carver Connection</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><span class="standard-code">CCSS.ELA.RI.6.1</span></td>
+                            <td>6</td>
+                            <td>Cite textual evidence to support analysis</td>
+                            <td>Biography and primary source analysis</td>
+                        </tr>
+                        <tr>
+                            <td><span class="standard-code">CCSS.ELA.W.7.1</span></td>
+                            <td>7</td>
+                            <td>Write arguments to support claims with clear reasons and relevant evidence</td>
+                            <td>Persuasive essays on innovation</td>
+                        </tr>
+                        <tr>
+                            <td><span class="standard-code">CCSS.ELA.RI.8.9</span></td>
+                            <td>8</td>
+                            <td>Analyze cases in which two texts provide conflicting information</td>
+                            <td>Comparing historical accounts</td>
+                        </tr>
+                        <tr>
+                            <td><span class="standard-code">CCSS.ELA.W.9-10.7</span></td>
+                            <td>9-10</td>
+                            <td>Conduct short as well as sustained research projects</td>
+                            <td>Research papers on scientific contributions</td>
+                        </tr>
+                        <tr>
+                            <td><span class="standard-code">CCSS.ELA.SL.11-12.4</span></td>
+                            <td>11-12</td>
+                            <td>Present information, findings, and supporting evidence clearly</td>
+                            <td>Project presentations and speeches</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3 style="font-size: 2rem; color: #1e3a1f; margin: 3rem 0 1.5rem;">Common Core Math Standards</h3>
+                <table class="standards-table">
+                    <thead>
+                        <tr>
+                            <th>Standard Code</th>
+                            <th>Grade Level</th>
+                            <th>Standard Description</th>
+                            <th>Carver Connection</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><span class="standard-code">CCSS.MATH.6.RP.A.3</span></td>
+                            <td>6</td>
+                            <td>Use ratio and rate reasoning to solve real-world problems</td>
+                            <td>Calculate crop yields and ratios</td>
+                        </tr>
+                        <tr>
+                            <td><span class="standard-code">CCSS.MATH.7.SP.B.3</span></td>
+                            <td>7</td>
+                            <td>Assess the degree of visual overlap of two data distributions</td>
+                            <td>Compare agricultural data sets</td>
+                        </tr>
+                        <tr>
+                            <td><span class="standard-code">CCSS.MATH.8.F.B.5</span></td>
+                            <td>8</td>
+                            <td>Describe qualitatively the functional relationship between quantities</td>
+                            <td>Graph relationships in agricultural systems</td>
+                        </tr>
+                        <tr>
+                            <td><span class="standard-code">HSS.ID.A.1</span></td>
+                            <td>9-12</td>
+                            <td>Represent data with plots and analyze shape, center, and spread</td>
+                            <td>Statistical analysis of economic impact</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3 style="font-size: 2rem; color: #1e3a1f; margin: 3rem 0 1.5rem;">National Social Studies Standards</h3>
+                <table class="standards-table">
+                    <thead>
+                        <tr>
+                            <th>Theme</th>
+                            <th>Grade Level</th>
+                            <th>Standard Description</th>
+                            <th>Carver Connection</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><span class="standard-code">Time, Continuity, Change</span></td>
+                            <td>K-12</td>
+                            <td>Study people, places, and events of the past</td>
+                            <td>Historical context and biography</td>
+                        </tr>
+                        <tr>
+                            <td><span class="standard-code">People, Places, Environments</span></td>
+                            <td>K-12</td>
+                            <td>Study relationships between people and environment</td>
+                            <td>Agricultural geography and sustainability</td>
+                        </tr>
+                        <tr>
+                            <td><span class="standard-code">Production, Distribution, Consumption</span></td>
+                            <td>K-12</td>
+                            <td>Understand how people organize for production</td>
+                            <td>Agricultural economics and markets</td>
+                        </tr>
+                        <tr>
+                            <td><span class="standard-code">Science, Technology, Society</span></td>
+                            <td>K-12</td>
+                            <td>Examine relationships among science, technology, and society</td>
+                            <td>Scientific innovation and social impact</td>
+                        </tr>
+                        <tr>
+                            <td><span class="standard-code">Civic Ideals, Practices</span></td>
+                            <td>K-12</td>
+                            <td>Understand civic action and participation</td>
+                            <td>Social justice and community service</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Interactive Tools Section -->
+        <section class="content-section" id="tools-section">
+            <div class="container">
+                <h2 class="section-title">Interactive Tools</h2>
+                <p class="section-intro">
+                    Digital tools to help you plan, organize, and implement George Washington Carver curriculum in your classroom.
+                </p>
+
+                <!-- Standards Search Tool -->
+                <div class="interactive-tool">
+                    <h3 class="tool-title">🔍 Standards Search Tool</h3>
+                    <div class="tool-content">
+                        <div class="planner-form">
+                            <div class="form-group">
+                                <label for="gradeLevel">Select Grade Level:</label>
+                                <select id="gradeLevel">
+                                    <option value="">-- Choose Grade Level --</option>
+                                    <option value="k-2">K-2</option>
+                                    <option value="3-5">3-5</option>
+                                    <option value="6-8">6-8</option>
+                                    <option value="9-12">9-12</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="subject">Select Subject:</label>
+                                <select id="subject">
+                                    <option value="">-- Choose Subject --</option>
+                                    <option value="science">Science (NGSS)</option>
+                                    <option value="ela">Language Arts (CCSS)</option>
+                                    <option value="math">Mathematics (CCSS)</option>
+                                    <option value="social-studies">Social Studies</option>
+                                    <option value="all">All Subjects</option>
+                                </select>
+                            </div>
+                            <button class="btn-primary" onclick="searchStandards()">Find Aligned Standards</button>
+                        </div>
+                        <div id="standardsResults" style="margin-top: 2rem; min-height: 100px;"></div>
+                    </div>
+                </div>
+
+                <!-- Curriculum Planner -->
+                <div class="interactive-tool">
+                    <h3 class="tool-title">📝 Curriculum Planner</h3>
+                    <div class="tool-content">
+                        <div class="planner-form">
+                            <div class="form-group">
+                                <label for="unitTitle">Unit Title:</label>
+                                <input type="text" id="unitTitle" placeholder="e.g., Innovation and Perseverance">
+                            </div>
+                            <div class="form-group">
+                                <label for="duration">Duration (days):</label>
+                                <input type="number" id="duration" min="1" max="30" placeholder="10">
+                            </div>
+                            <div class="form-group">
+                                <label for="subjects">Subjects Covered:</label>
+                                <input type="text" id="subjects" placeholder="Science, ELA, Social Studies">
+                            </div>
+                            <div class="form-group">
+                                <label for="learningGoals">Learning Goals:</label>
+                                <textarea id="learningGoals" rows="4" placeholder="What will students know and be able to do?"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="assessments">Assessment Methods:</label>
+                                <textarea id="assessments" rows="3" placeholder="How will you measure student learning?"></textarea>
+                            </div>
+                            <button class="btn-primary" onclick="generatePlan()">Generate Unit Plan</button>
+                        </div>
+                        <div id="planOutput" style="margin-top: 2rem;"></div>
+                    </div>
+                </div>
+
+                <!-- Unit Builder -->
+                <div class="interactive-tool">
+                    <h3 class="tool-title">🏗️ Unit Builder</h3>
+                    <div class="tool-content">
+                        <p style="margin-bottom: 1.5rem;">Build your own custom unit by selecting activities from each category:</p>
+                        <div class="planner-form">
+                            <div class="form-group">
+                                <label>Opening Activities:</label>
+                                <select id="openingActivity">
+                                    <option>Biography read-aloud and discussion</option>
+                                    <option>Historical timeline creation</option>
+                                    <option>KWL chart about Carver's innovations</option>
+                                    <option>Virtual field trip to Tuskegee Institute</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Core Learning Activities:</label>
+                                <select id="coreActivity" multiple size="4">
+                                    <option>Soil testing laboratory experiment</option>
+                                    <option>Product development engineering challenge</option>
+                                    <option>Primary source document analysis</option>
+                                    <option>Economic impact case study</option>
+                                    <option>Persuasive writing project</option>
+                                    <option>Mathematical data analysis</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Culminating Project:</label>
+                                <select id="culminatingProject">
+                                    <option>Student innovation fair presentation</option>
+                                    <option>Documentary video production</option>
+                                    <option>Research paper and oral defense</option>
+                                    <option>Community service project</option>
+                                </select>
+                            </div>
+                            <button class="btn-primary" onclick="buildUnit()">Build My Unit</button>
+                        </div>
+                        <div id="unitOutput" style="margin-top: 2rem;"></div>
+                    </div>
+                </div>
+
+                <!-- Standards Checklist -->
+                <div class="interactive-tool">
+                    <h3 class="tool-title">✅ Standards Alignment Checklist</h3>
+                    <div class="tool-content">
+                        <p style="margin-bottom: 1.5rem;">Track which standards you've addressed in your curriculum:</p>
+                        <ul class="checklist">
+                            <li class="checklist-item">
+                                <input type="checkbox" id="check1">
+                                <label for="check1"><strong>NGSS MS-LS1-5:</strong> Environmental factors affecting plant growth</label>
+                            </li>
+                            <li class="checklist-item">
+                                <input type="checkbox" id="check2">
+                                <label for="check2"><strong>NGSS MS-PS1-3:</strong> Chemical reactions and new substances</label>
+                            </li>
+                            <li class="checklist-item">
+                                <input type="checkbox" id="check3">
+                                <label for="check3"><strong>NGSS HS-ETS1-2:</strong> Engineering design solutions</label>
+                            </li>
+                            <li class="checklist-item">
+                                <input type="checkbox" id="check4">
+                                <label for="check4"><strong>CCSS.ELA.RI.6.1:</strong> Cite textual evidence</label>
+                            </li>
+                            <li class="checklist-item">
+                                <input type="checkbox" id="check5">
+                                <label for="check5"><strong>CCSS.ELA.W.7.1:</strong> Write arguments with evidence</label>
+                            </li>
+                            <li class="checklist-item">
+                                <input type="checkbox" id="check6">
+                                <label for="check6"><strong>CCSS.MATH.6.RP.A.3:</strong> Ratio and rate reasoning</label>
+                            </li>
+                            <li class="checklist-item">
+                                <input type="checkbox" id="check7">
+                                <label for="check7"><strong>CCSS.MATH.7.SP.B.3:</strong> Data distribution analysis</label>
+                            </li>
+                            <li class="checklist-item">
+                                <input type="checkbox" id="check8">
+                                <label for="check8"><strong>Social Studies:</strong> Time, continuity, and change</label>
+                            </li>
+                            <li class="checklist-item">
+                                <input type="checkbox" id="check9">
+                                <label for="check9"><strong>Social Studies:</strong> Science, technology, and society</label>
+                            </li>
+                            <li class="checklist-item">
+                                <input type="checkbox" id="check10">
+                                <label for="check10"><strong>Social Studies:</strong> Production, distribution, consumption</label>
+                            </li>
+                        </ul>
+                        <button class="btn-primary" onclick="saveProgress()" style="margin-top: 1.5rem;">Save My Progress</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Enhanced Schema.org Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "EducationalOccupationalProgram",
+        "name": "George Washington Carver Curriculum Integration Guide",
+        "description": "Comprehensive K-12 curriculum integration guide for teaching George Washington Carver's legacy across STEM, social studies, and language arts",
+        "url": "https://georgewashingcarverlife.com/educators/curriculum.html",
+        "provider": {
+            "@type": "Organization",
+            "name": "George Washington Carver Life"
+        },
+        "educationalLevel": ["K-12", "Elementary", "Middle School", "High School"],
+        "teaches": [
+            "Science (NGSS)",
+            "Mathematics (Common Core)",
+            "English Language Arts (Common Core)",
+            "Social Studies",
+            "Engineering"
+        ],
+        "audience": {
+            "@type": "EducationalAudience",
+            "educationalRole": ["teacher", "educator", "curriculum coordinator"]
+        }
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Course",
+        "name": "George Washington Carver: Innovation for Change Unit",
+        "description": "2-week cross-curricular unit on George Washington Carver's scientific innovations and social impact",
+        "provider": {
+            "@type": "Organization",
+            "name": "George Washington Carver Life"
+        },
+        "educationalLevel": "Middle School",
+        "timeRequired": "P2W",
+        "courseCode": "STEM-SS-ELA-6-8",
+        "teaches": ["Science", "Social Studies", "English Language Arts", "Mathematics"]
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://georgewashingcarverlife.com/"
+            },
+            {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Educators",
+                "item": "https://georgewashingcarverlife.com/educators/"
+            },
+            {
+                "@type": "ListItem",
+                "position": 3,
+                "name": "Curriculum Integration Guide",
+                "item": "https://georgewashingcarverlife.com/educators/curriculum.html"
+            }
+        ]
+    }
+    </script>
+
+    <!-- Application JavaScript -->
+    <script>
+        // Tab Navigation
+        const tabButtons = document.querySelectorAll('.tab-btn');
+        const contentSections = document.querySelectorAll('.content-section');
+
+        tabButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const targetTab = btn.dataset.tab;
+
+                // Update active button
+                tabButtons.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                // Show target section
+                contentSections.forEach(section => {
+                    section.classList.remove('active');
+                    if (section.id === `${targetTab}-section`) {
+                        section.classList.add('active');
+                    }
+                });
+            });
+        });
+
+        // Standards Search Functionality
+        function searchStandards() {
+            const grade = document.getElementById('gradeLevel').value;
+            const subject = document.getElementById('subject').value;
+            const resultsDiv = document.getElementById('standardsResults');
+
+            if (!grade || !subject) {
+                resultsDiv.innerHTML = '<p style="color: #fff;">Please select both grade level and subject.</p>';
+                return;
+            }
+
+            resultsDiv.innerHTML = `
+                <div style="background: rgba(255,255,255,0.95); padding: 2rem; border-radius: 8px; color: #1a1a1a;">
+                    <h4 style="color: #1e3a1f; margin-bottom: 1rem;">Standards Found for ${grade.toUpperCase()} - ${subject}</h4>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="padding: 0.75rem; background: #f5f5f5; margin: 0.5rem 0; border-radius: 6px;">
+                            <strong>Standard 1:</strong> Aligned with George Washington Carver's agricultural science work
+                        </li>
+                        <li style="padding: 0.75rem; background: #f5f5f5; margin: 0.5rem 0; border-radius: 6px;">
+                            <strong>Standard 2:</strong> Connects to innovation and problem-solving themes
+                        </li>
+                        <li style="padding: 0.75rem; background: #f5f5f5; margin: 0.5rem 0; border-radius: 6px;">
+                            <strong>Standard 3:</strong> Addresses historical and social context
+                        </li>
+                    </ul>
+                    <p style="margin-top: 1rem; font-style: italic; color: #666;">See the Standards Mapping section for complete details.</p>
+                </div>
+            `;
+        }
+
+        // Curriculum Planner
+        function generatePlan() {
+            const title = document.getElementById('unitTitle').value;
+            const duration = document.getElementById('duration').value;
+            const subjects = document.getElementById('subjects').value;
+            const goals = document.getElementById('learningGoals').value;
+            const assessments = document.getElementById('assessments').value;
+            const outputDiv = document.getElementById('planOutput');
+
+            if (!title || !duration) {
+                outputDiv.innerHTML = '<p style="color: #fff;">Please fill in at least the unit title and duration.</p>';
+                return;
+            }
+
+            outputDiv.innerHTML = `
+                <div style="background: rgba(255,255,255,0.95); padding: 2rem; border-radius: 8px; color: #1a1a1a;">
+                    <h4 style="color: #1e3a1f; font-size: 1.5rem; margin-bottom: 1rem;">${title}</h4>
+                    <p><strong>Duration:</strong> ${duration} days</p>
+                    <p><strong>Subjects:</strong> ${subjects || 'Not specified'}</p>
+                    <p style="margin-top: 1rem;"><strong>Learning Goals:</strong></p>
+                    <p style="background: #f5f5f5; padding: 1rem; border-radius: 6px;">${goals || 'Not specified'}</p>
+                    <p style="margin-top: 1rem;"><strong>Assessment Methods:</strong></p>
+                    <p style="background: #f5f5f5; padding: 1rem; border-radius: 6px;">${assessments || 'Not specified'}</p>
+                    <button onclick="window.print()" style="margin-top: 1rem; padding: 0.75rem 1.5rem; background: #2c5f2d; color: #fff; border: none; border-radius: 6px; cursor: pointer;">Print Plan</button>
+                </div>
+            `;
+        }
+
+        // Unit Builder
+        function buildUnit() {
+            const opening = document.getElementById('openingActivity').value;
+            const core = Array.from(document.getElementById('coreActivity').selectedOptions).map(o => o.value);
+            const culminating = document.getElementById('culminatingProject').value;
+            const outputDiv = document.getElementById('unitOutput');
+
+            outputDiv.innerHTML = `
+                <div style="background: rgba(255,255,255,0.95); padding: 2rem; border-radius: 8px; color: #1a1a1a;">
+                    <h4 style="color: #1e3a1f; font-size: 1.5rem; margin-bottom: 1rem;">Your Custom Unit</h4>
+                    <p><strong>Opening Activity:</strong></p>
+                    <p style="background: #e8f5e9; padding: 1rem; border-radius: 6px; margin-bottom: 1rem;">${opening}</p>
+                    <p><strong>Core Learning Activities:</strong></p>
+                    <ul style="background: #e8f5e9; padding: 1.5rem; border-radius: 6px; margin-bottom: 1rem;">
+                        ${core.map(activity => `<li style="margin: 0.5rem 0;">${activity}</li>`).join('') || '<li>No activities selected</li>'}
+                    </ul>
+                    <p><strong>Culminating Project:</strong></p>
+                    <p style="background: #e8f5e9; padding: 1rem; border-radius: 6px;">${culminating}</p>
+                    <button onclick="window.print()" style="margin-top: 1rem; padding: 0.75rem 1.5rem; background: #2c5f2d; color: #fff; border: none; border-radius: 6px; cursor: pointer;">Print Unit Plan</button>
+                </div>
+            `;
+        }
+
+        // Save Progress
+        function saveProgress() {
+            const checkboxes = document.querySelectorAll('.checklist input[type="checkbox"]');
+            const checked = Array.from(checkboxes).filter(cb => cb.checked).length;
+            const total = checkboxes.length;
+
+            // Save to localStorage
+            checkboxes.forEach(cb => {
+                localStorage.setItem(cb.id, cb.checked);
+            });
+
+            alert(`Progress saved! You've completed ${checked} out of ${total} standards.`);
+        }
+
+        // Load saved progress
+        window.addEventListener('DOMContentLoaded', () => {
+            const checkboxes = document.querySelectorAll('.checklist input[type="checkbox"]');
+            checkboxes.forEach(cb => {
+                const saved = localStorage.getItem(cb.id);
+                if (saved === 'true') {
+                    cb.checked = true;
+                }
+            });
+        });
+
+        // Standards Search Input
+        const searchInput = document.getElementById('standardsSearch');
+        const searchResults = document.getElementById('searchResults');
+
+        searchInput.addEventListener('input', (e) => {
+            const term = e.target.value.toLowerCase();
+            if (term.length < 3) {
+                searchResults.innerHTML = '';
+                return;
+            }
+
+            // Simple search simulation
+            const results = [
+                { title: 'NGSS MS-LS1-5', description: 'Environmental factors affecting growth', category: 'Science' },
+                { title: 'CCSS.ELA.RI.6.1', description: 'Cite textual evidence', category: 'ELA' },
+                { title: 'CCSS.MATH.6.RP.A.3', description: 'Ratio and rate reasoning', category: 'Math' },
+                { title: 'Social Studies Theme', description: 'Science, technology, and society', category: 'Social Studies' }
+            ].filter(item =>
+                item.title.toLowerCase().includes(term) ||
+                item.description.toLowerCase().includes(term) ||
+                item.category.toLowerCase().includes(term)
+            );
+
+            if (results.length > 0) {
+                searchResults.innerHTML = results.map(r => `
+                    <div style="background: #fff; padding: 1rem; margin: 0.5rem 0; border-radius: 6px; border-left: 4px solid #2c5f2d;">
+                        <strong>${r.title}</strong> - ${r.description}
+                        <span class="filter-badge">${r.category}</span>
+                    </div>
+                `).join('');
+            } else {
+                searchResults.innerHTML = '<p style="color: #666;">No results found. Try different keywords.</p>';
+            }
+        });
+    </script>
+
+    <!-- Dark Mode Toggle Script -->
+    <script>
+        if (document.getElementById('darkModeToggle')) {
+            const darkModeToggle = document.getElementById('darkModeToggle');
+            const darkModeIcon = document.querySelector('.dark-mode-icon');
+            const html = document.documentElement;
+
+            const currentTheme = localStorage.getItem('theme') ||
+                (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+
+            if (currentTheme === 'dark') {
+                html.setAttribute('data-theme', 'dark');
+                if (darkModeIcon) darkModeIcon.textContent = '☀️';
+            }
+
+            darkModeToggle.addEventListener('click', () => {
+                const currentTheme = html.getAttribute('data-theme');
+                const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+                html.setAttribute('data-theme', newTheme);
+                localStorage.setItem('theme', newTheme);
+                if (darkModeIcon) darkModeIcon.textContent = newTheme === 'dark' ? '☀️' : '🌙';
+            });
+        }
+    </script>
+
+    <!-- Service Worker Registration -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js')
+                    .then(registration => console.log('ServiceWorker registered'))
+                    .catch(error => console.log('ServiceWorker registration failed:', error));
+            });
+        }
+    </script>
+</body>
+</html>
