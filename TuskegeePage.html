@@ -2,11 +2,59 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Life at Tuskegee Institute - Where George Washington Carver Changed the World</title>
     <meta name="description" content="Experience daily life at Tuskegee Institute during George Washington Carver's era. Discover what made this revolutionary institution so significant for African American education and progress.">
     <meta name="keywords" content="Tuskegee Institute, Booker T Washington, George Washington Carver, African American education, historically black colleges, Alabama history">
-    
+
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Life at Tuskegee Institute - Where George Washington Carver Changed the World">
+    <meta property="og:description" content="Explore the revolutionary educational institution where George Washington Carver spent 47 years transforming agriculture and African American education.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://georgewashingtoncarverlife.com/TuskegeePage.html">
+    <meta property="og:image" content="https://georgewashingtoncarverlife.com/images/tuskegee-institute-og.jpg">
+    <meta property="og:image:alt" content="Tuskegee Institute historic campus">
+    <meta property="og:site_name" content="George Washington Carver Life">
+    <meta property="og:locale" content="en_US">
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Life at Tuskegee Institute - Where George Washington Carver Changed the World">
+    <meta name="twitter:description" content="Explore the revolutionary educational institution where George Washington Carver spent 47 years transforming agriculture and African American education.">
+    <meta name="twitter:image" content="https://georgewashingtoncarverlife.com/images/tuskegee-institute-twitter.jpg">
+    <meta name="twitter:image:alt" content="Tuskegee Institute historic campus">
+
+    <!-- PWA Meta Tags -->
+    <meta name="theme-color" content="#2F4F4F" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#1a1a1a" media="(prefers-color-scheme: dark)">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Tuskegee Institute">
+
+    <!-- Favicon Links -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/android-chrome-192x192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="/android-chrome-512x512.png">
+
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://georgewashingtoncarverlife.com/TuskegeePage.html">
+
+    <!-- Preload Critical Assets -->
+    <link rel="preload" href="/styles.css" as="style">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="/styles.css">
+
     <style>
         * {
             margin: 0;
@@ -450,12 +498,97 @@
         .significance-card {
             animation: fadeInUp 0.6s ease-out;
         }
+
+        /* Skip Link */
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: #2F4F4F;
+            color: white;
+            padding: 8px;
+            text-decoration: none;
+            z-index: 10000;
+        }
+
+        .skip-link:focus {
+            top: 0;
+        }
+
+        /* Dark Mode Toggle */
+        .dark-mode-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #FFD700;
+            color: #2F4F4F;
+            border: none;
+            padding: 0.8rem 1.2rem;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            z-index: 1000;
+            box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+        }
+
+        .dark-mode-toggle:hover {
+            background: #FFA500;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 215, 0, 0.4);
+        }
+
+        /* Dark Mode Styles */
+        body.dark-mode {
+            background: #1a1a1a;
+            color: #e0e0e0;
+        }
+
+        body.dark-mode .section:nth-child(even) {
+            background: #2a2a2a;
+        }
+
+        body.dark-mode .campus-card,
+        body.dark-mode .daily-card,
+        body.dark-mode .significance-card {
+            background: #2a2a2a;
+            border-color: #FFD700;
+            color: #e0e0e0;
+        }
+
+        body.dark-mode .section-title,
+        body.dark-mode .campus-title,
+        body.dark-mode .daily-time,
+        body.dark-mode .significance-title {
+            color: #FFD700;
+        }
+
+        body.dark-mode .section-description,
+        body.dark-mode .campus-description,
+        body.dark-mode .daily-activity,
+        body.dark-mode .significance-text {
+            color: #c0c0c0;
+        }
+
+        body.dark-mode .daily-card {
+            background: linear-gradient(135deg, #2a2a2a 0%, #333 100%);
+        }
     </style>
 </head>
 <body>
+    <!-- Skip Link for Accessibility -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- Dark Mode Toggle -->
+    <button class="dark-mode-toggle" id="darkModeToggle" aria-label="Toggle dark mode">
+        <span id="darkModeIcon">🌙 Dark Mode</span>
+    </button>
+
     <a href="index.html" class="back-link">← Go Back</a>
 
     <!-- Hero Section -->
+    <main id="main-content">
     <section class="hero">
         <div class="container">
             <div class="hero-content">
@@ -721,6 +854,126 @@
             </div>
         </div>
     </section>
+    </main>
+
+    <!-- Structured Data - EducationalOrganization Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "EducationalOrganization",
+      "name": "Tuskegee Institute",
+      "alternateName": "Tuskegee Normal and Industrial Institute",
+      "description": "Historic educational institution founded in 1881 where George Washington Carver spent 47 years revolutionizing agriculture and African American education.",
+      "foundingDate": "1881-07-04",
+      "founder": {
+        "@type": "Person",
+        "name": "Booker T. Washington",
+        "description": "Founder and first principal of Tuskegee Institute"
+      },
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Tuskegee Campus",
+        "addressLocality": "Tuskegee",
+        "addressRegion": "AL",
+        "postalCode": "36088",
+        "addressCountry": "US"
+      },
+      "url": "https://georgewashingtoncarverlife.com/TuskegeePage.html",
+      "sameAs": [
+        "https://www.tuskegee.edu/",
+        "https://en.wikipedia.org/wiki/Tuskegee_University"
+      ],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Educational Programs",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Course",
+              "name": "Agricultural Sciences",
+              "description": "Scientific agriculture and experimental farming led by George Washington Carver"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Course",
+              "name": "Industrial Training",
+              "description": "40 trades and professions including masonry, carpentry, blacksmithing, and more"
+            }
+          }
+        ]
+      },
+      "alumni": {
+        "@type": "Person",
+        "name": "George Washington Carver",
+        "jobTitle": "Director of Agricultural Research",
+        "description": "Revolutionary scientist who spent 47 years at Tuskegee developing hundreds of agricultural innovations"
+      }
+    }
+    </script>
+
+    <!-- Structured Data - HistoricalPlace Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Place",
+      "additionalType": "HistoricalPlace",
+      "name": "Tuskegee Institute Historic Campus",
+      "description": "Historic campus where students built over 100 buildings and George Washington Carver conducted groundbreaking agricultural research from 1896-1943.",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Tuskegee Campus",
+        "addressLocality": "Tuskegee",
+        "addressRegion": "AL",
+        "postalCode": "36088",
+        "addressCountry": "US"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": "32.4296",
+        "longitude": "-85.7078"
+      },
+      "historicalSignificance": "Revolutionary African American educational institution during Jim Crow era, proving Black excellence in education, agriculture, and industry",
+      "event": [
+        {
+          "@type": "Event",
+          "name": "Founding of Tuskegee Institute",
+          "startDate": "1881-07-04",
+          "description": "Booker T. Washington founded the institution with 30 students in a church and shanty"
+        },
+        {
+          "@type": "Event",
+          "name": "George Washington Carver Joins Faculty",
+          "startDate": "1896",
+          "description": "Carver arrives as Director of Agricultural Research, beginning 47 years of revolutionary work"
+        }
+      ]
+    }
+    </script>
+
+    <!-- Structured Data - BreadcrumbList Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://georgewashingtoncarverlife.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Life at Tuskegee Institute",
+          "item": "https://georgewashingtoncarverlife.com/TuskegeePage.html"
+        }
+      ]
+    }
+    </script>
 
     <script>
         // Add smooth scrolling behavior
@@ -808,6 +1061,44 @@
                 parallax.style.transform = `translateY(${speed}px)`;
             }
         });
+
+        // Dark Mode Functionality
+        const darkModeToggle = document.getElementById('darkModeToggle');
+        const darkModeIcon = document.getElementById('darkModeIcon');
+        const body = document.body;
+
+        // Check for saved dark mode preference
+        const darkMode = localStorage.getItem('darkMode');
+        if (darkMode === 'enabled') {
+            body.classList.add('dark-mode');
+            darkModeIcon.textContent = '☀️ Light Mode';
+        }
+
+        // Toggle dark mode
+        darkModeToggle.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+
+            if (body.classList.contains('dark-mode')) {
+                darkModeIcon.textContent = '☀️ Light Mode';
+                localStorage.setItem('darkMode', 'enabled');
+            } else {
+                darkModeIcon.textContent = '🌙 Dark Mode';
+                localStorage.setItem('darkMode', 'disabled');
+            }
+        });
+
+        // Service Worker Registration for PWA
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/service-worker.js')
+                    .then(registration => {
+                        console.log('ServiceWorker registration successful:', registration.scope);
+                    })
+                    .catch(error => {
+                        console.log('ServiceWorker registration failed:', error);
+                    });
+            });
+        }
     </script>
 </body>
 </html>
