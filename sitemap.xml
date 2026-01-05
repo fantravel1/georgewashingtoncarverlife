@@ -6,7 +6,7 @@
     <!-- Homepage / Timeline -->
     <url>
         <loc>https://georgewashingcarverlife.com/</loc>
-        <lastmod>2025-01-17</lastmod>
+        <lastmod>2026-01-05</lastmod>
         <changefreq>weekly</changefreq>
         <priority>1.0</priority>
     </url>
@@ -14,7 +14,7 @@
     <!-- Main Timeline Page -->
     <url>
         <loc>https://georgewashingcarverlife.com/index.html</loc>
-        <lastmod>2025-01-17</lastmod>
+        <lastmod>2026-01-05</lastmod>
         <changefreq>weekly</changefreq>
         <priority>1.0</priority>
     </url>
@@ -22,7 +22,7 @@
     <!-- Peanut Products Page -->
     <url>
         <loc>https://georgewashingcarverlife.com/PeanutPage.html</loc>
-        <lastmod>2025-01-17</lastmod>
+        <lastmod>2026-01-05</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.9</priority>
     </url>
@@ -30,7 +30,7 @@
     <!-- Sweet Potato Products Page -->
     <url>
         <loc>https://georgewashingcarverlife.com/SweetPotatoPage.html</loc>
-        <lastmod>2025-01-17</lastmod>
+        <lastmod>2026-01-05</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.9</priority>
     </url>
@@ -38,7 +38,7 @@
     <!-- Tuskegee Institute Page -->
     <url>
         <loc>https://georgewashingcarverlife.com/TuskegeePage.html</loc>
-        <lastmod>2025-01-17</lastmod>
+        <lastmod>2026-01-05</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.9</priority>
     </url>
@@ -46,9 +46,150 @@
     <!-- Carver Impact Map -->
     <url>
         <loc>https://georgewashingcarverlife.com/CarverImpactMap.html</loc>
-        <lastmod>2025-01-17</lastmod>
+        <lastmod>2026-01-05</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
+    </url>
+
+    <!-- Research Hub -->
+    <url>
+        <loc>https://georgewashingcarverlife.com/research/</loc>
+        <lastmod>2026-01-05</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+    </url>
+
+    <!-- Community Section -->
+    <url>
+        <loc>https://georgewashingcarverlife.com/community/</loc>
+        <lastmod>2026-01-05</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <!-- Media Gallery -->
+    <url>
+        <loc>https://georgewashingcarverlife.com/media/</loc>
+        <lastmod>2026-01-05</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <!-- Questions Hub -->
+    <url>
+        <loc>https://georgewashingcarverlife.com/questions/</loc>
+        <lastmod>2026-01-05</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+
+    <!-- Individual Q&A Pages -->
+    <url>
+        <loc>https://georgewashingcarverlife.com/questions/did-carver-invent-peanut-butter.html</loc>
+        <lastmod>2026-01-05</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://georgewashingcarverlife.com/questions/when-was-carver-born.html</loc>
+        <lastmod>2026-01-05</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://georgewashingcarverlife.com/questions/how-did-carver-die.html</loc>
+        <lastmod>2026-01-05</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://georgewashingcarverlife.com/questions/how-many-inventions.html</loc>
+        <lastmod>2026-01-05</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <!-- Educational Pages -->
+    <url>
+        <loc>https://georgewashingcarverlife.com/educators/curriculum.html</loc>
+        <lastmod>2026-01-05</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+
+    <url>
+        <loc>https://georgewashingcarverlife.com/educators/lesson-plans.html</loc>
+        <lastmod>2026-01-05</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+
+    <url>
+        <loc>https://georgewashingcarverlife.com/educators/activities.html</loc>
+        <lastmod>2026-01-05</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+
+    <!-- Interactive Pages -->
+    <url>
+        <loc>https://georgewashingcarverlife.com/interactive/quizzes.html</loc>
+        <lastmod>2026-01-05</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+
+    <url>
+        <loc>https://georgewashingcarverlife.com/interactive/experiments.html</loc>
+        <lastmod>2026-01-05</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+
+    <url>
+        <loc>https://georgewashingcarverlife.com/interactive/crop-rotation.html</loc>
+        <lastmod>2026-01-05</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+
+    <!-- Learning Pages -->
+    <url>
+        <loc>https://georgewashingcarverlife.com/learn/early-life.html</loc>
+        <lastmod>2026-01-05</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+
+    <url>
+        <loc>https://georgewashingcarverlife.com/learn/agriculture.html</loc>
+        <lastmod>2026-01-05</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+
+    <url>
+        <loc>https://georgewashingcarverlife.com/learn/education-philosophy.html</loc>
+        <lastmod>2026-01-05</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+
+    <url>
+        <loc>https://georgewashingcarverlife.com/learn/scientific-method.html</loc>
+        <lastmod>2026-01-05</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+
+    <url>
+        <loc>https://georgewashingcarverlife.com/learn/myths-facts.html</loc>
+        <lastmod>2026-01-05</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
     </url>
 
 </urlset>

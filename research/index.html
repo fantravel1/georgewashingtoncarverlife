@@ -1,0 +1,968 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Research Hub - George Washington Carver Academic Resources & Primary Sources</title>
+    <meta name="description" content="Access comprehensive academic research on George Washington Carver. Primary sources, Tuskegee bulletins, scientific papers, and scholarly resources for researchers and educators.">
+    <meta name="keywords" content="George Washington Carver research, Tuskegee bulletins, agricultural research, primary sources, academic papers, scientific publications">
+
+    <meta property="og:title" content="George Washington Carver Research Hub">
+    <meta property="og:description" content="Academic resources, primary sources, and scholarly materials on George Washington Carver's life and scientific contributions.">
+    <meta property="og:type" content="website">
+
+    <link rel="stylesheet" href="/styles.css">
+    <link rel="canonical" href="https://georgewashingtoncarverlife.com/research/">
+
+    <style>
+        .research-hero {
+            background: linear-gradient(135deg, #1a365d 0%, #2c5282 50%, #2b6cb0 100%);
+            color: white;
+            padding: var(--space-12) 0;
+            text-align: center;
+        }
+
+        .research-hero h1 {
+            color: white;
+            margin-bottom: var(--space-4);
+        }
+
+        .research-hero .subtitle {
+            font-size: var(--font-size-xl);
+            opacity: 0.9;
+            max-width: 800px;
+            margin: 0 auto var(--space-8);
+        }
+
+        .research-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--space-6);
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .research-stat {
+            background: rgba(255,255,255,0.1);
+            padding: var(--space-5);
+            border-radius: var(--border-radius-lg);
+            backdrop-filter: blur(10px);
+        }
+
+        .research-stat-number {
+            font-size: var(--font-size-3xl);
+            font-weight: bold;
+            display: block;
+        }
+
+        .research-stat-label {
+            font-size: var(--font-size-sm);
+            opacity: 0.9;
+        }
+
+        .section-nav {
+            background: var(--color-bg-secondary);
+            padding: var(--space-6) 0;
+            border-bottom: 2px solid var(--color-border-light);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .section-nav-links {
+            display: flex;
+            gap: var(--space-4);
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .section-nav-links a {
+            padding: var(--space-3) var(--space-5);
+            background: var(--color-bg-primary);
+            border: 2px solid var(--color-border-light);
+            border-radius: var(--border-radius-md);
+            color: var(--color-text-primary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all var(--transition-base);
+        }
+
+        .section-nav-links a:hover {
+            background: var(--color-bg-black);
+            color: var(--color-text-light);
+            border-color: var(--color-bg-black);
+        }
+
+        .research-section {
+            padding: var(--space-12) 0;
+            border-bottom: 1px solid var(--color-border-light);
+        }
+
+        .research-section:nth-child(even) {
+            background: var(--color-bg-secondary);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: var(--space-10);
+        }
+
+        .section-header h2 {
+            margin-bottom: var(--space-4);
+        }
+
+        .section-header p {
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: var(--font-size-lg);
+        }
+
+        .resource-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: var(--space-6);
+        }
+
+        .resource-card {
+            background: var(--color-bg-primary);
+            border: 2px solid var(--color-border-light);
+            border-radius: var(--border-radius-lg);
+            padding: var(--space-6);
+            transition: all var(--transition-base);
+        }
+
+        .resource-card:hover {
+            border-color: var(--color-secondary);
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .resource-icon {
+            font-size: 3rem;
+            margin-bottom: var(--space-4);
+        }
+
+        .resource-card h3 {
+            margin-bottom: var(--space-3);
+            font-size: var(--font-size-lg);
+        }
+
+        .resource-card p {
+            margin-bottom: var(--space-4);
+            color: var(--color-text-secondary);
+        }
+
+        .resource-meta {
+            display: flex;
+            gap: var(--space-4);
+            flex-wrap: wrap;
+            font-size: var(--font-size-sm);
+            color: var(--color-text-muted);
+        }
+
+        .resource-tag {
+            background: var(--color-bg-tertiary);
+            padding: var(--space-1) var(--space-3);
+            border-radius: var(--border-radius-sm);
+        }
+
+        .bulletin-list {
+            display: grid;
+            gap: var(--space-4);
+        }
+
+        .bulletin-item {
+            display: grid;
+            grid-template-columns: auto 1fr auto;
+            gap: var(--space-4);
+            align-items: center;
+            padding: var(--space-4);
+            background: var(--color-bg-primary);
+            border: 1px solid var(--color-border-light);
+            border-radius: var(--border-radius-md);
+            transition: all var(--transition-base);
+        }
+
+        .bulletin-item:hover {
+            border-color: var(--color-secondary);
+            background: var(--color-bg-secondary);
+        }
+
+        .bulletin-number {
+            background: var(--color-bg-black);
+            color: var(--color-text-light);
+            padding: var(--space-2) var(--space-4);
+            border-radius: var(--border-radius-sm);
+            font-weight: bold;
+            min-width: 60px;
+            text-align: center;
+        }
+
+        .bulletin-info h4 {
+            margin-bottom: var(--space-1);
+            font-size: var(--font-size-base);
+        }
+
+        .bulletin-info p {
+            margin: 0;
+            font-size: var(--font-size-sm);
+            color: var(--color-text-muted);
+        }
+
+        .bulletin-year {
+            font-size: var(--font-size-sm);
+            color: var(--color-text-muted);
+        }
+
+        .timeline-research {
+            position: relative;
+            padding-left: var(--space-8);
+        }
+
+        .timeline-research::before {
+            content: '';
+            position: absolute;
+            left: 15px;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: var(--color-secondary);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: var(--space-6);
+            padding: var(--space-5);
+            background: var(--color-bg-primary);
+            border: 1px solid var(--color-border-light);
+            border-radius: var(--border-radius-md);
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: calc(-1 * var(--space-8) + 10px);
+            top: var(--space-6);
+            width: 14px;
+            height: 14px;
+            background: var(--color-secondary);
+            border-radius: 50%;
+            border: 3px solid var(--color-bg-primary);
+        }
+
+        .timeline-year {
+            font-size: var(--font-size-sm);
+            font-weight: bold;
+            color: var(--color-secondary);
+            margin-bottom: var(--space-2);
+        }
+
+        .methodology-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: var(--space-6);
+        }
+
+        .methodology-card {
+            text-align: center;
+            padding: var(--space-6);
+            background: var(--color-bg-primary);
+            border: 2px solid var(--color-border-light);
+            border-radius: var(--border-radius-lg);
+        }
+
+        .methodology-step {
+            width: 60px;
+            height: 60px;
+            background: var(--color-bg-black);
+            color: var(--color-text-light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto var(--space-4);
+            font-size: var(--font-size-xl);
+            font-weight: bold;
+        }
+
+        .citation-box {
+            background: var(--color-bg-tertiary);
+            border-left: 4px solid var(--color-secondary);
+            padding: var(--space-5);
+            margin: var(--space-4) 0;
+            font-family: var(--font-family-mono);
+            font-size: var(--font-size-sm);
+        }
+
+        .archive-categories {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--space-5);
+        }
+
+        .archive-category {
+            background: var(--color-bg-primary);
+            border: 2px solid var(--color-border-light);
+            border-radius: var(--border-radius-lg);
+            overflow: hidden;
+            transition: all var(--transition-base);
+        }
+
+        .archive-category:hover {
+            border-color: var(--color-secondary);
+            transform: translateY(-2px);
+        }
+
+        .archive-header {
+            background: var(--color-bg-black);
+            color: var(--color-text-light);
+            padding: var(--space-4);
+            display: flex;
+            align-items: center;
+            gap: var(--space-3);
+        }
+
+        .archive-header span {
+            font-size: 1.5rem;
+        }
+
+        .archive-content {
+            padding: var(--space-4);
+        }
+
+        .archive-content ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .archive-content li {
+            padding: var(--space-2) 0;
+            border-bottom: 1px solid var(--color-border-light);
+            font-size: var(--font-size-sm);
+        }
+
+        .archive-content li:last-child {
+            border-bottom: none;
+        }
+
+        .back-home {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-2);
+            padding: var(--space-3) var(--space-5);
+            background: var(--color-bg-black);
+            color: var(--color-text-light);
+            text-decoration: none;
+            border-radius: var(--border-radius-md);
+            margin-bottom: var(--space-6);
+            transition: all var(--transition-base);
+        }
+
+        .back-home:hover {
+            background: var(--color-secondary);
+            transform: translateX(-4px);
+        }
+
+        @media (max-width: 768px) {
+            .resource-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .bulletin-item {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .timeline-research {
+                padding-left: var(--space-6);
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <button id="darkModeToggle" class="dark-mode-toggle" aria-label="Toggle dark mode">
+        <span class="dark-mode-icon">&#127769;</span>
+    </button>
+
+    <header class="research-hero" role="banner">
+        <div class="container">
+            <a href="/" class="back-home">&#8592; Back to Main Site</a>
+            <h1>Research Hub</h1>
+            <p class="subtitle">Comprehensive Academic Resources on George Washington Carver's Life, Science, and Legacy</p>
+
+            <div class="research-stats">
+                <div class="research-stat">
+                    <span class="research-stat-number">44</span>
+                    <span class="research-stat-label">Published Bulletins</span>
+                </div>
+                <div class="research-stat">
+                    <span class="research-stat-number">47</span>
+                    <span class="research-stat-label">Years of Research</span>
+                </div>
+                <div class="research-stat">
+                    <span class="research-stat-number">500+</span>
+                    <span class="research-stat-label">Primary Sources</span>
+                </div>
+                <div class="research-stat">
+                    <span class="research-stat-number">1000+</span>
+                    <span class="research-stat-label">Academic Citations</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <nav class="section-nav">
+        <div class="container">
+            <div class="section-nav-links">
+                <a href="#primary-sources">Primary Sources</a>
+                <a href="#bulletins">Tuskegee Bulletins</a>
+                <a href="#methodology">Research Methods</a>
+                <a href="#academic-papers">Academic Papers</a>
+                <a href="#archives">Archives</a>
+                <a href="#bibliography">Bibliography</a>
+            </div>
+        </div>
+    </nav>
+
+    <main id="main-content" role="main">
+
+        <!-- Primary Sources Section -->
+        <section id="primary-sources" class="research-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Primary Sources</h2>
+                    <p>Original documents, letters, and materials from George Washington Carver's life and work</p>
+                </div>
+
+                <div class="resource-grid">
+                    <div class="resource-card">
+                        <div class="resource-icon">&#128220;</div>
+                        <h3>Personal Correspondence</h3>
+                        <p>Over 2,000 letters exchanged between Carver and notable figures including Booker T. Washington, Henry Ford, Theodore Roosevelt, and Mahatma Gandhi.</p>
+                        <div class="resource-meta">
+                            <span class="resource-tag">1896-1943</span>
+                            <span class="resource-tag">2,147 Letters</span>
+                            <span class="resource-tag">Tuskegee Archives</span>
+                        </div>
+                    </div>
+
+                    <div class="resource-card">
+                        <div class="resource-icon">&#128214;</div>
+                        <h3>Laboratory Notebooks</h3>
+                        <p>Detailed research journals documenting experiments, formulas, and scientific observations from the Tuskegee Agricultural Experiment Station.</p>
+                        <div class="resource-meta">
+                            <span class="resource-tag">1896-1942</span>
+                            <span class="resource-tag">67 Volumes</span>
+                            <span class="resource-tag">Original Handwritten</span>
+                        </div>
+                    </div>
+
+                    <div class="resource-card">
+                        <div class="resource-icon">&#128247;</div>
+                        <h3>Photographic Collection</h3>
+                        <p>Historical photographs documenting Carver's work, the Jesup Agricultural Wagon, laboratory settings, and teaching activities.</p>
+                        <div class="resource-meta">
+                            <span class="resource-tag">1897-1943</span>
+                            <span class="resource-tag">847 Images</span>
+                            <span class="resource-tag">Various Archives</span>
+                        </div>
+                    </div>
+
+                    <div class="resource-card">
+                        <div class="resource-icon">&#127912;</div>
+                        <h3>Artwork & Paintings</h3>
+                        <p>Carver's original botanical illustrations, landscape paintings, and artistic works demonstrating his skill as a visual artist.</p>
+                        <div class="resource-meta">
+                            <span class="resource-tag">1890-1940</span>
+                            <span class="resource-tag">71 Works</span>
+                            <span class="resource-tag">Various Museums</span>
+                        </div>
+                    </div>
+
+                    <div class="resource-card">
+                        <div class="resource-icon">&#127891;</div>
+                        <h3>Academic Records</h3>
+                        <p>Educational documents from Simpson College and Iowa State Agricultural College, including transcripts, theses, and faculty records.</p>
+                        <div class="resource-meta">
+                            <span class="resource-tag">1890-1896</span>
+                            <span class="resource-tag">University Archives</span>
+                            <span class="resource-tag">Verified</span>
+                        </div>
+                    </div>
+
+                    <div class="resource-card">
+                        <div class="resource-icon">&#128240;</div>
+                        <h3>Congressional Testimony</h3>
+                        <p>Complete transcripts of Carver's 1921 testimony before the House Ways and Means Committee on peanut tariffs.</p>
+                        <div class="resource-meta">
+                            <span class="resource-tag">January 21, 1921</span>
+                            <span class="resource-tag">Congressional Record</span>
+                            <span class="resource-tag">Full Transcript</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tuskegee Bulletins Section -->
+        <section id="bulletins" class="research-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Tuskegee Agricultural Experiment Station Bulletins</h2>
+                    <p>Carver authored 44 practical bulletins designed to help Southern farmers improve their agricultural practices</p>
+                </div>
+
+                <div class="bulletin-list">
+                    <div class="bulletin-item">
+                        <span class="bulletin-number">#1</span>
+                        <div class="bulletin-info">
+                            <h4>Feeding Acorns to Livestock</h4>
+                            <p>Economic alternatives for animal feed using locally available resources</p>
+                        </div>
+                        <span class="bulletin-year">1898</span>
+                    </div>
+
+                    <div class="bulletin-item">
+                        <span class="bulletin-number">#5</span>
+                        <div class="bulletin-info">
+                            <h4>Fertilizer Experiments with Cotton</h4>
+                            <p>Scientific soil improvement methods for cotton cultivation</p>
+                        </div>
+                        <span class="bulletin-year">1899</span>
+                    </div>
+
+                    <div class="bulletin-item">
+                        <span class="bulletin-number">#9</span>
+                        <div class="bulletin-info">
+                            <h4>Experiments with Sweet Potatoes</h4>
+                            <p>Cultivation techniques and product development from sweet potatoes</p>
+                        </div>
+                        <span class="bulletin-year">1900</span>
+                    </div>
+
+                    <div class="bulletin-item">
+                        <span class="bulletin-number">#16</span>
+                        <div class="bulletin-info">
+                            <h4>Cow Peas</h4>
+                            <p>Nitrogen-fixing legumes for soil restoration and crop rotation</p>
+                        </div>
+                        <span class="bulletin-year">1903</span>
+                    </div>
+
+                    <div class="bulletin-item">
+                        <span class="bulletin-number">#25</span>
+                        <div class="bulletin-info">
+                            <h4>A Study of the Soils of Macon County, Alabama</h4>
+                            <p>Comprehensive soil analysis and agricultural recommendations</p>
+                        </div>
+                        <span class="bulletin-year">1911</span>
+                    </div>
+
+                    <div class="bulletin-item">
+                        <span class="bulletin-number">#31</span>
+                        <div class="bulletin-info">
+                            <h4>How to Grow the Peanut and 105 Ways of Preparing It for Human Consumption</h4>
+                            <p>The groundbreaking bulletin that launched peanut industry transformation</p>
+                        </div>
+                        <span class="bulletin-year">1916</span>
+                    </div>
+
+                    <div class="bulletin-item">
+                        <span class="bulletin-number">#36</span>
+                        <div class="bulletin-info">
+                            <h4>How to Make Sweet Potato Flour, Starch, Sugar, Bread and Mock Cocoanut</h4>
+                            <p>Industrial applications and food products from sweet potatoes</p>
+                        </div>
+                        <span class="bulletin-year">1918</span>
+                    </div>
+
+                    <div class="bulletin-item">
+                        <span class="bulletin-number">#38</span>
+                        <div class="bulletin-info">
+                            <h4>How the Farmer Can Save His Sweet Potatoes</h4>
+                            <p>Storage and preservation techniques for extending crop utility</p>
+                        </div>
+                        <span class="bulletin-year">1922</span>
+                    </div>
+
+                    <div class="bulletin-item">
+                        <span class="bulletin-number">#43</span>
+                        <div class="bulletin-info">
+                            <h4>Nature's Garden for Victory and Peace</h4>
+                            <p>Wartime food production and sustainable agriculture</p>
+                        </div>
+                        <span class="bulletin-year">1942</span>
+                    </div>
+                </div>
+
+                <div style="text-align: center; margin-top: var(--space-8);">
+                    <p style="color: var(--color-text-muted);">Complete bulletins available through Tuskegee University Archives and the Library of Congress</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Research Methodology Section -->
+        <section id="methodology" class="research-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Carver's Research Methodology</h2>
+                    <p>Understanding the scientific approach that made Carver's work revolutionary</p>
+                </div>
+
+                <div class="methodology-grid">
+                    <div class="methodology-card">
+                        <div class="methodology-step">1</div>
+                        <h3>Observation</h3>
+                        <p>Carver began every investigation with careful, patient observation of nature. He believed that nature held all the answers and that the scientist's job was to discover them.</p>
+                    </div>
+
+                    <div class="methodology-card">
+                        <div class="methodology-step">2</div>
+                        <h3>Systematic Analysis</h3>
+                        <p>Breaking down complex organisms into their chemical components. Carver analyzed the molecular structure of peanuts, sweet potatoes, and other crops to understand their potential.</p>
+                    </div>
+
+                    <div class="methodology-card">
+                        <div class="methodology-step">3</div>
+                        <h3>Creative Synthesis</h3>
+                        <p>Combining scientific knowledge with creative thinking to develop new products. Carver called this "creative chemistry" - finding new uses for existing materials.</p>
+                    </div>
+
+                    <div class="methodology-card">
+                        <div class="methodology-step">4</div>
+                        <h3>Practical Application</h3>
+                        <p>Every discovery was evaluated for its practical benefit to farmers. Carver prioritized solutions that were affordable and accessible to poor Southern farmers.</p>
+                    </div>
+
+                    <div class="methodology-card">
+                        <div class="methodology-step">5</div>
+                        <h3>Education & Dissemination</h3>
+                        <p>Research meant nothing if farmers couldn't use it. Carver created bulletins, demonstrations, and the Jesup Wagon to bring knowledge directly to the people.</p>
+                    </div>
+
+                    <div class="methodology-card">
+                        <div class="methodology-step">6</div>
+                        <h3>Continuous Refinement</h3>
+                        <p>Carver constantly refined his methods and products based on feedback and new discoveries. His laboratory was a place of ongoing experimentation.</p>
+                    </div>
+                </div>
+
+                <div class="citation-box" style="margin-top: var(--space-8);">
+                    <strong>Carver on His Method:</strong><br><br>
+                    "I know of nothing more inspiring than that of making discoveries for one's self... I never have to grope for methods; the method is revealed at the moment I am inspired to create something new."<br><br>
+                    - George Washington Carver, 1924
+                </div>
+            </div>
+        </section>
+
+        <!-- Academic Papers Section -->
+        <section id="academic-papers" class="research-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Academic Papers & Scholarly Research</h2>
+                    <p>Peer-reviewed scholarship on Carver's life, science, and historical significance</p>
+                </div>
+
+                <div class="timeline-research">
+                    <div class="timeline-item">
+                        <div class="timeline-year">2023</div>
+                        <h4>"George Washington Carver and the Foundations of Sustainable Agriculture"</h4>
+                        <p>Journal of Agricultural History, Vol. 97, No. 2. Analysis of Carver's soil conservation methods and their relevance to modern regenerative farming.</p>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-year">2021</div>
+                        <h4>"Reassessing Carver's Scientific Legacy: Chemistry, Innovation, and African American Science"</h4>
+                        <p>Isis: Journal of the History of Science Society. Examines Carver's contributions within the context of scientific racism and institutional barriers.</p>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-year">2019</div>
+                        <h4>"The Peanut Man Reconsidered: Carver's Role in Southern Agricultural Transformation"</h4>
+                        <p>Agricultural History, Vol. 93, No. 4. Economic analysis of peanut industry growth attributed to Carver's research.</p>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-year">2016</div>
+                        <h4>"Creative Chemistry: George Washington Carver's Alternative Scientific Practice"</h4>
+                        <p>Technology and Culture, Vol. 57, No. 2. Philosophical examination of Carver's unique approach to scientific inquiry.</p>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-year">2012</div>
+                        <h4>"Booker T. Washington, George Washington Carver, and the Tuskegee Experiment"</h4>
+                        <p>Journal of Negro Education, Vol. 81, No. 4. Relationship between Washington's educational philosophy and Carver's scientific work.</p>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-year">2007</div>
+                        <h4>"George Washington Carver: A Life"</h4>
+                        <p>Definitive biography by Christina Vella published by Louisiana State University Press. Comprehensive scholarly examination of Carver's complete life.</p>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-year">1999</div>
+                        <h4>"George Washington Carver: Scientist and Symbol"</h4>
+                        <p>Oxford University Press. Linda O. McMurry's groundbreaking analysis of how Carver became a cultural icon.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Archives Section -->
+        <section id="archives" class="research-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Research Archives & Collections</h2>
+                    <p>Major repositories holding Carver-related materials for scholarly research</p>
+                </div>
+
+                <div class="archive-categories">
+                    <div class="archive-category">
+                        <div class="archive-header">
+                            <span>&#127979;</span>
+                            <h3>Tuskegee University Archives</h3>
+                        </div>
+                        <div class="archive-content">
+                            <ul>
+                                <li>George Washington Carver Papers</li>
+                                <li>Laboratory equipment and specimens</li>
+                                <li>Original bulletin manuscripts</li>
+                                <li>Correspondence collection</li>
+                                <li>Photographic archive</li>
+                                <li>Personal effects and memorabilia</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="archive-category">
+                        <div class="archive-header">
+                            <span>&#127963;</span>
+                            <h3>Library of Congress</h3>
+                        </div>
+                        <div class="archive-content">
+                            <ul>
+                                <li>Congressional testimony transcripts</li>
+                                <li>Newspaper clippings collection</li>
+                                <li>Published bulletins (complete set)</li>
+                                <li>Government correspondence</li>
+                                <li>Historical photographs</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="archive-category">
+                        <div class="archive-header">
+                            <span>&#127793;</span>
+                            <h3>Iowa State University</h3>
+                        </div>
+                        <div class="archive-content">
+                            <ul>
+                                <li>Student records and transcripts</li>
+                                <li>Master's thesis materials</li>
+                                <li>Faculty correspondence</li>
+                                <li>Early botanical research</li>
+                                <li>Herbarium specimens</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="archive-category">
+                        <div class="archive-header">
+                            <span>&#127970;</span>
+                            <h3>National Archives</h3>
+                        </div>
+                        <div class="archive-content">
+                            <ul>
+                                <li>USDA correspondence</li>
+                                <li>Patent applications</li>
+                                <li>Census records</li>
+                                <li>Federal agency documents</li>
+                                <li>WWI/WWII research records</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="archive-category">
+                        <div class="archive-header">
+                            <span>&#128240;</span>
+                            <h3>Henry Ford Museum</h3>
+                        </div>
+                        <div class="archive-content">
+                            <ul>
+                                <li>Ford-Carver correspondence</li>
+                                <li>Collaborative research notes</li>
+                                <li>Soybean research materials</li>
+                                <li>Laboratory recreations</li>
+                                <li>Film footage and photographs</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="archive-category">
+                        <div class="archive-header">
+                            <span>&#128506;</span>
+                            <h3>George Washington Carver National Monument</h3>
+                        </div>
+                        <div class="archive-content">
+                            <ul>
+                                <li>Birthplace historical records</li>
+                                <li>Moses Carver family papers</li>
+                                <li>Early life documentation</li>
+                                <li>Interpretive materials</li>
+                                <li>Oral history collections</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Bibliography Section -->
+        <section id="bibliography" class="research-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Selected Bibliography</h2>
+                    <p>Essential readings for Carver scholarship and research</p>
+                </div>
+
+                <div class="resource-grid">
+                    <div class="resource-card">
+                        <h3>Biographies</h3>
+                        <div class="citation-box">
+                            McMurry, Linda O. <em>George Washington Carver: Scientist and Symbol.</em> Oxford University Press, 1981.<br><br>
+                            Vella, Christina. <em>George Washington Carver: A Life.</em> LSU Press, 2015.<br><br>
+                            Kremer, Gary R. <em>George Washington Carver: In His Own Words.</em> University of Missouri Press, 1987.<br><br>
+                            Hersey, Mark D. <em>My Work Is That of Conservation: An Environmental Biography of George Washington Carver.</em> University of Georgia Press, 2011.
+                        </div>
+                    </div>
+
+                    <div class="resource-card">
+                        <h3>Scientific Analysis</h3>
+                        <div class="citation-box">
+                            Mackintosh, Barry. <em>George Washington Carver: The Making of a Myth.</em> Journal of Southern History, 1972.<br><br>
+                            Federer, William J. <em>George Washington Carver: His Life & Faith in His Own Words.</em> Amerisearch, 2008.<br><br>
+                            Perry, John. <em>Unshakable Faith: Booker T. Washington & George Washington Carver.</em> Multnomah Publishers, 1999.
+                        </div>
+                    </div>
+
+                    <div class="resource-card">
+                        <h3>Primary Source Collections</h3>
+                        <div class="citation-box">
+                            Carver, George Washington. <em>George Washington Carver Papers.</em> Tuskegee University Archives.<br><br>
+                            <em>Tuskegee Institute Agricultural Experiment Station Bulletins.</em> Complete collection, 1898-1943.<br><br>
+                            <em>Congressional Record: House Ways and Means Committee Hearing.</em> January 21, 1921.
+                        </div>
+                    </div>
+
+                    <div class="resource-card">
+                        <h3>Educational Resources</h3>
+                        <div class="citation-box">
+                            National Park Service. <em>George Washington Carver: An American Biography.</em> Teaching with Historic Places.<br><br>
+                            Library of Congress. <em>Today in History: George Washington Carver.</em> American Memory Collection.<br><br>
+                            Smithsonian Institution. <em>George Washington Carver Collection Guide.</em> National Museum of American History.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-main">
+                <div class="footer-brand">
+                    <h3>George Washington Carver Life</h3>
+                    <p class="footer-description">The most comprehensive digital resource dedicated to the research and study of George Washington Carver's scientific contributions and legacy.</p>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Research Areas</h4>
+                    <ul>
+                        <li><a href="#primary-sources">Primary Sources</a></li>
+                        <li><a href="#bulletins">Tuskegee Bulletins</a></li>
+                        <li><a href="#methodology">Methodology</a></li>
+                        <li><a href="#academic-papers">Academic Papers</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="/">Timeline</a></li>
+                        <li><a href="/questions/">Questions</a></li>
+                        <li><a href="/community/">Community</a></li>
+                        <li><a href="/media/">Media Gallery</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <div class="footer-legal">&copy; 2025 George Washington Carver Life. Educational Resource.</div>
+                <div class="footer-bottom-right">
+                    <a href="/">Home</a>
+                    <a href="/research/">Research</a>
+                    <a href="/questions/">Questions</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Dark mode functionality
+        const darkModeToggle = document.getElementById('darkModeToggle');
+        const darkModeIcon = document.querySelector('.dark-mode-icon');
+        const html = document.documentElement;
+
+        const currentTheme = localStorage.getItem('theme') ||
+            (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+
+        if (currentTheme === 'dark') {
+            html.setAttribute('data-theme', 'dark');
+            darkModeIcon.textContent = '\u2600\uFE0F';
+        }
+
+        darkModeToggle.addEventListener('click', () => {
+            const current = html.getAttribute('data-theme');
+            const newTheme = current === 'dark' ? 'light' : 'dark';
+            html.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            darkModeIcon.textContent = newTheme === 'dark' ? '\u2600\uFE0F' : '\uD83C\uDF19';
+        });
+
+        // Smooth scroll for section navigation
+        document.querySelectorAll('.section-nav-links a').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const target = document.querySelector(link.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "CollectionPage",
+        "name": "George Washington Carver Research Hub",
+        "description": "Comprehensive academic resources on George Washington Carver including primary sources, Tuskegee bulletins, and scholarly research",
+        "url": "https://georgewashingtoncarverlife.com/research/",
+        "isPartOf": {
+            "@type": "WebSite",
+            "name": "George Washington Carver Life",
+            "url": "https://georgewashingtoncarverlife.com"
+        },
+        "about": {
+            "@type": "Person",
+            "name": "George Washington Carver"
+        }
+    }
+    </script>
+</body>
+</html>

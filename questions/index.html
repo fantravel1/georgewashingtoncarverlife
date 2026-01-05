@@ -1,0 +1,993 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Questions About George Washington Carver - Complete Q&A Resource</title>
+    <meta name="description" content="Find answers to every question about George Washington Carver. Birth, death, inventions, education, family, achievements - comprehensive Q&A covering his entire life.">
+    <meta name="keywords" content="George Washington Carver questions, FAQ, biography, inventions, peanut butter, Tuskegee, answers">
+
+    <meta property="og:title" content="Questions About George Washington Carver">
+    <meta property="og:description" content="Complete Q&A resource answering every question about George Washington Carver's life, work, and legacy.">
+    <meta property="og:type" content="website">
+
+    <link rel="stylesheet" href="/styles.css">
+    <link rel="canonical" href="https://georgewashingtoncarverlife.com/questions/">
+
+    <style>
+        .questions-hero {
+            background: linear-gradient(135deg, #065f46 0%, #047857 50%, #059669 100%);
+            color: white;
+            padding: var(--space-12) 0;
+            text-align: center;
+        }
+
+        .questions-hero h1 {
+            color: white;
+            margin-bottom: var(--space-4);
+        }
+
+        .questions-hero .subtitle {
+            font-size: var(--font-size-xl);
+            opacity: 0.95;
+            max-width: 800px;
+            margin: 0 auto var(--space-8);
+        }
+
+        .search-box-large {
+            max-width: 600px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .search-box-large input {
+            width: 100%;
+            padding: var(--space-5) var(--space-6);
+            font-size: var(--font-size-lg);
+            border: none;
+            border-radius: 50px;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .search-box-large input::placeholder {
+            color: var(--color-text-muted);
+        }
+
+        .question-stats {
+            display: flex;
+            gap: var(--space-8);
+            justify-content: center;
+            margin-top: var(--space-8);
+            flex-wrap: wrap;
+        }
+
+        .question-stat {
+            text-align: center;
+        }
+
+        .question-stat-number {
+            font-size: var(--font-size-3xl);
+            font-weight: bold;
+            display: block;
+        }
+
+        .question-stat-label {
+            font-size: var(--font-size-sm);
+            opacity: 0.9;
+        }
+
+        .category-nav {
+            background: var(--color-bg-secondary);
+            padding: var(--space-6) 0;
+            border-bottom: 2px solid var(--color-border-light);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .category-pills {
+            display: flex;
+            gap: var(--space-3);
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .category-pill {
+            padding: var(--space-2) var(--space-5);
+            background: var(--color-bg-primary);
+            border: 2px solid var(--color-border-light);
+            border-radius: 50px;
+            color: var(--color-text-primary);
+            text-decoration: none;
+            font-size: var(--font-size-sm);
+            font-weight: 500;
+            transition: all var(--transition-base);
+        }
+
+        .category-pill:hover,
+        .category-pill.active {
+            background: var(--color-bg-black);
+            color: var(--color-text-light);
+            border-color: var(--color-bg-black);
+        }
+
+        .questions-section {
+            padding: var(--space-10) 0;
+            border-bottom: 1px solid var(--color-border-light);
+        }
+
+        .questions-section:nth-child(even) {
+            background: var(--color-bg-secondary);
+        }
+
+        .section-header {
+            margin-bottom: var(--space-8);
+        }
+
+        .section-header h2 {
+            display: flex;
+            align-items: center;
+            gap: var(--space-3);
+            margin-bottom: var(--space-2);
+        }
+
+        .section-icon {
+            font-size: 2rem;
+        }
+
+        .section-header p {
+            color: var(--color-text-secondary);
+            font-size: var(--font-size-lg);
+        }
+
+        .question-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: var(--space-5);
+        }
+
+        .question-card {
+            background: var(--color-bg-primary);
+            border: 2px solid var(--color-border-light);
+            border-radius: var(--border-radius-lg);
+            padding: var(--space-5);
+            transition: all var(--transition-base);
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        .question-card:hover {
+            border-color: var(--color-secondary);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .question-card h3 {
+            font-size: var(--font-size-base);
+            margin-bottom: var(--space-3);
+            color: var(--color-text-primary);
+            display: flex;
+            align-items: flex-start;
+            gap: var(--space-2);
+        }
+
+        .question-card h3::before {
+            content: "Q:";
+            color: var(--color-secondary);
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        .question-preview {
+            font-size: var(--font-size-sm);
+            color: var(--color-text-secondary);
+            margin-bottom: var(--space-3);
+            line-height: var(--line-height-normal);
+        }
+
+        .question-meta {
+            display: flex;
+            gap: var(--space-3);
+            font-size: var(--font-size-xs);
+            color: var(--color-text-muted);
+        }
+
+        .question-tag {
+            background: var(--color-bg-tertiary);
+            padding: var(--space-1) var(--space-2);
+            border-radius: var(--border-radius-sm);
+        }
+
+        .popular-questions {
+            background: var(--color-bg-black);
+            color: var(--color-text-light);
+            padding: var(--space-10) 0;
+        }
+
+        .popular-questions h2 {
+            color: var(--color-text-light);
+            text-align: center;
+            margin-bottom: var(--space-8);
+        }
+
+        .popular-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--space-5);
+        }
+
+        .popular-card {
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: var(--border-radius-lg);
+            padding: var(--space-5);
+            text-decoration: none;
+            color: white;
+            transition: all var(--transition-base);
+        }
+
+        .popular-card:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-3px);
+        }
+
+        .popular-number {
+            font-size: var(--font-size-2xl);
+            font-weight: bold;
+            opacity: 0.5;
+            margin-bottom: var(--space-2);
+        }
+
+        .popular-card h3 {
+            font-size: var(--font-size-lg);
+            margin-bottom: var(--space-2);
+            color: white;
+        }
+
+        .popular-card p {
+            font-size: var(--font-size-sm);
+            opacity: 0.8;
+            color: white;
+        }
+
+        .related-questions {
+            margin-top: var(--space-4);
+            padding-top: var(--space-4);
+            border-top: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .related-questions h4 {
+            font-size: var(--font-size-xs);
+            opacity: 0.6;
+            margin-bottom: var(--space-2);
+        }
+
+        .related-link {
+            display: block;
+            font-size: var(--font-size-sm);
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            padding: var(--space-1) 0;
+        }
+
+        .related-link:hover {
+            color: white;
+        }
+
+        .back-home {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-2);
+            padding: var(--space-3) var(--space-5);
+            background: rgba(255,255,255,0.2);
+            color: var(--color-text-light);
+            text-decoration: none;
+            border-radius: var(--border-radius-md);
+            margin-bottom: var(--space-6);
+            transition: all var(--transition-base);
+        }
+
+        .back-home:hover {
+            background: rgba(255,255,255,0.3);
+            transform: translateX(-4px);
+        }
+
+        @media (max-width: 768px) {
+            .question-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .question-stats {
+                gap: var(--space-5);
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <button id="darkModeToggle" class="dark-mode-toggle" aria-label="Toggle dark mode">
+        <span class="dark-mode-icon">&#127769;</span>
+    </button>
+
+    <header class="questions-hero" role="banner">
+        <div class="container">
+            <a href="/" class="back-home">&#8592; Back to Main Site</a>
+            <h1>Questions About George Washington Carver</h1>
+            <p class="subtitle">Find answers to every question about his life, work, inventions, and legacy</p>
+
+            <div class="search-box-large">
+                <input type="text" id="questionSearch" placeholder="Search questions... e.g., 'when was he born', 'peanut butter', 'education'">
+            </div>
+
+            <div class="question-stats">
+                <div class="question-stat">
+                    <span class="question-stat-number">50+</span>
+                    <span class="question-stat-label">Questions Answered</span>
+                </div>
+                <div class="question-stat">
+                    <span class="question-stat-number">8</span>
+                    <span class="question-stat-label">Categories</span>
+                </div>
+                <div class="question-stat">
+                    <span class="question-stat-number">79</span>
+                    <span class="question-stat-label">Years of His Life</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <nav class="category-nav">
+        <div class="container">
+            <div class="category-pills">
+                <a href="#basics" class="category-pill active">Basic Facts</a>
+                <a href="#inventions" class="category-pill">Inventions</a>
+                <a href="#education" class="category-pill">Education</a>
+                <a href="#tuskegee" class="category-pill">Tuskegee</a>
+                <a href="#personal" class="category-pill">Personal Life</a>
+                <a href="#legacy" class="category-pill">Legacy</a>
+                <a href="#myths" class="category-pill">Myths vs Facts</a>
+                <a href="#quick" class="category-pill">Quick Answers</a>
+            </div>
+        </div>
+    </nav>
+
+    <main id="main-content" role="main">
+
+        <!-- Most Popular Questions -->
+        <section class="popular-questions">
+            <div class="container">
+                <h2>Most Asked Questions</h2>
+                <div class="popular-grid">
+                    <a href="did-carver-invent-peanut-butter.html" class="popular-card">
+                        <div class="popular-number">#1</div>
+                        <h3>Did George Washington Carver invent peanut butter?</h3>
+                        <p>The most common misconception about Carver finally explained...</p>
+                        <div class="related-questions">
+                            <h4>Related:</h4>
+                            <span class="related-link">What did he actually invent?</span>
+                            <span class="related-link">How many peanut products?</span>
+                        </div>
+                    </a>
+
+                    <a href="when-was-carver-born.html" class="popular-card">
+                        <div class="popular-number">#2</div>
+                        <h3>When was George Washington Carver born?</h3>
+                        <p>Why his exact birth date remains a mystery...</p>
+                        <div class="related-questions">
+                            <h4>Related:</h4>
+                            <span class="related-link">Where was he born?</span>
+                            <span class="related-link">Who were his parents?</span>
+                        </div>
+                    </a>
+
+                    <a href="how-did-carver-die.html" class="popular-card">
+                        <div class="popular-number">#3</div>
+                        <h3>How did George Washington Carver die?</h3>
+                        <p>The final years and death of America's greatest agricultural scientist...</p>
+                        <div class="related-questions">
+                            <h4>Related:</h4>
+                            <span class="related-link">When did he die?</span>
+                            <span class="related-link">Where is he buried?</span>
+                        </div>
+                    </a>
+
+                    <a href="how-many-inventions.html" class="popular-card">
+                        <div class="popular-number">#4</div>
+                        <h3>How many things did George Washington Carver invent?</h3>
+                        <p>The real numbers behind the legend...</p>
+                        <div class="related-questions">
+                            <h4>Related:</h4>
+                            <span class="related-link">300+ peanut products</span>
+                            <span class="related-link">118 sweet potato uses</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Basic Facts Section -->
+        <section id="basics" class="questions-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2><span class="section-icon">&#128100;</span> Basic Facts</h2>
+                    <p>Essential information about George Washington Carver's life</p>
+                </div>
+
+                <div class="question-grid">
+                    <a href="when-was-carver-born.html" class="question-card">
+                        <h3>When was George Washington Carver born?</h3>
+                        <p class="question-preview">Born around 1864 in Diamond, Missouri, during the Civil War. His exact birth date is unknown because...</p>
+                        <div class="question-meta">
+                            <span class="question-tag">Birth</span>
+                            <span class="question-tag">1864</span>
+                        </div>
+                    </a>
+
+                    <a href="where-was-carver-born.html" class="question-card">
+                        <h3>Where was George Washington Carver born?</h3>
+                        <p class="question-preview">Born on the Moses Carver farm near Diamond, Missouri. Today this site is the George Washington Carver National Monument...</p>
+                        <div class="question-meta">
+                            <span class="question-tag">Birthplace</span>
+                            <span class="question-tag">Missouri</span>
+                        </div>
+                    </a>
+
+                    <a href="how-did-carver-die.html" class="question-card">
+                        <h3>How did George Washington Carver die?</h3>
+                        <p class="question-preview">Carver died on January 5, 1943, at age 78 from complications following a fall. He had been in declining health...</p>
+                        <div class="question-meta">
+                            <span class="question-tag">Death</span>
+                            <span class="question-tag">1943</span>
+                        </div>
+                    </a>
+
+                    <a href="where-is-carver-buried.html" class="question-card">
+                        <h3>Where is George Washington Carver buried?</h3>
+                        <p class="question-preview">Carver is buried on the Tuskegee University campus, next to Booker T. Washington, the founder who recruited him...</p>
+                        <div class="question-meta">
+                            <span class="question-tag">Burial</span>
+                            <span class="question-tag">Tuskegee</span>
+                        </div>
+                    </a>
+
+                    <a href="was-carver-born-into-slavery.html" class="question-card">
+                        <h3>Was George Washington Carver born into slavery?</h3>
+                        <p class="question-preview">Yes, Carver was born into slavery on the Moses Carver farm in Missouri. He and his mother Mary were kidnapped by Confederate raiders...</p>
+                        <div class="question-meta">
+                            <span class="question-tag">Slavery</span>
+                            <span class="question-tag">History</span>
+                        </div>
+                    </a>
+
+                    <a href="who-were-carvers-parents.html" class="question-card">
+                        <h3>Who were George Washington Carver's parents?</h3>
+                        <p class="question-preview">His mother was Mary, an enslaved woman owned by Moses Carver. His father was likely an enslaved man from a neighboring farm who died...</p>
+                        <div class="question-meta">
+                            <span class="question-tag">Family</span>
+                            <span class="question-tag">Parents</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Inventions Section -->
+        <section id="inventions" class="questions-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2><span class="section-icon">&#128161;</span> Inventions & Discoveries</h2>
+                    <p>Questions about Carver's scientific work and innovations</p>
+                </div>
+
+                <div class="question-grid">
+                    <a href="did-carver-invent-peanut-butter.html" class="question-card">
+                        <h3>Did George Washington Carver invent peanut butter?</h3>
+                        <p class="question-preview">No, this is the most common myth about Carver. Peanut butter existed before him, but he did develop hundreds of other peanut products...</p>
+                        <div class="question-meta">
+                            <span class="question-tag">Myth</span>
+                            <span class="question-tag">Peanut Butter</span>
+                        </div>
+                    </a>
+
+                    <a href="how-many-inventions.html" class="question-card">
+                        <h3>How many products did Carver invent from peanuts?</h3>
+                        <p class="question-preview">Carver developed over 300 products from peanuts, including dyes, plastics, gasoline, and cosmetics. Many were practical solutions for farmers...</p>
+                        <div class="question-meta">
+                            <span class="question-tag">Peanuts</span>
+                            <span class="question-tag">300+</span>
+                        </div>
+                    </a>
+
+                    <a href="what-did-carver-invent-from-sweet-potatoes.html" class="question-card">
+                        <h3>What did Carver invent from sweet potatoes?</h3>
+                        <p class="question-preview">Carver developed 118 products from sweet potatoes, including flour, starch, synthetic rubber, and dozens of dyes and stains...</p>
+                        <div class="question-meta">
+                            <span class="question-tag">Sweet Potatoes</span>
+                            <span class="question-tag">118 Products</span>
+                        </div>
+                    </a>
+
+                    <a href="what-was-crop-rotation.html" class="question-card">
+                        <h3>What was Carver's contribution to crop rotation?</h3>
+                        <p class="question-preview">Carver promoted rotating cotton with nitrogen-fixing crops like peanuts to restore depleted Southern soils. This saved countless farms...</p>
+                        <div class="question-meta">
+                            <span class="question-tag">Agriculture</span>
+                            <span class="question-tag">Farming</span>
+                        </div>
+                    </a>
+
+                    <a href="did-carver-have-patents.html" class="question-card">
+                        <h3>Did George Washington Carver have any patents?</h3>
+                        <p class="question-preview">Surprisingly, Carver only held three patents despite his hundreds of discoveries. He believed his work belonged to humanity...</p>
+                        <div class="question-meta">
+                            <span class="question-tag">Patents</span>
+                            <span class="question-tag">3 Total</span>
+                        </div>
+                    </a>
+
+                    <a href="what-was-jesup-wagon.html" class="question-card">
+                        <h3>What was the Jesup Agricultural Wagon?</h3>
+                        <p class="question-preview">A mobile classroom Carver created to bring agricultural education directly to rural farmers who couldn't come to Tuskegee...</p>
+                        <div class="question-meta">
+                            <span class="question-tag">Education</span>
+                            <span class="question-tag">Innovation</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Education Section -->
+        <section id="education" class="questions-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2><span class="section-icon">&#127891;</span> Education</h2>
+                    <p>Carver's remarkable educational journey</p>
+                </div>
+
+                <div class="question-grid">
+                    <a href="where-did-carver-go-to-school.html" class="question-card">
+                        <h3>Where did George Washington Carver go to school?</h3>
+                        <p class="question-preview">Carver attended multiple schools across Missouri and Kansas before attending Simpson College and Iowa State University...</p>
+                        <div class="question-meta">
+                            <span class="question-tag">Schools</span>
+                            <span class="question-tag">Education</span>
+                        </div>
+                    </a>
+
+                    <a href="was-carver-first-black-student.html" class="question-card">
+                        <h3>Was Carver the first Black student at Iowa State?</h3>
+                        <p class="question-preview">Yes, Carver was the first African American student at Iowa State Agricultural College in 1891, and later the first Black faculty member...</p>
+                        <div class="question-meta">
+                            <span class="question-tag">Iowa State</span>
+                            <span class="question-tag">First</span>
+                        </div>
+                    </a>
+
+                    <a href="what-degrees-did-carver-earn.html" class="question-card">
+                        <h3>What degrees did George Washington Carver earn?</h3>
+                        <p class="question-preview">Carver earned a Bachelor's and Master's degree from Iowa State in agriculture and bacterial botany. He also received honorary doctorates...</p>
+                        <div class="question-meta">
+                            <span class="question-tag">Degrees</span>
+                            <span class="question-tag">Masters</span>
+                        </div>
+                    </a>
+
+                    <a href="why-did-carver-choose-agriculture.html" class="question-card">
+                        <h3>Why did Carver choose to study agriculture?</h3>
+                        <p class="question-preview">Carver initially studied art at Simpson College, but was encouraged to pursue agriculture where his talents could help more people...</p>
+                        <div class="question-meta">
+                            <span class="question-tag">Career Choice</span>
+                            <span class="question-tag">Art</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tuskegee Section -->
+        <section id="tuskegee" class="questions-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2><span class="section-icon">&#127979;</span> Tuskegee Institute</h2>
+                    <p>Carver's 47 years at Tuskegee</p>
+                </div>
+
+                <div class="question-grid">
+                    <a href="why-did-carver-go-to-tuskegee.html" class="question-card">
+                        <h3>Why did Carver go to Tuskegee Institute?</h3>
+                        <p class="question-preview">Booker T. Washington personally recruited Carver to lead the agriculture department in 1896, offering him the chance to help his people...</p>
+                        <div class="question-meta">
+                            <span class="question-tag">Recruitment</span>
+                            <span class="question-tag">Washington</span>
+                        </div>
+                    </a>
+
+                    <a href="how-long-at-tuskegee.html" class="question-card">
+                        <h3>How long did Carver work at Tuskegee?</h3>
+                        <p class="question-preview">Carver spent 47 years at Tuskegee Institute, from 1896 until his death in 1943. He never left despite many offers...</p>
+                        <div class="question-meta">
+                            <span class="question-tag">47 Years</span>
+                            <span class="question-tag">Career</span>
+                        </div>
+                    </a>
+
+                    <a href="what-did-carver-teach.html" class="question-card">
+                        <h3>What did Carver teach at Tuskegee?</h3>
+                        <p class="question-preview">Carver taught agriculture, botany, and chemistry. He also ran the Agricultural Experiment Station and led research programs...</p>
+                        <div class="question-meta">
+                            <span class="question-tag">Teaching</span>
+                            <span class="question-tag">Subjects</span>
+                        </div>
+                    </a>
+
+                    <a href="relationship-with-booker-t-washington.html" class="question-card">
+                        <h3>What was Carver's relationship with Booker T. Washington?</h3>
+                        <p class="question-preview">Their relationship was complex. Washington recruited Carver but they often clashed over administrative matters and priorities...</p>
+                        <div class="question-meta">
+                            <span class="question-tag">Washington</span>
+                            <span class="question-tag">Relationship</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Personal Life Section -->
+        <section id="personal" class="questions-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2><span class="section-icon">&#10084;&#65039;</span> Personal Life</h2>
+                    <p>The man behind the scientist</p>
+                </div>
+
+                <div class="question-grid">
+                    <a href="was-carver-married.html" class="question-card">
+                        <h3>Was George Washington Carver married?</h3>
+                        <p class="question-preview">No, Carver never married and had no children. He dedicated his life entirely to his work and students...</p>
+                        <div class="question-meta">
+                            <span class="question-tag">Marriage</span>
+                            <span class="question-tag">Personal</span>
+                        </div>
+                    </a>
+
+                    <a href="what-was-carvers-religion.html" class="question-card">
+                        <h3>What was George Washington Carver's religion?</h3>
+                        <p class="question-preview">Carver was a devout Christian who saw his scientific work as a form of worship and believed God revealed nature's secrets...</p>
+                        <div class="question-meta">
+                            <span class="question-tag">Faith</span>
+                            <span class="question-tag">Religion</span>
+                        </div>
+                    </a>
+
+                    <a href="was-carver-an-artist.html" class="question-card">
+                        <h3>Was George Washington Carver an artist?</h3>
+                        <p class="question-preview">Yes! Carver was a talented painter and originally studied art at Simpson College. His botanical paintings were exhibited...</p>
+                        <div class="question-meta">
+                            <span class="question-tag">Art</span>
+                            <span class="question-tag">Painting</span>
+                        </div>
+                    </a>
+
+                    <a href="friendship-with-henry-ford.html" class="question-card">
+                        <h3>What was Carver's friendship with Henry Ford?</h3>
+                        <p class="question-preview">Carver and Henry Ford became close friends in the 1930s, bonding over their shared interest in plant-based materials...</p>
+                        <div class="question-meta">
+                            <span class="question-tag">Ford</span>
+                            <span class="question-tag">Friendship</span>
+                        </div>
+                    </a>
+
+                    <a href="what-was-carver-like.html" class="question-card">
+                        <h3>What was George Washington Carver like as a person?</h3>
+                        <p class="question-preview">Carver was known for his gentle demeanor, high-pitched voice, and simple lifestyle. He wore the same suit for years...</p>
+                        <div class="question-meta">
+                            <span class="question-tag">Personality</span>
+                            <span class="question-tag">Character</span>
+                        </div>
+                    </a>
+
+                    <a href="how-much-money-did-carver-make.html" class="question-card">
+                        <h3>How much money did George Washington Carver make?</h3>
+                        <p class="question-preview">Carver was famously frugal and donated most of his money. He refused to raise his salary and died with most of his savings donated...</p>
+                        <div class="question-meta">
+                            <span class="question-tag">Money</span>
+                            <span class="question-tag">Wealth</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Legacy Section -->
+        <section id="legacy" class="questions-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2><span class="section-icon">&#127942;</span> Legacy & Recognition</h2>
+                    <p>How Carver is remembered today</p>
+                </div>
+
+                <div class="question-grid">
+                    <a href="why-is-carver-famous.html" class="question-card">
+                        <h3>Why is George Washington Carver famous?</h3>
+                        <p class="question-preview">Carver is celebrated for his agricultural innovations, his journey from slavery to scientific greatness, and his dedication to helping poor farmers...</p>
+                        <div class="question-meta">
+                            <span class="question-tag">Fame</span>
+                            <span class="question-tag">Importance</span>
+                        </div>
+                    </a>
+
+                    <a href="what-awards-did-carver-win.html" class="question-card">
+                        <h3>What awards did George Washington Carver win?</h3>
+                        <p class="question-preview">Carver received the Spingarn Medal, Roosevelt Medal, and was made a Fellow of the Royal Society of Arts in London...</p>
+                        <div class="question-meta">
+                            <span class="question-tag">Awards</span>
+                            <span class="question-tag">Honors</span>
+                        </div>
+                    </a>
+
+                    <a href="is-there-a-carver-monument.html" class="question-card">
+                        <h3>Is there a George Washington Carver monument?</h3>
+                        <p class="question-preview">Yes! The George Washington Carver National Monument in Diamond, Missouri was the first national monument honoring an African American...</p>
+                        <div class="question-meta">
+                            <span class="question-tag">Monument</span>
+                            <span class="question-tag">Missouri</span>
+                        </div>
+                    </a>
+
+                    <a href="was-carver-on-a-stamp.html" class="question-card">
+                        <h3>Was George Washington Carver on a stamp?</h3>
+                        <p class="question-preview">Yes, Carver has appeared on multiple U.S. postage stamps, starting with a 3-cent stamp in 1948...</p>
+                        <div class="question-meta">
+                            <span class="question-tag">Stamps</span>
+                            <span class="question-tag">Postal</span>
+                        </div>
+                    </a>
+
+                    <a href="schools-named-after-carver.html" class="question-card">
+                        <h3>How many schools are named after Carver?</h3>
+                        <p class="question-preview">Over 200 schools across America are named after George Washington Carver, from elementary schools to high schools...</p>
+                        <div class="question-meta">
+                            <span class="question-tag">Schools</span>
+                            <span class="question-tag">200+</span>
+                        </div>
+                    </a>
+
+                    <a href="what-is-carvers-impact-today.html" class="question-card">
+                        <h3>What is Carver's impact on agriculture today?</h3>
+                        <p class="question-preview">Carver's emphasis on sustainability, crop rotation, and alternative crops has influenced modern organic and regenerative farming...</p>
+                        <div class="question-meta">
+                            <span class="question-tag">Modern</span>
+                            <span class="question-tag">Impact</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Myths vs Facts Section -->
+        <section id="myths" class="questions-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2><span class="section-icon">&#10071;</span> Myths vs Facts</h2>
+                    <p>Common misconceptions about George Washington Carver</p>
+                </div>
+
+                <div class="question-grid">
+                    <a href="did-carver-invent-peanut-butter.html" class="question-card">
+                        <h3>Did Carver really invent peanut butter?</h3>
+                        <p class="question-preview">MYTH: Peanut butter existed before Carver. The Aztecs made it centuries earlier, and it was patented by others before his research...</p>
+                        <div class="question-meta">
+                            <span class="question-tag">Myth</span>
+                            <span class="question-tag">Debunked</span>
+                        </div>
+                    </a>
+
+                    <a href="did-carver-discover-hundreds-uses.html" class="question-card">
+                        <h3>Did Carver really discover 300+ peanut uses?</h3>
+                        <p class="question-preview">TRUE (with context): Carver did develop 300+ products, but many were variations of similar products rather than unique inventions...</p>
+                        <div class="question-meta">
+                            <span class="question-tag">Fact</span>
+                            <span class="question-tag">Context</span>
+                        </div>
+                    </a>
+
+                    <a href="was-carver-wealthy.html" class="question-card">
+                        <h3>Was George Washington Carver wealthy from his inventions?</h3>
+                        <p class="question-preview">MYTH: Carver deliberately chose not to profit from his discoveries. He refused to patent most inventions and lived simply...</p>
+                        <div class="question-meta">
+                            <span class="question-tag">Myth</span>
+                            <span class="question-tag">Money</span>
+                        </div>
+                    </a>
+
+                    <a href="did-carver-save-the-south.html" class="question-card">
+                        <h3>Did Carver single-handedly save Southern agriculture?</h3>
+                        <p class="question-preview">EXAGGERATED: Carver made important contributions, but the peanut industry grew due to many factors including the boll weevil crisis...</p>
+                        <div class="question-meta">
+                            <span class="question-tag">Exaggerated</span>
+                            <span class="question-tag">Context</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quick Answers Section -->
+        <section id="quick" class="questions-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2><span class="section-icon">&#9889;</span> Quick Answers</h2>
+                    <p>Fast facts about George Washington Carver</p>
+                </div>
+
+                <div class="question-grid">
+                    <a href="how-old-was-carver-when-he-died.html" class="question-card">
+                        <h3>How old was Carver when he died?</h3>
+                        <p class="question-preview">Approximately 78-79 years old. His exact age is uncertain because his birth date was never recorded...</p>
+                        <div class="question-meta">
+                            <span class="question-tag">Quick</span>
+                            <span class="question-tag">Age</span>
+                        </div>
+                    </a>
+
+                    <a href="what-was-carvers-nickname.html" class="question-card">
+                        <h3>What was Carver's nickname?</h3>
+                        <p class="question-preview">"The Peanut Man" and "The Wizard of Tuskegee" were common nicknames for Carver...</p>
+                        <div class="question-meta">
+                            <span class="question-tag">Quick</span>
+                            <span class="question-tag">Nickname</span>
+                        </div>
+                    </a>
+
+                    <a href="did-carver-ever-leave-america.html" class="question-card">
+                        <h3>Did Carver ever leave America?</h3>
+                        <p class="question-preview">No, Carver never traveled outside the United States despite invitations from around the world...</p>
+                        <div class="question-meta">
+                            <span class="question-tag">Quick</span>
+                            <span class="question-tag">Travel</span>
+                        </div>
+                    </a>
+
+                    <a href="what-was-carvers-favorite-plant.html" class="question-card">
+                        <h3>What was Carver's favorite plant?</h3>
+                        <p class="question-preview">While famous for peanuts, Carver had a special love for wildflowers and fungi, which he studied extensively...</p>
+                        <div class="question-meta">
+                            <span class="question-tag">Quick</span>
+                            <span class="question-tag">Personal</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-main">
+                <div class="footer-brand">
+                    <h3>George Washington Carver Life</h3>
+                    <p class="footer-description">Answering every question about America's greatest agricultural scientist.</p>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Question Categories</h4>
+                    <ul>
+                        <li><a href="#basics">Basic Facts</a></li>
+                        <li><a href="#inventions">Inventions</a></li>
+                        <li><a href="#education">Education</a></li>
+                        <li><a href="#legacy">Legacy</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="/">Timeline</a></li>
+                        <li><a href="/research/">Research</a></li>
+                        <li><a href="/community/">Community</a></li>
+                        <li><a href="/media/">Media Gallery</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <div class="footer-legal">&copy; 2025 George Washington Carver Life. Educational Resource.</div>
+                <div class="footer-bottom-right">
+                    <a href="/">Home</a>
+                    <a href="/questions/">Questions</a>
+                    <a href="/research/">Research</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Dark mode functionality
+        const darkModeToggle = document.getElementById('darkModeToggle');
+        const darkModeIcon = document.querySelector('.dark-mode-icon');
+        const html = document.documentElement;
+
+        const currentTheme = localStorage.getItem('theme') ||
+            (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+
+        if (currentTheme === 'dark') {
+            html.setAttribute('data-theme', 'dark');
+            darkModeIcon.textContent = '\u2600\uFE0F';
+        }
+
+        darkModeToggle.addEventListener('click', () => {
+            const current = html.getAttribute('data-theme');
+            const newTheme = current === 'dark' ? 'light' : 'dark';
+            html.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            darkModeIcon.textContent = newTheme === 'dark' ? '\u2600\uFE0F' : '\uD83C\uDF19';
+        });
+
+        // Question search functionality
+        const questionSearch = document.getElementById('questionSearch');
+        const questionCards = document.querySelectorAll('.question-card');
+
+        questionSearch.addEventListener('input', (e) => {
+            const searchTerm = e.target.value.toLowerCase();
+
+            questionCards.forEach(card => {
+                const text = card.textContent.toLowerCase();
+                card.style.display = text.includes(searchTerm) ? 'block' : 'none';
+            });
+        });
+
+        // Smooth scroll for category navigation
+        document.querySelectorAll('.category-pill').forEach(pill => {
+            pill.addEventListener('click', (e) => {
+                e.preventDefault();
+                document.querySelectorAll('.category-pill').forEach(p => p.classList.remove('active'));
+                pill.classList.add('active');
+                const target = document.querySelector(pill.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "name": "Questions About George Washington Carver",
+        "description": "Comprehensive Q&A resource about George Washington Carver's life, inventions, and legacy",
+        "url": "https://georgewashingtoncarverlife.com/questions/",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "Did George Washington Carver invent peanut butter?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "No, this is a common misconception. Peanut butter existed before Carver. However, he did develop over 300 other products from peanuts."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "When was George Washington Carver born?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "George Washington Carver was born around 1864 in Diamond, Missouri. His exact birth date is unknown because he was born into slavery and such records were not kept."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "How many products did Carver invent from peanuts?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Carver developed over 300 products from peanuts, including dyes, plastics, gasoline, and cosmetics."
+                }
+            }
+        ]
+    }
+    </script>
+</body>
+</html>
