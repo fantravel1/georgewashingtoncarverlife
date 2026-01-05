@@ -1,0 +1,1139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Media Gallery - George Washington Carver Photos, Films, Books & Honors</title>
+    <meta name="description" content="Explore the complete media collection on George Washington Carver. Historical photographs, documentaries, books, stamps, monuments, and cultural representations.">
+    <meta name="keywords" content="George Washington Carver photos, documentaries, books, stamps, monuments, honors, media, historical images">
+
+    <meta property="og:title" content="George Washington Carver Media Gallery">
+    <meta property="og:description" content="Historical photographs, documentaries, books, and cultural representations of George Washington Carver.">
+    <meta property="og:type" content="website">
+
+    <link rel="stylesheet" href="/styles.css">
+    <link rel="canonical" href="https://georgewashingtoncarverlife.com/media/">
+
+    <style>
+        .media-hero {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            color: white;
+            padding: var(--space-12) 0;
+            text-align: center;
+        }
+
+        .media-hero h1 {
+            color: white;
+            margin-bottom: var(--space-4);
+        }
+
+        .media-hero .subtitle {
+            font-size: var(--font-size-xl);
+            opacity: 0.95;
+            max-width: 800px;
+            margin: 0 auto var(--space-8);
+        }
+
+        .media-categories {
+            display: flex;
+            gap: var(--space-4);
+            flex-wrap: wrap;
+            justify-content: center;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .media-cat {
+            background: rgba(255,255,255,0.1);
+            padding: var(--space-4) var(--space-6);
+            border-radius: var(--border-radius-lg);
+            backdrop-filter: blur(10px);
+            text-align: center;
+            color: white;
+            text-decoration: none;
+            transition: all var(--transition-base);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .media-cat:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-3px);
+        }
+
+        .media-cat-icon {
+            font-size: 2rem;
+            display: block;
+            margin-bottom: var(--space-2);
+        }
+
+        .media-section {
+            padding: var(--space-12) 0;
+            border-bottom: 1px solid var(--color-border-light);
+        }
+
+        .media-section:nth-child(even) {
+            background: var(--color-bg-secondary);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: var(--space-10);
+        }
+
+        .section-header h2 {
+            margin-bottom: var(--space-4);
+        }
+
+        .section-header p {
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: var(--font-size-lg);
+        }
+
+        .photo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: var(--space-5);
+        }
+
+        .photo-card {
+            background: var(--color-bg-primary);
+            border: 2px solid var(--color-border-light);
+            border-radius: var(--border-radius-lg);
+            overflow: hidden;
+            transition: all var(--transition-base);
+        }
+
+        .photo-card:hover {
+            border-color: var(--color-secondary);
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .photo-placeholder {
+            height: 200px;
+            background: var(--color-bg-tertiary);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+        }
+
+        .photo-era {
+            font-size: var(--font-size-xs);
+            color: var(--color-text-muted);
+            margin-top: var(--space-2);
+        }
+
+        .photo-info {
+            padding: var(--space-4);
+        }
+
+        .photo-info h3 {
+            font-size: var(--font-size-base);
+            margin-bottom: var(--space-2);
+        }
+
+        .photo-info p {
+            font-size: var(--font-size-sm);
+            color: var(--color-text-secondary);
+            margin-bottom: var(--space-2);
+        }
+
+        .photo-meta {
+            font-size: var(--font-size-xs);
+            color: var(--color-text-muted);
+        }
+
+        .documentary-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: var(--space-6);
+        }
+
+        .doc-card {
+            background: var(--color-bg-primary);
+            border: 2px solid var(--color-border-light);
+            border-radius: var(--border-radius-lg);
+            overflow: hidden;
+            transition: all var(--transition-base);
+        }
+
+        .doc-card:hover {
+            border-color: var(--color-secondary);
+            transform: translateY(-3px);
+        }
+
+        .doc-thumbnail {
+            height: 180px;
+            background: linear-gradient(135deg, #2d3748, #4a5568);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 4rem;
+            position: relative;
+        }
+
+        .doc-duration {
+            position: absolute;
+            bottom: var(--space-3);
+            right: var(--space-3);
+            background: rgba(0,0,0,0.8);
+            color: white;
+            padding: var(--space-1) var(--space-2);
+            border-radius: var(--border-radius-sm);
+            font-size: var(--font-size-xs);
+        }
+
+        .doc-info {
+            padding: var(--space-5);
+        }
+
+        .doc-info h3 {
+            margin-bottom: var(--space-2);
+        }
+
+        .doc-info p {
+            font-size: var(--font-size-sm);
+            color: var(--color-text-secondary);
+            margin-bottom: var(--space-3);
+        }
+
+        .doc-meta {
+            display: flex;
+            gap: var(--space-4);
+            font-size: var(--font-size-xs);
+            color: var(--color-text-muted);
+        }
+
+        .book-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: var(--space-6);
+        }
+
+        .book-card {
+            display: grid;
+            grid-template-columns: 120px 1fr;
+            gap: var(--space-4);
+            background: var(--color-bg-primary);
+            border: 2px solid var(--color-border-light);
+            border-radius: var(--border-radius-lg);
+            padding: var(--space-5);
+            transition: all var(--transition-base);
+        }
+
+        .book-card:hover {
+            border-color: var(--color-secondary);
+            transform: translateX(4px);
+        }
+
+        .book-cover {
+            background: linear-gradient(135deg, var(--color-secondary), var(--color-primary));
+            border-radius: var(--border-radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+            height: 160px;
+        }
+
+        .book-info h3 {
+            font-size: var(--font-size-base);
+            margin-bottom: var(--space-2);
+        }
+
+        .book-author {
+            font-size: var(--font-size-sm);
+            color: var(--color-text-muted);
+            margin-bottom: var(--space-2);
+        }
+
+        .book-info p {
+            font-size: var(--font-size-sm);
+            color: var(--color-text-secondary);
+            margin-bottom: var(--space-3);
+        }
+
+        .book-year {
+            font-size: var(--font-size-xs);
+            color: var(--color-text-muted);
+        }
+
+        .honor-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: var(--space-5);
+        }
+
+        .honor-card {
+            background: var(--color-bg-primary);
+            border: 2px solid var(--color-border-light);
+            border-radius: var(--border-radius-lg);
+            padding: var(--space-5);
+            text-align: center;
+            transition: all var(--transition-base);
+        }
+
+        .honor-card:hover {
+            border-color: var(--color-accent-bright);
+            background: var(--color-bg-secondary);
+        }
+
+        .honor-icon {
+            font-size: 3rem;
+            margin-bottom: var(--space-3);
+        }
+
+        .honor-card h3 {
+            font-size: var(--font-size-base);
+            margin-bottom: var(--space-2);
+        }
+
+        .honor-card p {
+            font-size: var(--font-size-sm);
+            color: var(--color-text-secondary);
+            margin-bottom: var(--space-2);
+        }
+
+        .honor-year {
+            font-size: var(--font-size-xs);
+            color: var(--color-text-muted);
+            font-weight: bold;
+        }
+
+        .stamp-gallery {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--space-5);
+            justify-content: center;
+        }
+
+        .stamp-item {
+            background: var(--color-bg-primary);
+            border: 3px solid var(--color-border-light);
+            padding: var(--space-4);
+            text-align: center;
+            transition: all var(--transition-base);
+        }
+
+        .stamp-item:hover {
+            border-color: var(--color-secondary);
+            transform: rotate(-2deg);
+        }
+
+        .stamp-placeholder {
+            width: 150px;
+            height: 180px;
+            background: linear-gradient(135deg, #dc2626, #b91c1c);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2.5rem;
+            margin-bottom: var(--space-3);
+            border: 4px dashed rgba(255,255,255,0.5);
+        }
+
+        .stamp-placeholder span {
+            font-size: var(--font-size-xs);
+            margin-top: var(--space-2);
+        }
+
+        .stamp-info {
+            font-size: var(--font-size-sm);
+        }
+
+        .stamp-info strong {
+            display: block;
+            margin-bottom: var(--space-1);
+        }
+
+        .culture-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: var(--space-6);
+        }
+
+        .culture-card {
+            background: var(--color-bg-primary);
+            border: 2px solid var(--color-border-light);
+            border-radius: var(--border-radius-lg);
+            overflow: hidden;
+            transition: all var(--transition-base);
+        }
+
+        .culture-card:hover {
+            border-color: var(--color-secondary);
+        }
+
+        .culture-header {
+            background: var(--color-bg-black);
+            color: var(--color-text-light);
+            padding: var(--space-4);
+            display: flex;
+            align-items: center;
+            gap: var(--space-3);
+        }
+
+        .culture-icon {
+            font-size: 2rem;
+        }
+
+        .culture-header h3 {
+            color: var(--color-text-light);
+            margin: 0;
+            font-size: var(--font-size-lg);
+        }
+
+        .culture-content {
+            padding: var(--space-5);
+        }
+
+        .culture-content ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .culture-content li {
+            padding: var(--space-3) 0;
+            border-bottom: 1px solid var(--color-border-light);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .culture-content li:last-child {
+            border-bottom: none;
+        }
+
+        .culture-year {
+            font-size: var(--font-size-xs);
+            color: var(--color-text-muted);
+        }
+
+        .back-home {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-2);
+            padding: var(--space-3) var(--space-5);
+            background: rgba(255,255,255,0.2);
+            color: var(--color-text-light);
+            text-decoration: none;
+            border-radius: var(--border-radius-md);
+            margin-bottom: var(--space-6);
+            transition: all var(--transition-base);
+        }
+
+        .back-home:hover {
+            background: rgba(255,255,255,0.3);
+            transform: translateX(-4px);
+        }
+
+        @media (max-width: 768px) {
+            .documentary-grid,
+            .book-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .book-card {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .book-cover {
+                height: 120px;
+                max-width: 200px;
+                margin: 0 auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <button id="darkModeToggle" class="dark-mode-toggle" aria-label="Toggle dark mode">
+        <span class="dark-mode-icon">&#127769;</span>
+    </button>
+
+    <header class="media-hero" role="banner">
+        <div class="container">
+            <a href="/" class="back-home">&#8592; Back to Main Site</a>
+            <h1>Media Gallery</h1>
+            <p class="subtitle">Historical Photographs, Documentaries, Books, and Cultural Representations of George Washington Carver</p>
+
+            <div class="media-categories">
+                <a href="#photographs" class="media-cat">
+                    <span class="media-cat-icon">&#128247;</span>
+                    Photographs
+                </a>
+                <a href="#documentaries" class="media-cat">
+                    <span class="media-cat-icon">&#127916;</span>
+                    Documentaries
+                </a>
+                <a href="#books" class="media-cat">
+                    <span class="media-cat-icon">&#128218;</span>
+                    Books
+                </a>
+                <a href="#honors" class="media-cat">
+                    <span class="media-cat-icon">&#127942;</span>
+                    Honors
+                </a>
+                <a href="#stamps" class="media-cat">
+                    <span class="media-cat-icon">&#128235;</span>
+                    Stamps
+                </a>
+                <a href="#culture" class="media-cat">
+                    <span class="media-cat-icon">&#127912;</span>
+                    In Culture
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main id="main-content" role="main">
+
+        <!-- Photographs Section -->
+        <section id="photographs" class="media-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Historical Photographs</h2>
+                    <p>Documenting George Washington Carver's life from his early years through his legendary career at Tuskegee</p>
+                </div>
+
+                <div class="photo-grid">
+                    <div class="photo-card">
+                        <div class="photo-placeholder">
+                            &#128100;
+                            <span class="photo-era">c. 1893</span>
+                        </div>
+                        <div class="photo-info">
+                            <h3>Iowa State College Student</h3>
+                            <p>Carver as a graduate student at Iowa State Agricultural College</p>
+                            <div class="photo-meta">Source: Iowa State University Archives</div>
+                        </div>
+                    </div>
+
+                    <div class="photo-card">
+                        <div class="photo-placeholder">
+                            &#128300;
+                            <span class="photo-era">c. 1906</span>
+                        </div>
+                        <div class="photo-info">
+                            <h3>In the Laboratory</h3>
+                            <p>Carver conducting experiments in his Tuskegee laboratory</p>
+                            <div class="photo-meta">Source: Tuskegee University Archives</div>
+                        </div>
+                    </div>
+
+                    <div class="photo-card">
+                        <div class="photo-placeholder">
+                            &#128662;
+                            <span class="photo-era">c. 1906</span>
+                        </div>
+                        <div class="photo-info">
+                            <h3>The Jesup Agricultural Wagon</h3>
+                            <p>Carver's mobile classroom bringing agricultural education to rural farmers</p>
+                            <div class="photo-meta">Source: Library of Congress</div>
+                        </div>
+                    </div>
+
+                    <div class="photo-card">
+                        <div class="photo-placeholder">
+                            &#127891;
+                            <span class="photo-era">c. 1910</span>
+                        </div>
+                        <div class="photo-info">
+                            <h3>Teaching Students</h3>
+                            <p>Carver instructing students in agricultural science at Tuskegee</p>
+                            <div class="photo-meta">Source: Tuskegee University Archives</div>
+                        </div>
+                    </div>
+
+                    <div class="photo-card">
+                        <div class="photo-placeholder">
+                            &#128240;
+                            <span class="photo-era">1921</span>
+                        </div>
+                        <div class="photo-info">
+                            <h3>Congressional Testimony</h3>
+                            <p>Presenting peanut products before the House Ways and Means Committee</p>
+                            <div class="photo-meta">Source: National Archives</div>
+                        </div>
+                    </div>
+
+                    <div class="photo-card">
+                        <div class="photo-placeholder">
+                            &#129309;
+                            <span class="photo-era">c. 1937</span>
+                        </div>
+                        <div class="photo-info">
+                            <h3>With Henry Ford</h3>
+                            <p>Carver and Henry Ford collaborating on plant-based materials research</p>
+                            <div class="photo-meta">Source: Henry Ford Museum</div>
+                        </div>
+                    </div>
+
+                    <div class="photo-card">
+                        <div class="photo-placeholder">
+                            &#127912;
+                            <span class="photo-era">c. 1938</span>
+                        </div>
+                        <div class="photo-info">
+                            <h3>The Artist at Work</h3>
+                            <p>Carver painting in his Tuskegee studio, demonstrating his artistic talents</p>
+                            <div class="photo-meta">Source: Simpson College Archives</div>
+                        </div>
+                    </div>
+
+                    <div class="photo-card">
+                        <div class="photo-placeholder">
+                            &#127793;
+                            <span class="photo-era">c. 1940</span>
+                        </div>
+                        <div class="photo-info">
+                            <h3>In the Garden</h3>
+                            <p>Carver examining plants in the Tuskegee experimental garden</p>
+                            <div class="photo-meta">Source: USDA Archives</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Documentaries Section -->
+        <section id="documentaries" class="media-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Documentaries & Films</h2>
+                    <p>Film and video productions exploring George Washington Carver's life and legacy</p>
+                </div>
+
+                <div class="documentary-grid">
+                    <div class="doc-card">
+                        <div class="doc-thumbnail">
+                            &#127916;
+                            <span class="doc-duration">56 min</span>
+                        </div>
+                        <div class="doc-info">
+                            <h3>George Washington Carver: An Uncommon Life</h3>
+                            <p>Comprehensive PBS documentary exploring Carver's journey from slavery to scientific greatness.</p>
+                            <div class="doc-meta">
+                                <span>PBS</span>
+                                <span>2019</span>
+                                <span>Documentary</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="doc-card">
+                        <div class="doc-thumbnail">
+                            &#127916;
+                            <span class="doc-duration">90 min</span>
+                        </div>
+                        <div class="doc-info">
+                            <h3>The Wizard of Tuskegee</h3>
+                            <p>Award-winning biographical film dramatizing key moments in Carver's life and career.</p>
+                            <div class="doc-meta">
+                                <span>Feature Film</span>
+                                <span>2015</span>
+                                <span>Biography</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="doc-card">
+                        <div class="doc-thumbnail">
+                            &#127916;
+                            <span class="doc-duration">28 min</span>
+                        </div>
+                        <div class="doc-info">
+                            <h3>George Washington Carver: The Peanut Man</h3>
+                            <p>Educational documentary examining Carver's agricultural innovations and their impact.</p>
+                            <div class="doc-meta">
+                                <span>History Channel</span>
+                                <span>2008</span>
+                                <span>Educational</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="doc-card">
+                        <div class="doc-thumbnail">
+                            &#127916;
+                            <span class="doc-duration">45 min</span>
+                        </div>
+                        <div class="doc-info">
+                            <h3>American Experience: Carver</h3>
+                            <p>In-depth exploration of Carver's scientific methods and lasting influence on agriculture.</p>
+                            <div class="doc-meta">
+                                <span>PBS</span>
+                                <span>2004</span>
+                                <span>Documentary</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="doc-card">
+                        <div class="doc-thumbnail">
+                            &#127916;
+                            <span class="doc-duration">22 min</span>
+                        </div>
+                        <div class="doc-info">
+                            <h3>Tuskegee's Scientist: George Washington Carver</h3>
+                            <p>Virtual tour of Carver's laboratory and museum at Tuskegee University.</p>
+                            <div class="doc-meta">
+                                <span>National Park Service</span>
+                                <span>2020</span>
+                                <span>Virtual Tour</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="doc-card">
+                        <div class="doc-thumbnail">
+                            &#127916;
+                            <span class="doc-duration">30 min</span>
+                        </div>
+                        <div class="doc-info">
+                            <h3>The Life of George Washington Carver</h3>
+                            <p>Historical newsreel and archival footage compilation from the 1930s-40s.</p>
+                            <div class="doc-meta">
+                                <span>Archive Films</span>
+                                <span>1940s</span>
+                                <span>Historical</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Books Section -->
+        <section id="books" class="media-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Books & Publications</h2>
+                    <p>Essential reading for understanding George Washington Carver's life and legacy</p>
+                </div>
+
+                <div class="book-grid">
+                    <div class="book-card">
+                        <div class="book-cover">&#128218;</div>
+                        <div class="book-info">
+                            <h3>George Washington Carver: Scientist and Symbol</h3>
+                            <div class="book-author">by Linda O. McMurry</div>
+                            <p>The definitive scholarly biography examining Carver's life and how he became a cultural icon.</p>
+                            <div class="book-year">Oxford University Press, 1981</div>
+                        </div>
+                    </div>
+
+                    <div class="book-card">
+                        <div class="book-cover">&#128218;</div>
+                        <div class="book-info">
+                            <h3>George Washington Carver: A Life</h3>
+                            <div class="book-author">by Christina Vella</div>
+                            <p>Comprehensive biography drawing on newly discovered letters and documents.</p>
+                            <div class="book-year">LSU Press, 2015</div>
+                        </div>
+                    </div>
+
+                    <div class="book-card">
+                        <div class="book-cover">&#128218;</div>
+                        <div class="book-info">
+                            <h3>George Washington Carver: In His Own Words</h3>
+                            <div class="book-author">by Gary R. Kremer</div>
+                            <p>Collection of Carver's letters, speeches, and writings that reveal his philosophy and character.</p>
+                            <div class="book-year">University of Missouri Press, 1987</div>
+                        </div>
+                    </div>
+
+                    <div class="book-card">
+                        <div class="book-cover">&#128218;</div>
+                        <div class="book-info">
+                            <h3>My Work Is That of Conservation</h3>
+                            <div class="book-author">by Mark D. Hersey</div>
+                            <p>Environmental biography exploring Carver's role as a pioneer of conservation and sustainability.</p>
+                            <div class="book-year">University of Georgia Press, 2011</div>
+                        </div>
+                    </div>
+
+                    <div class="book-card">
+                        <div class="book-cover">&#128218;</div>
+                        <div class="book-info">
+                            <h3>Unshakable Faith</h3>
+                            <div class="book-author">by John Perry</div>
+                            <p>Dual biography of Booker T. Washington and George Washington Carver at Tuskegee.</p>
+                            <div class="book-year">Multnomah Publishers, 1999</div>
+                        </div>
+                    </div>
+
+                    <div class="book-card">
+                        <div class="book-cover">&#128218;</div>
+                        <div class="book-info">
+                            <h3>A Weed Is a Flower</h3>
+                            <div class="book-author">by Aliki</div>
+                            <p>Classic children's biography introducing young readers to Carver's inspiring life story.</p>
+                            <div class="book-year">Simon & Schuster, 1965</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Honors Section -->
+        <section id="honors" class="media-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Honors & Awards</h2>
+                    <p>Recognition of George Washington Carver's extraordinary contributions to science and society</p>
+                </div>
+
+                <div class="honor-grid">
+                    <div class="honor-card">
+                        <div class="honor-icon">&#127942;</div>
+                        <h3>Spingarn Medal</h3>
+                        <p>NAACP's highest honor for outstanding achievement by an African American</p>
+                        <div class="honor-year">1923</div>
+                    </div>
+
+                    <div class="honor-card">
+                        <div class="honor-icon">&#127942;</div>
+                        <h3>Roosevelt Medal</h3>
+                        <p>For distinguished service to science</p>
+                        <div class="honor-year">1939</div>
+                    </div>
+
+                    <div class="honor-card">
+                        <div class="honor-icon">&#127891;</div>
+                        <h3>Honorary Doctorate</h3>
+                        <p>Simpson College, his first alma mater</p>
+                        <div class="honor-year">1928</div>
+                    </div>
+
+                    <div class="honor-card">
+                        <div class="honor-icon">&#127891;</div>
+                        <h3>Honorary Doctorate</h3>
+                        <p>University of Rochester</p>
+                        <div class="honor-year">1941</div>
+                    </div>
+
+                    <div class="honor-card">
+                        <div class="honor-icon">&#127760;</div>
+                        <h3>Fellow of the Royal Society of Arts</h3>
+                        <p>London, England - Rare honor for an American scientist</p>
+                        <div class="honor-year">1916</div>
+                    </div>
+
+                    <div class="honor-card">
+                        <div class="honor-icon">&#128506;</div>
+                        <h3>National Monument</h3>
+                        <p>First national monument dedicated to an African American</p>
+                        <div class="honor-year">1943</div>
+                    </div>
+
+                    <div class="honor-card">
+                        <div class="honor-icon">&#128587;</div>
+                        <h3>National Inventors Hall of Fame</h3>
+                        <p>Inducted for contributions to agricultural science</p>
+                        <div class="honor-year">1990</div>
+                    </div>
+
+                    <div class="honor-card">
+                        <div class="honor-icon">&#127775;</div>
+                        <h3>Iowa State University Alumni Medal</h3>
+                        <p>Highest alumni honor from his graduate alma mater</p>
+                        <div class="honor-year">1994</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Stamps Section -->
+        <section id="stamps" class="media-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Postal Stamps</h2>
+                    <p>George Washington Carver has been honored on U.S. postage stamps multiple times</p>
+                </div>
+
+                <div class="stamp-gallery">
+                    <div class="stamp-item">
+                        <div class="stamp-placeholder">
+                            &#128100;
+                            <span>3&#162;</span>
+                        </div>
+                        <div class="stamp-info">
+                            <strong>1948 Commemorative</strong>
+                            First stamp honoring Carver, issued on 5th anniversary of his death
+                        </div>
+                    </div>
+
+                    <div class="stamp-item">
+                        <div class="stamp-placeholder">
+                            &#128100;
+                            <span>32&#162;</span>
+                        </div>
+                        <div class="stamp-info">
+                            <strong>1998 Black Heritage</strong>
+                            Part of the Black Heritage series honoring African American achievers
+                        </div>
+                    </div>
+
+                    <div class="stamp-item">
+                        <div class="stamp-placeholder">
+                            &#127793;
+                            <span>Forever</span>
+                        </div>
+                        <div class="stamp-info">
+                            <strong>2015 Botanists</strong>
+                            Featured in the American Scientists series
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- In Popular Culture Section -->
+        <section id="culture" class="media-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>In Popular Culture</h2>
+                    <p>How George Washington Carver's legacy is represented in modern culture</p>
+                </div>
+
+                <div class="culture-grid">
+                    <div class="culture-card">
+                        <div class="culture-header">
+                            <span class="culture-icon">&#127979;</span>
+                            <h3>Schools Named After Carver</h3>
+                        </div>
+                        <div class="culture-content">
+                            <ul>
+                                <li>
+                                    <span>George Washington Carver High School, Phoenix, AZ</span>
+                                    <span class="culture-year">1926</span>
+                                </li>
+                                <li>
+                                    <span>Carver Elementary, Chicago, IL</span>
+                                    <span class="culture-year">1945</span>
+                                </li>
+                                <li>
+                                    <span>Carver Middle School, Miami, FL</span>
+                                    <span class="culture-year">1952</span>
+                                </li>
+                                <li>
+                                    <span>Carver Academy, San Antonio, TX</span>
+                                    <span class="culture-year">1968</span>
+                                </li>
+                                <li>
+                                    <span>200+ schools nationwide</span>
+                                    <span class="culture-year">Various</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="culture-card">
+                        <div class="culture-header">
+                            <span class="culture-icon">&#128739;</span>
+                            <h3>Ships Named After Carver</h3>
+                        </div>
+                        <div class="culture-content">
+                            <ul>
+                                <li>
+                                    <span>SS George Washington Carver</span>
+                                    <span class="culture-year">1943</span>
+                                </li>
+                                <li>
+                                    <span>USS George Washington Carver (SSBN-656)</span>
+                                    <span class="culture-year">1966</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="culture-card">
+                        <div class="culture-header">
+                            <span class="culture-icon">&#128433;</span>
+                            <h3>Streets & Places</h3>
+                        </div>
+                        <div class="culture-content">
+                            <ul>
+                                <li>
+                                    <span>George Washington Carver Boulevard (Multiple cities)</span>
+                                </li>
+                                <li>
+                                    <span>Carver County Recreation Area, Missouri</span>
+                                </li>
+                                <li>
+                                    <span>Carver Park, numerous cities</span>
+                                </li>
+                                <li>
+                                    <span>George Washington Carver State Park, Missouri</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="culture-card">
+                        <div class="culture-header">
+                            <span class="culture-icon">&#127904;</span>
+                            <h3>Television Appearances</h3>
+                        </div>
+                        <div class="culture-content">
+                            <ul>
+                                <li>
+                                    <span>"Beakman's World" - Carver tribute episode</span>
+                                    <span class="culture-year">1995</span>
+                                </li>
+                                <li>
+                                    <span>"Bill Nye the Science Guy" - Agricultural science</span>
+                                    <span class="culture-year">1997</span>
+                                </li>
+                                <li>
+                                    <span>"Drunk History" - Carver segment</span>
+                                    <span class="culture-year">2018</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="culture-card">
+                        <div class="culture-header">
+                            <span class="culture-icon">&#128176;</span>
+                            <h3>Currency & Coins</h3>
+                        </div>
+                        <div class="culture-content">
+                            <ul>
+                                <li>
+                                    <span>Carver-Washington Half Dollar</span>
+                                    <span class="culture-year">1951-54</span>
+                                </li>
+                                <li>
+                                    <span>Commemorative Gold Coin proposal</span>
+                                    <span class="culture-year">2016</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="culture-card">
+                        <div class="culture-header">
+                            <span class="culture-icon">&#127908;</span>
+                            <h3>Music References</h3>
+                        </div>
+                        <div class="culture-content">
+                            <ul>
+                                <li>
+                                    <span>"Peanut Butter" - referenced in numerous songs</span>
+                                </li>
+                                <li>
+                                    <span>Gospel songs celebrating his faith</span>
+                                </li>
+                                <li>
+                                    <span>Educational songs for children</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-main">
+                <div class="footer-brand">
+                    <h3>George Washington Carver Life</h3>
+                    <p class="footer-description">Preserving and sharing the visual and cultural legacy of George Washington Carver.</p>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Media Gallery</h4>
+                    <ul>
+                        <li><a href="#photographs">Photographs</a></li>
+                        <li><a href="#documentaries">Documentaries</a></li>
+                        <li><a href="#books">Books</a></li>
+                        <li><a href="#honors">Honors</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="/">Timeline</a></li>
+                        <li><a href="/research/">Research</a></li>
+                        <li><a href="/questions/">Questions</a></li>
+                        <li><a href="/community/">Community</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <div class="footer-legal">&copy; 2025 George Washington Carver Life. Educational Resource.</div>
+                <div class="footer-bottom-right">
+                    <a href="/">Home</a>
+                    <a href="/media/">Media</a>
+                    <a href="/research/">Research</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Dark mode functionality
+        const darkModeToggle = document.getElementById('darkModeToggle');
+        const darkModeIcon = document.querySelector('.dark-mode-icon');
+        const html = document.documentElement;
+
+        const currentTheme = localStorage.getItem('theme') ||
+            (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+
+        if (currentTheme === 'dark') {
+            html.setAttribute('data-theme', 'dark');
+            darkModeIcon.textContent = '\u2600\uFE0F';
+        }
+
+        darkModeToggle.addEventListener('click', () => {
+            const current = html.getAttribute('data-theme');
+            const newTheme = current === 'dark' ? 'light' : 'dark';
+            html.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            darkModeIcon.textContent = newTheme === 'dark' ? '\u2600\uFE0F' : '\uD83C\uDF19';
+        });
+
+        // Smooth scroll for navigation
+        document.querySelectorAll('.media-cat').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const target = document.querySelector(link.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "CollectionPage",
+        "name": "George Washington Carver Media Gallery",
+        "description": "Historical photographs, documentaries, books, and cultural representations of George Washington Carver",
+        "url": "https://georgewashingtoncarverlife.com/media/",
+        "isPartOf": {
+            "@type": "WebSite",
+            "name": "George Washington Carver Life"
+        }
+    }
+    </script>
+</body>
+</html>
